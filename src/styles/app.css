@@ -1,0 +1,37 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import './typography.css';
+
+@layer base {
+	body {
+		@apply bg-base-100 text-base-800 dark:bg-base-950 dark:text-base-200 antialiased;
+	}
+
+	svg {
+		@apply h-5 w-5 inline-block;
+	}
+}
+
+@layer utilities {
+	.layout {
+		@apply max-w-2xl mx-auto px-6;
+	}
+
+	.link {
+		@apply bg-primary-400/20 text-primary-600 p-0.5 mx-0.5 rounded-lg transition-opacity duration-300 hover:opacity-70 dark:text-primary-400;
+	}
+
+	.overlay {
+		@apply border bg-base-100/40 border-base-300/60 dark:border-base-600/40 dark:bg-base-900/40;
+	}
+
+	.overlay-hover {
+		@apply duration-300 transition-colors hover:border-primary-500 dark:hover:border-primary-400;
+	}
+
+	.title {
+		@apply text-base-950 dark:text-base-50;
+	}
+}
