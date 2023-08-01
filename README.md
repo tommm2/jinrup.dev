@@ -1,6 +1,4 @@
 ## Tom Jin's Blog
----
-
 - Framework: [Next](https://nextjs.org/)
 - Database: [PlanetScale](https://planetscale.com/)
 - ORM: [Prisma](https://www.prisma.io/)
