@@ -1,0 +1,49 @@
+{
+  "name": "tomjin.dev",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.15.0",
+    "clsx": "^1.2.1",
+    "contentlayer": "^0.3.2",
+    "date-fns": "^2.30.0",
+    "framer-motion": "^10.12.12",
+    "next": "13.4.3",
+    "next-contentlayer": "^0.3.2",
+    "next-themes": "^0.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.10.1",
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-pretty-code": "^0.9.5",
+    "rehype-slug": "^5.1.0",
+    "remark-gfm": "^3.0.1",
+    "shiki": "^0.14.2",
+    "swr": "^2.1.5",
+    "unist-util-visit": "^4.1.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
+    "@tailwindcss/typography": "^0.5.9",
+    "@types/node": "20.2.1",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4",
+    "@typescript-eslint/parser": "^5.59.6",
+    "autoprefixer": "^10.4.14",
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.3",
+    "eslint-plugin-tailwindcss": "^3.12.0",
+    "postcss": "^8.4.23",
+    "postcss-import": "^15.1.0",
+    "prisma": "^4.15.0",
+    "tailwind-merge": "^1.14.0",
+    "tailwindcss": "^3.3.2",
+    "typescript": "5.0.4"
+  }
+}
