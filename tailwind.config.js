@@ -71,7 +71,7 @@ const configs =  {
 		},
 		extend: {
 			boxShadow: {
-				'card': '0px 2px 20px rgba(99, 102, 241, 0.20)',
+				'card': '0px 2px 20px rgba(129, 140, 248, 0.2)',
 			},
 		},
 	},
