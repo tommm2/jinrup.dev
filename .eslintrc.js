@@ -6,8 +6,8 @@ module.exports = {
 	],
 	rules: {
 		'no-console': 'warn',
-		'quotes': ['error', 'single'],
-		'semi': 'error',
+		'quotes': ['warn', 'single'],
+		'semi': 'warn',
 		'indent': ['error', 'tab', { 'SwitchCase': 1 }],
 		'no-multiple-empty-lines': ['error', { 'max': 2, 'maxEOF': 1 }],
 		'newline-after-var': 'error',
