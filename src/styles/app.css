@@ -6,7 +6,27 @@
 
 @layer base {
 	body {
-		@apply bg-base-100 text-base-800 dark:bg-base-950 dark:text-base-200 antialiased;
+		@apply bg-base-100 text-base-700 dark:bg-base-950 dark:text-base-300 antialiased;
+	}
+
+	h1, h2, h3 {
+		@apply text-base-800 font-bold dark:text-base-200;
+	}
+
+	h1 {
+		@apply text-2xl;
+	}
+
+	h2 {
+		@apply text-xl;
+	}
+
+	h3 {
+		@apply text-lg;
+	}
+
+	strong {
+		@apply text-base-800 dark:text-base-200;
 	}
 
 	svg {
@@ -16,11 +36,7 @@
 
 @layer utilities {
 	.layout {
-		@apply max-w-2xl mx-auto px-6;
-	}
-
-	.link {
-		@apply bg-primary-400/20 text-primary-600 p-0.5 mx-0.5 rounded-lg transition-opacity duration-300 hover:opacity-70 dark:text-primary-400;
+		@apply max-w-3xl mx-auto px-6;
 	}
 
 	.overlay {

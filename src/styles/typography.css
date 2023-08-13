@@ -1,12 +1,20 @@
 .prose {
 	@apply bg-base-50 bg-transparent !max-w-[inherit] dark:text-base-300;
 
-	h1, h2, h3, h4, h5, h6, strong {
-		@apply text-base-950 dark:text-base-50;
+	h1, h2, h3, h4, h5, h6 {
+		@apply text-base-950 font-bold dark:text-base-50;
+	}
+
+	h2 {
+		@apply text-xl;
+	}
+
+	h3 {
+		@apply text-lg;
 	}
 
 	hr {
-		@apply border-base-300 dark:border-base-800;
+		@apply border-base-300 mb-[1em] dark:border-base-800;
 	}
 
 	blockquote {
@@ -18,12 +26,24 @@
 		}
 	}
 
+	ul {
+		@apply pl-[1em];
+
+		li {
+			@apply p-0;
+
+			&::marker {
+				@apply text-base-400 dark:text-base-700;
+			}
+		}
+	}
+
 	a:not(.anchor) {
-		@apply link no-underline;
+		@apply no-underline text-base-600 dark:text-base-300;
 	}
 
 	.anchor {
-		@apply no-underline absolute ml-[-0.8em] max-w-4xl w-[90%] hover:before:opacity-100;
+		@apply no-underline absolute ml-[-0.8em] max-w-4xl w-[10%] hover:before:opacity-100;
 
 		&::before {
 			@apply text-base-400 dark:text-base-700 content-['#'] opacity-0;
@@ -31,7 +51,7 @@
 	}
 
 	:not(pre) > code {
-		@apply bg-secondary-400/20 text-secondary-700 rounded-lg p-1 mx-0.5 dark:text-secondary-400 before:content-none after:content-none;
+		@apply bg-secondary-400/20 text-secondary-700 rounded-lg p-0.5 mx-0.5 dark:text-secondary-400 before:content-none after:content-none;
 	}
 
 	[data-rehype-pretty-code-title] {
@@ -52,7 +72,7 @@
 			@apply px-4;
 
 			&::before {
-				@apply inline-block w-4 mr-4 py-1 text-right text-base-500 dark:text-base-600;
+				@apply inline-block w-4 mr-4 py-0.5 text-right text-base-500 dark:text-base-600;
 				counter-increment: line;
 				content: counter(line);
 			}
