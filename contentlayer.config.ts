@@ -50,10 +50,22 @@ export const Project = defineDocumentType(() => ({
 	computedFields,
 }));
 
+export const Page = defineDocumentType(() => ({
+	name: 'Page',
+	filePathPattern: 'pages/**/*.mdx',
+	contentType: 'mdx',
+	computedFields,
+}));
+
 export default makeSource({
 	contentDirPath: 'src/content',
-	documentTypes: [Post, Project],
+	documentTypes: [Post, Project, Page],
 	mdx: {
+		esbuildOptions: (opts) => {
+			opts.tsconfig = `${process.env.PWD}/tsconfig.mdx.json`;
+
+			return opts;
+		},
 		remarkPlugins: [remarkGfm],
 		rehypePlugins: [
 			() => (tree) => {
