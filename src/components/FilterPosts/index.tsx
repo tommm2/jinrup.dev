@@ -7,7 +7,7 @@ import { formatQuery } from '@/lib/utils';
 
 import Input from '../Input';
 import PostCard from '../PostCard';
-import TitleRow from '../TitleRow';
+import Heading from '../Heading';
 
 interface FilterPostsProps {
 	posts: Post[]
@@ -28,7 +28,7 @@ const FilterPosts = ({ posts }: FilterPostsProps) => {
 				placeholder='請輸入文章標題'
 				onChange={(e) => setQuery(e.target.value)}
 			/>
-			<TitleRow titleText='All Posts' />
+			<Heading text='所有文章' />
 			{filterPosts.length !== 0 ? (
 				<div className='space-y-4'>
 					{filterPosts.map(post => <PostCard key={post.slug} post={post} />)}

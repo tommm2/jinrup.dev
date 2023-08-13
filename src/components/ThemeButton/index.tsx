@@ -41,6 +41,7 @@ const ThemeButton = () => {
 
 	return (
 		<motion.button
+			className='flex items-center justify-center'
 			animate={isDark ? 'initial' : 'animate'}
 			aria-label='Switch website theme'
 			onClick={() => setTheme(isDark ? 'light' : 'dark')}

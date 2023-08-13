@@ -9,6 +9,7 @@ const CustomImage = (props: CustomImageProps) => {
 			{...props}
 			className='rounded-lg'
 			alt={props.alt}
+			priority
 		/>
 	);
 };

@@ -1,5 +1,3 @@
-'use client';
-
 import { ComponentPropsWithoutRef } from 'react';
 
 import CopyButton from '@/components/CopyButton';

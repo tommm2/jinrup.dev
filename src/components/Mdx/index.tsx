@@ -1,12 +1,22 @@
+'use client';
+
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { MDXComponents } from 'mdx/types';
 
+import Heading from '../Heading';
 import CustomImage from './CustomImage';
 import CustomLink from './CustomLink';
 import CustomPre from './CustomPre';
 
+const codePrefix = `
+if (typeof process === 'undefined') {
+globalThis.process = { env: {} }
+}
+`;
+
 const components: MDXComponents = {
 	Image: CustomImage,
+	Heading,
 	a: CustomLink,
 	pre: CustomPre,
 	input: (props) => {
@@ -19,7 +29,7 @@ interface MdxProps {
 }
 
 const Mdx = ({ code }: MdxProps) => {
-	const MDXContent = useMDXComponent(code);
+	const MDXContent = useMDXComponent(codePrefix + code);
 
 	return (
 		<MDXContent components={{ ...components }} />

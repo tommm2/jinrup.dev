@@ -2,7 +2,7 @@ import { RiGithubFill, RiMailLine, RiLinkedinBoxLine } from 'react-icons/ri';
 
 const Footer = () => {
 	return (
-		<footer className='layout mt-10'>
+		<footer className='mt-10'>
 			<div className='flex flex-col items-center justify-between gap-4 border-t border-base-300/60 py-8 text-base-950/60 dark:border-base-800 dark:text-base-200/60 sm:flex-row'>
 				<div className='text-sm'>
 					© 2023 Tom Jin. All rights reserved.

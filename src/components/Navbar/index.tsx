@@ -10,6 +10,7 @@ import { navLinks } from '@/data';
 import ThemeButton from '@/components/ThemeButton';
 import Dropdown from '@/components/Dropdown';
 import NavbarLink from './NavbarLink';
+import { cn } from '@/lib/utils';
 
 const Navbar = () => {
 	const pathname = usePathname() || '/';
@@ -21,8 +22,8 @@ const Navbar = () => {
 
 	return (
 		<nav
-			className='layout sticky top-0 z-10 pt-4'
 			ref={headerRef}
+			className='sticky top-0 z-10 pt-4'
 		>
 			<div className='flex items-center justify-between rounded-full border border-base-200 bg-base-200/20 px-4 py-3 backdrop-blur dark:border-base-800 dark:bg-base-900/60'>
 				<Link href='/'>
@@ -42,14 +43,27 @@ const Navbar = () => {
 						);
 					})}
 				</ul>
-				<div className='flex items-center gap-2'>
+				<div className='flex items-center gap-3'>
 					<ThemeButton />
-					<div className='relative flex sm:hidden'>
+					<div className='relative sm:hidden'>
 						<button
+							className='group relative flex h-4 w-5 items-center justify-center'
 							aria-label='Toggle dropdown button'
 							onClick={() => setIsVisible(!isVisible)}
 						>
-							<RiMore2Fill />
+							<span
+								className={cn(
+									'absolute right-0 top-0 h-0.5 w-1/2 bg-base-300 transition-all ease-linear group-hover:w-full',
+									{ 'top-[7px] left-0 -rotate-45 w-full': isVisible }
+								)}
+							/>
+							<span className={cn('block h-0.5 grow bg-base-300', { 'hidden': isVisible })} />
+							<span
+								className={cn(
+									'absolute bottom-0 left-0 h-0.5 w-1/2 bg-base-300 transition-all  ease-linear group-hover:w-full',
+									{ 'top-[7px] left-0 w-full rotate-45': isVisible }
+								)}
+							/>
 						</button>
 						<Dropdown
 							isVisible={isVisible}
