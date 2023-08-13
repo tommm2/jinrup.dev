@@ -66,11 +66,13 @@ function RootLayout({ children }: Props) {
 				'font-sans'
 			)}>
 				<ThemeProvider>
-					<Navbar />
-					<main className='layout mt-8 min-h-[90vh] sm:mt-12'>
-						{children}
-					</main>
-					<Footer />
+					<div className='layout'>
+						<Navbar />
+						<main className='mt-8 min-h-[90vh] sm:mt-12'>
+							{children}
+						</main>
+						<Footer />
+					</div>
 					<BackToTop />
 				</ThemeProvider>
 			</body>

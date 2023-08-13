@@ -1,49 +1,31 @@
 import { allProjects, allPosts } from 'contentlayer/generated';
 
 import { sortPostsByDate } from '@/lib/utils';
-import ProjectCard from '@/components/ProjectCard';
-import PostCard from '@/components/PostCard';
+import Heading from '@/components/Heading';
 import Hero from '@/components/Hero';
-import TitleRow from '@/components/TitleRow';
+import PostCard from '@/components/PostCard';
+import ProjectCard from '@/components/ProjectCard';
 
 const HomePage = () => {
 	const posts = sortPostsByDate(allPosts);
 	const projects = allProjects;
 
 	return (
-		<div className='space-y-10'>
+		<>
 			<Hero />
-			<div>
-				<TitleRow
-					isLinkVisible
-					titleText='Featured Projects'
-					href='/projects'
-				/>
+			<section>
+				<Heading text='作品' />
 				<div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
-					{projects.map((project) => (
-						<ProjectCard
-							key={project.slug}
-							project={project}
-						/>
-					))}
+					{projects.map((project) => <ProjectCard key={project.slug} project={project} />)}
 				</div>
-			</div>
-			<div>
-				<TitleRow
-					titleText='Latest Posts'
-					isLinkVisible
-					href='/blog'
-				/>
+			</section>
+			<section>
+				<Heading text='最新文章' />
 				<div className='space-y-4'>
-					{posts.map((post) => (
-						<PostCard
-							key={post.slug}
-							post={post}
-						/>
-					))}
+					{posts.map((post) => <PostCard key={post.slug} post={post} />)}
 				</div>
-			</div>
-		</div>
+			</section>
+		</>
 	);
 };
 

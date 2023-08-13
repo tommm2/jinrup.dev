@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
+import { allPages } from 'contentlayer/generated';
 
-import { experiences } from '@/data';
-
-import Timeline from '@/components/Timeline';
+import Mdx from '@/components/Mdx';
 
 export const metadata: Metadata = {
 	title: '關於',
@@ -10,18 +9,18 @@ export const metadata: Metadata = {
 };
 
 const AboutPage = () => {
+	const page = allPages.find((page) => page.slug === 'about');
+
+	if (!page) {
+		return;
+	}
+
 	return (
 		<section>
-			<h2 className='text-2xl font-bold'>關於我</h2>
-			<Timeline>
-				{experiences.map(item => (
-					<Timeline.Item key={item.title}>
-						<Timeline.Point isProgressing={item.isProgressing} />
-						<Timeline.Time>{item.period}</Timeline.Time>
-						<div>{item.title}</div>
-					</Timeline.Item>
-				))}
-			</Timeline>
+			<h1 className='mb-4'>🙋 關於我</h1>
+			<div className='prose'>
+				<Mdx code={page.body.code} />
+			</div>
 		</section>
 	);
 };

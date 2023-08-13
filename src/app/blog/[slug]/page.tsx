@@ -41,13 +41,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 	};
 }
 
-type Props = {
+interface BlogLayoutProps {
 	params: {
 		slug: string
 	}
 }
 
-const BlogLayout = ({ params }: Props) => {
+const BlogLayout = ({ params }: BlogLayoutProps) => {
 	const post = allPosts.find((post) => post.slug === params.slug);
 
 	if (!post) {
