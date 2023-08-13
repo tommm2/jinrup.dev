@@ -13,9 +13,10 @@
 - [ ] Add image blur placeholder
 - [ ] i18n language translation
 - [ ] Comment feature for post
+- [ ] Make 3d model
 - [ ] Likes feature for project
 - [ ] Update typography styling
-- [ ] Add "Page" type in contentlayer source
+- [x] Add "Page" type in contentlayer source
 - [ ] Make brand logo
 - [ ] Make website analytics
 - [ ] Write Unit Test
