@@ -11,6 +11,10 @@ const navLinks = [
 		title: '關於',
 		href: '/about',
 	},
+	{
+		title: '時間線',
+		href: '/timeline',
+	},
 ];
 
 const techStacks = [
@@ -19,6 +23,20 @@ const techStacks = [
 		link: {
 			title: 'Next.js',
 			href: 'https://nextjs.org/',
+		},
+	},
+	{
+		category: '資料庫',
+		link: {
+			title: 'PlanetScale',
+			href: 'https://planetscale.com/',
+		},
+	},
+	{
+		category: 'ORM',
+		link: {
+			title: 'Prisma',
+			href: 'https://www.prisma.io/',
 		},
 	},
 	{
@@ -46,12 +64,12 @@ const techStacks = [
 
 const experiences = [
 	{
-		title: '擔任小熊科技的前端工程師',
+		content: '擔任小熊科技的前端工程師',
 		period: '2022/05 - 現在',
 		isProgressing: true,
 	},
 	{
-		title: '畢業於銘傳大學 - 電腦與通訊工程學系',
+		content: '畢業於銘傳大學 - 電腦與通訊工程學系',
 		period: '2017/09 - 2021/06',
 		isProgressing: false,
 	},
