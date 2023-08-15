@@ -53,11 +53,11 @@ export const metadata: Metadata = {
 	// },
 };
 
-type Props = {
+interface RootLayoutProps {
 	children: React.ReactNode
 }
 
-function RootLayout({ children }: Props) {
+function RootLayout({ children }: RootLayoutProps) {
 	return (
 		<html lang='en' suppressHydrationWarning>
 			<body className={clsx(
