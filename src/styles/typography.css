@@ -1,8 +1,8 @@
 .prose {
-	@apply bg-base-50 bg-transparent !max-w-[inherit] dark:text-base-300;
+	@apply bg-base-50 text-base-700 bg-transparent !max-w-[inherit] dark:text-base-300;
 
-	h1, h2, h3, h4, h5, h6 {
-		@apply text-base-950 font-bold dark:text-base-50;
+	h1, h2, h3, h4, h5, h6, {
+		@apply text-base-800 dark:text-base-200 relative before:content-[''] before:absolute before:w-8 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:to-secondary-500 before:-bottom-1 mb-2 inline-block;
 	}
 
 	h2 {
@@ -17,8 +17,12 @@
 		@apply border-base-300 mb-[1em] dark:border-base-800;
 	}
 
+	strong {
+		@apply text-base-800 font-bold dark:text-base-200;
+	}
+
 	blockquote {
-		@apply border-primary-500 text-base-950 bg-base-200 p-3 dark:bg-base-900/60 dark:text-primary-50 dark:border-primary-400;
+		@apply border-primary-500 text-base-800 bg-base-200/60 p-3 dark:bg-base-900/60 dark:text-base-200;
 		quotes: none;
 
 		> p {
@@ -43,19 +47,19 @@
 	}
 
 	.anchor {
-		@apply no-underline absolute ml-[-0.8em] max-w-4xl w-[10%] hover:before:opacity-100;
+		@apply no-underline absolute h-full w-full hover:before:opacity-100;
 
 		&::before {
-			@apply text-base-400 dark:text-base-700 content-['#'] opacity-0;
+			@apply text-base-400 dark:text-base-700 content-['#'] opacity-0 absolute -left-4;
 		}
 	}
 
 	:not(pre) > code {
-		@apply bg-secondary-400/20 text-secondary-700 rounded-lg p-0.5 mx-0.5 dark:text-secondary-400 before:content-none after:content-none;
+		@apply bg-primary-600/10 text-primary-500 dark:text-primary-400 rounded-lg p-1 mx-0.5 dark:bg-primary-300/10 before:content-none after:content-none;
 	}
 
 	[data-rehype-pretty-code-title] {
-		@apply px-4 py-1 text-base-50 border border-b-0 rounded-t-lg bg-base-800 border-base-600/40 dark:bg-base-900/40;
+		@apply px-4 py-1 text-base-50 border-b rounded-t-md bg-base-800 border-base-700 dark:border-base-800 dark:bg-base-900/60;
 
 		& + pre {
 			@apply rounded-t-none;
@@ -63,22 +67,26 @@
 	}
 
 	[data-rehype-pretty-code-fragment] {
+		pre {
+			@apply relative mt-0 bg-base-800 px-0 dark:bg-base-900/60;
+		}
+
 		code {
 			@apply grid;
 			counter-reset: line;
 		}
 
 		.line {
-			@apply px-4;
+			@apply px-4 border-l-2 border-transparent;
 
 			&::before {
-				@apply inline-block w-4 mr-4 py-0.5 text-right text-base-500 dark:text-base-600;
+				@apply inline-block w-4 mr-4 py-0.5 text-base-500 dark:text-base-600 text-center;
 				counter-increment: line;
 				content: counter(line);
 			}
 
 			&--highlighted {
-				@apply bg-base-500/30 dark:bg-base-700/30 border-l-2 border-secondary-400;
+				@apply bg-base-500/30 dark:bg-base-500/10 border-emerald-500;
 			}
 		}
 	}

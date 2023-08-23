@@ -5,14 +5,6 @@
 @import './typography.css';
 
 @layer base {
-	body {
-		@apply bg-base-100 text-base-700 dark:bg-base-950 dark:text-base-300 antialiased;
-	}
-
-	h1, h2, h3 {
-		@apply text-base-800 font-bold dark:text-base-200;
-	}
-
 	h1 {
 		@apply text-2xl;
 	}
@@ -25,29 +17,13 @@
 		@apply text-lg;
 	}
 
-	strong {
-		@apply text-base-800 dark:text-base-200;
-	}
-
 	svg {
 		@apply h-5 w-5 inline-block;
 	}
 }
 
 @layer utilities {
-	.layout {
-		@apply max-w-3xl mx-auto px-6;
-	}
-
-	.overlay {
-		@apply border bg-base-100/40 border-base-300/60 dark:border-base-600/40 dark:bg-base-900/40;
-	}
-
-	.overlay-hover {
-		@apply duration-300 transition-colors hover:border-primary-500 dark:hover:border-primary-400;
-	}
-
-	.title {
-		@apply text-base-950 dark:text-base-50;
+	.text-title {
+		@apply text-base-800 font-bold dark:text-base-200;
 	}
 }
