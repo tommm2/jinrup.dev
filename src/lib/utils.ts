@@ -3,8 +3,8 @@ import { twMerge } from 'tailwind-merge';
 import { clsx, ClassValue } from 'clsx';
 import { Post } from 'contentlayer/generated';
 
-function formatDate(date: string) {
-	return format(parseISO(date), 'yyyy-LL-dd');
+function formatDate(date: string, dateFormat = 'yyyy-LL-dd') {
+	return format(parseISO(date), dateFormat);
 }
 
 function formatQuery(text: string) {
@@ -19,9 +19,14 @@ function cn(...classes: ClassValue[]) {
 	return twMerge(clsx(...classes));
 };
 
+function convertToSlug(context: string) {
+	return context.replace(/\.mdx$/, '');
+}
+
 export {
 	formatDate,
 	formatQuery,
 	sortPostsByDate,
 	cn,
+	convertToSlug,
 };
