@@ -1,7 +1,8 @@
 import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files';
 
-import { convertToSlug } from '@/lib/utils';
-import { mdxConfigs } from '@/data';
+// cannot use alias path
+import { convertToSlug } from './src/lib/utils';
+import { mdxConfigs } from './src/data';
 
 const computedFields: ComputedFields = {
 	slug: {
