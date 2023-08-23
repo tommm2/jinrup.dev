@@ -1,6 +1,9 @@
 import { allProjects } from 'contentlayer/generated';
 
 import Mdx from '@/components/Mdx';
+import { RiArrowLeftLine } from 'react-icons/ri';
+import Link from 'next/link';
+import Heading from '@/components/Heading';
 
 export async function generateStaticParams() {
 	return allProjects.map((project) => ({ slug: project.slug }));
@@ -37,13 +40,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 	};
 }
 
-type Props = {
+interface ProjectsLayoutProps {
 	params: {
 		slug: string
 	}
 }
 
-const ProjectsLayout = ({ params }: Props) => {
+// repo-id: R_kgDOKCNxfg
+// category-id: DIC_kwDOKCNxfs4CYnqm
+
+const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 	const project = allProjects.find((project) => project.slug === params.slug);
 
 	if (!project) {
@@ -51,11 +57,24 @@ const ProjectsLayout = ({ params }: Props) => {
 	}
 
 	return (
-		<article className='prose'>
-			<div>
-				<h1>{project.title}</h1>
+		<article>
+			<Link
+				href='/projects'
+				className='mb-4 flex items-center gap-2'
+			>
+				<RiArrowLeftLine />
+				<span>返回專案頁面</span>
+			</Link>
+			<Heading
+				as='h1'
+				text={project.title}
+				hasUnderline={false}
+			/>
+			<div className='mb-8 flex items-center'>
 			</div>
-			<Mdx code={project.body.code}  />
+			<div className='prose'>
+				<Mdx code={project.body.code} />
+			</div>
 		</article>
 	);
 };

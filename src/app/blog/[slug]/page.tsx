@@ -1,9 +1,13 @@
 import { allPosts } from 'contentlayer/generated';
+import { RiArrowLeftLine } from 'react-icons/ri';
 
 import { formatDate } from '@/lib/utils';
 
 import Mdx from '@/components/Mdx';
 import ViewCounter from '@/components/ViewCounter';
+import Comment from '@/components/Comment';
+import Heading from '@/components/Heading';
+import Link from 'next/link';
 
 export async function generateStaticParams() {
 	return allPosts.map((post) => ({ slug: post.slug }));
@@ -55,20 +59,32 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 	}
 
 	return (
-		<article className='prose'>
-			<h1 className='text-center text-3xl'>{post.title}</h1>
-			<div className='flex items-center justify-center gap-6'>
-				<div className='flex items-center gap-2'>
-					<time dateTime={post.publishedAt} className='mb-1'>
-						{formatDate(post.publishedAt)}
-					</time>
-				</div>
+		<article>
+			<Link
+				href='/blog'
+				className='mb-4 flex items-center gap-2'
+			>
+				<RiArrowLeftLine />
+				<span>返回部落格</span>
+			</Link>
+			<Heading
+				as='h1'
+				text={post.title}
+				hasUnderline={false}
+			/>
+			<div className='mb-8 flex items-center justify-between text-base-950/60 dark:text-base-200/60'>
+				<time dateTime={post.publishedAt}>
+					{formatDate(post.publishedAt)}
+				</time>
 				<ViewCounter
 					slug={post.slug}
 					isViewTracking
 				/>
 			</div>
-			<Mdx code={post.body.code}  />
+			<div className='prose'>
+				<Mdx code={post.body.code} />
+				<Comment />
+			</div>
 		</article>
 	);
 };

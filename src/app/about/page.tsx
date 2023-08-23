@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { allPages } from 'contentlayer/generated';
 
 import Mdx from '@/components/Mdx';
+import Heading from '@/components/Heading';
 
 export const metadata: Metadata = {
 	title: '關於',
@@ -17,7 +18,10 @@ const AboutPage = () => {
 
 	return (
 		<section>
-			<h1 className='mb-4'>🙋 關於我</h1>
+			<Heading
+				as='h1'
+				text='關於'
+			/>
 			<div className='prose'>
 				<Mdx code={page.body.code} />
 			</div>

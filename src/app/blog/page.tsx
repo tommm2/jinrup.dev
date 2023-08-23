@@ -4,6 +4,7 @@ import { allPosts } from 'contentlayer/generated';
 import { sortPostsByDate } from '@/lib/utils';
 
 import FilterPosts from '@/components/FilterPosts';
+import Heading from '@/components/Heading';
 
 export const metadata: Metadata = {
 	title: '部落格',
@@ -15,9 +16,12 @@ const BlogPage = () => {
 
 	return (
 		<section>
-			<h1>📝 部落格</h1>
+			<Heading
+				as='h1'
+				text='部落格'
+			/>
 			<p className='my-4'>
-				我會在這裡分享各種關於軟體開發和技術相關的內容，目前總共有 <span className='mr-1 font-bold text-primary-400'>{posts.length}</span>篇文章。
+				我會在這裡分享各種關於軟體開發和技術相關的內容，目前總共有 <span className='mr-1 font-bold text-primary-500'>{posts.length}</span>篇文章。
 			</p>
 			<FilterPosts posts={posts} />
 		</section>

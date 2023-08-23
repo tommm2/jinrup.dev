@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Noto_Sans_TC, Space_Grotesk } from 'next/font/google';
+import { Noto_Sans_TC, Barlow } from 'next/font/google';
 import clsx from 'clsx';
 
 import Navbar from '@/components/Navbar';
@@ -7,19 +7,19 @@ import ThemeProvider from '@/components/ThemeProvider';
 import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
 
-import '../styles/app.css';
+import '@/styles/app.css';
 
-const noto_sans_tc = Noto_Sans_TC({
-	weight: ['300', '400', '500', '700'],
+const barlow = Barlow({
+	weight: ['400', '500', '600', '700'],
 	subsets: ['latin'],
-	variable: '--font-noto',
+	variable: '--font-barlow',
 	display: 'swap',
 });
 
-const space = Space_Grotesk({
-	weight: ['300', '400', '500', '700'],
+const noto_sans_tc = Noto_Sans_TC({
+	weight: ['400', '500', '700'],
 	subsets: ['latin'],
-	variable: '--font-space',
+	variable: '--font-noto',
 	display: 'swap',
 });
 
@@ -59,16 +59,19 @@ interface RootLayoutProps {
 
 function RootLayout({ children }: RootLayoutProps) {
 	return (
-		<html lang='en' suppressHydrationWarning>
+		<html
+			lang='en'
+			suppressHydrationWarning
+		>
 			<body className={clsx(
-				space.variable,
+				barlow.variable,
 				noto_sans_tc.variable,
-				'font-sans'
+				'bg-base-100 font-body text-base-700 antialiased dark:bg-base-950 dark:text-base-300'
 			)}>
 				<ThemeProvider>
-					<div className='layout'>
+					<div className='mx-auto max-w-3xl px-6'>
 						<Navbar />
-						<main className='mt-8 min-h-[90vh] sm:mt-12'>
+						<main className='mt-8 flex flex-col gap-12 md:mt-12'>
 							{children}
 						</main>
 						<Footer />
