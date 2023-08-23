@@ -7,14 +7,12 @@
 - Content Management: [Contentlayer](https://www.contentlayer.dev/)
 
 ## TODO
-- [ ] Complete About page
+- [x] Complete About page
 - [ ] Add image blur placeholder
 - [ ] i18n language translation
-- [ ] Comment feature for post
+- [x] Comment feature for post
 - [ ] Make 3d model
 - [ ] Likes feature for project
-- [ ] Update typography styling
 - [x] Add "Page" type in contentlayer source
 - [ ] Make brand logo
 - [ ] Make website analytics
-- [ ] Write Unit Test
