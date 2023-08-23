@@ -20,9 +20,9 @@ const PostCard = ({ post }: PostCardProps) => {
 
 	return (
 		<article>
-			<h3 className='inline-block leading-none'>
+			<p className='text-title inline-block text-lg leading-none'>
 				<Link href={url}>{title}</Link>
-			</h3>
+			</p>
 			<summary className='list-none text-base-950/70 dark:text-base-200/80'>{summary}</summary>
 			<div className='text-sm text-base-950/60 dark:text-base-200/60'>
 				<time dateTime={formatDate(publishedAt)}>{formatDate(publishedAt)}</time>

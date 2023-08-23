@@ -28,7 +28,10 @@ const FilterPosts = ({ posts }: FilterPostsProps) => {
 				placeholder='請輸入文章標題'
 				onChange={(e) => setQuery(e.target.value)}
 			/>
-			<Heading text='所有文章' />
+			<Heading
+				text='所有文章'
+				hasUnderline
+			/>
 			{filterPosts.length !== 0 ? (
 				<div className='space-y-4'>
 					{filterPosts.map(post => <PostCard key={post.slug} post={post} />)}

@@ -25,7 +25,7 @@ function ViewCounter({
 	}, [isViewTracking, slug]);
 
 	return (
-		<span>{`${data ? data.views : '--'}`} views</span>
+		<span>{`${data ? data.views : '--'}`} 次瀏覽</span>
 	);
 }
 

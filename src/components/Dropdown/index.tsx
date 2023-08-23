@@ -1,9 +1,9 @@
 import { MouseEventHandler } from 'react';
 import Link from 'next/link';
+import { RiFolder2Line, RiQuillPenLine, RiTimeLine, RiUserLine } from 'react-icons/ri';
 
 import { cn } from '@/lib/utils';
 import { navLinks } from '@/data';
-import { RiFolder2Line, RiQuillPenLine, RiTimeLine, RiUserLine } from 'react-icons/ri';
 
 const IconMap: { [key: string]: JSX.Element } = {
 	['/blog']: <RiQuillPenLine />,

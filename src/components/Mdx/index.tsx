@@ -19,9 +19,7 @@ const components: MDXComponents = {
 	Heading,
 	a: CustomLink,
 	pre: CustomPre,
-	input: (props) => {
-		return <input aria-label='checkbox' {...props} />;
-	},
+	input: (props) => <input aria-label='checkbox' {...props} />,
 };
 
 interface MdxProps {

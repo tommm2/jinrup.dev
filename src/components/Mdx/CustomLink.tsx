@@ -1,14 +1,11 @@
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentProps } from 'react';
 import { RiArrowRightUpLine } from 'react-icons/ri';
 
-import { cn } from '@/lib/utils';
-
-interface CustomLinkProps extends ComponentPropsWithoutRef<'a'> {}
+interface CustomLinkProps extends ComponentProps<'a'> {}
 
 const CustomLink = ({
 	href = '',
 	children,
-	className = '',
 	...restProps
 }: CustomLinkProps) => {
 	if (href.startsWith('#')) {
@@ -22,14 +19,15 @@ const CustomLink = ({
 
 	return (
 		<a
-			className={cn('relative before:absolute before:bottom-0 before:h-0.5 before:w-full before:bg-base-300 dark:before:bg-base-700 before:content-[""] hover:before:bg-primary-400', className)}
+			className='group relative font-bold'
 			href={href}
 			target='_blank'
 			rel='noopener noreferrer'
 			{...restProps}
 		>
-			<span>{children}</span>
-			<RiArrowRightUpLine />
+			{children}
+			<span className='absolute -bottom-px left-0 h-0.5 w-full bg-primary-500 transition-[width] duration-300 ease-out group-hover:left-[unset] group-hover:right-0 group-hover:w-0' />
+			<RiArrowRightUpLine className='h-4 w-4' />
 		</a>
 	);
 };
