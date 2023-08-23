@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@giscus/react": "^2.3.0",
     "@prisma/client": "^4.15.0",
     "clsx": "^1.2.1",
     "contentlayer": "^0.3.2",
