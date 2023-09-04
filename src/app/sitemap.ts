@@ -1,6 +1,6 @@
 import { allPosts, allProjects } from 'contentlayer/generated';
 
-const URL = 'https://tomjin-dev.vercel.app';
+const URL = 'https://tomjin.vercel.app';
 
 export default async function sitemap() {
 	const posts = allPosts.map((post) => ({
