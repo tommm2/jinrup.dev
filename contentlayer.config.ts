@@ -1,8 +1,11 @@
 import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files';
+import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
+import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { visit } from 'unist-util-visit';
 
-// cannot use alias path
 import { convertToSlug } from './src/lib/utils';
-import { mdxConfigs } from './src/data';
 
 const computedFields: ComputedFields = {
 	slug: {
@@ -52,7 +55,71 @@ export const Page = defineDocumentType(() => ({
 }));
 
 export default makeSource({
-	contentDirPath: 'src/content',
+	contentDirPath: 'content',
 	documentTypes: [Post, Project, Page],
-	mdx: mdxConfigs,
+	mdx: {
+		esbuildOptions: (opts) => {
+			opts.tsconfig = `${process.env.PWD}/tsconfig.mdx.json`;
+
+			return opts;
+		},
+		remarkPlugins: [remarkGfm],
+		rehypePlugins: [
+			() => (tree) => {
+				visit(tree, (node) => {
+				  if (node?.type === 'element' && node?.tagName === 'pre') {
+						const [codeEl] = node.children;
+
+						if (codeEl.tagName !== 'code') return;
+
+						node.raw = codeEl.children?.[0].value;
+				  }
+				});
+			},
+			rehypeSlug,
+			[
+				rehypePrettyCode,
+				{
+					theme: 'github-dark',
+					onVisitLine(node: any) {
+						// Prevent lines from collapsing in `display: grid` mode, and allow empty
+						if (node.children.length === 0) {
+							node.children = [{ type: 'text', value: ' ' }];
+						}
+					},
+					onVisitHighlightedLine(node: any) {
+						node.properties.className.push('line--highlighted');
+					},
+					onVisitHighlightedWord(node: any) {
+						node.properties.className = ['word--highlighted'];
+					},
+				},
+			],
+			[
+				rehypeAutolinkHeadings,
+				{
+					properties: {
+						className: ['anchor'],
+						ariaLabel: 'Title anchor',
+					},
+				},
+			],
+			// reference: https://claritydev.net/blog/copy-to-clipboard-button-nextjs-mdx-rehype
+			() => (tree) => {
+				visit(tree, (node) => {
+					if (node?.type === 'element' && node?.tagName === 'div') {
+						if (!('data-rehype-pretty-code-fragment' in node.properties)) {
+							return;
+						}
+
+						for (const child of node.children) {
+							if (child.tagName === 'pre') {
+								child.properties['raw'] = node.raw;
+							}
+						}
+					}
+				});
+			},
+		],
+	},
 });
