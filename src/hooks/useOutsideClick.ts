@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 
-export default function useClickOutside() {
-	const elementRef = useRef<HTMLElement>(null);
+export default function useOutsideClick() {
+	const elementRef = useRef<HTMLDivElement>(null);
 	const [isVisible, setIsVisible] = useState(false);
 
 	const _handleClick = (event: MouseEvent) => {
