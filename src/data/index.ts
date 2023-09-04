@@ -1,11 +1,11 @@
 import experiences from './experiences';
 import giscusConfigs from './giscus';
-import mdxConfigs from './mdx';
 import navLinks from './nav-links';
+import socials from './socials';
 
 export {
 	experiences,
 	giscusConfigs,
-	mdxConfigs,
 	navLinks,
+	socials,
 };
