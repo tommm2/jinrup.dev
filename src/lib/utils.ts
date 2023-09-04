@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import { clsx, ClassValue } from 'clsx';
 import { Post } from 'contentlayer/generated';
 
-function formatDate(date: string, dateFormat = 'yyyy-LL-dd') {
+function formatDate(date: string, dateFormat = 'LLLL d, yyyy') {
 	return format(parseISO(date), dateFormat);
 }
 
