@@ -13,14 +13,6 @@ const configs =  {
 			'lg': '1024px',
 			'xl': '1280px',
 		},
-		colors: {
-			'primary': colors.amber,
-			'secondary': colors.rose,
-			'base': colors.zinc,
-			'emerald': colors.emerald,
-			'currentColor': 'currentColor',
-			'transparent': 'transparent',
-		},
 		fontWeight: {
 			'light': '300',
 			'normal': '400',
@@ -31,8 +23,13 @@ const configs =  {
 			'body': ['var(--font-barlow)', 'var(--font-noto)'],
 		},
 		extend: {
+			colors: {
+				'primary': colors.purple,
+				'secondary': colors.blue,
+				'base': colors.zinc,
+			},
 			boxShadow: {
-				'card': '0px 2px 20px rgba(129, 140, 248, 0.2)',
+				'card': '0px 2px 20px rgba(168, 85, 247, 0.2)',
 			},
 			animation: {
 				'wave': 'wave 6s linear infinite',
