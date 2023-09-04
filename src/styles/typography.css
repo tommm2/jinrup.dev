@@ -1,8 +1,8 @@
 .prose {
-	@apply bg-base-50 text-base-700 bg-transparent !max-w-[inherit] dark:text-base-300;
+	@apply bg-base-50 text-base-600 bg-transparent max-w-[inherit] dark:text-base-300;
 
-	h1, h2, h3, h4, h5, h6, {
-		@apply text-base-800 dark:text-base-200 relative before:content-[''] before:absolute before:w-8 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:to-secondary-500 before:-bottom-1 mb-2 inline-block;
+	h1, h2, h3, h4, h5, h6 {
+		@apply font-bold text-base-800 dark:text-base-200 mt-[0.5em] relative inline-block;
 	}
 
 	h2 {
@@ -18,12 +18,11 @@
 	}
 
 	strong {
-		@apply text-base-800 font-bold dark:text-base-200;
+		@apply bg-clip-text text-transparent bg-gradient-to-br from-primary-500 from-30% to-secondary-500 font-bold;
 	}
 
 	blockquote {
-		@apply border-primary-500 text-base-800 bg-base-200/60 p-3 dark:bg-base-900/60 dark:text-base-200;
-		quotes: none;
+		@apply border-primary-500 text-base-800 bg-base-200/60 p-3 dark:bg-base-900/60 dark:text-base-300;
 
 		> p {
 			@apply m-0;
@@ -43,7 +42,7 @@
 	}
 
 	a:not(.anchor) {
-		@apply no-underline text-base-600 dark:text-base-300;
+		@apply no-underline;
 	}
 
 	.anchor {

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Post } from 'contentlayer/generated';
 
 import { formatQuery } from '@/lib/utils';
@@ -29,15 +30,25 @@ const FilterPosts = ({ posts }: FilterPostsProps) => {
 				onChange={(e) => setQuery(e.target.value)}
 			/>
 			<Heading
-				text='所有文章'
+				className='mb-6'
 				hasUnderline
-			/>
+			>
+				所有文章
+			</Heading>
 			{filterPosts.length !== 0 ? (
 				<div className='space-y-4'>
 					{filterPosts.map(post => <PostCard key={post.slug} post={post} />)}
 				</div>
 			) : (
-				<div className='text-xl'>未搜尋到相關文章</div>
+				<div className='flex flex-col items-center justify-center gap-4'>
+					<span>沒有搜尋到結果</span>
+					<Image
+						width={150}
+						height={150}
+						src='/images/no-results.png'
+						alt='no-results'
+					/>
+				</div>
 			)}
 		</>
 	);

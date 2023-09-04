@@ -17,15 +17,12 @@ const AboutPage = () => {
 	}
 
 	return (
-		<section>
-			<Heading
-				as='h1'
-				text='關於'
-			/>
-			<div className='prose'>
+		<>
+			<Heading as='h1'>關於</Heading>
+			<div className='prose mt-4'>
 				<Mdx code={page.body.code} />
 			</div>
-		</section>
+		</>
 	);
 };
 

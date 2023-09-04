@@ -17,13 +17,13 @@ const NavbarLink = ({ link, isActive }: Props) => {
 	return (
 		<li>
 			<Link
-				className='group relative'
+				className='relative p-2'
 				href={href}
 			>
 				<span
 					className={cn(
-						'transition-colors duration-300 dark:text-base-200/60 dark:group-hover:text-base-200',
-						{ 'text-base-800 dark:text-base-200': isActive }
+						'text-muted transition-colors duration-300 hover:text-base-900 dark:hover:text-base-200',
+						{ 'text-base-900 dark:text-base-200': isActive }
 					)}
 				>
 					{title}
@@ -31,7 +31,7 @@ const NavbarLink = ({ link, isActive }: Props) => {
 				<motion.span layout>
 					{isActive ? (
 						<motion.span
-							className='absolute inset-x-0 -bottom-1 -z-10 h-0.5 bg-primary-500'
+							className='absolute inset-0 -z-10 rounded-lg bg-base-200 dark:bg-base-800'
 							layoutId='navbar'
 							transition={{ ease: 'anticipate', duration: 0.5 }}
 						/>

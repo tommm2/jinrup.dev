@@ -1,29 +1,40 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { RiArrowRightLine } from 'react-icons/ri';
 
-import Contacts from '../Contacts';
+import Heading from '../Heading';
 
 const Hero = () => {
 	return (
-		<div>
-			<div className='flex flex-col gap-4 sm:flex-row'>
+		<section>
+			<div className='flex items-center gap-4'>
 				<Image
-					className='rounded-2xl border border-base-200 p-1.5 dark:border-base-700'
+					className='rounded-full p-1.5'
 					src='/images/avatar.jpg'
 					alt='avatar'
-					width={80}
-					height={80}
+					width={90}
+					height={90}
 				/>
 				<div>
-					<h1>Tom Jin</h1>
-					<span className='mr-1 text-base-950/60 dark:text-base-200/60'>Software Developer • Taiwan</span>
+					<Heading as='h1'>Tom Jin</Heading>
+					<span className='text-muted mr-1'>Software Engineer • Taiwan</span>
 					🇹🇼
 				</div>
 			</div>
 			<p className='my-4'>
-				歡迎來到我的個人網站，在這裡我會紀錄自己的學習歷程、分享開發經驗和軟體相關知識等等，同時也會展示一些自己覺得還不錯的 Side Project，希望未來能成為獨當一面的全端工程師。
+				你好，我是一名熱衷於網頁開發領域的軟體工程師。透過這個網站開始學習撰寫技術文章，並記錄自己所學到的軟題知識。
 			</p>
-			<Contacts />
-		</div>
+			<Link
+				className='group relative inline-block rounded-lg bg-gradient-to-br from-primary-500 to-secondary-500 p-px'
+				href='/about'
+			>
+				<div className='flex items-center gap-1 rounded-lg bg-transparent px-4 py-2 text-base-100 dark:bg-base-900/80'>
+					<span>瞭解更多</span>
+					<RiArrowRightLine className='transition-transform duration-300 group-hover:translate-x-1' />
+				</div>
+				<div className='absolute -inset-0 -z-10 rounded-lg bg-gradient-to-r blur-none transition-all group-hover:blur-[8px]'></div>
+			</Link>
+		</section>
 	);
 };
 

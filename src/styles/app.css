@@ -5,6 +5,10 @@
 @import './typography.css';
 
 @layer base {
+	body {
+		@apply bg-base-100 font-body text-base-600 antialiased dark:bg-base-950 dark:text-base-300;
+	}
+
 	h1 {
 		@apply text-2xl;
 	}
@@ -13,17 +17,17 @@
 		@apply text-xl;
 	}
 
-	h3 {
-		@apply text-lg;
-	}
-
 	svg {
 		@apply h-5 w-5 inline-block;
 	}
 }
 
-@layer utilities {
-	.text-title {
-		@apply text-base-800 font-bold dark:text-base-200;
+@layer components {
+	.text-muted {
+		@apply text-base-900/70 dark:text-base-300/70;
+	}
+
+	.layout {
+		@apply mx-auto mt-8 max-w-2xl px-4;
 	}
 }

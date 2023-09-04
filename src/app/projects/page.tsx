@@ -12,26 +12,33 @@ export const metadata: Metadata = {
 
 const ProjectsPage = () => {
 	return (
-		<section>
-			<Heading
-				as='h1'
-				text='專案'
-			/>
+		<>
+			<Heading as='h1'>專案</Heading>
 			<p className='my-4'>
 				展示一些專案，如果想看更多可以到我的
-				<CustomLink href='https://github.com/tommm2'>
+				<CustomLink
+					className='mx-1'
+					href='https://github.com/tommm2'
+				>
 					Github
 				</CustomLink>
 				瀏覽。
 			</p>
 			<Heading
-				text='所有專案'
+				className='mb-6'
 				hasUnderline
-			/>
-			<div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
-				{allProjects.map(project => <ProjectCard key={project.slug} project={project} />)}
+			>
+				所有專案
+			</Heading>
+			<div className='grid grid-cols-1 gap-4 pb-1 sm:grid-cols-2'>
+				{allProjects.map((project) => (
+					<ProjectCard
+						key={project.slug}
+						project={project}
+					/>
+				))}
 			</div>
-		</section>
+		</>
 	);
 };
 

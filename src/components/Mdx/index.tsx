@@ -8,18 +8,18 @@ import CustomImage from './CustomImage';
 import CustomLink from './CustomLink';
 import CustomPre from './CustomPre';
 
-const codePrefix = `
-if (typeof process === 'undefined') {
-globalThis.process = { env: {} }
-}
-`;
+// const codePrefix = `
+// if (typeof process === 'undefined') {
+// globalThis.process = { env: {} }
+// }
+// `;
 
 const components: MDXComponents = {
 	Image: CustomImage,
-	Heading,
 	a: CustomLink,
 	pre: CustomPre,
 	input: (props) => <input aria-label='checkbox' {...props} />,
+	Heading,
 };
 
 interface MdxProps {
@@ -27,7 +27,7 @@ interface MdxProps {
 }
 
 const Mdx = ({ code }: MdxProps) => {
-	const MDXContent = useMDXComponent(codePrefix + code);
+	const MDXContent = useMDXComponent(code);
 
 	return (
 		<MDXContent components={{ ...components }} />

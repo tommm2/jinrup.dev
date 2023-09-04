@@ -35,12 +35,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 			description,
 			type: 'article',
 			publishedTime,
-			url: `https://tomjin.dev/blog/${slug}`,
-			// images: [
-			// 	{
-			// 		url: ogImage,
-			// 	},
-			// ],
+			url: `https://tomjin.vercel.app/blog/${slug}`,
 		},
 	};
 }
@@ -61,18 +56,14 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 	return (
 		<article>
 			<Link
-				href='/blog'
 				className='mb-4 flex items-center gap-2'
+				href='/blog'
 			>
 				<RiArrowLeftLine />
 				<span>返回部落格</span>
 			</Link>
-			<Heading
-				as='h1'
-				text={post.title}
-				hasUnderline={false}
-			/>
-			<div className='mb-8 flex items-center justify-between text-base-950/60 dark:text-base-200/60'>
+			<Heading as='h1'>{post.title}</Heading>
+			<div className='text-muted mb-8 flex items-center justify-between'>
 				<time dateTime={post.publishedAt}>
 					{formatDate(post.publishedAt)}
 				</time>

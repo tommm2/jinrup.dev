@@ -48,7 +48,7 @@ const BackToTop = () => {
 				aria-hidden
 			>
 				<div className='absolute left-1/2 top-0 z-10 h-[400px] w-[400px] translate-x-[-50%] translate-y-[-75%] rotate-0 animate-wave rounded-[45%] bg-primary-500 opacity-40' />
-				<div className='absolute left-1/2 top-0 z-20 h-[400px] w-[400px] translate-x-[-50%] translate-y-[-70%] rotate-0 animate-[wave_10s_linear_-5s_infinite] rounded-[47%] bg-primary-500 opacity-90' />
+				<div className='absolute left-1/2 top-0 z-20 h-[400px] w-[400px] translate-x-[-50%] translate-y-[-70%] rotate-0 animate-[wave_10s_linear_-5s_infinite] rounded-[47%] bg-primary-400 opacity-90 dark:bg-primary-500' />
 			</div>
 			<span className='absolute inset-0 z-[13] flex items-center justify-center font-bold transition-all group-hover:opacity-0'>{scrollPercentage}%</span>
 			<span className='absolute inset-0 z-[13] flex flex-col items-center justify-center opacity-0 transition-all group-hover:opacity-100'>

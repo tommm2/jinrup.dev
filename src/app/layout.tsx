@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import { Noto_Sans_TC, Barlow } from 'next/font/google';
-import clsx from 'clsx';
 
 import Navbar from '@/components/Navbar';
 import ThemeProvider from '@/components/ThemeProvider';
@@ -32,7 +31,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: 'Tom jin',
 		description: 'Tom Jin 的個人網站',
-		url: 'https://tomjin.dev',
+		url: 'https://tomjin.vercel.app',
 		siteName: 'Tom Jin',
 		images: [],
 		locale: 'zh-tw',
@@ -63,19 +62,13 @@ function RootLayout({ children }: RootLayoutProps) {
 			lang='en'
 			suppressHydrationWarning
 		>
-			<body className={clsx(
-				barlow.variable,
-				noto_sans_tc.variable,
-				'bg-base-100 font-body text-base-700 antialiased dark:bg-base-950 dark:text-base-300'
-			)}>
+			<body className={`${barlow.variable} ${noto_sans_tc.variable}`}>
 				<ThemeProvider>
-					<div className='mx-auto max-w-3xl px-6'>
-						<Navbar />
-						<main className='mt-8 flex flex-col gap-12 md:mt-12'>
-							{children}
-						</main>
-						<Footer />
-					</div>
+					<Navbar />
+					<main className='layout overflow-hidden md:mt-12'>
+						{children}
+					</main>
+					<Footer />
 					<BackToTop />
 				</ThemeProvider>
 			</body>
