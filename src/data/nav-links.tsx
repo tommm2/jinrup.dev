@@ -2,17 +2,17 @@ import { RiFolder2Line, RiQuillPenLine, RiUser3Line } from 'react-icons/ri';
 
 const navLinks = [
 	{
-		title: '部落格',
+		title: 'blog',
 		href: '/blog',
 		icon: <RiQuillPenLine />,
 	},
 	{
-		title: '專案',
+		title: 'projects',
 		href: '/projects',
 		icon: <RiFolder2Line />,
 	},
 	{
-		title: '關於',
+		title: 'about',
 		href: '/about',
 		icon: <RiUser3Line />,
 	},

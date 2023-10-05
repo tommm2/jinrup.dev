@@ -1,9 +1,10 @@
-import Link from 'next/link';
+'use client';
 
-import { navLinks } from '@/data';
+import Link from 'next/link';
 import clsx from 'clsx';
 
 import useOutsideClick from '@/hooks/useOutsideClick';
+import { navLinks } from '@/data';
 
 const Dropdown = () => {
 	const { elementRef, isVisible, setIsVisible } = useOutsideClick();

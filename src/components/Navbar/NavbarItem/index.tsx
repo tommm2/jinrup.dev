@@ -1,18 +1,18 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import clsx from 'clsx';
 
-import { cn } from '@/lib/utils';
-
-interface Props {
-	link: {
-		title: string
-		href: string
-	}
-	isActive?: boolean
+interface NavbarItemProps {
+	title: string
+	href: string
 }
 
-const NavbarLink = ({ link, isActive }: Props) => {
-	const { title, href } = link;
+const NavbarItem = ({ title, href }: NavbarItemProps) => {
+	const pathname = usePathname() || '/';
+	const isActive = pathname.includes(href);
 
 	return (
 		<li>
@@ -21,9 +21,9 @@ const NavbarLink = ({ link, isActive }: Props) => {
 				href={href}
 			>
 				<span
-					className={cn(
+					className={clsx(
 						'text-muted transition-colors duration-300 hover:text-base-900 dark:hover:text-base-200',
-						{ 'text-base-900 dark:text-base-200': isActive }
+						{ 'text-base-900 dark:text-base-200': isActive },
 					)}
 				>
 					{title}
@@ -42,4 +42,4 @@ const NavbarLink = ({ link, isActive }: Props) => {
 	);
 };
 
-export default NavbarLink;
+export default NavbarItem;
