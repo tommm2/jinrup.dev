@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { Noto_Sans_TC, Barlow } from 'next/font/google';
 import { useLocale } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 import Navbar from '@/components/Navbar';
@@ -60,15 +61,15 @@ export function generateStaticParams() {
 
 interface RootLayoutProps {
 	children: React.ReactNode;
-	params: { locale: string };
 }
 
-function RootLayout({ children, params }: RootLayoutProps) {
+function RootLayout({ children }: RootLayoutProps) {
 	const locale = useLocale();
+	const isValidLocale = locales.some((current) => current === locale);
 
-	if (params.locale !== locale) {
-		notFound();
-	}
+	if (!isValidLocale) notFound();
+
+	unstable_setRequestLocale(locale);
 
 	return (
 		<html
