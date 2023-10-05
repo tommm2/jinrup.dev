@@ -58,7 +58,12 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 				<RiArrowLeftLine />
 				<span>返回專案</span>
 			</CustomLink>
-			<Heading className='mb-8' as='h1'>{project.title}</Heading>
+			<Heading
+				className='mb-8'
+				as='h1'
+			>
+				{project.title}
+			</Heading>
 			<div className='prose'>
 				<Mdx code={project.body.code} />
 			</div>

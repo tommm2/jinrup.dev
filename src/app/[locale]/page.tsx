@@ -1,9 +1,6 @@
-'use client';
-
+import { useLocale, useTranslations } from 'next-intl';
 import { allPosts, allProjects } from 'contentlayer/generated';
 import { RiArrowRightLine } from 'react-icons/ri';
-
-import { sortPostsByDate } from '@/lib/utils';
 
 import Heading from '@/components/Heading';
 import Hero from '@/components/Hero';
@@ -11,8 +8,15 @@ import PostCard from '@/components/PostCard';
 import CustomLink from '@/components/Mdx/CustomLink';
 import ProjectCard from '@/components/ProjectCard';
 
+import { sortPostsByDate } from '@/lib/utils';
+
 const HomePage = () => {
-	const posts = sortPostsByDate(allPosts).slice(0, 4);
+	const locale = useLocale();
+	const t = useTranslations('common');
+
+	const posts = sortPostsByDate(allPosts)
+		.filter(post => post.language === locale)
+		.slice(0, 4);
 	const projects = allProjects.slice(0, 4);
 
 	return (
@@ -20,15 +24,15 @@ const HomePage = () => {
 			<Hero />
 			<section>
 				<Heading
-					className='mb-6 mt-8 flex items-center justify-between'
+					className='mb-6 mt-8 flex items-center justify-between uppercase'
 					hasUnderline
 				>
-					<span>作品</span>
+					<span>{t('projects')}</span>
 					<CustomLink
 						className='flex items-center gap-1 text-sm font-normal text-base-900 dark:text-base-200'
-						href='/projects'
+						href={`/${locale}/projects`}
 					>
-						查看更多
+						{t('seeMore')}
 						<RiArrowRightLine className='h-4 w-4' />
 					</CustomLink>
 				</Heading>
@@ -43,15 +47,15 @@ const HomePage = () => {
 			</section>
 			<section>
 				<Heading
-					className='mb-6 mt-8 flex items-center justify-between'
+					className='mb-6 mt-8 flex items-center justify-between uppercase'
 					hasUnderline
 				>
-					<span>近期文章</span>
+					<span>{t('latestPosts')}</span>
 					<CustomLink
 						className='flex items-center gap-1 text-sm font-normal text-base-900 dark:text-base-200'
-						href='/blog'
+						href={`/${locale}/blog`}
 					>
-						查看更多
+						{t('seeMore')}
 						<RiArrowRightLine className='h-4 w-4' />
 					</CustomLink>
 				</Heading>
