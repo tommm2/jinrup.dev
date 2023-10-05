@@ -28,6 +28,6 @@
 	}
 
 	.layout {
-		@apply mx-auto mt-8 max-w-2xl px-4;
+		@apply mx-auto max-w-2xl px-4;
 	}
 }
