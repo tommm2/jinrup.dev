@@ -1,0 +1,14 @@
+{
+	"navigation": {
+		"blog": "部落格",
+		"projects": "專案",
+		"about": "關於"
+	},
+	"common": {
+		"hero": "你好，我是一名熱衷於網頁開發領域的軟體工程師。透過這個網站開始學習撰寫技術文章，並記錄自己所學到的軟題知識。",
+		"latestPosts": "最新文章",
+		"projects": "專案",
+		"seeMore": "查看更多",
+		"moreAbout": "瞭解更多"
+	}
+}
