@@ -5,6 +5,7 @@ import { sortPostsByDate } from '@/lib/utils';
 
 import FilterPosts from '@/components/FilterPosts';
 import Heading from '@/components/Heading';
+import { useLocale } from 'next-intl';
 
 export const metadata: Metadata = {
 	title: '部落格',
@@ -12,7 +13,9 @@ export const metadata: Metadata = {
 };
 
 const BlogPage = () => {
-	const posts = sortPostsByDate(allPosts);
+	const locale = useLocale();
+	const posts = sortPostsByDate(allPosts)
+		.filter(post => post.language === locale);
 
 	return (
 		<>
