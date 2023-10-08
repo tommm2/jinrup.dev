@@ -1,6 +1,6 @@
 import experiences from './experiences';
 import giscusConfigs from './giscus';
-import navLinks from './nav-links';
+import navLinks from './navLinks';
 import socials from './socials';
 
 export {
