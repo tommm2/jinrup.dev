@@ -24,9 +24,9 @@ const configs =  {
 		},
 		extend: {
 			colors: {
-				'primary': colors.purple,
+				'primary': colors.emerald,
 				'secondary': colors.blue,
-				'base': colors.zinc,
+				'base': colors.neutral,
 			},
 			boxShadow: {
 				'card': '0px 2px 20px rgba(168, 85, 247, 0.2)',
