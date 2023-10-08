@@ -1,0 +1,14 @@
+{
+	"navigation": {
+		"blog": "Blog",
+		"projects": "Projects",
+		"about": "About"
+	},
+	"common": {
+		"hero": "Hello, I am a software engineer passionate about the field of web development. I have started learning to write technical articles through this website and documenting the software-related knowledge I have acquired.",
+		"projects": "Projects",
+		"latestPosts": "Latest Posts",
+		"seeMore": "See More",
+		"moreAbout": "More About"
+	}
+}

@@ -6,7 +6,7 @@
 
 @layer base {
 	body {
-		@apply bg-base-100 font-body text-base-600 antialiased dark:bg-base-950 dark:text-base-300;
+		@apply font-body antialiased bg-base-900 text-base-300;
 	}
 
 	h1 {
@@ -28,6 +28,6 @@
 	}
 
 	.layout {
-		@apply mx-auto mt-8 max-w-2xl px-4;
+		@apply mx-auto max-w-2xl px-4;
 	}
 }

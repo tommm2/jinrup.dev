@@ -3,6 +3,7 @@ import { allPages } from 'contentlayer/generated';
 
 import Mdx from '@/components/Mdx';
 import Heading from '@/components/Heading';
+import { useLocale } from 'next-intl';
 
 export const metadata: Metadata = {
 	title: '關於',
@@ -10,7 +11,8 @@ export const metadata: Metadata = {
 };
 
 const AboutPage = () => {
-	const page = allPages.find((page) => page.slug === 'about');
+	const locale = useLocale();
+	const page = allPages.find((page) => page.slug === 'about' && page.language === locale);
 
 	if (!page) {
 		return;

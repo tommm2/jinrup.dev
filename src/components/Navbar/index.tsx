@@ -1,45 +1,36 @@
-'use client';
+import { useTranslations } from 'next-intl';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Dropdown from '../Dropdown';
+import NavbarItem from './NavbarItem';
+import LocaleSwitch from '../LocaleSwitch';
 
 import { navLinks } from '@/data';
 
-import ThemeButton from '../ThemeButton';
-import Dropdown from '../Dropdown';
-import NavbarLink from './NavbarLink';
-
 const Navbar = () => {
-	const pathname = usePathname() || '/';
+	const t = useTranslations('navigation');
 
 	return (
-		<>
-			<header className='layout sticky top-4 z-10'>
-				<div className='rounded-xl bg-base-100/60 px-3 py-2 shadow backdrop-blur dark:bg-base-900/60'>
-					<div className='flex items-center justify-between'>
-						<Link href='/'>Tom Jin</Link>
-						<ul className='hidden gap-4 sm:flex'>
-							{navLinks.map((link) => {
-								const { href } = link;
-								const isActive = pathname.includes(href);
+		<header className='sticky top-0 z-10 border-b border-base-800 backdrop-blur'>
+			<div className='layout p-4'>
+				<nav className='flex items-center justify-between'>
+					<ul className='mr-4 hidden gap-6 sm:flex sm:items-center'>
+						{navLinks.map((link) => {
+							const { href, title } = link;
 
-								return (
-									<NavbarLink
-										key={link.title}
-										link={link}
-										isActive={isActive}
-									/>
-								);
-							})}
-						</ul>
-						<div className='flex items-center gap-3'>
-							<ThemeButton />
-							<Dropdown />
-						</div>
-					</div>
-				</div>
-			</header>
-		</>
+							return (
+								<NavbarItem
+									key={link.title}
+									title={t(title)}
+									href={href}
+								/>
+							);
+						})}
+					</ul>
+					<Dropdown />
+					<LocaleSwitch />
+				</nav>
+			</div>
+		</header>
 	);
 };
 

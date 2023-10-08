@@ -31,8 +31,32 @@ export const Post = defineDocumentType(() => ({
 		title: { type: 'string', required: true },
 		publishedAt: { type: 'date', required: true },
 		summary: { type: 'string', required: true },
+		language: {
+			type: 'string',
+			default: 'zh-TW',
+			required: true,
+		},
 	},
-	computedFields,
+	computedFields: {
+		slug: {
+			type: 'string',
+			resolve: (doc) => {
+				const sourceFileDir = doc._raw.sourceFileDir;
+				const slug = sourceFileDir.split('/').pop();
+
+				return slug;
+			},
+		},
+		url: {
+			type: 'string',
+			resolve: (doc) => {
+				const sourceFileDir = doc._raw.sourceFileDir;
+				const slug = sourceFileDir.split('/').pop();
+
+				return `/blog/${slug}`;
+			},
+		},
+	},
 }));
 
 export const Project = defineDocumentType(() => ({
@@ -51,7 +75,33 @@ export const Page = defineDocumentType(() => ({
 	name: 'Page',
 	filePathPattern: 'pages/**/*.mdx',
 	contentType: 'mdx',
-	computedFields,
+	fields: {
+		language: {
+			type: 'string',
+			default: 'zh-TW',
+			required: true,
+		},
+	},
+	computedFields: {
+		slug: {
+			type: 'string',
+			resolve: (doc) => {
+				const sourceFileDir = doc._raw.sourceFileDir;
+				const slug = sourceFileDir.split('/').pop();
+
+				return slug;
+			},
+		},
+		url: {
+			type: 'string',
+			resolve: (doc) => {
+				const sourceFileDir = doc._raw.sourceFileDir;
+				const slug = sourceFileDir.split('/').pop();
+
+				return `/${slug}`;
+			},
+		},
+	},
 }));
 
 export default makeSource({

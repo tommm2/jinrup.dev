@@ -1,13 +1,14 @@
+import Link from 'next/link';
+import { useLocale } from 'next-intl';
 import { allPosts } from 'contentlayer/generated';
 import { RiArrowLeftLine } from 'react-icons/ri';
-
-import { formatDate } from '@/lib/utils';
 
 import Mdx from '@/components/Mdx';
 import ViewCounter from '@/components/ViewCounter';
 import Comment from '@/components/Comment';
 import Heading from '@/components/Heading';
-import Link from 'next/link';
+
+import { formatDate } from '@/lib/utils';
 
 export async function generateStaticParams() {
 	return allPosts.map((post) => ({ slug: post.slug }));
@@ -40,21 +41,22 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 	};
 }
 
-interface BlogLayoutProps {
+type BlogLayoutProps = {
 	params: {
 		slug: string
 	}
 }
 
 const BlogLayout = ({ params }: BlogLayoutProps) => {
-	const post = allPosts.find((post) => post.slug === params.slug);
+	const locale = useLocale();
+	const post = allPosts.find((post) => post.slug === params.slug && post.language === locale);
 
 	if (!post) {
 		return;
 	}
 
 	return (
-		<article>
+		<>
 			<Link
 				className='mb-4 flex items-center gap-2'
 				href='/blog'
@@ -72,11 +74,11 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 					isViewTracking
 				/>
 			</div>
-			<div className='prose'>
+			<article className='prose'>
 				<Mdx code={post.body.code} />
-				<Comment />
-			</div>
-		</article>
+				{/* <Comment /> */}
+			</article>
+		</>
 	);
 };
 
