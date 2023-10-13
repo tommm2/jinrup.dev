@@ -10,8 +10,11 @@ export const pathnames = {
 } satisfies Pathnames<typeof locales>;
 
 export const {
-	Link,
+	Link: NextIntlLink,
 	redirect,
 	usePathname,
 	useRouter,
-} = createLocalizedPathnamesNavigation({ locales, pathnames });
+} = createLocalizedPathnamesNavigation({
+	locales,
+	pathnames: pathnames as typeof pathnames & Record<string & {}, string>,
+});
