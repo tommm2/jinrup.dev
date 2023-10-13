@@ -1,8 +1,6 @@
 import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files';
 import remarkGfm from 'remark-gfm';
-import rehypeSlug from 'rehype-slug';
 import rehypePrettyCode from 'rehype-pretty-code';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { visit } from 'unist-util-visit';
 
 import { convertToSlug } from './src/lib/utils';
@@ -126,7 +124,6 @@ export default makeSource({
 				  }
 				});
 			},
-			rehypeSlug,
 			[
 				rehypePrettyCode,
 				{
@@ -142,15 +139,6 @@ export default makeSource({
 					},
 					onVisitHighlightedWord(node: any) {
 						node.properties.className = ['word--highlighted'];
-					},
-				},
-			],
-			[
-				rehypeAutolinkHeadings,
-				{
-					properties: {
-						className: ['anchor'],
-						ariaLabel: 'Title anchor',
 					},
 				},
 			],
