@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 
 export default function useOutsideClick() {
 	const elementRef = useRef<HTMLDivElement>(null);
-	const [isVisible, setIsVisible] = useState(false);
+	const [isVisible, setIsVisible] = useState<boolean>(false);
 
 	const _handleClick = (event: MouseEvent) => {
 		if (elementRef.current && !elementRef.current.contains(event.target as Node)) {
