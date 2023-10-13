@@ -24,6 +24,7 @@
     "react-wrap-balancer": "^1.1.0",
     "rehype-pretty-code": "^0.9.5",
     "remark-gfm": "^3.0.1",
+    "sharp": "^0.32.6",
     "shiki": "^0.14.2",
     "swr": "^2.1.5",
     "unist-util-visit": "^4.1.2"
