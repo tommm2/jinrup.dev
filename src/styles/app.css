@@ -3,31 +3,3 @@
 @import 'tailwindcss/utilities';
 
 @import './typography.css';
-
-@layer base {
-	body {
-		@apply font-body antialiased bg-base-900 text-base-300;
-	}
-
-	h1 {
-		@apply text-2xl;
-	}
-
-	h2 {
-		@apply text-xl;
-	}
-
-	svg {
-		@apply h-5 w-5 inline-block;
-	}
-}
-
-@layer components {
-	.text-muted {
-		@apply text-base-900/70 dark:text-base-300/70;
-	}
-
-	.layout {
-		@apply mx-auto max-w-2xl px-4;
-	}
-}

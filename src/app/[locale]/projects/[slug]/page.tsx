@@ -1,9 +1,10 @@
 import { RiArrowLeftLine } from 'react-icons/ri';
 import { allProjects } from 'contentlayer/generated';
 
-import Mdx from '@/components/Mdx';
-import Heading from '@/components/Heading';
-import CustomLink from '@/components/Mdx/CustomLink';
+import MDXContent from '@/components/mdx-content';
+import Heading from '@/components/heading';
+import Link from '@/components/link';
+import PageWrapper from '@/components/page-wrapper';
 
 export async function generateStaticParams() {
 	return allProjects.map((project) => ({ slug: project.slug }));
@@ -50,24 +51,16 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 	}
 
 	return (
-		<article>
-			<CustomLink
-				href='/projects'
-				className='mb-4 inline-flex items-center gap-2'
-			>
+		<PageWrapper>
+			<Link className='mb-4 inline-flex items-center gap-2' href='/projects'>
 				<RiArrowLeftLine />
 				<span>返回專案</span>
-			</CustomLink>
-			<Heading
-				className='mb-8'
-				as='h1'
-			>
+			</Link>
+			<Heading className='mb-8' as='h1'>
 				{project.title}
 			</Heading>
-			<div className='prose'>
-				<Mdx code={project.body.code} />
-			</div>
-		</article>
+			<MDXContent code={project.body.code} />
+		</PageWrapper>
 	);
 };
 

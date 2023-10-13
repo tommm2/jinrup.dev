@@ -2,13 +2,13 @@ import { useLocale, useTranslations } from 'next-intl';
 import { allPosts, allProjects } from 'contentlayer/generated';
 import { RiArrowRightLine } from 'react-icons/ri';
 
-import Heading from '@/components/Heading';
-import Hero from '@/components/Hero';
-import PostCard from '@/components/PostCard';
-import CustomLink from '@/components/Mdx/CustomLink';
-import ProjectCard from '@/components/ProjectCard';
-
+import Heading from '@/components/heading';
+import Hero from '@/components/hero';
+import Link from '@/components/link';
+import PostCard from '@/components/post-card';
+import ProjectCard from '@/components/project-card';
 import { sortPostsByDate } from '@/lib/utils';
+import AnimationWrapper from '@/components/page-wrapper';
 
 const HomePage = () => {
 	const locale = useLocale();
@@ -20,21 +20,13 @@ const HomePage = () => {
 	const projects = allProjects.slice(0, 4);
 
 	return (
-		<>
+		<AnimationWrapper>
 			<Hero />
 			<section>
 				<Heading
-					className='mb-6 mt-8 flex items-center justify-between uppercase'
-					hasUnderline
+					className='flex items-center justify-between uppercase'
 				>
-					<span>{t('projects')}</span>
-					<CustomLink
-						className='flex items-center gap-1 text-sm font-normal text-base-900 dark:text-base-200'
-						href={`/${locale}/projects`}
-					>
-						{t('seeMore')}
-						<RiArrowRightLine className='h-4 w-4' />
-					</CustomLink>
+					{t('projects')}
 				</Heading>
 				<div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
 					{projects.map((project) => (
@@ -48,16 +40,15 @@ const HomePage = () => {
 			<section>
 				<Heading
 					className='mb-6 mt-8 flex items-center justify-between uppercase'
-					hasUnderline
 				>
 					<span>{t('latestPosts')}</span>
-					<CustomLink
+					<Link
 						className='flex items-center gap-1 text-sm font-normal text-base-900 dark:text-base-200'
-						href={`/${locale}/blog`}
+						href='/blog'
 					>
 						{t('seeMore')}
 						<RiArrowRightLine className='h-4 w-4' />
-					</CustomLink>
+					</Link>
 				</Heading>
 				<div className='space-y-4'>
 					{posts.map((post) => (
@@ -68,7 +59,7 @@ const HomePage = () => {
 					))}
 				</div>
 			</section>
-		</>
+		</AnimationWrapper>
 	);
 };
 

@@ -9,9 +9,9 @@ const Input = ({
 }: InputProps) => {
 	return (
 		<div className='relative mb-8'>
-			<RiSearch2Line className='absolute left-2 top-2 text-base-500' />
+			<RiSearch2Line className='absolute left-2 top-2.5 text-base-500' />
 			<input
-				className='w-full rounded-lg border border-transparent bg-base-100 p-2 pl-8 text-sm shadow outline-none ring-primary-400/10 duration-300 placeholder:text-base-500 focus:!border-primary-400 focus:ring-4 dark:border-base-600/40 dark:bg-base-900/60 sm:w-[18.75rem]'
+				className='w-full rounded-lg border border-base-600/40 bg-base-800/20 p-2 pl-8 text-sm outline-none ring-primary-400/10 duration-300 placeholder:text-base-500 focus:border-primary-400 focus:ring-4 sm:w-[18.75rem]'
 				placeholder={placeholder}
 				onChange={onChange}
 			/>

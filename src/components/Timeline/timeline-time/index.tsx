@@ -9,7 +9,7 @@ const TimelineTime: FC<TimelineTimeProps> = ({
 	children,
 }) => {
 	return (
-		<time className={cn('rounded-md bg-primary-400/10 p-1 text-sm text-primary-600 dark:text-primary-400', className)}>
+		<time className={cn('rounded-md bg-primary-400/10 p-1 text-sm text-primary-400', className)}>
 			{children}
 		</time>
 	);

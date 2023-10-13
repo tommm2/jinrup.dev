@@ -3,11 +3,11 @@ import { useLocale } from 'next-intl';
 import { allPosts } from 'contentlayer/generated';
 import { RiArrowLeftLine } from 'react-icons/ri';
 
-import Mdx from '@/components/Mdx';
-import ViewCounter from '@/components/ViewCounter';
-import Comment from '@/components/Comment';
-import Heading from '@/components/Heading';
-
+import Mdx from '@/components/mdx-content';
+import ViewCounter from '@/components/view-counter';
+import Comment from '@/components/comment';
+import Heading from '@/components/heading';
+import PageWrapper from '@/components/page-wrapper';
 import { formatDate } from '@/lib/utils';
 
 export async function generateStaticParams() {
@@ -56,7 +56,7 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 	}
 
 	return (
-		<>
+		<PageWrapper>
 			<Link
 				className='mb-4 flex items-center gap-2'
 				href='/blog'
@@ -65,7 +65,7 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 				<span>返回部落格</span>
 			</Link>
 			<Heading as='h1'>{post.title}</Heading>
-			<div className='text-muted mb-8 flex items-center justify-between'>
+			<div className='mb-8 flex items-center justify-between'>
 				<time dateTime={post.publishedAt}>
 					{formatDate(post.publishedAt)}
 				</time>
@@ -74,11 +74,9 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 					isViewTracking
 				/>
 			</div>
-			<article className='prose'>
-				<Mdx code={post.body.code} />
-				{/* <Comment /> */}
-			</article>
-		</>
+			<Mdx code={post.body.code} />
+			{/* <Comment /> */}
+		</PageWrapper>
 	);
 };
 

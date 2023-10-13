@@ -1,33 +1,31 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { RiArrowRightLine } from 'react-icons/ri';
 
-import Heading from '../Heading';
+import Heading from '../heading';
 
 const Hero = () => {
 	const t = useTranslations('common');
 
 	return (
-		<section>
+		<section className='space-y-4'>
 			<div className='flex items-center gap-4'>
 				<Image
-					className='rounded-full p-1.5'
+					className='rounded-lg p-1.5 ring-2 ring-base-700'
 					src='/images/avatar.jpg'
 					alt='avatar'
-					width={90}
-					height={90}
+					width={70}
+					height={70}
 				/>
 				<div>
 					<Heading as='h1'>Tom Jin</Heading>
-					<span className='text-muted mr-1'>Software Engineer • Taiwan</span>
+					<span className='mr-1'>Software Engineer • Taiwan</span>
 					🇹🇼
 				</div>
 			</div>
-			<p className='my-4'>
+			<p>
 				{t('hero')}
 			</p>
-			<Link
+			{/* <Link
 				className='group relative inline-block rounded-lg bg-gradient-to-br from-primary-500 to-secondary-500 p-px'
 				href='/about'
 			>
@@ -36,7 +34,7 @@ const Hero = () => {
 					<RiArrowRightLine className='transition-transform duration-300 group-hover:translate-x-1' />
 				</div>
 				<div className='absolute -inset-0 -z-10 rounded-lg bg-gradient-to-r blur-none transition-all group-hover:blur-[8px]'></div>
-			</Link>
+			</Link> */}
 		</section>
 	);
 };

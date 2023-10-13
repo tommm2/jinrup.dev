@@ -4,17 +4,16 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Post } from 'contentlayer/generated';
 
+import Input from '@/components/input';
+import PostCard from '@/components/post-card';
+import Heading from '@/components/heading';
 import { formatQuery } from '@/lib/utils';
 
-import Input from '../Input';
-import PostCard from '../PostCard';
-import Heading from '../Heading';
-
-interface FilterPostsProps {
+interface PostListProps {
 	posts: Post[]
 }
 
-const FilterPosts = ({ posts }: FilterPostsProps) => {
+const PostList = ({ posts }: PostListProps) => {
 	const [query, setQuery] = useState('');
 	const filterPosts = posts.filter(({ title }) => {
 		const formattedQuery = formatQuery(query);
@@ -29,10 +28,7 @@ const FilterPosts = ({ posts }: FilterPostsProps) => {
 				placeholder='請輸入文章標題'
 				onChange={(e) => setQuery(e.target.value)}
 			/>
-			<Heading
-				className='mb-6'
-				hasUnderline
-			>
+			<Heading className='mb-6'>
 				所有文章
 			</Heading>
 			{filterPosts.length !== 0 ? (
@@ -54,4 +50,4 @@ const FilterPosts = ({ posts }: FilterPostsProps) => {
 	);
 };
 
-export default FilterPosts;
+export default PostList;

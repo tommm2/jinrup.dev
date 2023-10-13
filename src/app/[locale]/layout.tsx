@@ -1,28 +1,15 @@
 import { Metadata } from 'next';
-import { Noto_Sans_TC, Barlow } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import clsx from 'clsx';
 
-import Navbar from '@/components/Navbar';
-import ThemeProvider from '@/components/ThemeProvider';
-import Footer from '@/components/Footer';
-import BackToTop from '@/components/BackToTop';
-
+import BackToTop from '@/components/back-to-top';
+import Navbar from '@/components/navbar';
+import Footer from '@/components/footer';
+import { fontSans } from '@/config/fonts';
 import { locales } from '@/lib/navigation';
 
-const barlow = Barlow({
-	weight: ['400', '500', '600', '700'],
-	subsets: ['latin'],
-	variable: '--font-barlow',
-	display: 'swap',
-});
-
-const noto_sans_tc = Noto_Sans_TC({
-	weight: ['400', '500', '700'],
-	subsets: ['latin'],
-	variable: '--font-noto',
-	display: 'swap',
-});
+import '@/styles/app.css';
 
 export const metadata: Metadata = {
 	title: {
@@ -37,6 +24,10 @@ export const metadata: Metadata = {
 		siteName: 'Tom Jin',
 		images: [],
 		locale: 'zh-TW',
+	},
+	themeColor: {
+		media: '(prefers-color-scheme: dark)',
+		color: '#171717',
 	},
 	robots: {
 		index: true,
@@ -58,7 +49,7 @@ export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }));
 }
 
-type RootLayoutProps = {
+interface LocaleLayoutProps {
 	children: React.ReactNode;
 	params: { locale: string }
 }
@@ -66,7 +57,7 @@ type RootLayoutProps = {
 const LocaleLayout = ({
 	children,
 	params: { locale },
-}: RootLayoutProps) => {
+}: LocaleLayoutProps) => {
 	const isValidLocale = locales.some((current) => current === locale);
 
 	if (!isValidLocale) notFound();
@@ -78,13 +69,11 @@ const LocaleLayout = ({
 			lang={locale}
 			suppressHydrationWarning
 		>
-			<body className={`${barlow.variable} ${noto_sans_tc.variable}`}>
-				<ThemeProvider>
-					<Navbar />
-					<main className='layout overflow-hidden md:mt-12'>{children}</main>
-					<Footer />
-					<BackToTop />
-				</ThemeProvider>
+			<body className={clsx('min-h-screen bg-base-900 font-sans text-base-300 antialiased', fontSans.variable)}>
+				<Navbar />
+				{children}
+				<Footer />
+				<BackToTop />
 			</body>
 		</html>
 	);

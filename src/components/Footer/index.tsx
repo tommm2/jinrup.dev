@@ -1,52 +1,33 @@
-import { navLinks, socials } from '@/data';
+import {
+	RiGithubFill,
+	RiLinkedinBoxFill,
+} from 'react-icons/ri';
 
-import Heading from '../Heading';
-import CustomLink from '../Mdx/CustomLink';
+import Link from '@/components/link';
+import { siteConfig } from '@/config/site';
 
 const Footer = () => {
 	return (
-		<footer className='layout'>
-			<div className='border-t border-base-200 py-8 dark:border-base-800'>
-				<div className='grid grid-cols-3 gap-8'>
-					<div className='text-muted'>
-						<Heading
-							className='mb-6 opacity-90'
-							as='h4'
-						>
-							導覽
-						</Heading>
-						<ul className='space-y-4'>
-							{navLinks.map((item, index) => (
-								<li key={index}>
-									<CustomLink href={item.href}>{item.title}</CustomLink>
-								</li>
-							))}
-						</ul>
-					</div>
-					<div>
-						<Heading
-							className='mb-6 opacity-90'
-							as='h4'
-						>
-							社群
-						</Heading>
-						<ul className='text-muted space-y-4'>
-							{socials.map((item, index) => (
-								<li key={index}>
-									<CustomLink
-										className='uppercase'
-										href={item.href}
-										aria-label={item.title}
-									>
-										{item.title}
-									</CustomLink>
-								</li>
-							))}
-						</ul>
-					</div>
-				</div>
-				<div className='text-muted pt-8 text-sm'>
+		<footer className='mx-auto max-w-3xl px-8'>
+			<div className='flex flex-col items-center gap-4 py-16'>
+				<div>
 					© 2023 Tom Jin. All rights reserved.
+				</div>
+				<div className='flex items-center gap-2'>
+					<Link
+						className='transition-colors duration-300 hover:text-base-300/60'
+						href={siteConfig.links.github}
+						aria-label='github'
+					>
+						<RiGithubFill className='h-7 w-7' />
+					</Link>
+					<Link
+						className='transition-colors duration-300 hover:text-base-300/60'
+						href={siteConfig.links.linkedin}
+						aria-label='linkedin'
+					>
+						<RiLinkedinBoxFill className='h-7 w-7' />
+					</Link>
 				</div>
 			</div>
 		</footer>

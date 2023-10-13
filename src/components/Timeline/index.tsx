@@ -1,10 +1,9 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 
 import { cn } from '@/lib/utils';
-
-import TimelineItem from './TimelineItem';
-import TimelinePoint from './TimelinePoint';
-import TimelineTime from './TimelineTime';
+import TimelineItem from './timeline-item';
+import TimelinePoint from './timeline-point';
+import TimelineTime from './timeline-time';
 
 interface TimelineProps extends PropsWithChildren, ComponentProps<'ul'> {}
 
@@ -13,7 +12,7 @@ const Timeline: FC<TimelineProps> = ({
 	className,
 }) => {
 	return (
-		<ul className={cn('border-l border-base-400 dark:border-base-700 pl-4', className)}>
+		<ul className={cn('border-l border-base-700 pl-4', className)}>
 			{children}
 		</ul>
 	);

@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
+import { useLocale } from 'next-intl';
 import { allPosts } from 'contentlayer/generated';
 
 import { sortPostsByDate } from '@/lib/utils';
-
-import FilterPosts from '@/components/FilterPosts';
-import Heading from '@/components/Heading';
-import { useLocale } from 'next-intl';
+import Heading from '@/components/heading';
+import PageWrapper from '@/components/page-wrapper';
+import PostList from '@/components/post-list';
 
 export const metadata: Metadata = {
 	title: '部落格',
@@ -18,13 +18,13 @@ const BlogPage = () => {
 		.filter(post => post.language === locale);
 
 	return (
-		<>
+		<PageWrapper>
 			<Heading as='h1'>部落格</Heading>
 			<p className='my-4'>
 				我會在這裡分享各種關於軟體開發和技術相關的內容，目前總共有 <span className='mr-1 font-bold text-primary-500'>{posts.length}</span>篇文章。
 			</p>
-			<FilterPosts posts={posts} />
-		</>
+			<PostList posts={posts} />
+		</PageWrapper>
 	);
 };
 

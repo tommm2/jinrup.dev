@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import { allProjects } from 'contentlayer/generated';
 
-import ProjectCard from '@/components/ProjectCard';
-import CustomLink from '@/components/Mdx/CustomLink';
-import Heading from '@/components/Heading';
+import ProjectCard from '@/components/project-card';
+import Link from '@/components/link';
+import Heading from '@/components/heading';
+import PageWrapper from '@/components/page-wrapper';
 
 export const metadata: Metadata = {
 	title: '專案',
@@ -12,21 +13,20 @@ export const metadata: Metadata = {
 
 const ProjectsPage = () => {
 	return (
-		<>
+		<PageWrapper>
 			<Heading as='h1'>專案</Heading>
 			<p className='my-4'>
 				展示一些專案，如果想看更多可以到我的
-				<CustomLink
+				<Link
 					className='mx-1'
 					href='https://github.com/tommm2'
 				>
 					Github
-				</CustomLink>
+				</Link>
 				瀏覽。
 			</p>
 			<Heading
 				className='mb-6'
-				hasUnderline
 			>
 				所有專案
 			</Heading>
@@ -38,7 +38,7 @@ const ProjectsPage = () => {
 					/>
 				))}
 			</div>
-		</>
+		</PageWrapper>
 	);
 };
 

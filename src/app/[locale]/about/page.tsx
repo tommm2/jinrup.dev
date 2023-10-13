@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
+import { useLocale } from 'next-intl';
 import { allPages } from 'contentlayer/generated';
 
-import Mdx from '@/components/Mdx';
-import Heading from '@/components/Heading';
-import { useLocale } from 'next-intl';
+import MDXContent from '@/components/mdx-content';
+import Heading from '@/components/heading';
+import PageWrapper from '@/components/page-wrapper';
 
 export const metadata: Metadata = {
 	title: '關於',
@@ -19,12 +20,10 @@ const AboutPage = () => {
 	}
 
 	return (
-		<>
+		<PageWrapper>
 			<Heading as='h1'>關於</Heading>
-			<div className='prose mt-4'>
-				<Mdx code={page.body.code} />
-			</div>
-		</>
+			<MDXContent code={page.body.code} />
+		</PageWrapper>
 	);
 };
 
