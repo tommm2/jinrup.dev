@@ -1,9 +1,11 @@
-const colors = require('tailwindcss/colors');
-const defaultTheme = require('tailwindcss/defaultTheme');
+import type { Config } from 'tailwindcss';
+import colors from 'tailwindcss/colors';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
-/** @type {import('tailwindcss').Config} */
-const configs = {
-	content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+export default {
+	content: [
+		'./src/**/*.{js,ts,jsx,tsx,mdx}',
+	],
 	theme: {
 		fontWeight: {
 			light: '300',
@@ -19,7 +21,7 @@ const configs = {
 		},
 		extend: {
 			colors: {
-				primary: colors.emerald,
+				primary: colors.cyan,
 				secondary: colors.blue,
 				base: colors.neutral,
 			},
@@ -32,6 +34,4 @@ const configs = {
 		require('@tailwindcss/typography'),
 		require('tailwindcss/nesting'),
 	],
-};
-
-export default configs;
+} satisfies Config;
