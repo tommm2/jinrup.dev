@@ -6,7 +6,6 @@ import { Post } from 'contentlayer/generated';
 
 import Input from '@/components/input';
 import PostCard from '@/components/post-card';
-import Heading from '@/components/heading';
 import { formatQuery } from '@/lib/utils';
 
 interface PostListProps {
@@ -28,9 +27,9 @@ const PostList = ({ posts }: PostListProps) => {
 				placeholder='請輸入文章標題'
 				onChange={(e) => setQuery(e.target.value)}
 			/>
-			<Heading className='mb-6'>
+			<h2 className='mb-6'>
 				所有文章
-			</Heading>
+			</h2>
 			{filterPosts.length !== 0 ? (
 				<div className='space-y-4'>
 					{filterPosts.map(post => <PostCard key={post.slug} post={post} />)}

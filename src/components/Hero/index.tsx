@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-import Heading from '../heading';
-
 const Hero = () => {
 	const t = useTranslations('common');
 
@@ -17,9 +15,8 @@ const Hero = () => {
 					height={70}
 				/>
 				<div>
-					<Heading as='h1'>Tom Jin</Heading>
-					<span className='mr-1'>Software Engineer • Taiwan</span>
-					🇹🇼
+					<div>Tom Jin</div>
+					<div>Software Engineer • Taiwan 🇹🇼</div>
 				</div>
 			</div>
 			<p>

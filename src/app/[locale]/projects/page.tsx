@@ -3,7 +3,6 @@ import { allProjects } from 'contentlayer/generated';
 
 import ProjectCard from '@/components/project-card';
 import Link from '@/components/link';
-import Heading from '@/components/heading';
 import PageWrapper from '@/components/page-wrapper';
 
 export const metadata: Metadata = {
@@ -14,7 +13,7 @@ export const metadata: Metadata = {
 const ProjectsPage = () => {
 	return (
 		<PageWrapper>
-			<Heading as='h1'>專案</Heading>
+			<h1>專案</h1>
 			<p className='my-4'>
 				展示一些專案，如果想看更多可以到我的
 				<Link
@@ -25,11 +24,9 @@ const ProjectsPage = () => {
 				</Link>
 				瀏覽。
 			</p>
-			<Heading
-				className='mb-6'
-			>
+			<h1 className='mb-6'>
 				所有專案
-			</Heading>
+			</h1>
 			<div className='grid grid-cols-1 gap-4 pb-1 sm:grid-cols-2'>
 				{allProjects.map((project) => (
 					<ProjectCard

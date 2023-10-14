@@ -3,7 +3,6 @@ import { useLocale } from 'next-intl';
 import { allPages } from 'contentlayer/generated';
 
 import MDXContent from '@/components/mdx-content';
-import Heading from '@/components/heading';
 import PageWrapper from '@/components/page-wrapper';
 
 export const metadata: Metadata = {
@@ -21,7 +20,7 @@ const AboutPage = () => {
 
 	return (
 		<PageWrapper>
-			<Heading as='h1'>關於</Heading>
+			<h1>關於</h1>
 			<MDXContent code={page.body.code} />
 		</PageWrapper>
 	);

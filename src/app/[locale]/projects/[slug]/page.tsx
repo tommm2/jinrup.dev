@@ -2,7 +2,6 @@ import { RiArrowLeftLine } from 'react-icons/ri';
 import { allProjects } from 'contentlayer/generated';
 
 import MDXContent from '@/components/mdx-content';
-import Heading from '@/components/heading';
 import Link from '@/components/link';
 import PageWrapper from '@/components/page-wrapper';
 
@@ -56,9 +55,9 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 				<RiArrowLeftLine />
 				<span>返回專案</span>
 			</Link>
-			<Heading className='mb-8' as='h1'>
+			<h1 className='mb-8'>
 				{project.title}
-			</Heading>
+			</h1>
 			<MDXContent code={project.body.code} />
 		</PageWrapper>
 	);

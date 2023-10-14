@@ -6,7 +6,6 @@ import { RiArrowLeftLine } from 'react-icons/ri';
 import Mdx from '@/components/mdx-content';
 import ViewCounter from '@/components/view-counter';
 import Comment from '@/components/comment';
-import Heading from '@/components/heading';
 import PageWrapper from '@/components/page-wrapper';
 import { formatDate } from '@/lib/utils';
 
@@ -64,7 +63,7 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 				<RiArrowLeftLine />
 				<span>返回部落格</span>
 			</Link>
-			<Heading as='h1'>{post.title}</Heading>
+			<h1>{post.title}</h1>
 			<div className='mb-8 flex items-center justify-between'>
 				<time dateTime={post.publishedAt}>
 					{formatDate(post.publishedAt)}

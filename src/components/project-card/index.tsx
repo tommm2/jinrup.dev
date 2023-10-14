@@ -2,8 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Project } from 'contentlayer/generated';
 
-import Heading from '@/components/heading';
-
 interface ProjectCardProps {
 	project: Project
 }
@@ -32,13 +30,10 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 					alt={title}
 				/>
 				<div className='space-y-1'>
-					<Heading as='h3' className='font-bold'>
+					<h1 className='font-bold'>
 						{title}
-					</Heading>
-					<summary
-						className='line-clamp-2 list-none text-sm text-base-400'
-						title={summary}
-					>
+					</h1>
+					<summary className='line-clamp-2 list-none text-sm text-base-400' title={summary}>
 						{summary}
 					</summary>
 				</div>

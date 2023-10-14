@@ -2,7 +2,6 @@ import { useLocale, useTranslations } from 'next-intl';
 import { allPosts, allProjects } from 'contentlayer/generated';
 import { RiArrowRightLine } from 'react-icons/ri';
 
-import Heading from '@/components/heading';
 import Hero from '@/components/hero';
 import Link from '@/components/link';
 import PostCard from '@/components/post-card';
@@ -23,11 +22,9 @@ const HomePage = () => {
 		<AnimationWrapper>
 			<Hero />
 			<section>
-				<Heading
-					className='flex items-center justify-between uppercase'
-				>
+				<h2 className='flex items-center justify-between uppercase'>
 					{t('projects')}
-				</Heading>
+				</h2>
 				<div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
 					{projects.map((project) => (
 						<ProjectCard
@@ -38,9 +35,7 @@ const HomePage = () => {
 				</div>
 			</section>
 			<section>
-				<Heading
-					className='mb-6 mt-8 flex items-center justify-between uppercase'
-				>
+				<h2 className='mb-6 mt-8 flex items-center justify-between uppercase'>
 					<span>{t('latestPosts')}</span>
 					<Link
 						className='flex items-center gap-1 text-sm font-normal text-base-900 dark:text-base-200'
@@ -49,7 +44,7 @@ const HomePage = () => {
 						{t('seeMore')}
 						<RiArrowRightLine className='h-4 w-4' />
 					</Link>
-				</Heading>
+				</h2>
 				<div className='space-y-4'>
 					{posts.map((post) => (
 						<PostCard

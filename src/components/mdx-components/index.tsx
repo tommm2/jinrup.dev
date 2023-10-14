@@ -1,6 +1,5 @@
 import { MDXComponents as MDXComponentsProps } from 'mdx/types';
 
-import Heading from '@/components/heading';
 import Link from '@/components/link';
 import LinkedHeading from './linked-heading';
 import Image from './image';
@@ -8,7 +7,6 @@ import Pre from './pre';
 
 const MDXComponents: MDXComponentsProps = {
 	Image,
-	Heading,
 	h1: (props) => <LinkedHeading as='h1' linked={false} {...props} />,
 	h2: (props) => <LinkedHeading as='h2' {...props} />,
 	h3: (props) => <LinkedHeading as='h3' {...props} />,

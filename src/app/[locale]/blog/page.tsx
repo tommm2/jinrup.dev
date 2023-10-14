@@ -2,10 +2,9 @@ import { Metadata } from 'next';
 import { useLocale } from 'next-intl';
 import { allPosts } from 'contentlayer/generated';
 
-import { sortPostsByDate } from '@/lib/utils';
-import Heading from '@/components/heading';
 import PageWrapper from '@/components/page-wrapper';
 import PostList from '@/components/post-list';
+import { sortPostsByDate } from '@/lib/utils';
 
 export const metadata: Metadata = {
 	title: '部落格',
@@ -19,7 +18,7 @@ const BlogPage = () => {
 
 	return (
 		<PageWrapper>
-			<Heading as='h1'>部落格</Heading>
+			<h1>部落格</h1>
 			<p className='my-4'>
 				我會在這裡分享各種關於軟體開發和技術相關的內容，目前總共有 <span className='mr-1 font-bold text-primary-500'>{posts.length}</span>篇文章。
 			</p>
