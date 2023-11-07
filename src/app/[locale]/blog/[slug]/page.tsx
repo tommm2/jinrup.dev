@@ -1,20 +1,25 @@
-import Link from 'next/link';
+import Image from 'next/image';
+import { Metadata } from 'next';
 import { useLocale } from 'next-intl';
 import { allPosts } from 'contentlayer/generated';
-import { RiArrowLeftLine } from 'react-icons/ri';
+import { RiArrowLeftLine, RiCalendar2Fill } from 'react-icons/ri';
 
-import Mdx from '@/components/mdx-content';
-import ViewCounter from '@/components/view-counter';
-import Comment from '@/components/comment';
+import Link from '@/components/link';
 import PageWrapper from '@/components/page-wrapper';
-import { formatDate } from '@/lib/utils';
+import ViewCounter from '@/components/view-counter';
+import MDXContent from '@/components/mdx-content';
+import { formatDate } from '@/utils/date';
 
 export async function generateStaticParams() {
 	return allPosts.map((post) => ({ slug: post.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-	const post = allPosts.find((post) => post.slug === params.slug);
+export async function generateMetadata({
+	params,
+}: {
+	params: { locale: Locale, slug: string }
+}): Promise<Metadata | undefined> {
+	const post = allPosts.find((post) => post.slug === params.slug && post.language === params.slug);
 
 	if (!post) {
 		return;
@@ -23,24 +28,23 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 	const {
 		title,
 		publishedAt: publishedTime,
-		summary: description,
+		description,
 		slug,
 	} = post;
 
 	return {
-		title,
 		description,
 		openGraph: {
+			type: 'article',
 			title,
 			description,
-			type: 'article',
 			publishedTime,
 			url: `https://tomjin.vercel.app/blog/${slug}`,
 		},
 	};
 }
 
-type BlogLayoutProps = {
+interface BlogLayoutProps {
 	params: {
 		slug: string
 	}
@@ -54,27 +58,40 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 		return;
 	}
 
+	const { imageMeta, imageSrc, title } = post;
+
 	return (
 		<PageWrapper>
 			<Link
-				className='mb-4 flex items-center gap-2'
+				className='-ml-1 mb-4 inline-flex items-center gap-1 p-1 text-sm transition-colors duration-300 hover:text-base-100'
+				isBlock
 				href='/blog'
 			>
 				<RiArrowLeftLine />
-				<span>返回部落格</span>
+				<span>Back to blog</span>
 			</Link>
-			<h1>{post.title}</h1>
-			<div className='mb-8 flex items-center justify-between'>
-				<time dateTime={post.publishedAt}>
+			<h1 className='text-3xl font-bold'>{post.title}</h1>
+			<div className='mt-2 flex items-center gap-2'>
+				<time
+					className='flex items-center gap-1 rounded-lg border border-base-700 bg-base-800 px-1.5 py-0.5 text-sm'
+					dateTime={post.publishedAt}
+				>
+					<RiCalendar2Fill />
 					{formatDate(post.publishedAt)}
 				</time>
-				<ViewCounter
-					slug={post.slug}
-					isViewTracking
-				/>
+				<ViewCounter slug={post.slug} isViewTracking />
 			</div>
-			<Mdx code={post.body.code} />
-			{/* <Comment /> */}
+			<hr className='mb-8 mt-4 border-base-700' />
+			<Image
+				className='aspect-[2_/_1] h-auto w-full rounded object-cover object-center'
+				width={imageMeta.size.width || 700}
+				height={imageMeta.size.width || 500}
+				src={imageSrc}
+				alt={title}
+				placeholder='blur'
+				blurDataURL={imageMeta.blur64}
+			/>
+			<MDXContent code={post.body.code} />
 		</PageWrapper>
 	);
 };

@@ -2,7 +2,7 @@
 
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
-import MDXComponents from '../mdx-components';
+import MDXComponents from '@/components/mdx-components';
 
 interface MDXContentProps {
 	code: string
@@ -12,10 +12,11 @@ const MDXContent = ({ code }: MDXContentProps) => {
 	const Component = useMDXComponent(code);
 
 	return (
-		<article className='prose'>
+		<div className='prose'>
 			<Component components={MDXComponents} />
-		</article>
+		</div>
 	);
 };
+
 
 export default MDXContent;

@@ -2,15 +2,19 @@
 	@apply max-w-none text-base-300;
 
 	h1, h2, h3, h4 {
-		@apply text-base-300;
+		@apply text-base-300 mb-[0.5em];
+
+		&.anchor > a {
+			@apply text-base-300 font-bold;
+		}
 	}
 
 	a {
-		@apply no-underline text-inherit;
+		@apply no-underline text-primary-400 transition-colors duration-300 hover:text-primary-400/70;
 	}
 
 	hr {
-		@apply my-[2em] border-base-800;
+		@apply my-[2em] border-base-700;
 	}
 
 	ul {
@@ -35,10 +39,6 @@
 
 	:not(pre) > code {
 		@apply bg-base-800/60 my-1 p-0.5 rounded-lg text-base-300/80;
-	}
-
-	pre {
-		@apply mt-0 bg-base-800/60 px-0 relative;
 	}
 
 	/* rehype-pretty-code style */

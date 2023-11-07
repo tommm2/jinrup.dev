@@ -1,38 +1,39 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils/cn';
 import Anchor, { anchorEncode } from './anchor';
 
 interface LinkedHeadingProps {
 	as: keyof JSX.IntrinsicElements;
 	id?: string;
-	linked?: boolean;
+	isLinked?: boolean;
 	children?: React.ReactNode;
 	className?: string;
 }
 
 const LinkedHeading = ({
 	as,
-	linked = true,
+	isLinked = true,
 	id: idProp,
 	className,
-	...props
+	children,
+	...otherProps
 }: LinkedHeadingProps) => {
 	const Component = as;
 
-	let id = idProp || anchorEncode(props.children as string);
+	let id = idProp || anchorEncode(children as string);
 
 	return (
 		<Component
 			className={cn(
-				{ 'anchor target:scroll-mt-20': linked },
-				linked ? {} : className
+				{ 'anchor target:scroll-mt-20': isLinked },
+				isLinked ? {} : className
 			)}
 			id={id}
-			{...props}
+			{...otherProps}
 		>
-			{linked ? (
-				<Anchor id={id}>{props.children}</Anchor>
+			{isLinked ? (
+				<Anchor id={id}>{children}</Anchor>
 			) : (
-				<>{props.children}</>
+				<>{children}</>
 			)}
 		</Component>
 	);

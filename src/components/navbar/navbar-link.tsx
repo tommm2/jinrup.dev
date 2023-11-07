@@ -1,23 +1,20 @@
 'use client';
 
 import Link from '@/components/link';
-
-import { cn } from '@/lib/utils';
 import { usePathname } from '@/lib/navigation';
+import { cn } from '@/utils/cn';
 
-type NavbarLinkProps = {
+interface NavbarLinkProps {
 	type?: 'mobile' | 'desktop'
 	title: string
 	href: string
 }
 
-const NavbarLink = (props: NavbarLinkProps) => {
-	const {
-		type = 'desktop',
-		title,
-		href,
-	} = props;
-
+const NavbarLink = ({
+	type = 'desktop',
+	title,
+	href,
+}: NavbarLinkProps) => {
 	const pathname = usePathname() || '/';
 	const isActive = pathname.includes(href);
 
@@ -28,11 +25,11 @@ const NavbarLink = (props: NavbarLinkProps) => {
 				href={href}
 			>
 				<div>{title}</div>
-				<div className='absolute inset-0 -z-10 rounded-md bg-gradient-to-br from-transparent to-base-700/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100'></div>
+				<div className='absolute inset-0 -z-10 rounded-md bg-gradient-to-br from-transparent to-base-700/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
 				<div className={cn(
-					'duration-300 transition-all will-change-[width,height] h-0 w-0 flex-none rounded-full bg-primary-500 group-hover:h-1.5 group-hover:w-1.5',
+					'duration-300 transition-all will-change-[width,height] h-0 w-0 flex-none rounded-full bg-primary-500 group-hover:h-1.5 group-hover:w-1.5 mt-1',
 					{ 'w-1.5 h-1.5': isActive }
-				)}></div>
+				)} />
 			</Link>
 		);
 	}
@@ -49,7 +46,7 @@ const NavbarLink = (props: NavbarLinkProps) => {
 				)}></div>
 			</div>
 			<div>{title}</div>
-			<div className='absolute inset-0 -z-10 rounded-md bg-gradient-to-br from-transparent to-base-700/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100'></div>
+			<div className='absolute inset-0 -z-10 rounded-md bg-gradient-to-br from-transparent to-base-800/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
 		</Link>
 	);
 };

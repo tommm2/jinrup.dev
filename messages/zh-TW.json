@@ -1,14 +1,24 @@
 {
-	"navigation": {
+	"common": {
+		"hero": "您好，我是一位來自台灣的軟體工程師，對網站開發充滿熱情。歡迎造訪我的部落格，在這裏我會分享所學的知識和經驗。",
+		"latestPosts": "最新文章",
+		"seeMore": "查看更多",
+		"moreAbout": "瞭解更多",
+		"placeholder": "查詢文章",
+		"noResults": "查無結果",
 		"blog": "部落格",
 		"projects": "專案",
 		"about": "關於"
 	},
-	"common": {
-		"hero": "您好，我是一位來自台灣的軟體工程師，對網站開發充滿熱情。歡迎造訪我的部落格，在這裏我會分享所學的知識和經驗。",
-		"latestPosts": "最新文章",
-		"projects": "專案",
-		"seeMore": "查看更多",
-		"moreAbout": "瞭解更多"
+	"homePage": {
+		"description": "哈囉，我是 Tom Jin！我熱衷於開發網頁應用程式。我喜歡學習新技術。"
+	},
+	"blogPage": {
+		"description": "歡迎來到我的部落格！這裡會記錄著我在軟體開發關領域的學習心得、知識分享。",
+		"titleSection": "{count} 篇關於程式及其他的文章..."
+	},
+	"projectsPage": {
+		"description": "這裡會展示一些之前做的專案!",
+		"titleSection": "以下是一些我曾經做過的專案，想看更多可以到我的 <link>Github</link>瀏覽"
 	}
 }

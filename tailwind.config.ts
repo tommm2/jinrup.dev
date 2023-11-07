@@ -7,6 +7,12 @@ export default {
 		'./src/**/*.{js,ts,jsx,tsx,mdx}',
 	],
 	theme: {
+		screens: {
+			xs: '500px',
+			sm: '650px',
+			md: '768px',
+			lg: '1024px',
+		},
 		fontWeight: {
 			light: '300',
 			normal: '400',
@@ -21,8 +27,8 @@ export default {
 		},
 		extend: {
 			colors: {
-				primary: colors.cyan,
-				secondary: colors.blue,
+				primary: colors.indigo,
+				secondary: colors.cyan,
 				base: colors.neutral,
 			},
 		},

@@ -1,34 +1,48 @@
+import Image from 'next/image';
 import { Post } from 'contentlayer/generated';
 
 import Link from '@/components/link';
-import ViewCounter from '@/components/view-counter';
-import { formatDate } from '@/lib/utils';
+import { formatDate } from '@/utils/date';
+import ViewCounter from '../view-counter';
 
 interface PostCardProps {
 	post: Post;
 }
 
 const PostCard = ({ post }: PostCardProps) => {
-	const { slug, url, title, publishedAt, summary } = post;
+	const { slug, title, publishedAt, imageSrc, description, imageMeta } = post;
 
 	return (
-		<article className='space-y-1'>
-			<h3>
-				<Link className='text-base-900 dark:text-base-200' href={url}>
-					{title}
-				</Link>
-			</h3>
-			<div className='text-sm'>
-				<time dateTime={publishedAt}>
-					{formatDate(publishedAt)}
-				</time>
-				<span className='mx-1'>•</span>
-				<ViewCounter slug={slug} />
-			</div>
-			<summary className='list-none'>
-				{summary}
-			</summary>
-		</article>
+		<li className='group relative'>
+			<Link
+				className='flex flex-col gap-2 p-2 font-medium sm:flex-row sm:gap-4'
+				href={`/blog/${slug}`}
+			>
+				<Image
+					className='aspect-[5_/_3] min-h-full max-w-[10rem] rounded object-cover object-center'
+					width={imageMeta.size.width || 144}
+					height={imageMeta.size.width || 72}
+					src={imageSrc}
+					alt={title}
+					placeholder='blur'
+					blurDataURL={imageMeta.blur64}
+				/>
+				<div className='space-y-1'>
+					<h2 className='font-bold'>
+						{title}
+					</h2>
+					<p className='line-clamp-2 text-sm text-base-300/80'>{description}</p>
+					<div className='text-sm text-base-300/60'>
+						<time dateTime={formatDate(publishedAt)}>
+							{formatDate(publishedAt)}
+						</time>
+						<span>．</span>
+						<ViewCounter slug={slug} />
+					</div>
+				</div>
+			</Link>
+			<div className='absolute -inset-2 -z-10 rounded-xl transition-colors duration-300 group-hover:bg-base-800/40'></div>
+		</li>
 	);
 };
 

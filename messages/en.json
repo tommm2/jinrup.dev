@@ -1,14 +1,23 @@
 {
-	"navigation": {
+	"common": {
+		"latestPosts": "Latest Posts",
+		"seeMore": "See More",
+		"moreAbout": "More About",
+		"placeholder": "Search articles",
+		"noResults": "No Search Results",
 		"blog": "Blog",
 		"projects": "Projects",
 		"about": "About"
 	},
-	"common": {
-		"hero": "Hello, I am a software engineer passionate about the field of web development. I have started learning to write technical articles through this website and documenting the software-related knowledge I have acquired.",
-		"projects": "Projects",
-		"latestPosts": "Latest Posts",
-		"seeMore": "See More",
-		"moreAbout": "More About"
+	"homePage": {
+		"description": "Hey, I'm Tom Jin! I'm passionate about building web application. I like learning new technologies."
+	},
+	"blogPage": {
+		"description": "Welcome to my blog! Here I will record my learning experience and knowledge in software development.",
+		"titleSection": "{count} posts about code and more..."
+	},
+	"projectsPage": {
+		"description": "Here are some of the projects I've worked on.",
+		"titleSection": "Here are some of the projects I've worked on, check out my <link>Github</link> for more!"
 	}
 }

@@ -1,28 +1,51 @@
 import { Metadata } from 'next';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { getTranslator } from 'next-intl/server';
+import { compareDesc } from 'date-fns';
 import { allPosts } from 'contentlayer/generated';
 
 import PageWrapper from '@/components/page-wrapper';
-import PostList from '@/components/post-list';
-import { sortPostsByDate } from '@/lib/utils';
+import FilterPosts from '@/components/filter-posts';
+import GradientText from '@/components/gradient-text';
 
-export const metadata: Metadata = {
-	title: '部落格',
-	description: '歡迎來到我的部落格！這裡記錄著我在軟體開發和技術相關領域的學習心得、知識分享以及解決方案',
-};
+export async function generateMetadata({
+	params: { locale },
+}: {
+	params: { locale: Locale }
+}): Promise<Metadata> {
+	const t = await getTranslator(locale, 'blogPage');
+
+	return {
+		title: 'Blog',
+		description: t('description'),
+	};
+}
 
 const BlogPage = () => {
+	const t = useTranslations();
 	const locale = useLocale();
-	const posts = sortPostsByDate(allPosts)
-		.filter(post => post.language === locale);
+	const posts = allPosts
+		.filter(post => post.language === locale)
+		.sort((a, b) => compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)));
+
+	console.log(posts);
 
 	return (
 		<PageWrapper>
-			<h1>部落格</h1>
-			<p className='my-4'>
-				我會在這裡分享各種關於軟體開發和技術相關的內容，目前總共有 <span className='mr-1 font-bold text-primary-500'>{posts.length}</span>篇文章。
+			<GradientText
+				className='from-primary-500 to-secondary-500 text-3xl font-bold'
+				as='h1'
+			>
+				Blog
+			</GradientText>
+			<p className='mb-4 text-base-400'>
+				{t('blogPage.titleSection', { count: posts.length })}
 			</p>
-			<PostList posts={posts} />
+			<FilterPosts
+				posts={posts}
+				placeholder={t('common.placeholder')}
+				remindText={t('common.noResults')}
+			/>
 		</PageWrapper>
 	);
 };

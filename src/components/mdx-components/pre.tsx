@@ -1,19 +1,21 @@
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentProps } from 'react';
 
 import CopyButton from './copy-button';
 
-interface PreProps extends ComponentPropsWithoutRef<'pre'> {
+interface PreProps extends ComponentProps<'pre'> {
 	raw?: string
 }
 
 const Pre = (props: PreProps) => {
-	const isMultiLine = (props.raw as string)?.split('\n').filter(item => !!item).length > 2;
+	const isMultiLine = (props.raw as string)
+		.split('\n')
+		.filter(item => !!item).length > 1;
 
 	return (
-		<pre className='group' {...props}>
+		<pre className='group relative mt-0 bg-base-800/60 px-0' {...props}>
 			{props.children}
 			<CopyButton
-				className={isMultiLine ? 'right-4 top-3' : 'right-3 top-1'}
+				className={isMultiLine ? 'top-3' : 'top-2.5'}
 				copyText={props.raw || ''}
 			/>
 		</pre>

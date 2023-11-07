@@ -3,21 +3,12 @@ import remarkGfm from 'remark-gfm';
 import rehypePrettyCode from 'rehype-pretty-code';
 import { visit } from 'unist-util-visit';
 
-import { convertToSlug } from './src/lib/utils';
+import imageMetadata, { getBlurData } from './src/lib/image-metadata';
 
 const computedFields: ComputedFields = {
 	slug: {
 		type: 'string',
-		resolve: (doc) => convertToSlug(doc._raw.sourceFileName),
-	},
-	url: {
-		type: 'string',
-		resolve: (doc) => {
-			const slug = convertToSlug(doc._raw.sourceFileName);
-			const parentPath = doc._raw.sourceFileDir;
-
-			return `/${parentPath}/${slug}`;
-		},
+		resolve: (doc) => doc._raw.sourceFileDir.split('/').pop(),
 	},
 };
 
@@ -27,31 +18,26 @@ export const Post = defineDocumentType(() => ({
 	contentType: 'mdx',
 	fields: {
 		title: { type: 'string', required: true },
+		description: { type: 'string', required: true },
 		publishedAt: { type: 'date', required: true },
-		summary: { type: 'string', required: true },
-		language: {
-			type: 'string',
-			default: 'zh-TW',
-			required: true,
-		},
+		language: { type: 'string', required: true },
+		imageSrc: { type: 'string', required: true },
+		tags: { type: 'list', of: { type: 'string' } },
 	},
 	computedFields: {
-		slug: {
-			type: 'string',
+		...computedFields,
+		year: {
+			type: 'number',
 			resolve: (doc) => {
-				const sourceFileDir = doc._raw.sourceFileDir;
-				const slug = sourceFileDir.split('/').pop();
+				const date = new Date(doc.publishedAt);
 
-				return slug;
+				return date.getFullYear();
 			},
 		},
-		url: {
-			type: 'string',
-			resolve: (doc) => {
-				const sourceFileDir = doc._raw.sourceFileDir;
-				const slug = sourceFileDir.split('/').pop();
-
-				return `/blog/${slug}`;
+		imageMeta: {
+			type: 'json',
+			resolve: async (doc) => {
+				return getBlurData(doc.imageSrc);
 			},
 		},
 	},
@@ -63,8 +49,10 @@ export const Project = defineDocumentType(() => ({
 	contentType: 'mdx',
 	fields: {
 		title: { type: 'string', required: true },
-		summary: { type: 'string', required: true },
-		image: { type: 'string' , required: true },
+		description: { type: 'string', required: true },
+		image: { type: 'string', required: true },
+		language: { type: 'string', required: true },
+		tags: { type: 'list', of: { type: 'string' } },
 	},
 	computedFields,
 }));
@@ -74,32 +62,9 @@ export const Page = defineDocumentType(() => ({
 	filePathPattern: 'pages/**/*.mdx',
 	contentType: 'mdx',
 	fields: {
-		language: {
-			type: 'string',
-			default: 'zh-TW',
-			required: true,
-		},
+		language: { type: 'string', required: true },
 	},
-	computedFields: {
-		slug: {
-			type: 'string',
-			resolve: (doc) => {
-				const sourceFileDir = doc._raw.sourceFileDir;
-				const slug = sourceFileDir.split('/').pop();
-
-				return slug;
-			},
-		},
-		url: {
-			type: 'string',
-			resolve: (doc) => {
-				const sourceFileDir = doc._raw.sourceFileDir;
-				const slug = sourceFileDir.split('/').pop();
-
-				return `/${slug}`;
-			},
-		},
-	},
+	computedFields,
 }));
 
 export default makeSource({
@@ -113,6 +78,7 @@ export default makeSource({
 		},
 		remarkPlugins: [remarkGfm],
 		rehypePlugins: [
+			imageMetadata,
 			() => (tree) => {
 				visit(tree, (node) => {
 				  if (node?.type === 'element' && node?.tagName === 'pre') {

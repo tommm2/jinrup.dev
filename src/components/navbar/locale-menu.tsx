@@ -1,16 +1,13 @@
 'use client';
 
 import Link from '@/components/link';
-import {
-	locales,
-	usePathname,
-} from '@/lib/navigation';
+import { locales, usePathname } from '@/lib/navigation';
 
-const LocaleList = () => {
+const LocaleMenu = () => {
 	const pathname = usePathname();
 
 	return (
-		<div className='flex w-40 flex-col gap-1 px-2'>
+		<div className='flex w-40 flex-col gap-1 px-2 text-sm'>
 			{locales.map(locale => {
 				const isDefaultLocale = locale === 'zh-TW';
 				const text = isDefaultLocale ? '繁體中文' : 'English';
@@ -19,7 +16,7 @@ const LocaleList = () => {
 				return (
 					<Link
 						key={locale}
-						className='group relative flex h-8 items-center justify-between px-2 text-sm font-medium'
+						className='group relative flex h-8 items-center justify-between px-2 font-medium'
 						href={pathname}
 						locale={locale}
 					>
@@ -33,4 +30,4 @@ const LocaleList = () => {
 	);
 };
 
-export default LocaleList;
+export default LocaleMenu;

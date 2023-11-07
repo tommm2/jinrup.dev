@@ -2,4 +2,11 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import './typography.css';
+@import 'typography.css';
+
+@layer utilities {
+	.text-stroke {
+		@apply text-[120px];
+		-webkit-text-stroke: 4px #262626;
+	}
+}

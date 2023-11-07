@@ -5,9 +5,9 @@ import { RiArrowUpSLine } from 'react-icons/ri';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const BackToTop = () => {
-	const [isVisible, setIsVisible] = useState<boolean>(false);
+	const [isVisible, setIsVisible] = useState(false);
 
-	function _handleClick() {
+	function handleClick() {
 		window.scroll({
 			top: 0,
 			left: 0,
@@ -33,15 +33,15 @@ const BackToTop = () => {
 		<AnimatePresence>
 			{isVisible && (
 				<motion.button
-					className='fixed bottom-20 right-8 flex items-center rounded-md bg-base-800 p-2'
+					className='fixed bottom-20 right-8 flex items-center rounded-xl bg-base-800 p-2.5'
 					type='button'
 					aria-label='back to top'
 					initial={{ opacity: 0, x: 40 }}
 					animate={{ opacity: 1, x: 0 }}
 					exit={{ opacity: 0, x: 40 }}
-					onClick={_handleClick}
+					onClick={handleClick}
 				>
-					<RiArrowUpSLine className='h-5 w-5' />
+					<RiArrowUpSLine className='h-6 w-6' />
 				</motion.button>
 			)}
 		</AnimatePresence>

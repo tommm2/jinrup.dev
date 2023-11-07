@@ -1,6 +1,6 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils/cn';
 import TimelineItem from './timeline-item';
 import TimelinePoint from './timeline-point';
 import TimelineTime from './timeline-time';

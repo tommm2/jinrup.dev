@@ -1,9 +1,8 @@
-import { Barlow } from 'next/font/google';
+import { Barlow, Inter } from 'next/font/google';
 
-export const fontSans = Barlow({
+export const fontSans = Inter({
 	variable: '--font-sans',
 	adjustFontFallback: true,
-	display: 'optional',
 	fallback: [
 		'ui-sans-serif',
 		'system-ui',
@@ -20,8 +19,6 @@ export const fontSans = Barlow({
 		'Segoe UI Symbol',
 		'Noto Color Emoji',
 	],
-	preload: true,
-	style: 'normal',
 	subsets: ['latin'],
 	weight: ['400', '500', '700'],
 });

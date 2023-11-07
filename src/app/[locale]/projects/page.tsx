@@ -1,34 +1,53 @@
 import { Metadata } from 'next';
+import { useLocale, useTranslations } from 'next-intl';
+import { getTranslator } from 'next-intl/server';
 import { allProjects } from 'contentlayer/generated';
 
 import ProjectCard from '@/components/project-card';
 import Link from '@/components/link';
 import PageWrapper from '@/components/page-wrapper';
+import GradientText from '@/components/gradient-text';
+import { siteConfig } from '@/config/site';
 
-export const metadata: Metadata = {
-	title: '專案',
-	description: '歡迎來到我的專案頁面，這裡展示了我平時做的一些有趣的專案。',
-};
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+	const t = await getTranslator(params.locale, 'projectsPage');
+
+	return {
+		title: 'Projects',
+		description: t('description'),
+	};
+}
 
 const ProjectsPage = () => {
+	const t = useTranslations('projectsPage');
+	const locale = useLocale();
+	const projects = allProjects.filter(item => item.language === locale);
+
 	return (
 		<PageWrapper>
-			<h1>專案</h1>
-			<p className='my-4'>
-				展示一些專案，如果想看更多可以到我的
-				<Link
-					className='mx-1'
-					href='https://github.com/tommm2'
-				>
-					Github
-				</Link>
-				瀏覽。
+			<GradientText
+				className='from-primary-500 to-secondary-500 text-3xl font-bold'
+				as='h1'
+			>
+				Projects
+			</GradientText>
+			<p>
+				{t.rich('titleSection', {
+					link: (chunks) => (
+						<Link
+							className='mx-1 font-medium text-primary-400 transition-colors duration-300 hover:text-primary-400/80'
+							showAnchorIcon
+							aria-label='github'
+							title='github'
+							href={siteConfig.links.github}
+						>
+							{chunks}
+						</Link>
+					),
+				})}
 			</p>
-			<h1 className='mb-6'>
-				所有專案
-			</h1>
-			<div className='grid grid-cols-1 gap-4 pb-1 sm:grid-cols-2'>
-				{allProjects.map((project) => (
+			<div className='mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2'>
+				{projects.map((project) => (
 					<ProjectCard
 						key={project.slug}
 						project={project}

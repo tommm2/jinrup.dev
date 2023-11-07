@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import useOutsideClick from '@/hooks/use-outside-click';
+import { useClickOutside } from '@/hooks/use-click-outside';
 import { usePathname } from '@/lib/navigation';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils/cn';
 
 interface DropdownProps {
 	className?: string
@@ -20,18 +20,23 @@ const Dropdown = ({
 	buttonIcon,
 	children,
 }: DropdownProps) => {
-	const { elementRef, isVisible, setIsVisible } = useOutsideClick();
-
+	const dropdownRef = useRef(null);
 	const pathname = usePathname();
+	const [isVisible, setIsVisible] = useState(false);
+
+	useClickOutside(dropdownRef, () => setIsVisible(false));
 
 	useEffect(() => {
 		setIsVisible(false);
-	}, [pathname, setIsVisible]);
+	}, [pathname]);
 
 	return (
-		<div ref={elementRef} className={cn('relative', className)}>
+		<div
+			className={cn('relative', className)}
+			ref={dropdownRef}
+		>
 			<button
-				className='flex h-8 items-center rounded-md p-2 transition-colors duration-300 hover:bg-base-700/60'
+				className='flex h-8 items-center rounded-md p-2 transition-colors duration-300 hover:bg-base-800/60'
 				type='button'
 				aria-label={buttonAriaLabel}
 				onClick={() => setIsVisible(!isVisible)}
@@ -41,7 +46,7 @@ const Dropdown = ({
 			<AnimatePresence>
 				{isVisible && (
 					<motion.div
-						className='absolute right-1 top-10 z-20 rounded-lg border border-base-600/40 bg-base-900 py-3'
+						className='absolute right-0 top-10 z-20 rounded-lg border border-base-600/40 bg-base-900 py-3'
 						initial={{ opacity: 0, y: -10 }}
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: 10 }}

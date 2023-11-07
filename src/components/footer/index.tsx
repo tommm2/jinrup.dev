@@ -8,7 +8,7 @@ import { siteConfig } from '@/config/site';
 
 const Footer = () => {
 	return (
-		<footer className='mx-auto max-w-3xl px-8'>
+		<footer className='px-8'>
 			<div className='flex flex-col items-center gap-4 py-16'>
 				<div>
 					© 2023 Tom Jin. All rights reserved.

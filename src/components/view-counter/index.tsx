@@ -6,26 +6,36 @@ import useSWR from 'swr';
 import { fetcher } from '@/lib/fetcher';
 
 interface ViewCounterProps {
-	slug: string
-	isViewTracking?: boolean
+	className?: string;
+	isViewTracking?: boolean;
+	slug: string;
+	as?: keyof JSX.IntrinsicElements;
 }
 
 function ViewCounter({
-	slug,
+	className,
 	isViewTracking = false,
+	slug,
+	as = 'span',
 }: ViewCounterProps) {
+	const Component = as;
+
 	const { data } = useSWR<Views>(`/api/views?slug=${slug}`, fetcher);
 
 	useEffect(() => {
 		if (isViewTracking) {
-			fetch(`/api/views?slug=${slug}`, {
-				method: 'POST',
-			});
+			setTimeout(() => {
+				fetch(`/api/views?slug=${slug}`, {
+					method: 'POST',
+				});
+			}, 5000);
 		}
 	}, [isViewTracking, slug]);
 
 	return (
-		<span>{`${data ? data.views : '--'}`} 次瀏覽</span>
+		<Component className={className}>
+			{data?.views || 0} views
+		</Component>
 	);
 }
 
