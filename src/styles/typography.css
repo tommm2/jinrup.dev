@@ -38,7 +38,7 @@
 	}
 
 	:not(pre) > code {
-		@apply bg-base-800/60 my-1 p-0.5 rounded-lg text-base-300/80;
+		@apply bg-base-800/60 my-1 p-0.5 rounded-lg text-base-300;
 	}
 
 	/* rehype-pretty-code style */
@@ -64,7 +64,7 @@
 	}
 
 	[data-rehype-pretty-code-title] {
-		@apply px-4 py-1 text-base-300 border-b rounded-t-md border-base-700 bg-base-800/60;
+		@apply px-4 py-2 text-base-300 text-sm border-b rounded-t-md border-base-700 bg-base-800/60;
 
 		& + pre {
 			@apply rounded-t-none;

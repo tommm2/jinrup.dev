@@ -58,39 +58,37 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 		return;
 	}
 
-	const { imageMeta, imageSrc, title } = post;
+	const { imageMeta, imageSrc, title, publishedAt, slug } = post;
 
 	return (
 		<PageWrapper>
 			<Link
-				className='-ml-1 mb-4 inline-flex items-center gap-1 p-1 text-sm transition-colors duration-300 hover:text-base-100'
+				className='-ml-2 mb-4 inline-flex items-center gap-1 p-2 transition-colors duration-300 hover:text-base-100'
 				isBlock
 				href='/blog'
 			>
 				<RiArrowLeftLine />
 				<span>Back to blog</span>
 			</Link>
-			<h1 className='text-3xl font-bold'>{post.title}</h1>
-			<div className='mt-2 flex items-center gap-2'>
-				<time
-					className='flex items-center gap-1 rounded-lg border border-base-700 bg-base-800 px-1.5 py-0.5 text-sm'
-					dateTime={post.publishedAt}
-				>
-					<RiCalendar2Fill />
-					{formatDate(post.publishedAt)}
-				</time>
-				<ViewCounter slug={post.slug} isViewTracking />
+			<div className='mb-12'>
+				<div className='text-base-300/60'>
+					<time dateTime={formatDate(publishedAt)}>
+						{formatDate(publishedAt)}
+					</time>
+					<span>．</span>
+					<ViewCounter slug={slug} />
+				</div>
+				<h1 className='my-2 text-3xl font-bold'>{post.title}</h1>
+				<Image
+					className='aspect-[2_/_1] h-auto w-full rounded-xl object-cover object-center'
+					width={imageMeta.size.width || 700}
+					height={imageMeta.size.width || 500}
+					src={imageSrc}
+					alt={title}
+					placeholder='blur'
+					blurDataURL={imageMeta.blur64}
+				/>
 			</div>
-			<hr className='mb-8 mt-4 border-base-700' />
-			<Image
-				className='aspect-[2_/_1] h-auto w-full rounded object-cover object-center'
-				width={imageMeta.size.width || 700}
-				height={imageMeta.size.width || 500}
-				src={imageSrc}
-				alt={title}
-				placeholder='blur'
-				blurDataURL={imageMeta.blur64}
-			/>
 			<MDXContent code={post.body.code} />
 		</PageWrapper>
 	);

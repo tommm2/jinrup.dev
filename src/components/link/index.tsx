@@ -24,7 +24,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>((props: LinkProps, ref) =>
 	} = props;
 
 	const blockStyle = isBlock
-		? 'relative after:content-[""] after:bg-base-800 after:opacity-0 after:transition-opacity after:duration-300 after:rounded-lg after:absolute after:inset-0 hover:after:opacity-100 after:-z-10'
+		? 'relative after:content-[""] after:bg-base-800 after:opacity-0 after:transition-opacity after:duration-300 after:rounded-xl after:absolute after:inset-0 hover:after:opacity-100 after:-z-10'
 		: '';
 
 	if (href.startsWith('http')) {

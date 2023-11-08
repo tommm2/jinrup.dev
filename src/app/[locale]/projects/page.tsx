@@ -35,7 +35,7 @@ const ProjectsPage = () => {
 				{t.rich('titleSection', {
 					link: (chunks) => (
 						<Link
-							className='mx-1 font-medium text-primary-400 transition-colors duration-300 hover:text-primary-400/80'
+							className='mx-1 font-medium text-primary-500 transition-colors duration-300 hover:text-primary-500/60'
 							showAnchorIcon
 							aria-label='github'
 							title='github'
@@ -46,7 +46,7 @@ const ProjectsPage = () => {
 					),
 				})}
 			</p>
-			<div className='mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2'>
+			<div className='mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2'>
 				{projects.map((project) => (
 					<ProjectCard
 						key={project.slug}

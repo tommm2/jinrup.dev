@@ -8,7 +8,7 @@ import LocaleMenu from './locale-menu';
 
 const Navbar = () => {
 	return (
-		<header className='sticky top-0 z-10 h-14 backdrop-blur'>
+		<header className='sticky top-0 z-10 h-14 bg-base-900/80 backdrop-blur'>
 			<div className='absolute -bottom-px left-11 right-20 h-px bg-gradient-to-r from-transparent via-primary-500 to-transparent'></div>
 			<div className='mx-auto flex h-14 max-w-[43.75rem] items-center justify-between px-8'>
 				<Link href='/'>TOM</Link>

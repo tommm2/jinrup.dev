@@ -27,8 +27,8 @@ export default {
 		},
 		extend: {
 			colors: {
-				primary: colors.indigo,
-				secondary: colors.cyan,
+				primary: colors.sky,
+				secondary: colors.indigo,
 				base: colors.neutral,
 			},
 		},

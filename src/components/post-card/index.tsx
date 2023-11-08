@@ -19,7 +19,7 @@ const PostCard = ({ post }: PostCardProps) => {
 				href={`/blog/${slug}`}
 			>
 				<Image
-					className='aspect-[5_/_3] min-h-full max-w-[10rem] rounded object-cover object-center'
+					className='aspect-[5_/_3] min-h-full rounded object-cover object-center sm:max-w-[10rem]'
 					width={imageMeta.size.width || 144}
 					height={imageMeta.size.width || 72}
 					src={imageSrc}

@@ -4,11 +4,11 @@ const withNextIntl = require('next-intl/plugin')();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	swcMinify: true,
-	typescript: {
-		ignoreBuildErrors: true,
-	},
 	eslint: {
 		ignoreDuringBuilds: true,
+	},
+	images: {
+		formats: ['image/avif', 'image/webp'],
 	},
 	async headers() {
 		return [

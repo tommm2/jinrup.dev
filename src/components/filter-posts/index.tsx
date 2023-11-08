@@ -5,7 +5,7 @@ import { type Post } from 'contentlayer/generated';
 
 import Input from '@/components/input';
 import PostCard from '@/components/post-card';
-import { groupBy } from '@/utils/group-by';
+import { groupBy } from '@/utils/helpers';
 
 function getGroupPostsWithYear(posts: Post[], query: string) {
 	if (!posts) return [];
