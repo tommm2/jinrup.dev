@@ -2,32 +2,19 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import './typography.css';
+@import 'typography.css';
 
-@layer base {
-	body {
-		@apply font-body antialiased bg-base-900 text-base-300;
+@layer utilities {
+	.mask-dots {
+		-webkit-mask-image: radial-gradient(rgba(63, 63, 70, 0.8) 10%, transparent 0);
+		-webkit-mask-size: 8px 8px;
 	}
 
-	h1 {
-		@apply text-2xl;
+	.bg-dots {
+		-webkit-mask-image: radial-gradient(#000 55%, transparent 75%);
 	}
 
-	h2 {
-		@apply text-xl;
-	}
-
-	svg {
-		@apply h-5 w-5 inline-block;
-	}
-}
-
-@layer components {
-	.text-muted {
-		@apply text-base-900/70 dark:text-base-300/70;
-	}
-
-	.layout {
-		@apply mx-auto max-w-2xl px-4;
+	.animate-in {
+		animation-delay: calc(var(--index) * 200ms);
 	}
 }

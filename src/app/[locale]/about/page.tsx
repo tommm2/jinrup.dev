@@ -1,31 +1,29 @@
-import { Metadata } from 'next';
+import { useLocale } from 'next-intl';
+import { notFound } from 'next/navigation';
 import { allPages } from 'contentlayer/generated';
 
-import Mdx from '@/components/Mdx';
-import Heading from '@/components/Heading';
-import { useLocale } from 'next-intl';
+import GradientText from '@/components/gradient-text';
+import PageWrapper from '@/components/page-wrapper';
+import MDXContent from '@/components/mdx-content';
 
-export const metadata: Metadata = {
-	title: '關於',
-	description: '關於我的簡介、工作經驗等等...',
-};
-
-const AboutPage = () => {
-	const locale = useLocale();
-	const page = allPages.find((page) => page.slug === 'about' && page.language === locale);
+export default function AboutPage() {
+	const currentLocale = useLocale() as Locale;
+	const page = allPages.find(page => page.slug === 'about' && page.language === currentLocale);
 
 	if (!page) {
-		return;
+		return notFound();
 	}
 
 	return (
-		<>
-			<Heading as='h1'>關於</Heading>
-			<div className='prose mt-4'>
-				<Mdx code={page.body.code} />
-			</div>
-		</>
+		<PageWrapper>
+			<GradientText
+				className='mb-2 animate-in bg-gradient-to-br from-primary-500 to-accent-500 text-3xl font-bold'
+				as='h1'
+			>
+				About
+			</GradientText>
+			<MDXContent animateDelayIndex={1} code={page.body.code} />
+		</PageWrapper>
 	);
 };
 
-export default AboutPage;

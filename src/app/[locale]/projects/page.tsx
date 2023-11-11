@@ -1,44 +1,70 @@
 import { Metadata } from 'next';
+import { useLocale, useTranslations } from 'next-intl';
+import { getTranslator } from 'next-intl/server';
 import { allProjects } from 'contentlayer/generated';
 
-import ProjectCard from '@/components/ProjectCard';
-import CustomLink from '@/components/Mdx/CustomLink';
-import Heading from '@/components/Heading';
+import ProjectCard from '@/components/project-card';
+import Link from '@/components/link';
+import PageWrapper from '@/components/page-wrapper';
+import GradientText from '@/components/gradient-text';
+import { siteConfig } from '@/config/site';
 
-export const metadata: Metadata = {
-	title: '專案',
-	description: '歡迎來到我的專案頁面，這裡展示了我平時做的一些有趣的專案。',
-};
+export async function generateMetadata({
+	params,
+}: {
+	params: { locale: string };
+}): Promise<Metadata> {
+	const t = await getTranslator(params.locale, 'projectsPage');
+
+	return {
+		title: 'Projects',
+		description: t('description'),
+	};
+}
 
 const ProjectsPage = () => {
+	const t = useTranslations('projectsPage');
+	const locale = useLocale();
+	const projects = allProjects.filter((item) => item.language === locale);
+
 	return (
-		<>
-			<Heading as='h1'>專案</Heading>
-			<p className='my-4'>
-				展示一些專案，如果想看更多可以到我的
-				<CustomLink
-					className='mx-1'
-					href='https://github.com/tommm2'
-				>
-					Github
-				</CustomLink>
-				瀏覽。
-			</p>
-			<Heading
-				className='mb-6'
-				hasUnderline
+		<PageWrapper>
+			<GradientText
+				className='mb-2 animate-in from-primary-500 to-accent-500 text-3xl font-bold'
+				as='h1'
 			>
-				所有專案
-			</Heading>
-			<div className='grid grid-cols-1 gap-4 pb-1 sm:grid-cols-2'>
-				{allProjects.map((project) => (
+				Projects
+			</GradientText>
+			<p
+				className='animate-in'
+				style={{ '--index': 1 } as React.CSSProperties}
+			>
+				{t.rich('titleSection', {
+					link: (chunks) => (
+						<Link
+							className='mx-1 font-medium text-primary-500 transition-colors duration-300 hover:text-primary-500/60'
+							showAnchorIcon
+							aria-label='github'
+							title='github'
+							href={siteConfig.links.github}
+						>
+							{chunks}
+						</Link>
+					),
+				})}
+			</p>
+			<div
+				className='mt-16 grid animate-in grid-cols-1 gap-6 sm:grid-cols-2'
+				style={{ '--index': 2 } as React.CSSProperties}
+			>
+				{projects.map((project) => (
 					<ProjectCard
 						key={project.slug}
 						project={project}
 					/>
 				))}
 			</div>
-		</>
+		</PageWrapper>
 	);
 };
 

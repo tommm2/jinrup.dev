@@ -1,21 +1,26 @@
-import Link from 'next/link';
+import Image from 'next/image';
+import { Metadata } from 'next';
 import { useLocale } from 'next-intl';
 import { allPosts } from 'contentlayer/generated';
 import { RiArrowLeftLine } from 'react-icons/ri';
 
-import Mdx from '@/components/Mdx';
-import ViewCounter from '@/components/ViewCounter';
-import Comment from '@/components/Comment';
-import Heading from '@/components/Heading';
-
-import { formatDate } from '@/lib/utils';
+import Link from '@/components/link';
+import PageWrapper from '@/components/page-wrapper';
+import ViewCounter from '@/components/view-counter';
+import MDXContent from '@/components/mdx-content';
+import Comment from '@/components/comment';
+import { formatDate } from '@/utils/date';
 
 export async function generateStaticParams() {
 	return allPosts.map((post) => ({ slug: post.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-	const post = allPosts.find((post) => post.slug === params.slug);
+export async function generateMetadata({
+	params,
+}: {
+	params: { locale: Locale, slug: string }
+}): Promise<Metadata | undefined> {
+	const post = allPosts.find((post) => post.slug === params.slug && post.language === params.slug);
 
 	if (!post) {
 		return;
@@ -24,61 +29,70 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 	const {
 		title,
 		publishedAt: publishedTime,
-		summary: description,
+		description,
 		slug,
 	} = post;
 
 	return {
-		title,
 		description,
 		openGraph: {
+			type: 'article',
 			title,
 			description,
-			type: 'article',
 			publishedTime,
 			url: `https://tomjin.vercel.app/blog/${slug}`,
 		},
 	};
 }
 
-type BlogLayoutProps = {
+interface BlogLayoutProps {
 	params: {
 		slug: string
 	}
 }
 
 const BlogLayout = ({ params }: BlogLayoutProps) => {
-	const locale = useLocale();
+	const locale = useLocale() as Locale;
 	const post = allPosts.find((post) => post.slug === params.slug && post.language === locale);
 
 	if (!post) {
 		return;
 	}
 
+	const { imageMeta, image, title, publishedAt, slug } = post;
+
 	return (
-		<>
+		<PageWrapper>
 			<Link
-				className='mb-4 flex items-center gap-2'
+				className='-ml-2 mb-8 inline-flex items-center gap-1 p-2 transition-colors duration-300 hover:text-base-100'
+				isBlock
 				href='/blog'
 			>
 				<RiArrowLeftLine />
-				<span>返回部落格</span>
+				<span>Back to blog</span>
 			</Link>
-			<Heading as='h1'>{post.title}</Heading>
-			<div className='text-muted mb-8 flex items-center justify-between'>
-				<time dateTime={post.publishedAt}>
-					{formatDate(post.publishedAt)}
-				</time>
-				<ViewCounter
-					slug={post.slug}
-					isViewTracking
+			<div className='mb-12'>
+				<div className='text-base-300/60'>
+					<time dateTime={formatDate(publishedAt)}>
+						{formatDate(publishedAt)}
+					</time>
+					<span>．</span>
+					<ViewCounter slug={slug} />
+				</div>
+				<h1 className='my-3 text-3xl font-bold'>{post.title}</h1>
+				<Image
+					className='aspect-[2_/_1] h-auto w-full rounded-xl object-cover object-center'
+					width={imageMeta.size.width || 700}
+					height={imageMeta.size.width || 500}
+					src={image}
+					alt={title}
+					placeholder='blur'
+					blurDataURL={imageMeta.blur64}
 				/>
 			</div>
-			<article className='prose'>
-				<Mdx code={post.body.code} />
-				{/* <Comment /> */}
-			</article>
-		</>
+			<MDXContent code={post.body.code} />
+			<Comment locale={locale} />
+		</PageWrapper>
 	);
 };
 

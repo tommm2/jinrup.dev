@@ -1,30 +1,59 @@
 import { Metadata } from 'next';
+import { useLocale, useTranslations } from 'next-intl';
+import { getTranslator } from 'next-intl/server';
+import { compareDesc } from 'date-fns';
 import { allPosts } from 'contentlayer/generated';
 
-import { sortPostsByDate } from '@/lib/utils';
+import PageWrapper from '@/components/page-wrapper';
+import FilterPosts from '@/components/filter-posts';
+import GradientText from '@/components/gradient-text';
 
-import FilterPosts from '@/components/FilterPosts';
-import Heading from '@/components/Heading';
-import { useLocale } from 'next-intl';
+export async function generateMetadata({
+	params: { locale },
+}: {
+	params: { locale: Locale };
+}): Promise<Metadata> {
+	const t = await getTranslator(locale, 'blogPage');
 
-export const metadata: Metadata = {
-	title: '部落格',
-	description: '歡迎來到我的部落格！這裡記錄著我在軟體開發和技術相關領域的學習心得、知識分享以及解決方案',
-};
+	return {
+		title: 'Blog',
+		description: t('description'),
+	};
+}
 
 const BlogPage = () => {
+	const t = useTranslations();
 	const locale = useLocale();
-	const posts = sortPostsByDate(allPosts)
-		.filter(post => post.language === locale);
+	const posts = allPosts
+		.filter((post) => post.language === locale)
+		.sort((a, b) =>
+			compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)),
+		);
 
 	return (
-		<>
-			<Heading as='h1'>部落格</Heading>
-			<p className='my-4'>
-				我會在這裡分享各種關於軟體開發和技術相關的內容，目前總共有 <span className='mr-1 font-bold text-primary-500'>{posts.length}</span>篇文章。
+		<PageWrapper>
+			<GradientText
+				className='mb-2 animate-in from-primary-500 to-accent-500 text-3xl font-bold'
+				as='h1'
+			>
+				Blog
+			</GradientText>
+			<p
+				className='mb-8 animate-in'
+				style={{ '--index': 1 } as React.CSSProperties}
+			>
+				{t.rich('blogPage.titleSection', {
+					highlight: () => (
+						<span className='font-medium text-primary-500'>{posts.length}</span>
+					),
+				})}
 			</p>
-			<FilterPosts posts={posts} />
-		</>
+			<FilterPosts
+				posts={posts}
+				placeholder={t('common.placeholder')}
+				remindText={t('common.noResults')}
+			/>
+		</PageWrapper>
 	);
 };
 

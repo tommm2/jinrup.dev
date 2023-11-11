@@ -7,8 +7,8 @@ function robots(): MetadataRoute.Robots {
 			allow: '/',
 			disallow: ['/404', '/500', '/api/*'],
 		},
-		sitemap: 'https://tomjin-dev.vercel.app/sitemap.xml',
-		host: 'https://tomjin-dev.vercel.app',
+		sitemap: 'https://tomjin.vercel.app/sitemap.xml',
+		host: 'https://tomjin.vercel.app',
 	};
 }
 

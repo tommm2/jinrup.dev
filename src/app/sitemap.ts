@@ -1,4 +1,7 @@
-import { allPosts, allProjects } from 'contentlayer/generated';
+import {
+	allPosts,
+	allProjects,
+} from 'contentlayer/generated';
 
 const URL = 'https://tomjin.vercel.app';
 
@@ -12,10 +15,15 @@ export default async function sitemap() {
 		url: `${URL}/projects/${project.slug}`,
 	}));
 
-	const routes = ['', '/about', '/blog', '/projects'].map((route) => ({
-		url: `${URL}${route}`,
-		lastModified: new Date().toISOString().split('T')[0],
-	}));
+	const routes = ['', '/about', '/blog', '/projects']
+		.map((route) => ({
+			url: `${URL}${route}`,
+			lastModified: new Date().toISOString().split('T')[0],
+		}));
 
-	return [...posts, ...projects, ...routes];
+	return [
+		...posts,
+		...projects,
+		...routes,
+	];
 }
