@@ -79,7 +79,7 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 					<span>．</span>
 					<ViewCounter slug={slug} />
 				</div>
-				<h1 className='my-2 text-3xl font-bold'>{post.title}</h1>
+				<h1 className='my-3 text-3xl font-bold'>{post.title}</h1>
 				<Image
 					className='aspect-[2_/_1] h-auto w-full rounded-xl object-cover object-center'
 					width={imageMeta.size.width || 700}

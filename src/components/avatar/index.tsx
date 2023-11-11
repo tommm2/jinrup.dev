@@ -14,7 +14,7 @@ const Avatar = () => {
 					height={70}
 				/>
 				<div>
-					<GradientText className='bg-gradient-to-br from-primary-500 to-secondary-500 text-2xl font-bold'>Tom Jin</GradientText>
+					<GradientText className='bg-gradient-to-br from-primary-500 to-accent-500 text-2xl font-bold'>Tom Jin</GradientText>
 					<div>Software Engineer • Taiwan 🇹🇼</div>
 				</div>
 			</span>

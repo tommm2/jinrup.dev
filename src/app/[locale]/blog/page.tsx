@@ -11,7 +11,7 @@ import GradientText from '@/components/gradient-text';
 export async function generateMetadata({
 	params: { locale },
 }: {
-	params: { locale: Locale }
+	params: { locale: Locale };
 }): Promise<Metadata> {
 	const t = await getTranslator(locale, 'blogPage');
 
@@ -25,20 +25,27 @@ const BlogPage = () => {
 	const t = useTranslations();
 	const locale = useLocale();
 	const posts = allPosts
-		.filter(post => post.language === locale)
-		.sort((a, b) => compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)));
+		.filter((post) => post.language === locale)
+		.sort((a, b) =>
+			compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)),
+		);
 
 	return (
 		<PageWrapper>
 			<GradientText
-				className='from-primary-500 to-secondary-500 text-3xl font-bold'
+				className='mb-2 animate-in from-primary-500 to-accent-500 text-3xl font-bold'
 				as='h1'
 			>
 				Blog
 			</GradientText>
-			<p className='mb-4'>
+			<p
+				className='mb-8 animate-in'
+				style={{ '--index': 1 } as React.CSSProperties}
+			>
 				{t.rich('blogPage.titleSection', {
-					highlight: () => <span className='font-medium text-primary-500'>{posts.length}</span>,
+					highlight: () => (
+						<span className='font-medium text-primary-500'>{posts.length}</span>
+					),
 				})}
 			</p>
 			<FilterPosts

@@ -6,6 +6,7 @@ import { allProjects } from 'contentlayer/generated';
 import MDXContent from '@/components/mdx-content';
 import Link from '@/components/link';
 import PageWrapper from '@/components/page-wrapper';
+import Image from 'next/image';
 
 export async function generateStaticParams() {
 	return allProjects.map((project) => ({ slug: project.slug }));
@@ -51,17 +52,30 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 		return;
 	}
 
+	const { image, imageMeta, title } = project;
+
 	return (
 		<PageWrapper>
 			<Link
-				className='-ml-1.5 mb-4 inline-flex items-center gap-1 p-1.5 text-sm transition-colors duration-300 hover:text-base-100'
+				className='-ml-2 mb-8 inline-flex items-center gap-1 p-2 transition-colors duration-300 hover:text-base-100'
 				isBlock
 				href='/projects'
 			>
 				<RiArrowLeftLine />
 				<span>Back to projects</span>
 			</Link>
-			<h1 className='mb-8'>{project.title}</h1>
+			<div className='mb-12'>
+				<h1 className='my-3 text-3xl font-bold'>{title}</h1>
+				<Image
+					className='aspect-[2_/_1] h-auto w-full rounded-xl object-cover object-center'
+					width={imageMeta.size.width || 700}
+					height={imageMeta.size.width || 500}
+					src={image}
+					alt={title}
+					placeholder='blur'
+					blurDataURL={imageMeta.blur64}
+				/>
+			</div>
 			<MDXContent code={project.body.code} />
 		</PageWrapper>
 	);

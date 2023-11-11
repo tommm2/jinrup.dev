@@ -28,9 +28,23 @@ export default {
 		extend: {
 			colors: {
 				primary: colors.blue,
-				secondary: colors.blue,
+				accent: colors.sky,
 				base: colors.neutral,
 			},
+			keyframes: {
+				in: {
+					'0%': { transform: 'translateY(18px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' },
+				},
+				'in-reverse': {
+					'0%': { transform: 'translateY(-18px)', opacity: '0' },
+					'100%': { transform: 'translateY(0px)', opacity: '1' },
+				},
+			},
+			animation: {
+				in: 'in .6s both',
+				'in-reverse': 'in-reverse .6s both',
+			  },
 		},
 	},
 	future: {

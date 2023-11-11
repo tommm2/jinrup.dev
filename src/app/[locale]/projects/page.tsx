@@ -9,7 +9,11 @@ import PageWrapper from '@/components/page-wrapper';
 import GradientText from '@/components/gradient-text';
 import { siteConfig } from '@/config/site';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({
+	params,
+}: {
+	params: { locale: string };
+}): Promise<Metadata> {
 	const t = await getTranslator(params.locale, 'projectsPage');
 
 	return {
@@ -21,17 +25,20 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 const ProjectsPage = () => {
 	const t = useTranslations('projectsPage');
 	const locale = useLocale();
-	const projects = allProjects.filter(item => item.language === locale);
+	const projects = allProjects.filter((item) => item.language === locale);
 
 	return (
 		<PageWrapper>
 			<GradientText
-				className='from-primary-500 to-secondary-500 text-3xl font-bold'
+				className='mb-2 animate-in from-primary-500 to-accent-500 text-3xl font-bold'
 				as='h1'
 			>
 				Projects
 			</GradientText>
-			<p>
+			<p
+				className='animate-in'
+				style={{ '--index': 1 } as React.CSSProperties}
+			>
 				{t.rich('titleSection', {
 					link: (chunks) => (
 						<Link
@@ -46,7 +53,10 @@ const ProjectsPage = () => {
 					),
 				})}
 			</p>
-			<div className='mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2'>
+			<div
+				className='mt-16 grid animate-in grid-cols-1 gap-6 sm:grid-cols-2'
+				style={{ '--index': 2 } as React.CSSProperties}
+			>
 				{projects.map((project) => (
 					<ProjectCard
 						key={project.slug}

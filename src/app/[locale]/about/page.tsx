@@ -6,7 +6,7 @@ import GradientText from '@/components/gradient-text';
 import PageWrapper from '@/components/page-wrapper';
 import MDXContent from '@/components/mdx-content';
 
-const AboutPage = () => {
+export default function AboutPage() {
 	const currentLocale = useLocale() as Locale;
 	const page = allPages.find(page => page.slug === 'about' && page.language === currentLocale);
 
@@ -17,14 +17,13 @@ const AboutPage = () => {
 	return (
 		<PageWrapper>
 			<GradientText
+				className='mb-2 animate-in bg-gradient-to-br from-primary-500 to-accent-500 text-3xl font-bold'
 				as='h1'
-				className='mb-4 bg-gradient-to-br from-primary-500 to-secondary-500 text-3xl font-bold'
 			>
 				About
 			</GradientText>
-			<MDXContent code={page.body.code} />
+			<MDXContent animateDelayIndex={1} code={page.body.code} />
 		</PageWrapper>
 	);
 };
 
-export default AboutPage;

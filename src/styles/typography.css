@@ -10,7 +10,7 @@
 	}
 
 	a {
-		@apply no-underline text-primary-400 transition-colors duration-300 hover:text-primary-400/70;
+		@apply no-underline text-primary-500 transition-colors duration-300 hover:text-primary-500/70;
 	}
 
 	hr {
