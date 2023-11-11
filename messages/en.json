@@ -14,7 +14,7 @@
 	},
 	"blogPage": {
 		"description": "Welcome to my blog! Here I will record my learning experience and knowledge in software development.",
-		"titleSection": "{count} posts about code and more..."
+		"titleSection": "<highlight></highlight> posts about code and more..."
 	},
 	"projectsPage": {
 		"description": "Here are some of the projects I've worked on.",

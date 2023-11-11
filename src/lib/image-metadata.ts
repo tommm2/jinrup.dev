@@ -1,12 +1,11 @@
 import { readFile } from 'node:fs/promises';
 import path from 'path';
 import { promisify } from 'util';
-
 import imageSize from 'image-size';
-import type { ISizeCalculationResult } from 'image-size/dist/types/interface';
 import { getPlaiceholder } from 'plaiceholder';
-import type { Node } from 'unist';
 import { visit } from 'unist-util-visit';
+import type { Node } from 'unist';
+import type { ISizeCalculationResult } from 'image-size/dist/types/interface';
 
 const sizeOf = promisify(imageSize);
 

@@ -58,12 +58,12 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 		return;
 	}
 
-	const { imageMeta, imageSrc, title, publishedAt, slug } = post;
+	const { imageMeta, image, title, publishedAt, slug } = post;
 
 	return (
 		<PageWrapper>
 			<Link
-				className='-ml-2 mb-4 inline-flex items-center gap-1 p-2 transition-colors duration-300 hover:text-base-100'
+				className='-ml-2 mb-8 inline-flex items-center gap-1 p-2 transition-colors duration-300 hover:text-base-100'
 				isBlock
 				href='/blog'
 			>
@@ -83,7 +83,7 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 					className='aspect-[2_/_1] h-auto w-full rounded-xl object-cover object-center'
 					width={imageMeta.size.width || 700}
 					height={imageMeta.size.width || 500}
-					src={imageSrc}
+					src={image}
 					alt={title}
 					placeholder='blur'
 					blurDataURL={imageMeta.blur64}

@@ -21,7 +21,7 @@ export const Post = defineDocumentType(() => ({
 		description: { type: 'string', required: true },
 		publishedAt: { type: 'date', required: true },
 		language: { type: 'string', required: true },
-		imageSrc: { type: 'string', required: true },
+		image: { type: 'string', required: true },
 		tags: { type: 'list', of: { type: 'string' } },
 	},
 	computedFields: {
@@ -36,9 +36,7 @@ export const Post = defineDocumentType(() => ({
 		},
 		imageMeta: {
 			type: 'json',
-			resolve: async (doc) => {
-				return getBlurData(doc.imageSrc);
-			},
+			resolve: async (doc) => getBlurData(doc.image),
 		},
 	},
 }));
@@ -54,7 +52,13 @@ export const Project = defineDocumentType(() => ({
 		language: { type: 'string', required: true },
 		tags: { type: 'list', of: { type: 'string' } },
 	},
-	computedFields,
+	computedFields: {
+		...computedFields,
+		imageMeta: {
+			type: 'json',
+			resolve: async (doc) => getBlurData(doc.image),
+		},
+	},
 }));
 
 export const Page = defineDocumentType(() => ({

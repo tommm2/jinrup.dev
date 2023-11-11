@@ -36,7 +36,7 @@ const Dropdown = ({
 			ref={dropdownRef}
 		>
 			<button
-				className='flex h-8 items-center rounded-md p-2 transition-colors duration-300 hover:bg-base-800/60'
+				className='flex h-8 items-center rounded-md p-2 transition-colors duration-300 hover:bg-base-700/60'
 				type='button'
 				aria-label={buttonAriaLabel}
 				onClick={() => setIsVisible(!isVisible)}

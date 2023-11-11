@@ -28,8 +28,6 @@ const BlogPage = () => {
 		.filter(post => post.language === locale)
 		.sort((a, b) => compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)));
 
-	console.log(posts);
-
 	return (
 		<PageWrapper>
 			<GradientText
@@ -38,8 +36,10 @@ const BlogPage = () => {
 			>
 				Blog
 			</GradientText>
-			<p className='mb-4 text-base-400'>
-				{t('blogPage.titleSection', { count: posts.length })}
+			<p className='mb-4'>
+				{t.rich('blogPage.titleSection', {
+					highlight: () => <span className='font-medium text-primary-500'>{posts.length}</span>,
+				})}
 			</p>
 			<FilterPosts
 				posts={posts}
