@@ -2,12 +2,20 @@
 
 import Giscus from '@giscus/react';
 
-import { giscusConfigs } from '@/data';
+import { giscusConfigs } from '@/config/giscus';
 
-const Comment = () => {
+interface CommentProps {
+	locale: Locale
+}
+
+export default function Comment({
+	locale = 'zh-TW',
+}: CommentProps) {
 	return (
-		<Giscus theme='dark' {...giscusConfigs} />
+		<Giscus
+			theme='dark'
+			lang={locale}
+			{...giscusConfigs}
+		/>
 	);
 };
-
-export default Comment;

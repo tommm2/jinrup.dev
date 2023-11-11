@@ -2,12 +2,13 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import { useLocale } from 'next-intl';
 import { allPosts } from 'contentlayer/generated';
-import { RiArrowLeftLine, RiCalendar2Fill } from 'react-icons/ri';
+import { RiArrowLeftLine } from 'react-icons/ri';
 
 import Link from '@/components/link';
 import PageWrapper from '@/components/page-wrapper';
 import ViewCounter from '@/components/view-counter';
 import MDXContent from '@/components/mdx-content';
+import Comment from '@/components/comment';
 import { formatDate } from '@/utils/date';
 
 export async function generateStaticParams() {
@@ -51,7 +52,7 @@ interface BlogLayoutProps {
 }
 
 const BlogLayout = ({ params }: BlogLayoutProps) => {
-	const locale = useLocale();
+	const locale = useLocale() as Locale;
 	const post = allPosts.find((post) => post.slug === params.slug && post.language === locale);
 
 	if (!post) {
@@ -90,6 +91,7 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 				/>
 			</div>
 			<MDXContent code={post.body.code} />
+			<Comment locale={locale} />
 		</PageWrapper>
 	);
 };

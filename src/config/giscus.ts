@@ -1,6 +1,6 @@
 import { GiscusProps } from '@giscus/react';
 
-const giscusConfigs: GiscusProps = {
+export const giscusConfigs: GiscusProps = {
 	repo: 'tommm2/personal-website',
 	repoId: 'R_kgDOKCNxfg',
 	category: 'Announcements',
@@ -12,4 +12,3 @@ const giscusConfigs: GiscusProps = {
 	loading: 'lazy',
 };
 
-export default giscusConfigs;
