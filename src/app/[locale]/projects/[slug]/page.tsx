@@ -5,7 +5,6 @@ import { allProjects } from 'contentlayer/generated';
 
 import MDXContent from '@/components/mdx-content';
 import Link from '@/components/link';
-import PageWrapper from '@/components/page-wrapper';
 import Image from 'next/image';
 
 export async function generateStaticParams() {
@@ -55,7 +54,7 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 	const { image, imageMeta, title } = project;
 
 	return (
-		<PageWrapper>
+		<>
 			<Link
 				className='-ml-2 mb-8 inline-flex items-center gap-1 p-2 transition-colors duration-300 hover:text-base-100'
 				isBlock
@@ -77,7 +76,7 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 				/>
 			</div>
 			<MDXContent code={project.body.code} />
-		</PageWrapper>
+		</>
 	);
 };
 

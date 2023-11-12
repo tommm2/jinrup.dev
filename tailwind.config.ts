@@ -44,7 +44,7 @@ export default {
 			animation: {
 				in: 'in .6s both',
 				'in-reverse': 'in-reverse .6s both',
-			  },
+			},
 		},
 	},
 	plugins: [

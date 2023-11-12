@@ -5,7 +5,6 @@ import { allPosts } from 'contentlayer/generated';
 import { RiArrowLeftLine } from 'react-icons/ri';
 
 import Link from '@/components/link';
-import PageWrapper from '@/components/page-wrapper';
 import ViewCounter from '@/components/view-counter';
 import MDXContent from '@/components/mdx-content';
 import Comment from '@/components/comment';
@@ -62,7 +61,7 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 	const { imageMeta, image, title, publishedAt, slug } = post;
 
 	return (
-		<PageWrapper>
+		<>
 			<Link
 				className='-ml-2 mb-8 inline-flex items-center gap-1 p-2 transition-colors duration-300 hover:text-base-100'
 				isBlock
@@ -95,7 +94,7 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 			</div>
 			<MDXContent code={post.body.code} />
 			<Comment locale={locale} />
-		</PageWrapper>
+		</>
 	);
 };
 

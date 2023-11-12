@@ -5,7 +5,6 @@ import { allProjects } from 'contentlayer/generated';
 
 import ProjectCard from '@/components/project-card';
 import Link from '@/components/link';
-import PageWrapper from '@/components/page-wrapper';
 import GradientText from '@/components/gradient-text';
 import { siteConfig } from '@/config/site';
 
@@ -28,7 +27,7 @@ const ProjectsPage = () => {
 	const projects = allProjects.filter((item) => item.language === locale);
 
 	return (
-		<PageWrapper>
+		<>
 			<GradientText
 				className='mb-2 animate-in from-primary-500 to-accent-500 text-3xl font-bold'
 				as='h1'
@@ -64,7 +63,7 @@ const ProjectsPage = () => {
 					/>
 				))}
 			</div>
-		</PageWrapper>
+		</>
 	);
 };
 

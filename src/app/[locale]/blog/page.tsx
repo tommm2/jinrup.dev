@@ -4,7 +4,6 @@ import { getTranslator } from 'next-intl/server';
 import { compareDesc } from 'date-fns';
 import { allPosts } from 'contentlayer/generated';
 
-import PageWrapper from '@/components/page-wrapper';
 import FilterPosts from '@/components/filter-posts';
 import GradientText from '@/components/gradient-text';
 
@@ -31,7 +30,7 @@ const BlogPage = () => {
 		);
 
 	return (
-		<PageWrapper>
+		<>
 			<GradientText
 				className='mb-2 animate-in from-primary-500 to-accent-500 text-3xl font-bold'
 				as='h1'
@@ -53,7 +52,7 @@ const BlogPage = () => {
 				placeholder={t('common.placeholder')}
 				remindText={t('common.noResults')}
 			/>
-		</PageWrapper>
+		</>
 	);
 };
 

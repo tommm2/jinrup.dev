@@ -1,12 +1,12 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import clsx from 'clsx';
 import { unstable_setRequestLocale, getTranslator } from 'next-intl/server';
 
 import BackToTop from '@/components/back-to-top';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import { locales } from '@/lib/navigation';
-import { cn } from '@/utils/cn';
 import { fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
 
@@ -82,13 +82,15 @@ const LocaleLayout = ({ children, params: { locale } }: LocaleLayoutProps) => {
 			suppressHydrationWarning
 		>
 			<body
-				className={cn(
-					'min-h-screen bg-base-900 font-sans text-base-200 antialiased overflow-x-hidden',
+				className={clsx(
+					'min-h-screen overflow-x-hidden bg-base-900 font-sans text-base-200 antialiased',
 					fontSans.variable,
 				)}
 			>
 				<Navbar />
-				{children}
+				<main className='mx-auto mt-12 min-h-[calc(100vh_-_56px_-_196px)] max-w-[43.75rem] px-8'>
+					{children}
+				</main>
 				<Footer />
 				<BackToTop />
 			</body>
