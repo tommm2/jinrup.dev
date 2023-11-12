@@ -15,7 +15,7 @@ import '@/styles/app.css';
 export async function generateMetadata({
 	params: { locale },
 }: {
-	params: { locale: Locale }
+	params: { locale: Locale };
 }): Promise<Metadata> {
 	const t = await getTranslator(locale, 'homePage');
 
@@ -58,21 +58,18 @@ export async function generateMetadata({
 		// 	shortcut: '',
 		// },
 	};
-};
+}
 
 export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }));
 }
 
 interface LocaleLayoutProps {
-	children: React.ReactNode
-	params: { locale: string }
+	children: React.ReactNode;
+	params: { locale: string };
 }
 
-const LocaleLayout = ({
-	children,
-	params: { locale },
-}: LocaleLayoutProps) => {
+const LocaleLayout = ({ children, params: { locale } }: LocaleLayoutProps) => {
 	const isValidLocale = locales.some((current) => current === locale);
 
 	if (!isValidLocale) notFound();
@@ -80,8 +77,16 @@ const LocaleLayout = ({
 	unstable_setRequestLocale(locale);
 
 	return (
-		<html lang={locale} suppressHydrationWarning>
-			<body className={cn('min-h-screen bg-base-900 font-sans text-base-200 antialiased overflow-x-hidden', fontSans.variable)}>
+		<html
+			lang={locale}
+			suppressHydrationWarning
+		>
+			<body
+				className={cn(
+					'min-h-screen bg-base-900 font-sans text-base-200 antialiased overflow-x-hidden',
+					fontSans.variable,
+				)}
+			>
 				<Navbar />
 				{children}
 				<Footer />

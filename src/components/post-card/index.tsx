@@ -28,7 +28,7 @@ const PostCard = ({ post }: PostCardProps) => {
 					blurDataURL={imageMeta.blur64}
 				/>
 				<div className='space-y-1'>
-					<h2 className='font-bold'>
+					<h2 className='text-lg font-bold'>
 						{title}
 					</h2>
 					<p className='line-clamp-2 text-sm text-base-300/80'>{description}</p>

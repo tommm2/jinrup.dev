@@ -67,7 +67,7 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 			<div className='mb-12'>
 				<h1 className='my-3 text-3xl font-bold'>{title}</h1>
 				<Image
-					className='aspect-[2_/_1] h-auto w-full rounded-xl object-cover object-center'
+					className='aspect-[4_/_3] h-auto w-full rounded-xl object-cover object-center'
 					width={imageMeta.size.width || 700}
 					height={imageMeta.size.width || 500}
 					src={image}

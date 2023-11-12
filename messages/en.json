@@ -19,5 +19,8 @@
 	"projectsPage": {
 		"description": "Here are some of the projects I've worked on.",
 		"titleSection": "Here are some of the projects I've worked on, check out my <link>Github</link> for more!"
+	},
+	"aboutPage": {
+		"description": "About my work experience, learning record, etc..."
 	}
 }

@@ -20,5 +20,8 @@
 	"projectsPage": {
 		"description": "這裡會展示一些之前做的專案!",
 		"titleSection": "以下是一些我曾經做過的專案，想看更多可以到我的 <link>Github</link>瀏覽"
+	},
+	"aboutPage": {
+		"description": "關於我的工作經歷、學習記錄等等..."
 	}
 }

@@ -18,22 +18,20 @@ export async function generateStaticParams() {
 export async function generateMetadata({
 	params,
 }: {
-	params: { locale: Locale, slug: string }
+	params: { locale: Locale; slug: string };
 }): Promise<Metadata | undefined> {
-	const post = allPosts.find((post) => post.slug === params.slug && post.language === params.slug);
+	const post = allPosts.find(
+		(post) => post.slug === params.slug && post.language === params.slug,
+	);
 
 	if (!post) {
 		return;
 	}
 
-	const {
-		title,
-		publishedAt: publishedTime,
-		description,
-		slug,
-	} = post;
+	const { title, publishedAt: publishedTime, description, slug } = post;
 
 	return {
+		title,
 		description,
 		openGraph: {
 			type: 'article',
@@ -47,13 +45,15 @@ export async function generateMetadata({
 
 interface BlogLayoutProps {
 	params: {
-		slug: string
-	}
+		slug: string;
+	};
 }
 
 const BlogLayout = ({ params }: BlogLayoutProps) => {
 	const locale = useLocale() as Locale;
-	const post = allPosts.find((post) => post.slug === params.slug && post.language === locale);
+	const post = allPosts.find(
+		(post) => post.slug === params.slug && post.language === locale,
+	);
 
 	if (!post) {
 		return;
@@ -77,7 +77,10 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 						{formatDate(publishedAt)}
 					</time>
 					<span>．</span>
-					<ViewCounter slug={slug} />
+					<ViewCounter
+						slug={slug}
+						isViewTracking
+					/>
 				</div>
 				<h1 className='my-3 text-3xl font-bold'>{post.title}</h1>
 				<Image

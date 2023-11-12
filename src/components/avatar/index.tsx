@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import GradientText from '../gradient-text';
 
-const Avatar = () => {
+function Avatar() {
 	return (
 		<div className='mb-8 space-y-4'>
 			<span className='flex items-center gap-4'>

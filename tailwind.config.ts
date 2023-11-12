@@ -47,9 +47,6 @@ export default {
 			  },
 		},
 	},
-	future: {
-		hoverOnlyWhenSupported: true,
-	},
 	plugins: [
 		require('@tailwindcss/typography'),
 		require('tailwindcss/nesting'),

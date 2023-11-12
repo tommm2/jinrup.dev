@@ -1,10 +1,25 @@
-import { useLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import { allPages } from 'contentlayer/generated';
+import { useLocale } from 'next-intl';
+import { getTranslator } from 'next-intl/server';
 
 import GradientText from '@/components/gradient-text';
 import PageWrapper from '@/components/page-wrapper';
 import MDXContent from '@/components/mdx-content';
+
+export async function generateMetadata({
+	params: { locale },
+}: {
+	params: { locale: Locale };
+}): Promise<Metadata> {
+	const t = await getTranslator(locale, 'aboutPage');
+
+	return {
+		title: 'About',
+		description: t('description'),
+	};
+}
 
 export default function AboutPage() {
 	const currentLocale = useLocale() as Locale;
