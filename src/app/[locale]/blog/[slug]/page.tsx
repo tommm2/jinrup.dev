@@ -58,7 +58,7 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 		return;
 	}
 
-	const { imageMeta, image, title, publishedAt, slug } = post;
+	const { image, title, publishedAt, slug } = post;
 
 	return (
 		<>
@@ -83,13 +83,12 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 				</div>
 				<h1 className='my-3 text-3xl font-bold'>{post.title}</h1>
 				<Image
-					className='aspect-[2_/_1] h-auto w-full rounded-xl object-cover object-center'
-					width={imageMeta.size.width || 700}
-					height={imageMeta.size.width || 500}
+					className='max-h-[22.5rem] w-full rounded-xl object-cover object-center'
+					width={800}
+					height={600}
 					src={image}
 					alt={title}
-					placeholder='blur'
-					blurDataURL={imageMeta.blur64}
+					priority
 				/>
 			</div>
 			<MDXContent code={post.body.code} />

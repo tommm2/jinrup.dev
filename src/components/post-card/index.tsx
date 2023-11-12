@@ -10,7 +10,7 @@ interface PostCardProps {
 }
 
 const PostCard = ({ post }: PostCardProps) => {
-	const { slug, title, publishedAt, image, description, imageMeta } = post;
+	const { slug, title, publishedAt, image, description } = post;
 
 	return (
 		<li className='group relative'>
@@ -19,13 +19,12 @@ const PostCard = ({ post }: PostCardProps) => {
 				href={`/blog/${slug}`}
 			>
 				<Image
-					className='aspect-[5_/_3] min-h-full rounded object-cover object-center sm:max-w-[10rem]'
-					width={imageMeta.size.width || 144}
-					height={imageMeta.size.width || 72}
+					className='w-full rounded-md sm:max-w-[10rem]'
+					width={800}
+					height={600}
 					src={image}
 					alt={title}
-					placeholder='blur'
-					blurDataURL={imageMeta.blur64}
+					priority
 				/>
 				<div className='space-y-1'>
 					<h2 className='text-lg font-bold'>

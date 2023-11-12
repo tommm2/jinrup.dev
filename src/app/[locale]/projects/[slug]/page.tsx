@@ -51,7 +51,7 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 		return;
 	}
 
-	const { image, imageMeta, title } = project;
+	const { image, title } = project;
 
 	return (
 		<>
@@ -66,13 +66,12 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 			<div className='mb-12'>
 				<h1 className='my-3 text-3xl font-bold'>{title}</h1>
 				<Image
-					className='aspect-[4_/_3] h-auto w-full rounded-xl object-cover object-center'
-					width={imageMeta.size.width || 700}
-					height={imageMeta.size.width || 500}
+					className='max-h-[22.5rem] w-full rounded-xl object-cover object-center'
+					width={800}
+					height={600}
 					src={image}
 					alt={title}
-					placeholder='blur'
-					blurDataURL={imageMeta.blur64}
+					priority
 				/>
 			</div>
 			<MDXContent code={project.body.code} />

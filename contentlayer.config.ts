@@ -3,8 +3,6 @@ import remarkGfm from 'remark-gfm';
 import rehypePrettyCode from 'rehype-pretty-code';
 import { visit } from 'unist-util-visit';
 
-import imageMetadata, { getBlurData } from './src/lib/image-metadata';
-
 const computedFields: ComputedFields = {
 	slug: {
 		type: 'string',
@@ -34,10 +32,6 @@ export const Post = defineDocumentType(() => ({
 				return date.getFullYear();
 			},
 		},
-		imageMeta: {
-			type: 'json',
-			resolve: async (doc) => getBlurData(doc.image),
-		},
 	},
 }));
 
@@ -52,13 +46,7 @@ export const Project = defineDocumentType(() => ({
 		language: { type: 'string', required: true },
 		tags: { type: 'list', of: { type: 'string' } },
 	},
-	computedFields: {
-		...computedFields,
-		imageMeta: {
-			type: 'json',
-			resolve: async (doc) => getBlurData(doc.image),
-		},
-	},
+	computedFields,
 }));
 
 export const Page = defineDocumentType(() => ({
@@ -82,7 +70,6 @@ export default makeSource({
 		},
 		remarkPlugins: [remarkGfm],
 		rehypePlugins: [
-			imageMetadata,
 			() => (tree) => {
 				visit(tree, (node) => {
 				  if (node?.type === 'element' && node?.tagName === 'pre') {
