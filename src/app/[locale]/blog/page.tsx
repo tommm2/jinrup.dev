@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { useLocale, useTranslations } from 'next-intl';
-import { getTranslator } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { compareDesc } from 'date-fns';
 import { allPosts } from 'contentlayer/generated';
 
@@ -12,7 +12,7 @@ export async function generateMetadata({
 }: {
 	params: { locale: Locale };
 }): Promise<Metadata> {
-	const t = await getTranslator(locale, 'blogPage');
+	const t = await getTranslations('blogPage');
 
 	return {
 		title: 'Blog',

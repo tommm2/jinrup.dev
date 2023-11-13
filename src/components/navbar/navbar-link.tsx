@@ -15,7 +15,7 @@ const NavbarLink = ({
 	title,
 	href,
 }: NavbarLinkProps) => {
-	const pathname = usePathname() || '/';
+	const pathname = usePathname();
 	const isActive = pathname.includes(href);
 
 	if (type === 'mobile') {

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { useLocale, useTranslations } from 'next-intl';
-import { getTranslator } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { allProjects } from 'contentlayer/generated';
 
 import ProjectCard from '@/components/project-card';
@@ -13,7 +13,7 @@ export async function generateMetadata({
 }: {
 	params: { locale: string };
 }): Promise<Metadata> {
-	const t = await getTranslator(params.locale, 'projectsPage');
+	const t = await getTranslations('projectsPage');
 
 	return {
 		title: 'Projects',

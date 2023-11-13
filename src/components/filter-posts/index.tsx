@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { RiSearch2Line } from 'react-icons/ri';
 import { type Post } from 'contentlayer/generated';
 
 import PostCard from '@/components/post-card';
 import { groupBy } from '@/utils/helpers';
-import { RiSearch2Line } from 'react-icons/ri';
 
 function getGroupPostsWithYear(posts: Post[], query: string) {
 	if (!posts) return [];

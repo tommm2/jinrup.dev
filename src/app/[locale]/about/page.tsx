@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { allPages } from 'contentlayer/generated';
 import { useLocale } from 'next-intl';
-import { getTranslator } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 
 import GradientText from '@/components/gradient-text';
 import MDXContent from '@/components/mdx-content';
@@ -12,7 +12,7 @@ export async function generateMetadata({
 }: {
 	params: { locale: Locale };
 }): Promise<Metadata> {
-	const t = await getTranslator(locale, 'aboutPage');
+	const t = await getTranslations('aboutPage');
 
 	return {
 		title: 'About',

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import clsx from 'clsx';
-import { unstable_setRequestLocale, getTranslator } from 'next-intl/server';
+import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
 
 import BackToTop from '@/components/back-to-top';
 import Navbar from '@/components/navbar';
@@ -10,14 +10,12 @@ import { locales } from '@/lib/navigation';
 import { fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
 
-import '@/styles/app.css';
-
 export async function generateMetadata({
 	params: { locale },
 }: {
 	params: { locale: Locale };
 }): Promise<Metadata> {
-	const t = await getTranslator(locale, 'homePage');
+	const t = await getTranslations('homePage');
 
 	return {
 		title: {
