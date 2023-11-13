@@ -3,15 +3,19 @@
 import Link from '@/components/link';
 import { locales, usePathname } from '@/lib/navigation';
 
-const LocaleMenu = () => {
+type LocaleMenuProps = {
+	currentLocale: Locale;
+}
+
+const LocaleMenu = ({ currentLocale }: LocaleMenuProps) => {
 	const pathname = usePathname();
 
 	return (
 		<div className='flex w-40 flex-col gap-1 px-2 text-sm'>
 			{locales.map(locale => {
-				const isDefaultLocale = locale === 'zh-TW';
-				const text = isDefaultLocale ? '繁體中文' : 'English';
-				const icon = isDefaultLocale ? '🇹🇼' : '🇺🇸';
+				const isMatchCurrentLocale = locale === currentLocale;
+				const text = isMatchCurrentLocale ? '繁體中文' : 'English';
+				const icon = isMatchCurrentLocale ? '🇹🇼' : '🇺🇸';
 
 				return (
 					<Link

@@ -1,14 +1,20 @@
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
-import clsx from 'clsx';
 import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
 
 import BackToTop from '@/components/back-to-top';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import { locales } from '@/lib/navigation';
+import { cn } from '@/utils/cn';
 import { fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
+
+export const viewPort: Viewport = {
+	themeColor: [
+		{ media: '(prefers-color-scheme: dark)', color: '#171717' },
+	],
+};
 
 export async function generateMetadata({
 	params: { locale },
@@ -33,7 +39,6 @@ export async function generateMetadata({
 			siteName: siteConfig.name,
 			images: [],
 		},
-		themeColor: { media: '(prefers-color-scheme: dark)', color: 'black' },
 		robots: {
 			index: true,
 			follow: true,
@@ -47,9 +52,6 @@ export async function generateMetadata({
 		},
 		alternates: {
 			canonical: siteConfig.siteUrl,
-			// types: {
-			// 	'application/rss+xml': [{ url: 'https://nextui.org/feed.xml', title: 'NextUI RSS Feed' }],
-			// },
 		},
 		// manifest: '',
 		// icons: {
@@ -67,7 +69,10 @@ interface LocaleLayoutProps {
 	params: { locale: string };
 }
 
-const LocaleLayout = ({ children, params: { locale } }: LocaleLayoutProps) => {
+const LocaleLayout = ({
+	children,
+	params: { locale },
+}: LocaleLayoutProps) => {
 	const isValidLocale = locales.some((current) => current === locale);
 
 	if (!isValidLocale) notFound();
@@ -76,15 +81,13 @@ const LocaleLayout = ({ children, params: { locale } }: LocaleLayoutProps) => {
 
 	return (
 		<html
+			className={cn(
+				'bg-base-900 font-sans text-base-200',
+				fontSans.variable,
+			)}
 			lang={locale}
-			suppressHydrationWarning
 		>
-			<body
-				className={clsx(
-					'min-h-screen overflow-x-hidden bg-base-900 font-sans text-base-200 antialiased',
-					fontSans.variable,
-				)}
-			>
+			<body className='min-h-screen overflow-x-hidden bg-base-900 font-sans text-base-200 antialiased'>
 				<Navbar />
 				<main className='mx-auto mt-12 min-h-[calc(100vh_-_56px_-_196px)] max-w-[43.75rem] px-8'>
 					{children}

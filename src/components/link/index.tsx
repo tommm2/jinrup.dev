@@ -7,7 +7,6 @@ import { cn } from '@/utils/cn';
 interface LinkProps extends ComponentProps<'a'> {
 	showAnchorIcon?: boolean
 	anchorIcon?: React.ReactNode
-	isBlock?: boolean
 	locale?: Locale | undefined
 }
 
@@ -17,15 +16,10 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>((props: LinkProps, ref) =>
 		href = '',
 		showAnchorIcon = false,
 		anchorIcon = <RiExternalLinkLine className='mx-1 inline-flex self-center text-current' />,
-		isBlock = false,
 		locale,
 		children,
 		...otherProps
 	} = props;
-
-	const blockStyle = isBlock
-		? 'relative after:content-[""] after:bg-base-800 after:opacity-0 after:transition-opacity after:duration-300 after:rounded-xl after:absolute after:inset-0 hover:after:opacity-100 after:-z-10'
-		: '';
 
 	if (href.startsWith('http')) {
 		otherProps.rel = otherProps.rel ?? 'noopener noreferrer';
@@ -35,7 +29,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>((props: LinkProps, ref) =>
 	if (href.startsWith('/')) {
 		return (
 			<NextIntlLink
-				className={cn(className, blockStyle)}
+				className={cn(className)}
 				href={href}
 				locale={locale}
 			>
@@ -47,7 +41,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>((props: LinkProps, ref) =>
 	return (
 		<a
 			ref={ref}
-			className={cn(className, blockStyle)}
+			className={cn(className)}
 			href={href}
 			{...otherProps}
 		>

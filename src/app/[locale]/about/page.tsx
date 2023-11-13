@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
 import { allPages } from 'contentlayer/generated';
 import { useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
@@ -7,11 +6,7 @@ import { getTranslations } from 'next-intl/server';
 import GradientText from '@/components/gradient-text';
 import MDXContent from '@/components/mdx-content';
 
-export async function generateMetadata({
-	params: { locale },
-}: {
-	params: { locale: Locale };
-}): Promise<Metadata> {
+export async function generateMetadata() {
 	const t = await getTranslations('aboutPage');
 
 	return {
@@ -20,7 +15,7 @@ export async function generateMetadata({
 	};
 }
 
-export default function AboutPage() {
+const AboutPage = () => {
 	const currentLocale = useLocale() as Locale;
 	const page = allPages.find(page => page.slug === 'about' && page.language === currentLocale);
 
@@ -41,3 +36,4 @@ export default function AboutPage() {
 	);
 };
 
+export default AboutPage;

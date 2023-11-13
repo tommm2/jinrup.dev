@@ -1,12 +1,15 @@
-import { RiMenu2Line, RiTranslate2 } from 'react-icons/ri';
+import { useLocale } from 'next-intl';
+import { RiArrowDownSLine, RiMenu2Line, RiTranslate2 } from 'react-icons/ri';
 
 import Dropdown from '@/components/dropdown';
 import Link from '@/components/link';
 import navLinks from '@/data/nav-links';
+import LocaleMenu from '../locale-menu';
 import NavbarLink from './navbar-link';
-import LocaleMenu from './locale-menu';
 
 const Navbar = () => {
+	const locale = useLocale() as Locale;
+
 	return (
 		<header className='sticky top-0 z-10 h-14 bg-base-900/80 backdrop-blur'>
 			<div className='absolute -bottom-px left-11 right-20 h-px bg-gradient-to-r from-transparent via-primary-500 to-transparent'></div>
@@ -30,9 +33,14 @@ const Navbar = () => {
 					<Dropdown
 						className='hidden sm:block'
 						buttonAriaLabel='Select language'
-						buttonIcon={<RiTranslate2 className='mt-0.5' />}
+						buttonIcon={
+							<div className='flex items-center transition-opacity duration-300 hover:opacity-60'>
+								<RiTranslate2 className='mt-0.5' />
+								<RiArrowDownSLine />
+							</div>
+						}
 					>
-						<LocaleMenu />
+						<LocaleMenu currentLocale={locale} />
 					</Dropdown>
 				</div>
 				<Dropdown
@@ -57,7 +65,7 @@ const Navbar = () => {
 					<p className='mx-4 mt-4 border-t border-base-700 py-2 text-sm font-medium opacity-60'>
 						Translations
 					</p>
-					<LocaleMenu />
+					<LocaleMenu currentLocale={locale} />
 				</Dropdown>
 			</div>
 		</header>

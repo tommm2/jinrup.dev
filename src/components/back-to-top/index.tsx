@@ -16,16 +16,16 @@ const BackToTop = () => {
 	}
 
 	useEffect(() => {
-		function _handleScroll() {
+		function handleScroll() {
 			const { scrollTop } = document.documentElement;
 
-			setIsVisible(scrollTop > 10);
+			setIsVisible(scrollTop > 30);
 		}
 
-		window.addEventListener('scroll', _handleScroll);
+		window.addEventListener('scroll', handleScroll);
 
 		return () => {
-			window.removeEventListener('scroll', _handleScroll);
+			window.removeEventListener('scroll', handleScroll);
 		};
 	}, []);
 
@@ -36,9 +36,9 @@ const BackToTop = () => {
 					className='fixed bottom-20 right-8 flex items-center rounded-xl bg-base-800 p-2.5'
 					type='button'
 					aria-label='back to top'
-					initial={{ opacity: 0, x: 40 }}
+					initial={{ opacity: 0, x: 20 }}
 					animate={{ opacity: 1, x: 0 }}
-					exit={{ opacity: 0, x: 40 }}
+					exit={{ opacity: 0, x: 20 }}
 					onClick={handleClick}
 				>
 					<RiArrowUpSLine className='h-6 w-6' />

@@ -1,4 +1,4 @@
-type Locale = 'zh-TW' | 'en'
+type Locale = 'zh-TW' | 'en' | undefined
 
 type Views = {
 	slug: string

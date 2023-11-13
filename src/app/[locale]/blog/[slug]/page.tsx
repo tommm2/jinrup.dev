@@ -50,9 +50,7 @@ interface BlogLayoutProps {
 
 const BlogLayout = ({ params }: BlogLayoutProps) => {
 	const locale = useLocale() as Locale;
-	const post = allPosts.find(
-		(post) => post.slug === params.slug && post.language === locale,
-	);
+	const post = allPosts.find((post) => post.slug === params.slug && post.language === locale);
 
 	if (!post) {
 		return;
@@ -63,8 +61,7 @@ const BlogLayout = ({ params }: BlogLayoutProps) => {
 	return (
 		<>
 			<Link
-				className='-ml-2 mb-8 inline-flex items-center gap-1 p-2 transition-colors duration-300 hover:text-base-100'
-				isBlock
+				className='-ml-2 mb-8 inline-flex items-center gap-1 rounded-xl p-2 text-base-300/80 transition-colors duration-300 hover:bg-base-800/60 hover:text-base-300'
 				href='/blog'
 			>
 				<RiArrowLeftLine />

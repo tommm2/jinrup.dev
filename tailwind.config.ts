@@ -13,12 +13,6 @@ export default {
 			md: '768px',
 			lg: '1024px',
 		},
-		fontWeight: {
-			light: '300',
-			normal: '400',
-			medium: '500',
-			bold: '700',
-		},
 		fontFamily: {
 			sans: [
 				'var(--font-sans)',

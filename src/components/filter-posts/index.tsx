@@ -37,11 +37,11 @@ interface PostListProps {
 	remindText?: string;
 }
 
-export default function FilterPosts({
+const FilterPosts = ({
 	posts,
 	placeholder = '',
 	remindText = '',
-}: PostListProps) {
+}: PostListProps) => {
 	const [query, setQuery] = useState('');
 
 	const groupPosts = getGroupPostsWithYear(posts, query);
@@ -65,7 +65,7 @@ export default function FilterPosts({
 			>
 				{groupPosts.map(({ year, posts }) => (
 					<div key={year}>
-						<div className='mb-4 border-base-400 text-2xl font-bold tracking-wide text-base-200'>
+						<div className='mb-4 border-base-400 text-xl font-bold tracking-wide text-base-200'>
 							{year}
 						</div>
 						<ul className='flex flex-col gap-4'>
@@ -83,3 +83,5 @@ export default function FilterPosts({
 		</>
 	);
 }
+
+export default FilterPosts;

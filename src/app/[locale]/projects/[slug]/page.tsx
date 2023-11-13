@@ -56,8 +56,7 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 	return (
 		<>
 			<Link
-				className='-ml-2 mb-8 inline-flex items-center gap-1 p-2 transition-colors duration-300 hover:text-base-100'
-				isBlock
+				className='-ml-2 mb-8 inline-flex items-center gap-1 rounded-xl p-2 text-base-300/80 transition-colors duration-300 hover:bg-base-800/60 hover:text-base-300'
 				href='/projects'
 			>
 				<RiArrowLeftLine />
