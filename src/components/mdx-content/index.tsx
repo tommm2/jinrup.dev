@@ -4,23 +4,18 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 
 import MDXComponents from '@/components/mdx-components';
 
-interface MDXContentProps {
+type MDXContentProps = {
 	code: string;
-	animateDelayIndex?: number;
 }
 
-export default function MDXContent({
-	code,
-	animateDelayIndex = 0,
-}: MDXContentProps) {
+const MDXContent = ({ code }: MDXContentProps) => {
 	const Component = useMDXComponent(code);
 
 	return (
-		<div
-			className='prose animate-in'
-			style={{ '--index': animateDelayIndex } as React.CSSProperties}
-		>
+		<div className='prose mt-5'>
 			<Component components={MDXComponents} />
 		</div>
 	);
-}
+};
+
+export default MDXContent;
