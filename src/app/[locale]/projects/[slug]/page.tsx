@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
-import { useLocale } from 'next-intl';
+import Image from 'next/image';
 import { RiArrowLeftLine } from 'react-icons/ri';
 import { allProjects } from 'contentlayer/generated';
 
 import MDXContent from '@/components/mdx-content';
 import Link from '@/components/link';
-import Image from 'next/image';
+import { getItemBySlugAndLocale } from '@/lib/contentlayer';
 
 export async function generateStaticParams() {
 	return allProjects.map((project) => ({ slug: project.slug }));
@@ -14,15 +14,20 @@ export async function generateStaticParams() {
 export async function generateMetadata({
 	params,
 }: {
-	params: { slug: string }
+	params: { slug: string, locale: Locale }
 }): Promise<Metadata | undefined> {
-	const project = allProjects.find((project) => project.slug === params.slug);
+	const project = getItemBySlugAndLocale(allProjects, params.slug, params.locale);
 
 	if (!project) {
 		return;
 	}
 
-	const { title, description, image, slug } = project;
+	const {
+		title,
+		description,
+		image,
+		slug,
+	} = project;
 
 	return {
 		title,
@@ -37,15 +42,15 @@ export async function generateMetadata({
 	};
 }
 
-interface ProjectsLayoutProps {
+type ProjectsLayoutProps = {
 	params: {
 		slug: string;
+		locale: Locale;
 	};
 }
 
 const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
-	const locale = useLocale();
-	const project = allProjects.find((project) => project.slug === params.slug && project.language === locale);
+	const project = getItemBySlugAndLocale(allProjects, params.slug, params.locale);
 
 	if (!project) {
 		return;
@@ -56,7 +61,7 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 	return (
 		<>
 			<Link
-				className='-ml-2 mb-8 inline-flex items-center gap-1 rounded-xl p-2 text-base-300/80 transition-colors duration-300 hover:bg-base-800/60 hover:text-base-300'
+				className='-ml-2 mb-8 inline-flex items-center gap-1 rounded-xl p-1.5 text-base-300/80 transition-colors duration-300 hover:bg-base-800/60 hover:text-base-300'
 				href='/projects'
 			>
 				<RiArrowLeftLine />
