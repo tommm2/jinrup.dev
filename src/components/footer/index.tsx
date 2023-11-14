@@ -10,7 +10,7 @@ const Footer = () => {
 	return (
 		<footer className='px-8'>
 			<div className='flex flex-col items-center gap-4 py-16'>
-				<div>
+				<div className='text-sm'>
 					© 2023 Tom Jin. All rights reserved.
 				</div>
 				<div className='flex items-center gap-2'>
