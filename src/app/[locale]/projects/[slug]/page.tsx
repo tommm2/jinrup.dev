@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import { RiArrowLeftLine } from 'react-icons/ri';
 import { allProjects } from 'contentlayer/generated';
 
@@ -53,13 +54,18 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 	const project = getItemBySlugAndLocale(allProjects, params.slug, params.locale);
 
 	if (!project) {
-		return;
+		notFound();
 	}
 
-	const { image, title } = project;
+	const {
+		title,
+		image,
+		language,
+	} = project;
 
 	return (
 		<>
+			{language !== params.locale ? '文章不支援目前語系' : null}
 			<Link
 				className='-ml-2 mb-8 inline-flex items-center gap-1 rounded-xl p-1.5 text-base-300/80 transition-colors duration-300 hover:bg-base-800/60 hover:text-base-300'
 				href='/projects'
@@ -67,17 +73,15 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 				<RiArrowLeftLine />
 				<span>Back to projects</span>
 			</Link>
-			<div className='mb-12'>
-				<h1 className='my-3 text-3xl font-bold'>{title}</h1>
-				<Image
-					className='max-h-[22.5rem] w-full rounded-xl object-cover object-center'
-					width={800}
-					height={600}
-					src={image}
-					alt={title}
-					priority
-				/>
-			</div>
+			<h1 className='my-3 text-3xl font-bold'>{title}</h1>
+			<Image
+				className='max-h-[22.5rem] w-full rounded-xl object-cover object-center'
+				width={800}
+				height={600}
+				src={image}
+				alt={title}
+				priority
+			/>
 			<MDXContent code={project.body.code} />
 		</>
 	);
