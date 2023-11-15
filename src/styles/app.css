@@ -5,13 +5,26 @@
 @import 'typography.css';
 
 @layer utilities {
-	.mask-dots {
-		-webkit-mask-image: radial-gradient(rgba(63, 63, 70, 0.8) 10%, transparent 0);
-		-webkit-mask-size: 8px 8px;
+	/* tool to create grid background: https://www.stefanjudis.com/blog/a-css-based-background-grid-generator/ */
+	.bg-dots {
+		@apply pointer-events-none bg-repeat bg-[length:12%_20%];
+		background-image: linear-gradient(
+				rgba(59, 130, 246, 0.15) 0.5px,
+				transparent 0.5px,
+				transparent calc(100% - 0.5px),
+				rgba(59, 130, 246, 0.15) calc(100% - 0.5px)
+			),
+			linear-gradient(
+				90deg,
+				rgba(59, 130, 246, 0.15) 0.5px,
+				transparent 0.5px,
+				transparent calc(100% - 0.5px),
+				rgba(59, 130, 246, 0.15) calc(100% - 0.5px)
+			);
 	}
 
-	.bg-dots {
-		-webkit-mask-image: radial-gradient(#000 55%, transparent 75%);
+	.mask-dots {
+		-webkit-mask-image: radial-gradient(#0a0a0a, transparent 80%);
 	}
 
 	.animate-in {

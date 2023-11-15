@@ -30,7 +30,7 @@ const FilterPosts = ({
 			>
 				<RiSearch2Line className='absolute left-2 top-2.5 h-5 w-5 text-base-500' />
 				<input
-					className='w-[18.75rem] rounded-xl border border-base-600/40 bg-base-800/20 p-2 pl-8 text-sm outline-none ring-primary-400/10 duration-300 placeholder:text-base-500 focus:border-primary-400 focus:ring-4'
+					className='w-[18.75rem] rounded-xl border border-base-600/40 bg-base-900 p-2 pl-8 text-sm outline-none ring-primary-400/10 duration-300 placeholder:text-base-500 focus:border-primary-400 focus:ring-4'
 					placeholder={placeholder}
 					onChange={(e) => setQuery(e.target.value)}
 				/>

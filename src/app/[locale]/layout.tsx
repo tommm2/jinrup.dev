@@ -68,21 +68,21 @@ const LocaleLayout = ({
 }: LocaleLayoutProps) => {
 	const isValidLocale = locales.some((current) => current === locale);
 
-	if (!isValidLocale) notFound();
+	if (!isValidLocale) {
+		notFound();
+	}
 
 	unstable_setRequestLocale(locale);
 
 	return (
 		<html
-			className={cn(
-				'bg-base-900 font-sans text-base-200',
-				fontSans.variable,
-			)}
+			className={cn('bg-base-900 font-sans text-base-200', fontSans.variable)}
 			lang={locale}
 		>
-			<body className='min-h-screen overflow-x-hidden bg-base-900 font-sans text-base-200 antialiased'>
+			<body className='min-h-screen overflow-x-hidden antialiased'>
 				<Navbar />
-				<main className='mx-auto mt-12 min-h-[calc(100vh_-_56px_-_196px)] max-w-[43.75rem] px-8'>
+				<main className='relative mx-auto mt-12 min-h-[calc(100vh_-_56px_-_196px)] max-w-[43.75rem] px-8'>
+					<div className='bg-dots mask-dots absolute top-[-10%] z-[-1] hidden h-[60%] w-full sm:block'></div>
 					{children}
 				</main>
 				<Footer />
