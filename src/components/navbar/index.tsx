@@ -1,4 +1,3 @@
-import { useLocale } from 'next-intl';
 import { RiArrowDownSLine, RiMenu2Line, RiTranslate2 } from 'react-icons/ri';
 
 import Dropdown from '@/components/dropdown';
@@ -8,8 +7,6 @@ import LocaleMenu from '../locale-menu';
 import NavbarLink from './navbar-link';
 
 const Navbar = () => {
-	const locale = useLocale() as Locale;
-
 	return (
 		<header className='sticky top-0 z-10 h-14 bg-base-900/80 backdrop-blur'>
 			<div className='absolute -bottom-px left-11 right-20 h-px bg-gradient-to-r from-transparent via-primary-500 to-transparent'></div>
@@ -40,7 +37,7 @@ const Navbar = () => {
 							</div>
 						}
 					>
-						<LocaleMenu currentLocale={locale} />
+						<LocaleMenu />
 					</Dropdown>
 				</div>
 				<Dropdown
@@ -65,7 +62,7 @@ const Navbar = () => {
 					<p className='mx-4 mt-4 border-t border-base-700 py-2 text-sm font-medium opacity-60'>
 						Translations
 					</p>
-					<LocaleMenu currentLocale={locale} />
+					<LocaleMenu />
 				</Dropdown>
 			</div>
 		</header>

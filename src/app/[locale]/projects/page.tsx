@@ -8,16 +8,15 @@ import Link from '@/components/link';
 import GradientText from '@/components/gradient-text';
 import { siteConfig } from '@/config/site';
 
-export async function generateMetadata({
-	params,
-}: {
-	params: { locale: string };
-}): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations('projectsPage');
 
 	return {
 		title: 'Projects',
 		description: t('description'),
+		alternates: {
+			canonical: 'https://tomjin.vercel.app/projects/',
+		},
 	};
 }
 
@@ -29,13 +28,13 @@ const ProjectsPage = () => {
 	return (
 		<>
 			<GradientText
-				className='mb-2 animate-in from-primary-500 to-accent-500 text-3xl font-bold'
+				className='animate-in from-primary-500 to-accent-500 text-3xl font-bold'
 				as='h1'
 			>
 				Projects
 			</GradientText>
 			<p
-				className='animate-in'
+				className='mt-5 animate-in'
 				style={{ '--index': 1 } as React.CSSProperties}
 			>
 				{t.rich('titleSection', {

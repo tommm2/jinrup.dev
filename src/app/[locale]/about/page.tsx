@@ -1,26 +1,30 @@
 import { notFound } from 'next/navigation';
-import { allPages } from 'contentlayer/generated';
 import { useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
+import { allPages } from 'contentlayer/generated';
 
 import GradientText from '@/components/gradient-text';
 import MDXContent from '@/components/mdx-content';
+import { Metadata } from 'next';
 
-export async function generateMetadata() {
+export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations('aboutPage');
 
 	return {
 		title: 'About',
 		description: t('description'),
+		alternates: {
+			canonical: 'https://tomjin.vercel.app/about/',
+		},
 	};
 }
 
 const AboutPage = () => {
-	const currentLocale = useLocale() as Locale;
-	const page = allPages.find(page => page.slug === 'about' && page.language === currentLocale);
+	const locale = useLocale() as Locale;
+	const page = allPages.find((page) => page.slug === 'about' && page.language === locale);
 
 	if (!page) {
-		return notFound();
+		notFound();
 	}
 
 	return (
@@ -31,7 +35,12 @@ const AboutPage = () => {
 			>
 				About
 			</GradientText>
-			<MDXContent animateDelayIndex={1} code={page.body.code} />
+			<div
+				className='prose mt-5 animate-in'
+				style={{ '--index': 1 } as React.CSSProperties}
+			>
+				<MDXContent code={page.body.code} />
+			</div>
 		</>
 	);
 };

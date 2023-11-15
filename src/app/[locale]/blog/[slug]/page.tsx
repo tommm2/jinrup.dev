@@ -70,24 +70,28 @@ const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
 		<>
 			{language !== params.locale ? '文章不支援目前語系' : null}
 			<Link
-				className='-ml-2 mb-8 inline-flex items-center gap-1 rounded-xl p-1.5 text-base-300/80 transition-colors duration-300 hover:bg-base-800/60 hover:text-base-300'
+				className='-ml-2 mb-8 inline-flex animate-in items-center gap-1 rounded-xl p-1.5 text-base-300/80 transition-colors duration-300 hover:bg-base-800/60 hover:text-base-300'
 				href='/blog'
 			>
 				<RiArrowLeftLine />
 				<span>Back to blog</span>
 			</Link>
-			<h1 className='text-3xl font-bold'>{title}</h1>
-			<div className='mt-3 text-base-300/60'>
-				<time dateTime={formatDate(publishedAt)}>
-					{formatDate(publishedAt)}
-				</time>
-				<span className='p-1'>．</span>
-				<ViewCounter
-					slug={slug}
-					isViewTracking
-				/>
+			<div className='animate-in'>
+				<h1 className='text-3xl font-bold'>{title}</h1>
+				<div className='mt-3 text-base-300/60'>
+					<time dateTime={formatDate(publishedAt)}>
+						{formatDate(publishedAt)}
+					</time>
+					<span className='p-1'>．</span>
+					<ViewCounter
+						slug={slug}
+						isViewTracking
+					/>
+				</div>
 			</div>
-			<MDXContent code={post.body.code} />
+			<div className='prose mt-5 animate-in'>
+				<MDXContent code={post.body.code} />
+			</div>
 			<Comment locale={params.locale} />
 		</>
 	);

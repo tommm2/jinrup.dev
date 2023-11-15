@@ -12,9 +12,7 @@ const MDXContent = ({ code }: MDXContentProps) => {
 	const Component = useMDXComponent(code);
 
 	return (
-		<div className='prose mt-5'>
-			<Component components={MDXComponents} />
-		</div>
+		<Component components={MDXComponents} />
 	);
 };
 

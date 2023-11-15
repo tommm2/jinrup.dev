@@ -1,4 +1,4 @@
-import { Metadata, Viewport } from 'next';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
 
@@ -9,12 +9,6 @@ import { locales } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
 import { fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
-
-export const viewPort: Viewport = {
-	themeColor: [
-		{ media: '(prefers-color-scheme: dark)', color: '#171717' },
-	],
-};
 
 export async function generateMetadata({
 	params: { locale },

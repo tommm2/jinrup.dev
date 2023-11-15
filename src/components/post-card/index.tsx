@@ -19,7 +19,7 @@ const PostCard = ({ post }: PostCardProps) => {
 				href={`/blog/${slug}`}
 			>
 				<Image
-					className='w-full rounded-md sm:max-w-[10rem]'
+					className='w-full rounded-md object-cover object-center sm:max-w-[9rem]'
 					width={800}
 					height={600}
 					src={image}
@@ -27,10 +27,10 @@ const PostCard = ({ post }: PostCardProps) => {
 					priority
 				/>
 				<div className='space-y-1'>
-					<h2 className='text-lg font-bold'>
+					<h2 className='text-xl font-bold'>
 						{title}
 					</h2>
-					<p className='line-clamp-2 text-sm text-base-300/80'>{description}</p>
+					<p className='line-clamp-1 text-sm text-base-300/80'>{description}</p>
 					<div className='text-sm text-base-300/60'>
 						<time dateTime={formatDate(publishedAt)}>
 							{formatDate(publishedAt)}
@@ -39,6 +39,7 @@ const PostCard = ({ post }: PostCardProps) => {
 						<ViewCounter slug={slug} />
 					</div>
 				</div>
+
 			</Link>
 			<div className='absolute -inset-2 -z-10 rounded-xl transition-colors duration-300 group-hover:bg-base-800/40'></div>
 		</li>

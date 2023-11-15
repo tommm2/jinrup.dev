@@ -31,7 +31,7 @@ function getGroupPostsWithYear(posts: Post[], query: string) {
 		.sort((a, b) => Number(b.year) - Number(a.year));
 }
 
-interface PostListProps {
+type PostListProps = {
 	posts: Post[];
 	placeholder?: string;
 	remindText?: string;
@@ -49,7 +49,7 @@ const FilterPosts = ({
 	return (
 		<>
 			<div
-				className='relative animate-in'
+				className='relative mt-4 animate-in'
 				style={{ '--index': 2 } as React.CSSProperties}
 			>
 				<RiSearch2Line className='absolute left-2 top-2.5 h-5 w-5 text-base-500' />
@@ -60,12 +60,12 @@ const FilterPosts = ({
 				/>
 			</div>
 			<div
-				className='mt-20 flex animate-in flex-col gap-8'
+				className='mt-16 flex animate-in flex-col gap-8'
 				style={{ '--index': 3 } as React.CSSProperties}
 			>
 				{groupPosts.map(({ year, posts }) => (
 					<div key={year}>
-						<div className='mb-4 border-base-400 text-xl font-bold tracking-wide text-base-200'>
+						<div className='mb-4 border-b border-dashed border-base-800 text-xl font-bold tracking-wide text-base-200'>
 							{year}
 						</div>
 						<ul className='flex flex-col gap-4'>
@@ -82,6 +82,6 @@ const FilterPosts = ({
 			</div>
 		</>
 	);
-}
+};
 
 export default FilterPosts;

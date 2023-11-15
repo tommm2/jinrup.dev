@@ -73,16 +73,20 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 				<RiArrowLeftLine />
 				<span>Back to projects</span>
 			</Link>
-			<h1 className='my-3 text-3xl font-bold'>{title}</h1>
-			<Image
-				className='max-h-[22.5rem] w-full rounded-xl object-cover object-center'
-				width={800}
-				height={600}
-				src={image}
-				alt={title}
-				priority
-			/>
-			<MDXContent code={project.body.code} />
+			<div className='animate-in'>
+				<h1 className='my-3 text-3xl font-bold'>{title}</h1>
+				<Image
+					className='max-h-[22.5rem] w-full rounded-xl object-cover object-center'
+					width={800}
+					height={600}
+					src={image}
+					alt={title}
+					priority
+				/>
+				<div className='prose mt-5'>
+					<MDXContent code={project.body.code} />
+				</div>
+			</div>
 		</>
 	);
 };

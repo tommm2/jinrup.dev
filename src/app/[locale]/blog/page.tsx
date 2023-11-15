@@ -7,16 +7,15 @@ import { allPosts } from 'contentlayer/generated';
 import FilterPosts from '@/components/filter-posts';
 import GradientText from '@/components/gradient-text';
 
-export async function generateMetadata({
-	params: { locale },
-}: {
-	params: { locale: Locale };
-}): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations('blogPage');
 
 	return {
 		title: 'Blog',
 		description: t('description'),
+		alternates: {
+			canonical: 'https://tomjin.vercel.app/blog/',
+		},
 	};
 }
 
@@ -32,13 +31,13 @@ const BlogPage = () => {
 	return (
 		<>
 			<GradientText
-				className='mb-2 animate-in from-primary-500 to-accent-500 text-3xl font-bold'
+				className='animate-in from-primary-500 to-accent-500 text-3xl font-bold'
 				as='h1'
 			>
 				Blog
 			</GradientText>
 			<p
-				className='mb-8 animate-in'
+				className='mt-5 animate-in'
 				style={{ '--index': 1 } as React.CSSProperties}
 			>
 				{t.rich('blogPage.titleSection', {
