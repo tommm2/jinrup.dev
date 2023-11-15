@@ -66,12 +66,10 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 	const {
 		title,
 		image,
-		language,
 	} = project;
 
 	return (
 		<>
-			{language !== params.locale ? '文章不支援目前語系' : null}
 			<Link
 				className='-ml-2 mb-8 inline-flex items-center gap-1 rounded-xl p-1.5 text-base-300/80 transition-colors duration-300 hover:bg-base-800/60 hover:text-base-300'
 				href='/projects'
