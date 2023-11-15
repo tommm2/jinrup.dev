@@ -5,17 +5,16 @@ import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
 import BackToTop from '@/components/back-to-top';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
-import { locales } from '@/lib/navigation';
+import { getUrlWithLocale, locales } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
 import { fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
 
 export async function generateMetadata({
 	params: { locale },
-}: {
-	params: { locale: Locale };
-}): Promise<Metadata> {
+}: { params: { locale: Locale }}): Promise<Metadata> {
 	const t = await getTranslations('homePage');
+	const url = getUrlWithLocale(locale, '');
 
 	return {
 		title: {
@@ -29,7 +28,7 @@ export async function generateMetadata({
 			locale,
 			title: siteConfig.name,
 			description: t('description'),
-			url: siteConfig.siteUrl,
+			url,
 			siteName: siteConfig.name,
 			images: [],
 		},
@@ -45,7 +44,7 @@ export async function generateMetadata({
 			},
 		},
 		alternates: {
-			canonical: siteConfig.siteUrl,
+			canonical: url,
 		},
 		// manifest: '',
 		// icons: {

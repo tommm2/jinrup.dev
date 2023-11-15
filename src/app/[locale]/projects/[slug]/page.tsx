@@ -7,6 +7,7 @@ import { allProjects } from 'contentlayer/generated';
 import MDXContent from '@/components/mdx-content';
 import Link from '@/components/link';
 import { getItemBySlugAndLocale } from '@/lib/contentlayer';
+import { getUrlWithLocale } from '@/lib/navigation';
 
 export async function generateStaticParams() {
 	return allProjects.map((project) => ({ slug: project.slug }));
@@ -30,6 +31,8 @@ export async function generateMetadata({
 		slug,
 	} = project;
 
+	const url = getUrlWithLocale(params.locale, 'projects', slug);
+
 	return {
 		title,
 		description,
@@ -37,8 +40,11 @@ export async function generateMetadata({
 			type: 'article',
 			title,
 			description,
-			url: `https://tomjin.vercel.app/projects/${slug}`,
+			url,
 			images: image,
+		},
+		alternates: {
+			canonical: url,
 		},
 	};
 }

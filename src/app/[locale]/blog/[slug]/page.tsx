@@ -9,6 +9,7 @@ import MDXContent from '@/components/mdx-content';
 import Comment from '@/components/comment';
 import { getItemBySlugAndLocale } from '@/lib/contentlayer';
 import { formatDate } from '@/utils/date';
+import { getUrlWithLocale } from '@/lib/navigation';
 
 export async function generateStaticParams() {
 	return allPosts.map((post) => ({ slug: post.slug }));
@@ -32,6 +33,8 @@ export async function generateMetadata({
 		slug,
 	} = post;
 
+	const url = getUrlWithLocale(params.locale, 'blog', slug);
+
 	return {
 		title,
 		description,
@@ -40,7 +43,10 @@ export async function generateMetadata({
 			title,
 			description,
 			publishedTime: publishedAt,
-			url: `https://tomjin.vercel.app/blog/${slug}`,
+			url,
+		},
+		alternates: {
+			canonical: url,
 		},
 	};
 }

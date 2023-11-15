@@ -9,6 +9,6 @@ export const siteConfig = {
 	siteUrl: 'https://tomjin.vercel.app',
 	links: {
 		github: 'https://github.com/tommm2',
-		linkedin: 'https://www.linkedin.com/in/jinrup/',
+		linkedin: 'https://www.linkedin.com/in/jinrup',
 	},
 };

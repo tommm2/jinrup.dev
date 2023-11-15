@@ -1,20 +1,24 @@
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import { useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { allPages } from 'contentlayer/generated';
 
 import GradientText from '@/components/gradient-text';
 import MDXContent from '@/components/mdx-content';
-import { Metadata } from 'next';
+import { getUrlWithLocale } from '@/lib/navigation';
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+	params,
+}: { params: { locale: Locale }}): Promise<Metadata> {
 	const t = await getTranslations('aboutPage');
+	const url = getUrlWithLocale(params.locale, 'about');
 
 	return {
 		title: 'About',
 		description: t('description'),
 		alternates: {
-			canonical: 'https://tomjin.vercel.app/about/',
+			canonical: url,
 		},
 	};
 }

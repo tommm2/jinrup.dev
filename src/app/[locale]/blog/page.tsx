@@ -6,15 +6,19 @@ import { allPosts } from 'contentlayer/generated';
 
 import FilterPosts from '@/components/filter-posts';
 import GradientText from '@/components/gradient-text';
+import { getUrlWithLocale } from '@/lib/navigation';
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+	params,
+}: { params: { locale: Locale }}): Promise<Metadata> {
 	const t = await getTranslations('blogPage');
+	const url = getUrlWithLocale(params.locale, 'blog');
 
 	return {
 		title: 'Blog',
 		description: t('description'),
 		alternates: {
-			canonical: 'https://tomjin.vercel.app/blog/',
+			canonical: url,
 		},
 	};
 }

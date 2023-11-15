@@ -7,15 +7,19 @@ import ProjectCard from '@/components/project-card';
 import Link from '@/components/link';
 import GradientText from '@/components/gradient-text';
 import { siteConfig } from '@/config/site';
+import { getUrlWithLocale } from '@/lib/navigation';
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+	params,
+}: { params: { locale: Locale }}): Promise<Metadata> {
 	const t = await getTranslations('projectsPage');
+	const url = getUrlWithLocale(params.locale, 'projects');
 
 	return {
 		title: 'Projects',
 		description: t('description'),
 		alternates: {
-			canonical: 'https://tomjin.vercel.app/projects/',
+			canonical: url,
 		},
 	};
 }
