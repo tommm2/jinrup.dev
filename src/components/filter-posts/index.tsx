@@ -41,7 +41,7 @@ const FilterPosts = ({
 			>
 				{groupPosts.map(({ year, posts }) => (
 					<div key={year}>
-						<div className='mb-4 border-b border-dashed border-base-800 text-xl font-bold tracking-wide text-base-200'>
+						<div className='mb-4 text-xl font-bold tracking-wide text-base-200'>
 							{year}
 						</div>
 						<ul className='flex flex-col gap-4'>
