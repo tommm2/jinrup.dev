@@ -23,15 +23,16 @@ const CopyButton = ({
 	return (
 		<button
 			className={cn(
-				'absolute right-3 rounded-md border bg-base-700/60 border-base-700 p-2 opacity-0 transition-all group-hover:opacity-100',
+				'absolute right-3 rounded-md border bg-base-800 border-base-700/60 p-2 opacity-0 transition-all group-hover:opacity-100',
 				{ 'text-primary-500': isCopied },
 				className,
 			)}
-			aria-label='Click to clipboard'
+			title='copy code'
+			aria-label='copy code'
 			disabled={isCopied}
 			onClick={_handleCopy}
 		>
-			{isCopied ? <RiCheckFill className='text-emerald-500' /> : <RiFileCopy2Fill />}
+			{isCopied ? <RiCheckFill /> : <RiFileCopy2Fill />}
 		</button>
 	);
 };

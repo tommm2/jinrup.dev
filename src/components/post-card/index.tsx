@@ -41,7 +41,7 @@ const PostCard = ({ post }: PostCardProps) => {
 				</div>
 
 			</Link>
-			<div className='absolute -inset-2 -z-10 rounded-xl transition-colors duration-300 group-hover:bg-base-800/40'></div>
+			<div className='absolute -inset-2 -z-10 rounded-md transition-colors duration-300 group-hover:bg-base-800/40'></div>
 		</li>
 	);
 };

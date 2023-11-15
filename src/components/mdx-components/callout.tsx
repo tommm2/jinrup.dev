@@ -36,9 +36,7 @@ const Callout = ({
 	emoji = EmojiMap[type],
 }: CalloutProps) => {
 	return (
-		<div
-			className={cn('overflow-x-auto mt-6 flex rounded-xl border py-2 pr-4', classes[type])}
-		>
+		<div className={cn('overflow-x-auto mt-6 flex rounded-md border py-2 pr-4', classes[type])}>
 			<div className='select-none pl-3 pr-2 pt-1 text-xl'>
 				{emoji}
 			</div>
