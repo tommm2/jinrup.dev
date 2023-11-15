@@ -7,7 +7,8 @@
 		"noResults": "No Search Results",
 		"blog": "Blog",
 		"projects": "Projects",
-		"about": "About"
+		"about": "About",
+		"noSupport": "The article does not support the current language."
 	},
 	"homePage": {
 		"description": "Hey, I'm Tom Jin! I'm passionate about building web application. I like learning new technologies."

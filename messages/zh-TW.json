@@ -8,7 +8,8 @@
 		"noResults": "查無結果",
 		"blog": "部落格",
 		"projects": "專案",
-		"about": "關於"
+		"about": "關於",
+		"noSupport": "文章不支援目前語系"
 	},
 	"homePage": {
 		"description": "哈囉，我是 Tom Jin！我熱衷於開發網頁應用程式。我喜歡學習新技術。"
