@@ -82,7 +82,7 @@ const LocaleLayout = ({
 			<body className='min-h-screen overflow-x-hidden antialiased'>
 				<Navbar />
 				<main className='relative mx-auto mt-12 min-h-[calc(100vh_-_56px_-_196px)] max-w-[43.75rem] px-8'>
-					<div className='bg-dots mask-dots absolute top-[-10%] z-[-1] hidden h-[60%] w-full sm:block'></div>
+					<div className='bg-dots mask-dots absolute -top-8 z-[-1] hidden h-[20rem] w-full sm:block'></div>
 					{children}
 				</main>
 				<Footer />

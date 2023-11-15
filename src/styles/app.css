@@ -24,7 +24,7 @@
 	}
 
 	.mask-dots {
-		-webkit-mask-image: radial-gradient(#0a0a0a, transparent 80%);
+		-webkit-mask-image: radial-gradient(#0a0a0a, transparent 70%);
 	}
 
 	.animate-in {
