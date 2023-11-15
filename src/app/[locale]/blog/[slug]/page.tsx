@@ -1,12 +1,14 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { useTranslations } from 'next-intl';
 import { RiArrowLeftLine } from 'react-icons/ri';
 import { allPosts } from 'contentlayer/generated';
 
+import Comment from '@/components/comment';
+import Callout from '@/components/mdx-components/callout';
 import Link from '@/components/link';
 import ViewCounter from '@/components/view-counter';
 import MDXContent from '@/components/mdx-content';
-import Comment from '@/components/comment';
 import { getItemBySlugAndLocale } from '@/lib/contentlayer';
 import { formatDate } from '@/utils/date';
 import { getUrlWithLocale } from '@/lib/navigation';
@@ -59,6 +61,7 @@ type BlogPostLayoutProps = {
 }
 
 const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
+	const t = useTranslations('common');
 	const post = getItemBySlugAndLocale(allPosts, params.slug, params.locale);
 
 	if (!post) {
@@ -74,15 +77,15 @@ const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
 
 	return (
 		<>
-			{language !== params.locale ? '文章不支援目前語系' : null}
 			<Link
-				className='-ml-2 mb-8 inline-flex animate-in items-center gap-1 rounded-xl p-1.5 text-base-300/80 transition-colors duration-300 hover:bg-base-800/60 hover:text-base-300'
+				className='-ml-2 inline-flex animate-in items-center gap-1 rounded-md p-1.5 text-base-300/80 transition-colors duration-300 hover:bg-base-800/60 hover:text-base-300'
 				href='/blog'
 			>
 				<RiArrowLeftLine />
 				<span>Back to blog</span>
+
 			</Link>
-			<div className='animate-in'>
+			<div className='mt-8 animate-in'>
 				<h1 className='text-3xl font-bold'>{title}</h1>
 				<div className='mt-3 text-base-300/60'>
 					<time dateTime={formatDate(publishedAt)}>
@@ -94,6 +97,11 @@ const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
 						isViewTracking
 					/>
 				</div>
+				{language !== params.locale && (
+					<Callout type='warning'>
+						{t('noSupport')}
+					</Callout>
+				)}
 			</div>
 			<div className='prose mt-5 animate-in'>
 				<MDXContent code={post.body.code} />
