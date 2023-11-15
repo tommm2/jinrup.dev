@@ -27,7 +27,7 @@ const PostCard = ({ post }: PostCardProps) => {
 					priority
 				/>
 				<div className='space-y-1'>
-					<h2 className='text-xl font-bold'>
+					<h2 className='font-bold'>
 						{title}
 					</h2>
 					<p className='line-clamp-1 text-sm text-base-300/80'>{description}</p>
