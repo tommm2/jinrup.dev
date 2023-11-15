@@ -1,13 +1,13 @@
 import NextImage from 'next/image';
 import { MDXComponents as MDXComponentsProps } from 'mdx/types';
 
+import Callout from './callout';
 import Link from '@/components/link';
-import Timeline from '@/components/timeline';
 import LinkedHeading from './linked-heading';
 import Pre from './pre';
 
 const MDXComponents: MDXComponentsProps = {
-	Timeline,
+	Callout,
 	Image: (props) => <NextImage {...props} className='h-auto w-auto rounded-lg' priority />,
 	h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => <LinkedHeading as='h1' isLinked={false} {...props} />,
 	h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => <LinkedHeading as='h2' {...props} />,

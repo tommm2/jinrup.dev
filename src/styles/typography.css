@@ -26,7 +26,7 @@
 	}
 
 	strong {
-		@apply font-bold text-base-300;
+		@apply font-bold text-current;
 	}
 
 	blockquote {
