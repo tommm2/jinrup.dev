@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export function useClickOutside(
+function useClickOutside(
 	ref: React.MutableRefObject<HTMLElement | null>,
 	callback: () => void,
 ) {
@@ -18,3 +18,5 @@ export function useClickOutside(
 		};
 	}, [ref, callback]);
 };
+
+export default useClickOutside;

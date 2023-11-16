@@ -4,38 +4,38 @@ import { useEffect } from 'react';
 import useSWR from 'swr';
 
 import { fetcher } from '@/lib/fetcher';
+import { usePollIfInView, usePostViews } from '@/hooks';
 
-interface ViewCounterProps {
+type ViewCounterProps = {
 	className?: string;
 	isViewTracking?: boolean;
 	slug: string;
-	as?: keyof JSX.IntrinsicElements;
 }
 
 function ViewCounter({
 	className,
 	isViewTracking = false,
 	slug,
-	as = 'span',
 }: ViewCounterProps) {
-	const Component = as;
+	const interval = 5000
 
-	const { data } = useSWR<Views>(`/api/views?slug=${slug}`, fetcher);
+	const {
+		views,
+		isLoading: viewsIsLoading,
+		isError: viewsIsError,
+		increment: incrementViews,
+	  } = usePostViews(slug)
 
-	useEffect(() => {
+	  useEffect(() => {
 		if (isViewTracking) {
-			setTimeout(() => {
-				fetch(`/api/views?slug=${slug}`, {
-					method: 'POST',
-				});
-			}, 5000);
+			incrementViews();
 		}
-	}, [isViewTracking, slug]);
+	  }, [isViewTracking]);
 
 	return (
-		<Component className={className}>
-			{data?.views || 0} views
-		</Component>
+		<div className={className}>
+			{views} views
+		</div>
 	);
 }
 

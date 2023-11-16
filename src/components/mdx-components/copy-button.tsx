@@ -2,7 +2,7 @@
 
 import { RiCheckFill, RiFileCopy2Fill } from 'react-icons/ri';
 
-import { useClipboard } from '@/hooks/use-clipboard';
+import { useClipboard } from '@/hooks';
 import { cn } from '@/utils/cn';
 
 interface CopyButtonProps {

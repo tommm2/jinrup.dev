@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { useClickOutside } from '@/hooks/use-click-outside';
+import { useClickOutside } from '@/hooks';
 import { usePathname } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
 
