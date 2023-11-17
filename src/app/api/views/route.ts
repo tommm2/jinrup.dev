@@ -5,6 +5,7 @@ import prisma from '@/lib/prisma';
 export async function GET(req: NextRequest) {
 	const slug = req.nextUrl.searchParams.get('slug');
 
+	// total post views
 	if (!slug) {
 		const allViews = await prisma.post.aggregate({
 			_sum: {
@@ -12,25 +13,26 @@ export async function GET(req: NextRequest) {
 			},
 		});
 
-		return NextResponse.json({
-			views: allViews._sum.views ?? 0,
+		const data = allViews._sum.views ?? 0;
+
+		return NextResponse.json(data);
+	} else {
+		// specific post views
+		const post = await prisma.post.findUnique({
+			where: { slug },
 		});
+
+		if (!post) {
+			return NextResponse.json(
+				{ error: 'Post not found' },
+				{ status: 404 }
+			);
+		}
+
+		const data = post.views;
+
+		return NextResponse.json(data);
 	}
-
-	const post = await prisma.post.findUnique({
-		where: { slug },
-	});
-
-	if (!post) {
-		return NextResponse.json(
-			{ error: 'Post not found' },
-			{ status: 404 }
-		);
-	}
-
-	return NextResponse.json({
-		views: post.views,
-	});
 }
 
 export async function POST(req: NextRequest) {
@@ -38,22 +40,18 @@ export async function POST(req: NextRequest) {
 
 	if (!slug) {
 		return NextResponse.json(
-			{ error: 'Slug is required' },
+			{ error: 'Slug must be required' },
 			{ status: 400 },
 		);
 	}
 
-	const newOrUpdatedView = await prisma.post.upsert({
+	const post = await prisma.post.upsert({
 		where: { slug },
 		create: { slug },
-		update: {
-			views: {
-				increment: 1,
-			},
-		},
+		update: { views: { increment: 1 } },
 	});
 
-	return NextResponse.json({
-		views: newOrUpdatedView.views,
-	});
+	const data = post.views;
+
+	return NextResponse.json(data);
 }
