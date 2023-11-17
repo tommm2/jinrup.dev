@@ -7,11 +7,11 @@ import { allPosts } from 'contentlayer/generated';
 import Comment from '@/components/comment';
 import Callout from '@/components/mdx-components/callout';
 import Link from '@/components/link';
-import ViewCounter from '@/components/view-counter';
 import MDXContent from '@/components/mdx-content';
+import { ViewCounterForPost } from '@/components/view-counter';
 import { getItemBySlugAndLocale } from '@/lib/contentlayer';
-import { formatDate } from '@/utils/date';
 import { getUrlWithLocale } from '@/lib/navigation';
+import { formatDate } from '@/utils/date';
 
 export async function generateStaticParams() {
 	return allPosts.map((post) => ({ slug: post.slug }));
@@ -69,10 +69,10 @@ const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
 	}
 
 	const {
-		slug,
 		title,
 		language,
 		publishedAt,
+		slug,
 	} = post;
 
 	return (
@@ -83,7 +83,6 @@ const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
 			>
 				<RiArrowLeftLine />
 				<span>Back to blog</span>
-
 			</Link>
 			<div className='mt-8 animate-in'>
 				<h1 className='text-3xl font-bold'>{title}</h1>
@@ -92,10 +91,7 @@ const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
 						{formatDate(publishedAt)}
 					</time>
 					<span className='p-1'>．</span>
-					<ViewCounter
-						slug={slug}
-						isViewTracking
-					/>
+					<ViewCounterForPost slug={slug} />
 				</div>
 				{language !== params.locale && (
 					<Callout type='warning'>
