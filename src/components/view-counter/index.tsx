@@ -1,8 +1,9 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import Loading from '@/components/Loading';
 import { usePostViews } from '@/hooks';
-import { useEffect } from 'react';
 
 type ViewCounterProps = {
 	slug: string
