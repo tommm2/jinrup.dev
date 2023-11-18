@@ -2,7 +2,7 @@ import Image from 'next/image';
 import type { Post } from 'contentlayer/generated';
 
 import Link from '@/components/link';
-import { ViewCounterForCard } from '@/components/view-counter';
+import ViewCounter from '@/components/view-counter';
 import { useEnabledFirstInView } from '@/hooks';
 import { formatDate } from '@/utils/date';
 
@@ -40,7 +40,7 @@ function PostCard({ post }: PostCardProps) {
 							{formatDate(publishedAt)}
 						</time>
 						<span>．</span>
-						{enabled ? <ViewCounterForCard slug={slug} /> : null}
+						{enabled ? <ViewCounter slug={slug} /> : null}
 					</div>
 				</div>
 			</Link>
