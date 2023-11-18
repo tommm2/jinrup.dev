@@ -8,7 +8,7 @@ import Comment from '@/components/comment';
 import Callout from '@/components/mdx-components/callout';
 import Link from '@/components/link';
 import MDXContent from '@/components/mdx-content';
-import { ViewCounterForPost } from '@/components/view-counter';
+import ViewCounter from '@/components/view-counter';
 import { getItemBySlugAndLocale } from '@/lib/contentlayer';
 import { getUrlWithLocale } from '@/lib/navigation';
 import { formatDate } from '@/utils/date';
@@ -91,7 +91,7 @@ const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
 						{formatDate(publishedAt)}
 					</time>
 					<span className='p-1'>．</span>
-					<ViewCounterForPost slug={slug} />
+					<ViewCounter slug={slug} shouldIncrement />
 				</div>
 				{language !== params.locale && (
 					<Callout type='warning'>
