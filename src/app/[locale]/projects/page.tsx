@@ -41,7 +41,7 @@ const ProjectsPage = () => {
 				className='mt-1 animate-in text-base-300/80'
 				style={{ '--index': 1 } as React.CSSProperties}
 			>
-				{t.rich('titleSection', {
+				{t.rich('subTitle', {
 					link: (chunks) => (
 						<Link
 							className='mx-1 font-medium text-primary-500 transition-colors duration-300 hover:text-primary-500/60'

@@ -9,6 +9,7 @@ import Callout from '@/components/mdx-components/callout';
 import Link from '@/components/link';
 import MDXContent from '@/components/mdx-content';
 import ViewCounter from '@/components/view-counter';
+import GradientText from '@/components/gradient-text';
 import { getItemBySlugAndLocale } from '@/lib/contentlayer';
 import { getUrlWithLocale } from '@/lib/navigation';
 import { formatDate } from '@/utils/date';
@@ -28,12 +29,7 @@ export async function generateMetadata({
 		return;
 	}
 
-	const {
-		title,
-		description,
-		publishedAt,
-		slug,
-	} = post;
+	const { title, description, publishedAt, slug } = post;
 
 	const url = getUrlWithLocale(params.locale, 'blog', slug);
 
@@ -58,7 +54,7 @@ type BlogPostLayoutProps = {
 		slug: string;
 		locale: Locale;
 	};
-}
+};
 
 const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
 	const t = useTranslations('common');
@@ -68,12 +64,7 @@ const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
 		notFound();
 	}
 
-	const {
-		title,
-		language,
-		publishedAt,
-		slug,
-	} = post;
+	const { title, language, publishedAt, slug } = post;
 
 	return (
 		<>
@@ -85,18 +76,24 @@ const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
 				<span>Back to blog</span>
 			</Link>
 			<div className='mt-8 animate-in'>
-				<h1 className='text-3xl font-bold'>{title}</h1>
+				<GradientText
+					className='text-3xl font-bold'
+					as='h1'
+				>
+					{title}
+				</GradientText>
 				<div className='mt-3 text-base-300/60'>
 					<time dateTime={formatDate(publishedAt)}>
 						{formatDate(publishedAt)}
 					</time>
 					<span className='p-1'>．</span>
-					<ViewCounter slug={slug} shouldIncrement />
+					<ViewCounter
+						slug={slug}
+						shouldIncrement
+					/>
 				</div>
 				{language !== params.locale && (
-					<Callout type='warning'>
-						{t('noSupport')}
-					</Callout>
+					<Callout type='warning'>{t('noSupport')}</Callout>
 				)}
 			</div>
 			<div className='prose mt-5 animate-in'>

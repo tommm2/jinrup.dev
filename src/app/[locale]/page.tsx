@@ -50,7 +50,7 @@ function HomePage() {
 					className='flex animate-in flex-wrap items-center gap-4'
 					style={{ '--index': 2 } as React.CSSProperties}
 				>
-					<p>{t('introduction')}</p>
+					<p>{t('description')}</p>
 					<Link
 						className='inline-flex items-center gap-2 rounded-md bg-base-800 px-2 py-1.5 text-sm font-medium duration-300 hover:opacity-70'
 						aria-label='GitHub'

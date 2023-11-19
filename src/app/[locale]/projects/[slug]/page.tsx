@@ -6,6 +6,7 @@ import { allProjects } from 'contentlayer/generated';
 
 import MDXContent from '@/components/mdx-content';
 import Link from '@/components/link';
+import GradientText from '@/components/gradient-text';
 import { getItemBySlugAndLocale } from '@/lib/contentlayer';
 import { getUrlWithLocale } from '@/lib/navigation';
 
@@ -16,20 +17,19 @@ export async function generateStaticParams() {
 export async function generateMetadata({
 	params,
 }: {
-	params: { slug: string, locale: Locale }
+	params: { slug: string; locale: Locale };
 }): Promise<Metadata | undefined> {
-	const project = getItemBySlugAndLocale(allProjects, params.slug, params.locale);
+	const project = getItemBySlugAndLocale(
+		allProjects,
+		params.slug,
+		params.locale,
+	);
 
 	if (!project) {
 		return;
 	}
 
-	const {
-		title,
-		description,
-		image,
-		slug,
-	} = project;
+	const { title, description, image, slug } = project;
 
 	const url = getUrlWithLocale(params.locale, 'projects', slug);
 
@@ -54,19 +54,20 @@ type ProjectsLayoutProps = {
 		slug: string;
 		locale: Locale;
 	};
-}
+};
 
 const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
-	const project = getItemBySlugAndLocale(allProjects, params.slug, params.locale);
+	const project = getItemBySlugAndLocale(
+		allProjects,
+		params.slug,
+		params.locale,
+	);
 
 	if (!project) {
 		notFound();
 	}
 
-	const {
-		title,
-		image,
-	} = project;
+	const { title, image } = project;
 
 	return (
 		<>
@@ -78,7 +79,12 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 				<span>Back to projects</span>
 			</Link>
 			<div className='animate-in'>
-				<h1 className='my-3 text-3xl font-bold'>{title}</h1>
+				<GradientText
+					className='my-3 text-3xl font-bold'
+					as='h1'
+				>
+					{title}
+				</GradientText>
 				<Image
 					className='max-h-[22.5rem] w-full rounded-xl object-cover object-center'
 					width={800}

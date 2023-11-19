@@ -42,7 +42,7 @@ const BlogPage = () => {
 				className='mt-1 animate-in text-base-300/80'
 				style={{ '--index': 1 } as React.CSSProperties}
 			>
-				{t.rich('blogPage.titleSection', {
+				{t.rich('blogPage.subTitle', {
 					highlight: () => (
 						<span className='font-medium text-primary-500'>{posts.length}</span>
 					),
