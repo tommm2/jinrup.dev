@@ -32,13 +32,13 @@ const ProjectsPage = () => {
 	return (
 		<>
 			<GradientText
-				className='animate-in from-primary-500 to-accent-500 text-3xl font-bold'
+				className='animate-in text-3xl font-bold'
 				as='h1'
 			>
 				Projects
 			</GradientText>
 			<p
-				className='mt-5 animate-in'
+				className='mt-1 animate-in text-base-300/80'
 				style={{ '--index': 1 } as React.CSSProperties}
 			>
 				{t.rich('titleSection', {
