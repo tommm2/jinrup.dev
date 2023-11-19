@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import type { Post } from 'contentlayer/generated';
 
@@ -16,7 +18,7 @@ function PostCard({ post }: PostCardProps) {
 	const { slug, title, publishedAt, image, description } = post;
 
 	return (
-		<li
+		<div
 			className='group relative'
 			ref={intersectionRef}
 		>
@@ -45,7 +47,7 @@ function PostCard({ post }: PostCardProps) {
 				</div>
 			</Link>
 			<div className='absolute -inset-2 -z-10 rounded-md transition-colors duration-300 group-hover:bg-base-800/40'></div>
-		</li>
+		</div>
 	);
 }
 
