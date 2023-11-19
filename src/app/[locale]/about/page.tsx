@@ -34,7 +34,7 @@ const AboutPage = () => {
 	return (
 		<>
 			<GradientText
-				className='mb-2 animate-in bg-gradient-to-br from-primary-500 to-accent-500 text-3xl font-bold'
+				className='animate-in text-3xl font-bold'
 				as='h1'
 			>
 				About
