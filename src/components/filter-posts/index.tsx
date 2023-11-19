@@ -5,6 +5,7 @@ import { RiSearch2Line } from 'react-icons/ri';
 import { type Post } from 'contentlayer/generated';
 
 import PostCard from '@/components/post-card';
+import GradientText from '@/components/gradient-text';
 import { getGroupPostsWithYear } from '@/lib/contentlayer';
 
 type PostListProps = {
@@ -19,7 +20,6 @@ const FilterPosts = ({
 	remindText = '',
 }: PostListProps) => {
 	const [query, setQuery] = useState('');
-
 	const groupPosts = getGroupPostsWithYear(posts, query);
 
 	return (
@@ -41,17 +41,20 @@ const FilterPosts = ({
 			>
 				{groupPosts.map(({ year, posts }) => (
 					<div key={year}>
-						<div className='mb-4 text-xl font-bold tracking-wide text-base-200'>
+						<GradientText
+							as='div'
+							className='text-2xl font-bold tracking-wide'
+						>
 							{year}
-						</div>
-						<ul className='flex flex-col gap-4'>
+						</GradientText>
+						<div className='mt-6 flex flex-col gap-4'>
 							{posts.map((post) => (
 								<PostCard
 									key={post.slug}
 									post={post}
 								/>
 							))}
-						</ul>
+						</div>
 					</div>
 				))}
 				{groupPosts.length === 0 ? remindText : null}
