@@ -70,7 +70,7 @@ function HomePage() {
 						<span className='hidden sm:inline'>Linkedin</span>
 					</Link>
 					<Link
-						className='inline-flex items-center gap-2 rounded-md bg-rose-500/80 px-2 py-1.5 text-sm font-medium duration-300 hover:opacity-70'
+						className='inline-flex items-center gap-2 rounded-md bg-rose-600/80 px-2 py-1.5 text-sm font-medium duration-300 hover:opacity-70'
 						aria-label='Email'
 						title='Email'
 						href={`mailto:mail@${siteConfig.email}`}
@@ -92,7 +92,7 @@ function HomePage() {
 						className='flex items-center gap-2 text-sm transition-opacity hover:opacity-70'
 						href='/blog'
 					>
-						See More
+						See All
 						<RiArrowRightLine />
 					</Link>
 				</div>
