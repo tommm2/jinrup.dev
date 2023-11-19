@@ -28,20 +28,18 @@ const BlogPage = () => {
 	const locale = useLocale();
 	const posts = allPosts
 		.filter((post) => post.language === locale)
-		.sort((a, b) =>
-			compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)),
-		);
+		.sort((a, b) => compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)));
 
 	return (
 		<>
 			<GradientText
-				className='animate-in from-primary-500 to-accent-500 text-3xl font-bold'
+				className='animate-in text-3xl font-bold'
 				as='h1'
 			>
 				Blog
 			</GradientText>
 			<p
-				className='mt-5 animate-in'
+				className='mt-1 animate-in text-base-300/80'
 				style={{ '--index': 1 } as React.CSSProperties}
 			>
 				{t.rich('blogPage.titleSection', {
