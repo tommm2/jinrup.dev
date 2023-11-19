@@ -3,7 +3,7 @@ import { useIntersection } from 'react-use';
 
 function useEnabledFirstInView() {
 	const [enabled, setEnabled] = useState(false);
-	const intersectionRef = useRef<HTMLLIElement | null>(null);
+	const intersectionRef = useRef<HTMLDivElement | null>(null);
 	const intersection = useIntersection(intersectionRef, {});
 
 	useEffect(() => {
