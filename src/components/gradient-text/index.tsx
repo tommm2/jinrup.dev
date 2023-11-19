@@ -1,6 +1,6 @@
 import { cn } from '@/utils/cn';
 
-interface GradientTextProps {
+type GradientTextProps = {
 	className?: string,
 	as?: keyof JSX.IntrinsicElements
 	children?: React.ReactNode
@@ -14,7 +14,7 @@ const GradientText = ({
 	const Component = as;
 
 	return (
-		<Component className={cn('w-fit bg-gradient-to-br bg-clip-text text-transparent', className)}>
+		<Component className={cn('w-fit bg-gradient-to-br from-primary-500 to-accent-500 bg-clip-text text-transparent', className)}>
 			{children}
 		</Component>
 	);
