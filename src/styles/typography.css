@@ -22,6 +22,10 @@
 
 		& > li {
 			@apply p-0 marker:text-base-600;
+
+			& > input {
+				@apply my-4;
+			}
 		}
 	}
 
