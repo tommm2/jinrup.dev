@@ -11,7 +11,8 @@
 		"noSupport": "The article does not support the current language."
 	},
 	"homePage": {
-		"description": "Hey, I'm Tom Jin! I'm passionate about building web application. I like learning new technologies."
+		"subTitle": "I love writing code and building websites.",
+		"introduction": "Hello everyone! I am Tom Jin, a software engineer based on Taiwan. I'm here to share what I've read and thought about, and to show off the tools and websites I've created."
 	},
 	"blogPage": {
 		"description": "Welcome to my blog! Here I will record my learning experience and knowledge in software development.",
