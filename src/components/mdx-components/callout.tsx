@@ -30,11 +30,11 @@ type CalloutProps = {
 	children: React.ReactNode;
 };
 
-const Callout = ({
+function Callout({
 	children,
 	type = 'default',
 	emoji = EmojiMap[type],
-}: CalloutProps) => {
+}: CalloutProps) {
 	return (
 		<div className={cn('overflow-x-auto mt-6 flex rounded-md border py-2 pr-4', classes[type])}>
 			<div className='select-none pl-3 pr-2 pt-1 text-xl'>
@@ -43,6 +43,6 @@ const Callout = ({
 			<div className='w-full min-w-0 leading-7 [&>p]:m-0'>{children}</div>
 		</div>
 	);
-};
+}
 
 export default Callout;

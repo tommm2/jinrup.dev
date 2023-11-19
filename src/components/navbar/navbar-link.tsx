@@ -4,17 +4,17 @@ import Link from '@/components/link';
 import { usePathname } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
 
-interface NavbarLinkProps {
-	type?: 'mobile' | 'desktop'
-	title: string
-	href: string
+type NavbarLinkProps = {
+	type?: 'mobile' | 'desktop';
+	title: string;
+	href: string;
 }
 
-const NavbarLink = ({
+function NavbarLink({
 	type = 'desktop',
 	title,
 	href,
-}: NavbarLinkProps) => {
+}: NavbarLinkProps) {
 	const pathname = usePathname();
 	const isActive = pathname.includes(href);
 
@@ -49,6 +49,6 @@ const NavbarLink = ({
 			<div className='absolute inset-0 -z-10 rounded-md bg-gradient-to-br from-transparent to-base-700/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
 		</Link>
 	);
-};
+}
 
 export default NavbarLink;

@@ -56,7 +56,7 @@ type ProjectsLayoutProps = {
 	};
 };
 
-const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
+function ProjectLayout ({ params }: ProjectsLayoutProps) {
 	const project = getItemBySlugAndLocale(
 		allProjects,
 		params.slug,
@@ -99,6 +99,6 @@ const ProjectsLayout = ({ params }: ProjectsLayoutProps) => {
 			</div>
 		</>
 	);
-};
+}
 
-export default ProjectsLayout;
+export default ProjectLayout;

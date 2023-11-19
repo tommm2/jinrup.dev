@@ -4,11 +4,11 @@ import Giscus from '@giscus/react';
 
 import { giscusConfigs } from '@/config/giscus';
 
-interface CommentProps {
-	locale: Locale
+type CommentProps = {
+	locale: Locale;
 }
 
-export default function Comment({
+function Comment({
 	locale = 'zh-TW',
 }: CommentProps) {
 	return (
@@ -19,3 +19,5 @@ export default function Comment({
 		/>
 	);
 };
+
+export default Comment;

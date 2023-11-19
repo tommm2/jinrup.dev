@@ -24,7 +24,7 @@ export async function generateMetadata({
 	};
 }
 
-const ProjectsPage = () => {
+function ProjectsPage() {
 	const t = useTranslations('projectsPage');
 	const locale = useLocale();
 	const projects = allProjects.filter((item) => item.language === locale);
@@ -68,6 +68,6 @@ const ProjectsPage = () => {
 			</div>
 		</>
 	);
-};
+}
 
 export default ProjectsPage;

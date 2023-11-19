@@ -57,15 +57,15 @@ export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }));
 }
 
-interface LocaleLayoutProps {
+type LocaleLayoutProps = {
 	children: React.ReactNode;
 	params: { locale: string };
 }
 
-const LocaleLayout = ({
+function LocaleLayout({
 	children,
 	params: { locale },
-}: LocaleLayoutProps) => {
+}: LocaleLayoutProps) {
 	const isValidLocale = locales.some((current) => current === locale);
 
 	if (!isValidLocale) {
@@ -90,6 +90,6 @@ const LocaleLayout = ({
 			</body>
 		</html>
 	);
-};
+}
 
 export default LocaleLayout;

@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import { Project } from 'contentlayer/generated';
 
-import Link from '../link';
+import Link from '@/components/link';
 
-interface ProjectCardProps {
+type ProjectCardProps = {
 	project: Project;
 }
 
-const ProjectCard = ({ project }: ProjectCardProps) => {
+function ProjectCard({ project }: ProjectCardProps) {
 	const { slug, image, title, description } = project;
 
 	return (
@@ -34,6 +34,6 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 			</Link>
 		</div>
 	);
-};
+}
 
 export default ProjectCard;

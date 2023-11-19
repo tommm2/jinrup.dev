@@ -5,15 +5,15 @@ import { RiCheckFill, RiFileCopy2Fill } from 'react-icons/ri';
 import { useClipboard } from '@/hooks';
 import { cn } from '@/utils/cn';
 
-interface CopyButtonProps {
-	className?: string,
-	copyText: string
+type CopyButtonProps = {
+	className?: string;
+	copyText: string;
 }
 
-const CopyButton = ({
+function CopyButton({
 	className = '',
 	copyText,
-}: CopyButtonProps) => {
+}: CopyButtonProps) {
 	const { copy, isCopied } = useClipboard();
 
 	const _handleCopy = () => {
@@ -35,6 +35,6 @@ const CopyButton = ({
 			{isCopied ? <RiCheckFill /> : <RiFileCopy2Fill />}
 		</button>
 	);
-};
+}
 
 export default CopyButton;

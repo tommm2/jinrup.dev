@@ -8,12 +8,12 @@ type MDXContentProps = {
 	code: string;
 }
 
-const MDXContent = ({ code }: MDXContentProps) => {
+function MDXContent({ code }: MDXContentProps) {
 	const Component = useMDXComponent(code);
 
 	return (
 		<Component components={MDXComponents} />
 	);
-};
+}
 
 export default MDXContent;

@@ -6,7 +6,7 @@ import {
 import Link from '@/components/link';
 import { siteConfig } from '@/config/site';
 
-const Footer = () => {
+function Footer() {
 	return (
 		<footer className='px-8'>
 			<div className='flex flex-col items-center gap-4 py-16'>
@@ -32,6 +32,6 @@ const Footer = () => {
 			</div>
 		</footer>
 	);
-};
+}
 
 export default Footer;

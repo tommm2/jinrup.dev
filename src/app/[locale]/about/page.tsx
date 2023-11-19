@@ -23,7 +23,7 @@ export async function generateMetadata({
 	};
 }
 
-const AboutPage = () => {
+function AboutPage() {
 	const locale = useLocale() as Locale;
 	const page = allPages.find((page) => page.slug === 'about' && page.language === locale);
 
@@ -47,6 +47,6 @@ const AboutPage = () => {
 			</div>
 		</>
 	);
-};
+}
 
 export default AboutPage;
