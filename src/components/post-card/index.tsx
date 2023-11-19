@@ -18,16 +18,13 @@ function PostCard({ post }: PostCardProps) {
 	const { slug, title, publishedAt, image, description } = post;
 
 	return (
-		<div
-			className='group relative'
-			ref={intersectionRef}
-		>
+		<div ref={intersectionRef}>
 			<Link
-				className='flex flex-col gap-2 p-2 font-medium sm:flex-row sm:gap-4'
+				className='-mx-4 flex flex-col gap-2 rounded-md p-4 font-medium transition-colors duration-300 hover:bg-base-800/40 sm:flex-row sm:gap-4'
 				href={`/blog/${slug}`}
 			>
 				<Image
-					className='w-full rounded-md object-cover object-center sm:max-w-[9rem]'
+					className='min-h-[6.25rem] w-full rounded-md object-cover object-center sm:max-w-[10rem]'
 					width={800}
 					height={600}
 					src={image}
@@ -35,8 +32,8 @@ function PostCard({ post }: PostCardProps) {
 					priority
 				/>
 				<div className='space-y-1'>
-					<h2 className='font-bold'>{title}</h2>
-					<p className='line-clamp-1 text-sm text-base-300/80'>{description}</p>
+					<p className='text-lg font-bold'>{title}</p>
+					<p className='line-clamp-2 text-sm text-base-300/80'>{description}</p>
 					<div className='flex text-sm text-base-300/60'>
 						<time dateTime={formatDate(publishedAt)}>
 							{formatDate(publishedAt)}
@@ -46,7 +43,6 @@ function PostCard({ post }: PostCardProps) {
 					</div>
 				</div>
 			</Link>
-			<div className='absolute -inset-2 -z-10 rounded-md transition-colors duration-300 group-hover:bg-base-800/40'></div>
 		</div>
 	);
 }

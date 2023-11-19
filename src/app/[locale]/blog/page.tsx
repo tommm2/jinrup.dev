@@ -33,7 +33,7 @@ function BlogPage() {
 	return (
 		<>
 			<GradientText
-				className='animate-in text-3xl font-bold'
+				className='animate-in text-3xl font-bold tracking-tight'
 				as='h1'
 			>
 				Blog

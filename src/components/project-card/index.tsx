@@ -25,9 +25,9 @@ function ProjectCard({ project }: ProjectCardProps) {
 					src={image}
 					priority
 				/>
-				<div className='mt-4 text-lg font-bold'>
+				<p className='mt-4 text-lg font-bold'>
 					{title}
-				</div>
+				</p>
 				<p className='mt-2 line-clamp-1 text-base-300/80'>
 					{description}
 				</p>

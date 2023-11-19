@@ -2,10 +2,10 @@
 	@apply max-w-none text-base-300;
 
 	h1, h2, h3, h4 {
-		@apply text-base-300 mb-[0.5em];
+		@apply  mb-[0.5em];
 
 		&.anchor > a {
-			@apply text-base-300 font-bold;
+			@apply font-bold text-transparent bg-gradient-to-br from-primary-500 to-accent-500 bg-clip-text;
 		}
 	}
 

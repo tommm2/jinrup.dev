@@ -40,7 +40,10 @@ function HomePage() {
 						className='animate-in'
 						style={{ '--index': 1 } as React.CSSProperties}
 					>
-						<GradientText className='text-3xl font-bold tracking-tight'>
+						<GradientText
+							className='text-3xl font-bold tracking-tight'
+							as='h1'
+						>
 							Tom Jin
 						</GradientText>
 						<p className='text-base-300/80'>{t('subTitle')}</p>
@@ -61,7 +64,7 @@ function HomePage() {
 						<span className='hidden sm:inline'>Github</span>
 					</Link>
 					<Link
-						className='inline-flex items-center gap-2 rounded-md bg-primary-700/80 px-2 py-1.5 text-sm font-medium duration-300 hover:opacity-70'
+						className='inline-flex items-center gap-2 rounded-md bg-blue-700/80 px-2 py-1.5 text-sm font-medium duration-300 hover:opacity-70'
 						aria-label='Linkedin'
 						title='Linkedin'
 						href={siteConfig.links.linkedin}
@@ -85,7 +88,7 @@ function HomePage() {
 				style={{ '--index': 3 } as React.CSSProperties}
 			>
 				<div className='flex items-center justify-between'>
-					<GradientText className='text-xl font-bold'>
+					<GradientText className='text-xl font-bold tracking-tight'>
 						Latest Posts
 					</GradientText>
 					<Link
@@ -96,7 +99,7 @@ function HomePage() {
 						<RiArrowRightLine />
 					</Link>
 				</div>
-				<div className='mt-6 flex flex-col gap-4'>
+				<div className='mt-4 flex flex-col gap-4'>
 					{recentPosts.map((post) => (
 						<PostCard
 							key={post.slug}

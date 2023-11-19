@@ -41,13 +41,10 @@ function FilterPosts({
 			>
 				{groupPosts.map(({ year, posts }) => (
 					<div key={year}>
-						<GradientText
-							as='div'
-							className='text-2xl font-bold tracking-wide'
-						>
+						<GradientText className='text-2xl font-bold tracking-tight'>
 							{year}
 						</GradientText>
-						<div className='mt-6 flex flex-col gap-4'>
+						<div className='mt-4 flex flex-col gap-4'>
 							{posts.map((post) => (
 								<PostCard
 									key={post.slug}
