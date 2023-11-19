@@ -1,8 +1,8 @@
 import NextImage from 'next/image';
 import { MDXComponents as MDXComponentsProps } from 'mdx/types';
 
-import Callout from './callout';
 import Link from '@/components/link';
+import Callout from './callout';
 import LinkedHeading from './linked-heading';
 import Pre from './pre';
 
