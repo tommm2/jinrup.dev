@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import Link from '@/components/link';
 
-interface AnchorProps {
+type AnchorProps = {
 	id?: string;
 	children?: React.ReactNode;
 }
@@ -13,10 +13,10 @@ export const anchorEncode = (text?: string) => {
 	return text.toLowerCase().replace(/ /g, '-');
 };
 
-const Anchor = ({
+function Anchor({
 	children,
 	id,
-}: AnchorProps) => {
+}: AnchorProps) {
 	const ref = useRef<HTMLAnchorElement>(null);
 	const [anchorId, setAnchorId] = useState<string | undefined>();
 

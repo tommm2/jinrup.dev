@@ -56,7 +56,7 @@ type BlogPostLayoutProps = {
 	};
 };
 
-const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
+function BlogPostLayout ({ params }: BlogPostLayoutProps) {
 	const t = useTranslations('common');
 	const post = getItemBySlugAndLocale(allPosts, params.slug, params.locale);
 
@@ -102,6 +102,6 @@ const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
 			<Comment locale={params.locale} />
 		</>
 	);
-};
+}
 
 export default BlogPostLayout;

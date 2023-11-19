@@ -4,11 +4,11 @@ import { RiExternalLinkLine } from 'react-icons/ri';
 import { NextIntlLink } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
 
-interface LinkProps extends ComponentProps<'a'> {
-	showAnchorIcon?: boolean
-	anchorIcon?: React.ReactNode
-	locale?: Locale | undefined
-}
+type LinkProps = {
+	showAnchorIcon?: boolean;
+	anchorIcon?: React.ReactNode;
+	locale?: Locale;
+} & ComponentProps<'a'>
 
 const Link = forwardRef<HTMLAnchorElement, LinkProps>((props: LinkProps, ref) => {
 	const {

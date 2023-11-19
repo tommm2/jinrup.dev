@@ -14,11 +14,11 @@ type PostListProps = {
 	remindText?: string;
 }
 
-const FilterPosts = ({
+function FilterPosts({
 	posts,
 	placeholder = '',
 	remindText = '',
-}: PostListProps) => {
+}: PostListProps) {
 	const [query, setQuery] = useState('');
 	const groupPosts = getGroupPostsWithYear(posts, query);
 
@@ -61,6 +61,6 @@ const FilterPosts = ({
 			</div>
 		</>
 	);
-};
+}
 
 export default FilterPosts;

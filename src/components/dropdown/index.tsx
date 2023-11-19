@@ -7,19 +7,19 @@ import { useClickOutside } from '@/hooks';
 import { usePathname } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
 
-interface DropdownProps {
-	className?: string
-	buttonAriaLabel: string
-	buttonIcon: React.ReactNode
-	children: React.ReactNode
+type DropdownProps = {
+	className?: string;
+	buttonAriaLabel: string;
+	buttonIcon: React.ReactNode;
+	children: React.ReactNode;
 };
 
-const Dropdown = ({
+function Dropdown({
 	className = '',
 	buttonAriaLabel,
 	buttonIcon,
 	children,
-}: DropdownProps) => {
+}: DropdownProps) {
 	const dropdownRef = useRef(null);
 	const pathname = usePathname();
 	const [isVisible, setIsVisible] = useState(false);
@@ -57,6 +57,6 @@ const Dropdown = ({
 			</AnimatePresence>
 		</div>
 	);
-};
+}
 
 export default Dropdown;

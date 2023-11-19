@@ -3,7 +3,7 @@
 import Link from '@/components/link';
 import { locales, usePathname } from '@/lib/navigation';
 
-const LocaleMenu = () => {
+function LocaleMenu() {
 	const pathname = usePathname();
 
 	return (
@@ -27,6 +27,6 @@ const LocaleMenu = () => {
 			})}
 		</div>
 	);
-};
+}
 
 export default LocaleMenu;

@@ -1,16 +1,16 @@
 import { cn } from '@/utils/cn';
 
 type GradientTextProps = {
-	className?: string,
-	as?: keyof JSX.IntrinsicElements
-	children?: React.ReactNode
+	className?: string;
+	as?: keyof JSX.IntrinsicElements;
+	children?: React.ReactNode;
 }
 
-const GradientText = ({
+function GradientText({
 	className,
 	as = 'span',
 	children,
-}: GradientTextProps) => {
+}: GradientTextProps) {
 	const Component = as;
 
 	return (
@@ -18,6 +18,6 @@ const GradientText = ({
 			{children}
 		</Component>
 	);
-};
+}
 
 export default GradientText;

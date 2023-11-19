@@ -6,8 +6,8 @@ import Loading from '@/components/loading';
 import { usePostViews } from '@/hooks';
 
 type ViewCounterProps = {
-	slug: string
-	shouldIncrement?: boolean
+	slug: string;
+	shouldIncrement?: boolean;
 }
 
 function ViewCounter({

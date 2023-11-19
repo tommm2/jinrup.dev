@@ -2,11 +2,11 @@ import { RiArrowDownSLine, RiMenu2Line, RiTranslate2 } from 'react-icons/ri';
 
 import Dropdown from '@/components/dropdown';
 import Link from '@/components/link';
+import LocaleMenu from '@/components/locale-menu';
 import navLinks from '@/data/nav-links';
-import LocaleMenu from '../locale-menu';
 import NavbarLink from './navbar-link';
 
-const Navbar = () => {
+function Navbar() {
 	return (
 		<header className='sticky top-0 z-10 h-14 bg-base-900/80 backdrop-blur'>
 			<div className='absolute -bottom-px left-11 right-20 h-px bg-gradient-to-r from-transparent via-primary-500 to-transparent'></div>

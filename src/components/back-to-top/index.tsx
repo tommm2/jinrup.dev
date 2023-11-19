@@ -4,16 +4,16 @@ import { useEffect, useState } from 'react';
 import { RiArrowUpSLine } from 'react-icons/ri';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const BackToTop = () => {
+function BackToTop() {
 	const [isVisible, setIsVisible] = useState(false);
 
-	function handleClick() {
+	const handleClick = () => {
 		window.scroll({
 			top: 0,
 			left: 0,
 			behavior: 'smooth',
 		});
-	}
+	};
 
 	useEffect(() => {
 		function handleScroll() {
@@ -46,6 +46,6 @@ const BackToTop = () => {
 			)}
 		</AnimatePresence>
 	);
-};
+}
 
 export default BackToTop;

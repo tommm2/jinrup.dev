@@ -1,7 +1,7 @@
 import { cn } from '@/utils/cn';
 import Anchor, { anchorEncode } from './anchor';
 
-interface LinkedHeadingProps {
+type LinkedHeadingProps = {
 	as: keyof JSX.IntrinsicElements;
 	id?: string;
 	isLinked?: boolean;
@@ -9,14 +9,14 @@ interface LinkedHeadingProps {
 	className?: string;
 }
 
-const LinkedHeading = ({
+function LinkedHeading({
 	as,
 	isLinked = true,
 	id: idProp,
 	className,
 	children,
 	...otherProps
-}: LinkedHeadingProps) => {
+}: LinkedHeadingProps) {
 	const Component = as;
 
 	let id = idProp || anchorEncode(children as string);

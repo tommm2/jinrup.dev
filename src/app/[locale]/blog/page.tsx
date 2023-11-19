@@ -23,7 +23,7 @@ export async function generateMetadata({
 	};
 }
 
-const BlogPage = () => {
+function BlogPage() {
 	const t = useTranslations();
 	const locale = useLocale();
 	const posts = allPosts
@@ -55,6 +55,6 @@ const BlogPage = () => {
 			/>
 		</>
 	);
-};
+}
 
 export default BlogPage;

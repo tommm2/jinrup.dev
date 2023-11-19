@@ -2,11 +2,11 @@ import { ComponentProps } from 'react';
 
 import CopyButton from './copy-button';
 
-interface PreProps extends ComponentProps<'pre'> {
-	raw?: string
-}
+type PreProps = {
+	raw?: string;
+} & ComponentProps<'pre'>
 
-const Pre = (props: PreProps) => {
+function Pre(props: PreProps) {
 	const isMultiLine = (props.raw as string)
 		.split('\n')
 		.filter(item => !!item).length > 1;
@@ -20,6 +20,6 @@ const Pre = (props: PreProps) => {
 			/>
 		</pre>
 	);
-};
+}
 
 export default Pre;
