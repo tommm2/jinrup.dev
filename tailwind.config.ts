@@ -6,6 +6,9 @@ export default {
 	content: [
 		'./src/**/*.{js,ts,jsx,tsx,mdx}',
 	],
+	future: {
+		hoverOnlyWhenSupported: true,
+	},
 	theme: {
 		screens: {
 			xs: '500px',
