@@ -1,4 +1,4 @@
-# [Tom Jin's website](https://tomjin.vercel.app/)
+# [My website](https://jinrup-dev.vercel.app/)
 
 ## 🔧 Stack
 - **Framework**: [Next](https://nextjs.org/)
@@ -12,7 +12,7 @@
 
 ## 📁 Project Structure
 ```
-$PROJECT_ROOT/
+$PROJECT_ROOT
 ├── content/
 ├── messages/
 ├── prisma/
@@ -26,8 +26,8 @@ $PROJECT_ROOT/
     ├── styles/
     ├── types/
     ├── utils/
-    ├── i18n.ts
-    └── middleware.ts
+    ├── i18n.ts # for next-intl
+    └── middleware.ts # for next-intl
 ```
 - `content/*`: MDX blog posts, projects and the content for the `about` page
 - `messages/*`: Data for multi-language support
@@ -40,17 +40,15 @@ $PROJECT_ROOT/
 - `src/styles/*`: Global Styles with Tailwindcss
 - `src/types/*`: Some Global Types definitions
 - `src/utils/*`: Some utilities functions , but less complex than `lib/`
-- `src/i18n.ts`: Provide information and other options based on the user's local language
-- `src/middlewares.ts`: Requests match a locale and handle redirects and rewrites accordingly
 
 ## 👋 Getting Start
 
 This application requires Node.js v19.1+.
 
 ```bash
-git clone https://github.com/tommm2/personal-website.git
+git clone https://github.com/tommm2/jinrup.dev.git
 
-cd personal-website
+cd jinrup.dev
 npm install
 npm run dev
 ```
@@ -61,7 +59,7 @@ Create `.env` file similar to `.env.example`.
 - [ ] Add Not Found Page
 - [ ] Add Table of content components for articles
 - [ ] Add image blur placeholder
-- [ ] Make 3d model in Home Page
+- [ ] Make 3D model(use three.js) in Home Page
 - [ ] Make brand logo
 - [ ] Make analytics
 - [ ] Import playwright to test
