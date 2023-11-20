@@ -1,4 +1,4 @@
-# [Tom Jin's website](https://tomjin.vercel.app/)
+# [My website](https://jinrup-dev.vercel.app/)
 
 ## 🔧 Stack
 - **Framework**: [Next](https://nextjs.org/)
@@ -48,9 +48,9 @@ $PROJECT_ROOT/
 This application requires Node.js v19.1+.
 
 ```bash
-git clone https://github.com/tommm2/personal-website.git
+git clone https://github.com/tommm2/jinrup.dev.git
 
-cd personal-website
+cd jinrup.dev
 npm install
 npm run dev
 ```
