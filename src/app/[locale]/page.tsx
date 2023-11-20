@@ -27,7 +27,7 @@ function HomePage() {
 	return (
 		<>
 			<div className='space-y-8'>
-				<div className='flex items-center gap-4'>
+				<div className='flex flex-col gap-4 xs:flex-row xs:items-center'>
 					<Image
 						className='animate-in rounded-full'
 						src='/images/avatar.jpg'
@@ -44,7 +44,7 @@ function HomePage() {
 							className='text-3xl font-bold tracking-tight'
 							as='h1'
 						>
-							Tom Jin
+							Tom Jin.
 						</GradientText>
 						<p className='text-base-300/80'>{t('subTitle')}</p>
 					</div>
