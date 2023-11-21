@@ -54,7 +54,8 @@ node setup.mjs # Initialise the project
 npm run dev
 ```
 
-Create `.env` file similar to `.env.example`.
+- Create `.env` file similar to `.env.example`.
+- Change `config/site.ts`, `config/giscus.ts`, `app/sitemap.ts` to you own.
 
 ## 📝 TODO
 - [ ] Add Not Found Page
