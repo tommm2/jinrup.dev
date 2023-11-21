@@ -50,6 +50,7 @@ git clone https://github.com/tommm2/jinrup.dev.git
 
 cd jinrup.dev
 npm install
+node setup.mjs # Initialise the project
 npm run dev
 ```
 
