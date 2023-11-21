@@ -1,7 +1,7 @@
 import { GiscusProps } from '@giscus/react';
 
 export const giscusConfigs: GiscusProps = {
-	repo: 'tommm2/personal-website',
+	repo: 'tommm2/jinrup.dev',
 	repoId: 'R_kgDOKCNxfg',
 	category: 'Announcements',
 	categoryId: 'DIC_kwDOKCNxfs4CYnqm',
