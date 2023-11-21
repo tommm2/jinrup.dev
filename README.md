@@ -29,7 +29,7 @@ $PROJECT_ROOT
     ├── i18n.ts # for next-intl
     └── middleware.ts # for next-intl
 ```
-- `content/*`: MDX blog posts, projects and the content for the `about` page
+- `content/*`: MDX blog posts, projects and the content for the `about` page, Note the folder structure, which is related to how slugs are handled in contentlayer.config.ts
 - `messages/*`: Data for multi-language support
 - `prisma/*`: Database Model Definition
 - `public/*`: Static resource, like image
