@@ -6,6 +6,7 @@ import { visit } from 'unist-util-visit';
 const computedFields: ComputedFields = {
 	slug: {
 		type: 'string',
+		// Use the sourceFileDir to get the slug, this is because of the structure of my content folder.
 		resolve: (doc) => doc._raw.sourceFileDir.split('/').pop(),
 	},
 };
