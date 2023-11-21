@@ -1,6 +1,5 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import dotenv from 'dotenv';
 
 const blogPostZHTemplate = `---
 title: '哈囉，世界!'
@@ -126,7 +125,7 @@ export default function HomePage() {
 				</GradientText>
 			</div>
 			<p
-				className='text-base-300/80 animate-in'
+				className='text-base-300/80 animate-in mt-1'
 				style={{ '--index': 1 } as React.CSSProperties}
 			>
 				{t('paragraph')}
@@ -161,12 +160,6 @@ const deleteAllFilesExcept = async (directoryPath, fileToKeep) => {
 };
 
 (async () => {
-	dotenv.config();
-
-	if (process.env.IS_TEMPLATE === 'false') {
-		return;
-	}
-
 	const contentDir = path.join(process.cwd(), 'content');
 	const messagesDir = path.join(process.cwd(), 'messages');
 	const imagesDir = path.join(process.cwd(), 'public', 'images');
