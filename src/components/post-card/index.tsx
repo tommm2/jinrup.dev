@@ -15,7 +15,13 @@ type PostCardProps = {
 function PostCard({ post }: PostCardProps) {
 	const { enabled, intersectionRef } = useEnabledFirstInView();
 
-	const { slug, title, publishedAt, image, description } = post;
+	const {
+		slug,
+		title,
+		publishedAt,
+		image,
+		description,
+	} = post;
 
 	return (
 		<div ref={intersectionRef}>
@@ -24,7 +30,7 @@ function PostCard({ post }: PostCardProps) {
 				href={`/blog/${slug}`}
 			>
 				<Image
-					className='min-h-[6.25rem] w-full rounded-md object-cover object-center sm:max-w-[10rem]'
+					className='hidden min-h-[6.25rem] w-full rounded-md object-cover object-center sm:block sm:max-w-[10rem]'
 					width={800}
 					height={600}
 					src={image}
@@ -33,7 +39,7 @@ function PostCard({ post }: PostCardProps) {
 				/>
 				<div className='space-y-1'>
 					<p className='text-lg font-bold'>{title}</p>
-					<p className='line-clamp-2 text-sm text-base-300/80'>{description}</p>
+					<p className='line-clamp-1 text-sm text-base-300/80 sm:line-clamp-2'>{description}</p>
 					<div className='flex text-sm text-base-300/60'>
 						<time dateTime={formatDate(publishedAt)}>
 							{formatDate(publishedAt)}
