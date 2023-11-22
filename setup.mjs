@@ -32,7 +32,7 @@ const projectENTemplate = `---
 title: My first project!
 description: My First Project!
 image: /images/test.jpg
-language: 'zh-TW'
+language: 'en'
 ---
 
 This is my first Project`;
