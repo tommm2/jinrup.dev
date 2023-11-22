@@ -14,11 +14,11 @@ function ProjectCard({ project }: ProjectCardProps) {
 		<div className='group relative rounded-md border border-base-700/50 bg-base-900 shadow-2xl backdrop-blur'>
 			<div className='absolute -left-px top-3/4 h-14 w-px bg-gradient-to-b from-transparent via-primary-500 to-transparent opacity-0 transition-all duration-500 group-hover:top-1/4 group-hover:opacity-100' />
 			<Link
-				className='relative flex flex-col px-6 py-8'
+				className='relative flex flex-col p-6'
 				href={`/projects/${slug}`}
 			>
 				<Image
-					className='w-full rounded-lg sm:max-w-[16rem]'
+					className='h-auto w-full rounded-lg object-cover object-center sm:h-[12.5rem]'
 					width={800}
 					height={600}
 					alt={title}
