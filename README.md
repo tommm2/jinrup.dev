@@ -35,6 +35,7 @@ $PROJECT_ROOT
 - `public/*`: Static resource, like image
 - `src/app/*`: Every page and api route in the website. Uses the **App Router** from **Next.js 14**
 - `src/components/*`: All components I use in the website
+- `src/config/*`: Some basic settings or static data
 - `src/hooks/*`: Some custom hooks for website
 - `src/lib/*`: a collection of helpful utilities or code for third-party services
 - `src/styles/*`: Global Styles with Tailwindcss

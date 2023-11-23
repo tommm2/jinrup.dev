@@ -3,7 +3,7 @@ import { RiArrowDownSLine, RiMenu2Line, RiTranslate2 } from 'react-icons/ri';
 import Dropdown from '@/components/dropdown';
 import Link from '@/components/link';
 import LocaleMenu from '@/components/locale-menu';
-import { pageLinks } from '@/data/page-links';
+import { pageLinks } from '@/config/page-links';
 import NavbarLink from './navbar-link';
 
 function Navbar() {
