@@ -124,10 +124,7 @@ export default function HomePage() {
 					{t('title')}
 				</GradientText>
 			</div>
-			<p
-				className='text-base-300/80 animate-in mt-1'
-				style={{ '--index': 1 } as React.CSSProperties}
-			>
+			<p className='text-base-300/80 animate-in animation-delay-1 mt-1'>
 				{t('paragraph')}
 			</p>
 		</>

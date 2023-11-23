@@ -29,17 +29,14 @@ function HomePage() {
 			<div className='space-y-8'>
 				<div className='flex flex-col gap-4 xs:flex-row xs:items-center'>
 					<Image
-						className='animate-in rounded-full'
-						src='/images/avatar.jpg'
+						className='animate-in rounded-full bg-base-200'
+						src='/images/avatar.png'
 						alt='avatar'
 						width={85}
 						height={85}
 						priority
 					/>
-					<div
-						className='animate-in'
-						style={{ '--index': 1 } as React.CSSProperties}
-					>
+					<div className='animate-in animation-delay-1'>
 						<GradientText
 							className='text-3xl font-bold tracking-tight'
 							as='h1'
@@ -50,8 +47,7 @@ function HomePage() {
 					</div>
 				</div>
 				<div
-					className='flex animate-in flex-wrap items-center gap-4'
-					style={{ '--index': 2 } as React.CSSProperties}
+					className='flex animate-in flex-wrap items-center gap-4 animation-delay-2'
 				>
 					<p>{t('description')}</p>
 					<Link
@@ -83,10 +79,7 @@ function HomePage() {
 					</Link>
 				</div>
 			</div>
-			<div
-				className='mt-16 animate-in'
-				style={{ '--index': 3 } as React.CSSProperties}
-			>
+			<div className='mt-16 animate-in animation-delay-3'>
 				<div className='flex items-center justify-between'>
 					<GradientText className='text-xl font-bold tracking-tight'>
 						Latest Posts

@@ -38,10 +38,7 @@ function BlogPage() {
 			>
 				Blog
 			</GradientText>
-			<p
-				className='mt-1 animate-in text-base-300/80'
-				style={{ '--index': 1 } as React.CSSProperties}
-			>
+			<p className='mt-1 animate-in text-base-300/80 animation-delay-1'>
 				{t.rich('blogPage.subTitle', {
 					highlight: () => (
 						<span className='font-medium text-primary-500'>{posts.length}</span>

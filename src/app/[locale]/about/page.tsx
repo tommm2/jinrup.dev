@@ -39,10 +39,7 @@ function AboutPage() {
 			>
 				About
 			</GradientText>
-			<div
-				className='prose mt-5 animate-in'
-				style={{ '--index': 1 } as React.CSSProperties}
-			>
+			<div className='prose mt-5 animate-in animation-delay-1'>
 				<MDXContent code={page.body.code} />
 			</div>
 		</>

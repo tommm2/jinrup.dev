@@ -3,7 +3,7 @@ import { RiArrowDownSLine, RiMenu2Line, RiTranslate2 } from 'react-icons/ri';
 import Dropdown from '@/components/dropdown';
 import Link from '@/components/link';
 import LocaleMenu from '@/components/locale-menu';
-import navLinks from '@/data/nav-links';
+import { pageLinks } from '@/data/page-links';
 import NavbarLink from './navbar-link';
 
 function Navbar() {
@@ -14,7 +14,7 @@ function Navbar() {
 				<Link href='/'>TOM</Link>
 				<div className='hidden items-center gap-2 sm:flex'>
 					<nav className='items-center gap-1 text-sm sm:flex'>
-						{navLinks.map((link) => {
+						{pageLinks.map((link) => {
 							const { href, title } = link;
 
 							return (
@@ -46,7 +46,7 @@ function Navbar() {
 					buttonIcon={<RiMenu2Line />}
 				>
 					<nav className='flex flex-col gap-1 px-2 text-sm'>
-						{navLinks.map((link) => {
+						{pageLinks.map((link) => {
 							const { href, title } = link;
 
 							return (

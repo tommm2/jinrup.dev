@@ -24,10 +24,7 @@ function FilterPosts({
 
 	return (
 		<>
-			<div
-				className='relative mt-4 animate-in'
-				style={{ '--index': 2 } as React.CSSProperties}
-			>
+			<div className='relative mt-4 animate-in animation-delay-2'>
 				<RiSearch2Line className='absolute left-2 top-2.5 h-5 w-5 text-base-500' />
 				<input
 					className='w-[18.75rem] rounded-xl border border-base-600/40 bg-base-900 p-2 pl-8 text-sm outline-none ring-primary-400/10 duration-300 placeholder:text-base-500 focus:border-primary-400 focus:ring-4'
@@ -35,10 +32,7 @@ function FilterPosts({
 					onChange={(e) => setQuery(e.target.value)}
 				/>
 			</div>
-			<div
-				className='mt-16 flex animate-in flex-col gap-8'
-				style={{ '--index': 3 } as React.CSSProperties}
-			>
+			<div className='mt-16 flex animate-in flex-col gap-8 animation-delay-3'>
 				{groupPosts.map(({ year, posts }) => (
 					<div key={year}>
 						<GradientText className='text-2xl font-bold tracking-tight'>

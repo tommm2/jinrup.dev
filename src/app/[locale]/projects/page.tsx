@@ -37,10 +37,7 @@ function ProjectsPage() {
 			>
 				Projects
 			</GradientText>
-			<p
-				className='mt-1 animate-in text-base-300/80'
-				style={{ '--index': 1 } as React.CSSProperties}
-			>
+			<p className='mt-1 animate-in text-base-300/80 animation-delay-1'>
 				{t.rich('subTitle', {
 					link: (chunks) => (
 						<Link
@@ -55,10 +52,7 @@ function ProjectsPage() {
 					),
 				})}
 			</p>
-			<div
-				className='mt-16 grid animate-in grid-cols-1 gap-6 sm:grid-cols-2'
-				style={{ '--index': 2 } as React.CSSProperties}
-			>
+			<div className='mt-16 grid animate-in grid-cols-1 gap-6 animation-delay-2 sm:grid-cols-2'>
 				{projects.map((project) => (
 					<ProjectCard
 						key={project.slug}
