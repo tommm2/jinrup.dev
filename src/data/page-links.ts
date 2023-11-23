@@ -1,4 +1,4 @@
-const navLinks = [
+export const pageLinks = [
 	{
 		title: 'Blog',
 		href: '/blog',
@@ -12,5 +12,3 @@ const navLinks = [
 		href: '/about',
 	},
 ];
-
-export default navLinks;
