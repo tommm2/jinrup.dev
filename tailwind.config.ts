@@ -2,6 +2,17 @@ import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
+function animationDelay({ matchUtilities, theme }: { matchUtilities: any, theme: any }) {
+	matchUtilities(
+		{
+			'animation-delay': (value: string) => ({
+				'animation-delay': `calc(${value} * 130ms)`,
+			}),
+		},
+		{ values: theme('animationDelay') }
+	);
+}
+
 export default {
 	content: [
 		'./src/**/*.{js,ts,jsx,tsx,mdx}',
@@ -27,6 +38,12 @@ export default {
 				primary: colors.blue,
 				accent: colors.sky,
 				base: colors.neutral,
+			},
+			animationDelay: {
+				'1': '1',
+				'2': '2',
+				'3': '3',
+				'4': '4',
 			},
 			keyframes: ({ theme }) => ({
 				in: {
@@ -63,6 +80,6 @@ export default {
 	},
 	plugins: [
 		require('@tailwindcss/typography'),
-		require('tailwindcss/nesting'),
+		animationDelay,
 	],
 } satisfies Config;
