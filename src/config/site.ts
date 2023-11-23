@@ -6,7 +6,7 @@ export const siteConfig = {
 	ogImage: '',
 	author: 'Tom Jin',
 	email: 'tom875694231@gmail.com',
-	siteUrl: 'https://tomjin.vercel.app',
+	siteUrl: 'https://jinrup.vercel.app',
 	links: {
 		github: 'https://github.com/tommm2',
 		linkedin: 'https://www.linkedin.com/in/jinrup',
