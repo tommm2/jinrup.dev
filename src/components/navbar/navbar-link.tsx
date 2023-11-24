@@ -3,6 +3,13 @@
 import Link from '@/components/link';
 import { usePathname } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
+import { RiFolderOpenFill, RiQuillPenFill, RiUser3Fill } from 'react-icons/ri';
+
+const IconMap: { [key: string]: React.ReactNode } = {
+	['/blog']: <RiQuillPenFill className='h-4 w-4' />,
+	['/projects']: <RiFolderOpenFill className='h-4 w-4' />,
+	['/about']: <RiUser3Fill className='h-4 w-4' />,
+};
 
 type NavbarLinkProps = {
 	type?: 'mobile' | 'desktop';
@@ -19,17 +26,16 @@ function NavbarLink({
 	const isActive = pathname.includes(href);
 
 	if (type === 'mobile') {
+		const icon = IconMap[href];
+
 		return (
 			<Link
-				className='group relative flex h-8 items-center gap-1.5 px-2'
+				className='group relative flex h-8 items-center gap-2 px-2'
 				href={href}
 			>
+				{icon}
 				<div>{title}</div>
-				<div className='absolute inset-0 -z-10 rounded-md bg-gradient-to-br from-transparent to-base-700/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
-				<div className={cn(
-					'duration-300 transition-all will-change-[width,height] h-0 w-0 flex-none rounded-full bg-primary-500 group-hover:h-1.5 group-hover:w-1.5 mt-1',
-					{ 'w-1.5 h-1.5': isActive }
-				)} />
+				<div className='absolute inset-0 -z-10 rounded-md bg-gradient-to-br from-transparent to-base-800/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
 			</Link>
 		);
 	}
@@ -40,13 +46,15 @@ function NavbarLink({
 			href={href}
 		>
 			<div className='absolute left-2 flex h-1.5 w-1.5 items-center justify-center'>
-				<div className={cn(
-					'absolute duration-300 transition-all will-change-[width,height] inset-auto h-0 w-0 flex-none rounded-full bg-primary-500 group-hover:h-full group-hover:w-full',
-					{ 'w-full h-full': isActive }
-				)}></div>
+				<div
+					className={cn(
+						'absolute duration-300 transition-all will-change-[width,height] inset-auto h-0 w-0 flex-none rounded-full bg-primary-500 group-hover:h-full group-hover:w-full',
+						{ 'w-full h-full': isActive },
+					)}
+				></div>
 			</div>
 			<div>{title}</div>
-			<div className='absolute inset-0 -z-10 rounded-md bg-gradient-to-br from-transparent to-base-700/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
+			<div className='absolute inset-0 -z-10 rounded-md bg-gradient-to-br from-transparent to-base-800/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
 		</Link>
 	);
 }
