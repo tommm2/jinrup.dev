@@ -19,9 +19,7 @@ function HomePage() {
 	const t = useTranslations('homePage');
 	const recentPosts = allPosts
 		.filter((post) => post.language === locale)
-		.sort((a, b) =>
-			compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)),
-		)
+		.sort((a, b) => compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)))
 		.splice(0, 2);
 
 	return (
@@ -46,9 +44,7 @@ function HomePage() {
 						<p className='text-base-300/80'>{t('subTitle')}</p>
 					</div>
 				</div>
-				<div
-					className='flex animate-in flex-wrap items-center gap-4 animation-delay-2'
-				>
+				<div className='flex animate-in flex-wrap items-center gap-4 animation-delay-2'>
 					<p>{t('description')}</p>
 					<Link
 						className='inline-flex items-center gap-2 rounded-md bg-base-800 px-2 py-1.5 text-sm font-medium duration-300 hover:opacity-70'
