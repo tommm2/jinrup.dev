@@ -3,26 +3,26 @@ import { type Post } from 'contentlayer/generated';
 import { groupBy } from '@/utils/helpers';
 import { defaultLocale } from './navigation';
 
-type ItemWithSlugAndLanguage = {
+type ArticleWithSlugAndLanguage = {
 	slug: string;
 	language: string;
 }
 
-export function getItemBySlugAndLocale<T extends ItemWithSlugAndLanguage>(
+export function getArticleBySlugAndLocale<T extends ArticleWithSlugAndLanguage>(
 	items: T[],
 	slug: string,
 	locale: Locale
 ) {
-	const itemsWithMatchSlug = items.filter((item) => item.slug === slug);
-	const index = itemsWithMatchSlug.findIndex((item) => item.language === locale);
+	const articlesWithMatchSlug = items.filter((article) => article.slug === slug);
+	const index = articlesWithMatchSlug.findIndex((article) => article.language === locale);
 
 	if (index === -1) {
-		const defaultItem = itemsWithMatchSlug.find(item => item.language === defaultLocale);
+		const defaultArticle = articlesWithMatchSlug.find(item => item.language === defaultLocale);
 
-		return defaultItem;
+		return defaultArticle;
 	}
 
-	return itemsWithMatchSlug[index];
+	return articlesWithMatchSlug[index];
 }
 
 export function getGroupPostsWithYear(posts: Post[], query: string) {

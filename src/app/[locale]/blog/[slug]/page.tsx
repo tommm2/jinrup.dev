@@ -10,7 +10,7 @@ import Link from '@/components/link';
 import MDXContent from '@/components/mdx-content';
 import ViewCounter from '@/components/view-counter';
 import GradientText from '@/components/gradient-text';
-import { getItemBySlugAndLocale } from '@/lib/contentlayer';
+import { getArticleBySlugAndLocale } from '@/lib/contentlayer';
 import { getUrlWithLocale } from '@/lib/navigation';
 import { formatDate } from '@/utils/date';
 
@@ -23,7 +23,7 @@ export async function generateMetadata({
 }: {
 	params: { locale: Locale; slug: string };
 }): Promise<Metadata | undefined> {
-	const post = getItemBySlugAndLocale(allPosts, params.slug, params.locale);
+	const post = getArticleBySlugAndLocale(allPosts, params.slug, params.locale);
 
 	if (!post) {
 		return;
@@ -58,7 +58,7 @@ type BlogPostLayoutProps = {
 
 function BlogPostLayout ({ params }: BlogPostLayoutProps) {
 	const t = useTranslations('common');
-	const post = getItemBySlugAndLocale(allPosts, params.slug, params.locale);
+	const post = getArticleBySlugAndLocale(allPosts, params.slug, params.locale);
 
 	if (!post) {
 		notFound();

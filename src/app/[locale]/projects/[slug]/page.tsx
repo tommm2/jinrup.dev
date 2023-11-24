@@ -7,7 +7,7 @@ import { allProjects } from 'contentlayer/generated';
 import MDXContent from '@/components/mdx-content';
 import Link from '@/components/link';
 import GradientText from '@/components/gradient-text';
-import { getItemBySlugAndLocale } from '@/lib/contentlayer';
+import { getArticleBySlugAndLocale } from '@/lib/contentlayer';
 import { getUrlWithLocale } from '@/lib/navigation';
 
 export async function generateStaticParams() {
@@ -19,7 +19,7 @@ export async function generateMetadata({
 }: {
 	params: { slug: string; locale: Locale };
 }): Promise<Metadata | undefined> {
-	const project = getItemBySlugAndLocale(
+	const project = getArticleBySlugAndLocale(
 		allProjects,
 		params.slug,
 		params.locale,
@@ -57,7 +57,7 @@ type ProjectsLayoutProps = {
 };
 
 function ProjectLayout ({ params }: ProjectsLayoutProps) {
-	const project = getItemBySlugAndLocale(
+	const project = getArticleBySlugAndLocale(
 		allProjects,
 		params.slug,
 		params.locale,
