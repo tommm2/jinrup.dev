@@ -37,7 +37,10 @@ export default {
 			colors: {
 				primary: colors.blue,
 				accent: colors.sky,
-				base: colors.neutral,
+				base: {
+					...colors.neutral,
+					'950': '#0f0f0f',
+				},
 			},
 			animationDelay: {
 				'1': '1',
