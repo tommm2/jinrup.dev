@@ -34,7 +34,7 @@
 	}
 
 	blockquote {
-		@apply bg-base-800/60 py-3 text-base-300 border-primary-500 rounded-r-md;
+		@apply bg-base-900 p-4 text-base-300 border-primary-500 rounded;
 
 		& > p {
 			@apply m-0;
@@ -42,7 +42,7 @@
 	}
 
 	:not(pre) > code {
-		@apply bg-base-800/60 my-1 p-0.5 rounded-lg text-base-300;
+		@apply bg-base-800 my-1 p-0.5 rounded-lg text-base-300;
 	}
 
 	/* rehype-pretty-code style */
@@ -57,8 +57,12 @@
 			}
 
 			&--highlighted {
-				@apply bg-base-400/10 border-primary-500;
+				@apply bg-base-600/10 border-emerald-600;
 			}
+		}
+
+		pre {
+			@apply relative mt-0 bg-base-900 px-0;
 		}
 
 		code {
@@ -68,7 +72,7 @@
 	}
 
 	[data-rehype-pretty-code-title] {
-		@apply px-4 py-2 text-base-300 text-sm border-b rounded-t-md border-base-700 bg-base-800/60;
+		@apply px-4 py-2 text-base-300 text-sm border-b rounded-t-md border-base-800 bg-base-900;
 
 		& + pre {
 			@apply rounded-t-none;

@@ -38,7 +38,7 @@ function PostCard({ post }: PostCardProps) {
 					priority
 				/>
 				<div className='space-y-1'>
-					<p className='text-lg font-bold'>{title}</p>
+					<p className='font-bold'>{title}</p>
 					<p className='line-clamp-1 text-sm text-base-300/80 sm:line-clamp-2'>{description}</p>
 					<div className='flex text-sm text-base-300/60'>
 						<time dateTime={formatDate(publishedAt)}>

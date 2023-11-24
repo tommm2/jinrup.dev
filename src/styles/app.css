@@ -26,4 +26,8 @@
 	.mask-dots {
 		-webkit-mask-image: radial-gradient(#0a0a0a, transparent 70%);
 	}
+
+	.layout {
+		@apply mx-auto max-w-[43.75rem] px-6;
+	}
 }

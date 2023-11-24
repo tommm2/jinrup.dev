@@ -75,12 +75,12 @@ function LocaleLayout({ children, params: { locale } }: LocaleLayoutProps) {
 
 	return (
 		<html
-			className={cn('bg-base-900 font-sans text-base-200', fontSans.variable)}
+			className={cn('bg-base-950 font-sans text-base-200', fontSans.variable)}
 			lang={locale}
 		>
 			<body className='min-h-screen overflow-x-hidden antialiased'>
 				<Navbar />
-				<main className='relative mx-auto mt-12 min-h-[calc(100vh_-_56px_-_196px)] max-w-[43.75rem] px-6'>
+				<main className='layout relative mt-12 min-h-[calc(100vh_-_56px_-_196px)]'>
 					<div
 						className='bg-dots mask-dots absolute -top-8 z-[-1] hidden h-[20rem] w-full sm:block'
 						aria-hidden

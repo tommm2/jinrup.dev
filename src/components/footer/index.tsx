@@ -8,7 +8,7 @@ import { siteConfig } from '@/config/site';
 
 function Footer() {
 	return (
-		<footer className='px-6'>
+		<footer className='layout'>
 			<div className='flex flex-col items-center gap-4 py-16'>
 				<div className='text-sm'>
 					© 2023 Tom Jin. All rights reserved.
