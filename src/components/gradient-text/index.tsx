@@ -14,7 +14,7 @@ function GradientText({
 	const Component = as;
 
 	return (
-		<Component className={cn('w-fit bg-gradient-to-br from-base-200 to-base-200/40 bg-clip-text text-transparent', className)}>
+		<Component className={cn('w-fit bg-gradient-to-br from-primary-500 to-accent-500 bg-clip-text text-transparent', className)}>
 			{children}
 		</Component>
 	);
