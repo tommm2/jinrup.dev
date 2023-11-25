@@ -27,7 +27,7 @@ function HomePage() {
 			<div className='space-y-8'>
 				<div className='flex flex-col gap-4 xs:flex-row xs:items-center'>
 					<Image
-						className='animate-in rounded-full bg-base-200'
+						className='animate-in rounded-full bg-gradient-to-r from-base-200 to-base-200/60'
 						src='/images/avatar.png'
 						alt='avatar'
 						width={85}
