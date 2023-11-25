@@ -2,18 +2,18 @@ import { cn } from '@/utils/cn';
 import Anchor, { anchorEncode } from './anchor';
 
 type LinkedHeadingProps = {
+	className?: string;
 	as: keyof JSX.IntrinsicElements;
 	id?: string;
 	isLinked?: boolean;
 	children?: React.ReactNode;
-	className?: string;
 }
 
 function LinkedHeading({
+	className,
 	as,
 	isLinked = true,
 	id: idProp,
-	className,
 	children,
 	...otherProps
 }: LinkedHeadingProps) {
