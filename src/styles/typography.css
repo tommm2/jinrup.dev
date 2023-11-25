@@ -5,7 +5,7 @@
 		@apply  mb-[0.5em];
 
 		&.anchor > a {
-			@apply font-bold text-transparent bg-gradient-to-br from-base-200 to-base-200/60 bg-clip-text;
+			@apply font-bold text-base-200;
 		}
 	}
 
