@@ -1,11 +1,10 @@
 import { Metadata } from 'next';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { allProjects } from 'contentlayer/generated';
 
-import ProjectCard from '@/components/project-card';
 import Link from '@/components/link';
 import GradientText from '@/components/gradient-text';
+import ProjectList from '@/components/project-list';
 import { siteConfig } from '@/config/site';
 import { getUrlWithLocale } from '@/lib/navigation';
 
@@ -26,8 +25,6 @@ export async function generateMetadata({
 
 function ProjectsPage() {
 	const t = useTranslations('projectsPage');
-	const locale = useLocale();
-	const projects = allProjects.filter((item) => item.language === locale);
 
 	return (
 		<>
@@ -52,14 +49,7 @@ function ProjectsPage() {
 					),
 				})}
 			</p>
-			<div className='mt-16 grid animate-in grid-cols-1 gap-6 animation-delay-2 sm:grid-cols-2'>
-				{projects.map((project) => (
-					<ProjectCard
-						key={project.slug}
-						project={project}
-					/>
-				))}
-			</div>
+			<ProjectList />
 		</>
 	);
 }

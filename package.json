@@ -14,6 +14,8 @@
     }
   },
   "dependencies": {
+    "@apollo/client": "^3.8.7",
+    "@apollo/experimental-nextjs-app-support": "^0.5.1",
     "@giscus/react": "^2.3.0",
     "@prisma/client": "^4.15.0",
     "clsx": "^1.2.1",
@@ -23,6 +25,7 @@
     "next": "^14.0.1",
     "next-contentlayer": "^0.3.2",
     "next-intl": "^3.0.0-rc.10",
+    "octokit": "^3.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
