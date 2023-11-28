@@ -1,7 +1,4 @@
-import {
-	allPosts,
-	allProjects,
-} from 'contentlayer/generated';
+import { allPosts } from 'contentlayer/generated';
 
 import { siteConfig } from '@/config/site';
 
@@ -9,10 +6,6 @@ export default async function sitemap() {
 	const posts = allPosts.map((post) => ({
 		url: `${siteConfig.siteUrl}/blog/${post.slug}`,
 		lastModified: post.publishedAt.split('T')[0],
-	}));
-
-	const projects = allProjects.map((project) => ({
-		url: `${siteConfig.siteUrl}/projects/${project.slug}`,
 	}));
 
 	const routes = ['', 'about', 'blog', 'projects']
@@ -23,7 +16,6 @@ export default async function sitemap() {
 
 	return [
 		...posts,
-		...projects,
 		...routes,
 	];
 }
