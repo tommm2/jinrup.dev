@@ -21,3 +21,8 @@ type PinnedRepo = {
 	isArchived?: boolean;
 	isFork?: boolean;
 }
+
+type Stats = {
+	followers: number;
+	stars: number;
+}
