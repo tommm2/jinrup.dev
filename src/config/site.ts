@@ -5,6 +5,7 @@ export const siteConfig = {
 	description: 'Hey, I\'m Tom Jin! I’m passionate about building web application. I like learning new technologies.',
 	ogImage: '',
 	author: 'Tom Jin',
+	githubUsername: 'tommm2',
 	email: 'tom875694231@gmail.com',
 	siteUrl: 'https://jinrup.vercel.app',
 	links: {
