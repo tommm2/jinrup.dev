@@ -20,23 +20,6 @@ language: 'en'
 
 Hello, World!`;
 
-const projectZHTemplate = `---
-title: 我的第一個專案!
-description: 我的第一個專案!
-image: /images/test.jpg
-language: 'zh-TW'
----
-
-這是我的第一個專案`;
-const projectENTemplate = `---
-title: My first project!
-description: My First Project!
-image: /images/test.jpg
-language: 'en'
----
-
-This is my first Project`;
-
 const aboutZHTemplate = `---
 language: 'zh-TW'
 ---
@@ -167,18 +150,14 @@ const deleteAllFilesExcept = async (directoryPath, fileToKeep) => {
 	await deleteAllFilesExcept(imagesDir, 'test.jpg');
 
 	const postDir = path.join(contentDir, 'blog', 'hello-world');
-	const projectDir = path.join(contentDir, 'projects', 'first-project');
 	const aboutDir = path.join(contentDir, 'pages', 'about');
 
 	await fs.mkdir(postDir, { recursive: true });
-	await fs.mkdir(projectDir, { recursive: true });
 	await fs.mkdir(aboutDir, { recursive: true });
 	await fs.mkdir(messagesDir, { recursive: true });
 
 	await fs.writeFile(path.join(postDir, 'index.mdx'), blogPostZHTemplate);
 	await fs.writeFile(path.join(postDir, 'index.en.mdx'), blogPostENTemplate);
-	await fs.writeFile(path.join(projectDir, 'index.mdx'), projectZHTemplate);
-	await fs.writeFile(path.join(projectDir, 'index.en.mdx'), projectENTemplate);
 	await fs.writeFile(path.join(aboutDir, 'index.mdx'), aboutZHTemplate);
 	await fs.writeFile(path.join(aboutDir, 'index.en.mdx'), aboutENTemplate);
 
