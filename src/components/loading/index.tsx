@@ -1,6 +1,12 @@
-function Loading() {
+import { cn } from '@/utils/cn';
+
+type LoadingProps = {
+	className?: string
+}
+
+function Loading({ className }: LoadingProps) {
 	return (
-		<span className='space-x-1'>
+		<span className={cn('space-x-1', className)}>
 			<span className='inline-flex animate-[loading_1.4s_ease-in-out_infinite] rounded-full'>
 				&bull;
 			</span>
