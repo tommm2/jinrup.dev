@@ -9,7 +9,7 @@ import { fetcher } from '@/lib/fetcher';
 function ProjectList() {
 	const {
 		data: projects,
-	} = useSWR<PinnedRepo[]>('/api/github', fetcher);
+	} = useSWR<PinnedRepo[]>('/api/github?type=pinnedRepos', fetcher);
 
 	if (!projects) {
 		return <Loading className='mt-16 flex items-center justify-center' />;
