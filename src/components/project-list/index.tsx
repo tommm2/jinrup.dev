@@ -2,6 +2,7 @@
 
 import useSWR from 'swr';
 
+import Loading from '@/components/loading';
 import ProjectCard from '@/components/project-card';
 import { fetcher } from '@/lib/fetcher';
 
@@ -10,10 +11,12 @@ function ProjectList() {
 		data: projects,
 	} = useSWR<PinnedRepo[]>('/api/github?type=pinnedRepos', fetcher);
 
-	if (!projects) return <></>;
+	if (!projects) {
+		return <Loading className='mt-16 flex items-center justify-center' />;
+	}
 
 	return (
-		<div className='mt-16 grid animate-in grid-cols-1 gap-4 sm:grid-cols-2'>
+		<div className='mt-16 grid animate-in grid-cols-1 gap-4 animation-delay-2 sm:grid-cols-2'>
 			{projects.map((project) => (
 				<ProjectCard
 					key={project.id}
