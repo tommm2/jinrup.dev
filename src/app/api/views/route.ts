@@ -5,7 +5,6 @@ import prisma from '@/lib/prisma';
 export async function GET(req: NextRequest) {
 	const slug = req.nextUrl.searchParams.get('slug');
 
-	// total post views
 	if (!slug) {
 		const allViews = await prisma.post.aggregate({
 			_sum: {
@@ -17,7 +16,6 @@ export async function GET(req: NextRequest) {
 
 		return NextResponse.json(data);
 	} else {
-		// specific post views
 		const post = await prisma.post.findUnique({
 			where: { slug },
 		});
