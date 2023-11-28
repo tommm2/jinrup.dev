@@ -1,37 +1,55 @@
-import Image from 'next/image';
-import { Project } from 'contentlayer/generated';
+import { RiGitRepositoryLine, RiStarLine } from 'react-icons/ri';
+import { FaCodeFork } from 'react-icons/fa6';
 
 import Link from '@/components/link';
 
 type ProjectCardProps = {
-	project: Project;
-}
+	project: PinnedRepo;
+};
 
 function ProjectCard({ project }: ProjectCardProps) {
-	const { slug, image, title, description } = project;
+	const {
+		name,
+		primaryLanguage,
+		stargazerCount = 0,
+		description,
+		forkCount = 0,
+		url,
+	} = project;
 
 	return (
-		<div className='group relative rounded-md border border-base-700/50 bg-base-900 backdrop-blur'>
-			<div className='absolute -left-px top-3/4 h-14 w-px bg-gradient-to-b from-transparent via-primary-500 to-transparent opacity-0 transition-all duration-500 group-hover:top-1/4 group-hover:opacity-100' />
-			<Link
-				className='relative flex flex-col p-6'
-				href={`/projects/${slug}`}
-			>
-				<Image
-					className='h-auto w-full rounded-lg object-cover object-center sm:h-[12.5rem]'
-					width={800}
-					height={600}
-					alt={title}
-					src={image}
-					priority
-				/>
-				<p className='mt-4 text-lg font-bold'>
-					{title}
-				</p>
-				<p className='mt-2 line-clamp-1 text-base-300/80'>
-					{description}
-				</p>
-			</Link>
+		<div className='space-y-2 rounded-md border border-base-800 bg-base-950 p-4 text-base-300/60'>
+			<div className='flex items-center gap-2'>
+				<RiGitRepositoryLine className='h-6 w-6' />
+				<Link
+					className='font-medium text-primary-500 hover:underline'
+					href={url}
+				>
+					{name}
+				</Link>
+			</div>
+			<p className='text-sm'>{description}</p>
+			<div className='flex gap-4'>
+				<div className='flex items-center gap-0.5 text-sm'>
+					<div
+						className='h-3 w-3 rounded-full'
+						style={{ backgroundColor: primaryLanguage?.color }}
+					></div>
+					<span>{primaryLanguage?.name}</span>
+				</div>
+				{stargazerCount > 0 ? (
+					<div className='flex items-center gap-0.5'>
+						<RiStarLine />
+						<span className='text-sm'>{stargazerCount}</span>
+					</div>
+				) : null}
+				{forkCount > 0 ? (
+					<div className='flex items-center gap-0.5'>
+						<FaCodeFork />
+						<span className='text-sm'>{stargazerCount}</span>
+					</div>
+				) : null}
+			</div>
 		</div>
 	);
 }
