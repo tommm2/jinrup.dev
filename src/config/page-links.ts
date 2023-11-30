@@ -1,14 +1,14 @@
 export const pageLinks = [
 	{
-		title: 'Blog',
+		title: 'blog',
 		href: '/blog',
 	},
 	{
-		title: 'Projects',
+		title: 'projects',
 		href: '/projects',
 	},
 	{
-		title: 'About',
+		title: 'about',
 		href: '/about',
 	},
 ];
