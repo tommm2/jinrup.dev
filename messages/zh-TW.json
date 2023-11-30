@@ -1,7 +1,7 @@
 {
 	"common": {
 		"latestPosts": "最新文章",
-		"seeMore": "查看更多",
+		"allPosts": "所有文章",
 		"placeholder": "查詢文章",
 		"noResults": "查無結果",
 		"blog": "部落格",

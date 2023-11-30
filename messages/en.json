@@ -1,7 +1,7 @@
 {
 	"common": {
-		"latestPosts": "Latest Posts",
-		"seeMore": "See More",
+		"recentPosts": "Recent Posts",
+		"allPosts": "All Posts",
 		"placeholder": "Search articles",
 		"noResults": "No Search Results",
 		"blog": "Blog",
