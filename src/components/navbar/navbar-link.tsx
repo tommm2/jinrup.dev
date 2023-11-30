@@ -1,14 +1,15 @@
 'use client';
 
+import { RiGitRepositoryLine, RiQuillPenLine, RiUser3Line } from 'react-icons/ri';
+
 import Link from '@/components/link';
 import { usePathname } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
-import { RiFolderOpenFill, RiQuillPenFill, RiUser3Fill } from 'react-icons/ri';
 
 const IconMap: { [key: string]: React.ReactNode } = {
-	['/blog']: <RiQuillPenFill className='h-4 w-4' />,
-	['/projects']: <RiFolderOpenFill className='h-4 w-4' />,
-	['/about']: <RiUser3Fill className='h-4 w-4' />,
+	['/blog']: <RiQuillPenLine className='h-5 w-5' />,
+	['/projects']: <RiGitRepositoryLine className='h-5 w-5' />,
+	['/about']: <RiUser3Line className='h-5 w-5' />,
 };
 
 type NavbarLinkProps = {
