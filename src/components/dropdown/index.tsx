@@ -46,7 +46,7 @@ function Dropdown({
 			<AnimatePresence>
 				{isVisible && (
 					<motion.div
-						className='absolute right-0 top-10 z-20 rounded-xl border border-base-800/40 bg-base-950 py-3'
+						className='absolute right-0 top-10 z-20 rounded-xl border border-base-800 bg-base-950 py-3'
 						initial={{ opacity: 0, y: -10 }}
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: 10 }}
