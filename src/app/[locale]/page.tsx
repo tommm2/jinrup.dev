@@ -16,7 +16,7 @@ import { siteConfig } from '@/config/site';
 
 function HomePage() {
 	const locale = useLocale();
-	const t = useTranslations('homePage');
+	const t = useTranslations();
 	const recentPosts = allPosts
 		.filter((post) => post.language === locale)
 		.sort((a, b) => compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)))
@@ -30,8 +30,8 @@ function HomePage() {
 						className='animate-in rounded-full bg-gradient-to-r from-base-200 to-base-200/60'
 						src='/images/avatar.png'
 						alt='avatar'
-						width={85}
-						height={85}
+						width={80}
+						height={80}
 						priority
 					/>
 					<div className='animate-in animation-delay-1'>
@@ -41,11 +41,11 @@ function HomePage() {
 						>
 							Tom Jin.
 						</GradientText>
-						<p className='text-base-300/80'>{t('subTitle')}</p>
+						<p className='text-base-300/80'>{t('homePage.subTitle')}</p>
 					</div>
 				</div>
 				<div className='flex animate-in flex-wrap items-center gap-4 animation-delay-2'>
-					<p>{t('description')}</p>
+					<p>{t('homePage.description')}</p>
 					<Link
 						className='inline-flex items-center gap-2 rounded-md bg-base-800 px-2 py-1.5 text-sm font-medium duration-300 hover:opacity-70'
 						aria-label='GitHub'
@@ -78,13 +78,13 @@ function HomePage() {
 			<div className='mt-16 animate-in animation-delay-3'>
 				<div className='flex items-center justify-between'>
 					<GradientText className='text-xl font-bold tracking-tight'>
-						Latest Posts
+						{t('common.latestPosts')}
 					</GradientText>
 					<Link
 						className='flex items-center gap-2 text-sm transition-opacity hover:opacity-70'
 						href='/blog'
 					>
-						See All
+						{t('common.allPosts')}
 						<RiArrowRightLine />
 					</Link>
 				</div>
