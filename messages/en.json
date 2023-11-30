@@ -1,6 +1,6 @@
 {
 	"common": {
-		"recentPosts": "Recent Posts",
+		"latestPosts": "Latest Posts",
 		"allPosts": "All Posts",
 		"placeholder": "Search articles",
 		"noResults": "No Search Results",
