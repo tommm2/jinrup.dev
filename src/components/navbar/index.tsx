@@ -1,4 +1,5 @@
 import { RiArrowDownSLine, RiMenu2Line, RiTranslate2 } from 'react-icons/ri';
+import { useTranslations } from 'next-intl';
 
 import Dropdown from '@/components/dropdown';
 import Link from '@/components/link';
@@ -7,6 +8,8 @@ import { pageLinks } from '@/config/page-links';
 import NavbarLink from './navbar-link';
 
 function Navbar() {
+	const t = useTranslations('common');
+
 	return (
 		<header className='sticky top-0 z-10 h-14 bg-base-950/80 backdrop-blur'>
 			<div className='absolute -bottom-px left-11 right-20 h-px bg-gradient-to-r from-transparent via-primary-500 to-transparent'></div>
@@ -20,7 +23,7 @@ function Navbar() {
 							return (
 								<NavbarLink
 									key={title}
-									title={title}
+									title={t(title)}
 									href={href}
 								/>
 							);
@@ -53,7 +56,7 @@ function Navbar() {
 								<NavbarLink
 									key={title}
 									type='mobile'
-									title={title}
+									title={t(title)}
 									href={href}
 								/>
 							);
