@@ -18,7 +18,7 @@ function ProjectCard({ project }: ProjectCardProps) {
 	} = project;
 
 	return (
-		<div className='space-y-2 rounded-md border border-base-800 bg-base-950 p-4 text-base-300/60'>
+		<div className='space-y-2 rounded-md border border-base-800 bg-base-900 p-4 text-base-300/60'>
 			<div className='flex items-center gap-2'>
 				<RiGitRepositoryLine className='h-6 w-6' />
 				<Link
