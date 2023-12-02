@@ -34,7 +34,7 @@ function Navbar() {
 						className='hidden sm:block'
 						buttonAriaLabel='Select language'
 						buttonIcon={
-							<div className='flex items-center transition-opacity duration-300 hover:opacity-60'>
+							<div className='opacity-hover flex items-center p-2'>
 								<RiTranslate2 className='mt-0.5' />
 								<RiArrowDownSLine />
 							</div>

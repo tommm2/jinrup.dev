@@ -36,7 +36,7 @@ function NavbarLink({
 			>
 				{icon}
 				<div>{title}</div>
-				<div className='absolute inset-0 -z-10 rounded-md bg-gradient-to-br from-transparent to-base-800/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
+				<div className='absolute inset-0 -z-10 rounded-md bg-gradient-to-br from-transparent to-base-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
 			</Link>
 		);
 	}
@@ -55,7 +55,7 @@ function NavbarLink({
 				></div>
 			</div>
 			<div>{title}</div>
-			<div className='absolute inset-0 -z-10 rounded-md bg-gradient-to-br from-transparent to-base-800/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
+			<div className='absolute inset-0 -z-10 rounded-md bg-gradient-to-br from-transparent to-base-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
 		</Link>
 	);
 }
