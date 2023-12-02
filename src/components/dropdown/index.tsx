@@ -36,7 +36,6 @@ function Dropdown({
 			ref={dropdownRef}
 		>
 			<button
-				className='flex h-8 items-center p-2'
 				type='button'
 				aria-label={buttonAriaLabel}
 				onClick={() => setIsVisible(!isVisible)}
