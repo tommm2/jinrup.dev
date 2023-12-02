@@ -8,7 +8,6 @@ export const locales = [defaultLocale, 'en'] as const;
 
 export const pathnames = {
 	'/': '/',
-	'/projects': '/projects',
 	'/blog': '/blog',
 } satisfies Pathnames<typeof locales>;
 
