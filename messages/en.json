@@ -5,8 +5,8 @@
 		"placeholder": "Search articles",
 		"noResults": "No Search Results",
 		"blog": "Blog",
-		"projects": "Projects",
 		"about": "About",
+		"pinned": "Pinned",
 		"noSupport": "The article does not support the current language."
 	},
 	"homePage": {
@@ -16,10 +16,6 @@
 	"blogPage": {
 		"description": "Welcome to my blog! Here I will record my learning experience and knowledge in software development.",
 		"subTitle": "<highlight></highlight> posts about code and more..."
-	},
-	"projectsPage": {
-		"description": "Here are some of the projects I've worked on.",
-		"subTitle": "Here are some of the projects I've worked on, check out my <link>Github</link> for more!"
 	},
 	"aboutPage": {
 		"description": "About my work experience, learning record, etc..."

@@ -5,8 +5,8 @@
 		"placeholder": "查詢文章",
 		"noResults": "查無結果",
 		"blog": "部落格",
-		"projects": "專案",
 		"about": "關於",
+		"pinned": "釘選",
 		"noSupport": "文章不支援目前語系"
 	},
 	"homePage": {
@@ -16,10 +16,6 @@
 	"blogPage": {
 		"description": "歡迎來到我的部落格！這裡會記錄著我在軟體開發關領域的學習心得、知識分享。",
 		"subTitle": "<highlight></highlight> 篇關於程式及其他的文章..."
-	},
-	"projectsPage": {
-		"description": "這裡會展示一些之前做的專案!",
-		"subTitle": "以下是一些我曾經做過的專案，想看更多可以到我的 <link>Github</link>瀏覽"
 	},
 	"aboutPage": {
 		"description": "關於我的工作經歷、學習記錄等等..."
