@@ -40,6 +40,7 @@ export async function GET(req: NextRequest) {
 
 		return NextResponse.json(pinnedRepos);
 	} else {
+		// TODO: there will be a place to show the followers and stars on github.
 		const octokit = new Octokit({
 			auth: process.env.GITHUB_AUTH_TOKEN,
 		});
