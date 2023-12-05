@@ -10,12 +10,12 @@ import { getUrlWithLocale } from '@/lib/navigation';
 export async function generateMetadata({
 	params,
 }: { params: { locale: Locale }}): Promise<Metadata> {
-	const t = await getTranslations('aboutPage');
+	const t = await getTranslations();
 	const url = getUrlWithLocale(params.locale, 'about');
 
 	return {
-		title: 'About',
-		description: t('description'),
+		title: t('common.about'),
+		description: t('aboutPage.description'),
 		alternates: {
 			canonical: url,
 		},

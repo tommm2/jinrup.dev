@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 
 import Loading from '@/components/loading';
 import { usePostViews } from '@/hooks';
@@ -14,6 +15,8 @@ function ViewCounter({
 	slug,
 	shouldIncrement = false,
 }: ViewCounterProps) {
+	const t = useTranslations('common');
+
 	const {
 		views,
 		isLoading: viewsIsLoading,
@@ -33,10 +36,9 @@ function ViewCounter({
 				<Loading />
 			) : (
 				<span className='-mx-0.5 animate-[mutation_2s_ease-in-out_1] rounded-md px-0.5 slashed-zero tracking-tight'>
-					{views?.toLocaleString()}
+					{t('views', { count: views?.toLocaleString() })}
 				</span>
 			)}{' '}
-			views
 		</div>
 	);
 }

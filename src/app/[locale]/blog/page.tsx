@@ -4,18 +4,19 @@ import { getTranslations } from 'next-intl/server';
 import { compareDesc } from 'date-fns';
 import { allPosts } from 'contentlayer/generated';
 
+import ClientIntlProvider from '@/components/client-intl-provider';
 import FilterPosts from '@/components/filter-posts';
 import { getUrlWithLocale } from '@/lib/navigation';
 
 export async function generateMetadata({
 	params,
 }: { params: { locale: Locale }}): Promise<Metadata> {
-	const t = await getTranslations('blogPage');
+	const t = await getTranslations();
 	const url = getUrlWithLocale(params.locale, 'blog');
 
 	return {
-		title: 'Blog',
-		description: t('description'),
+		title: t('common.blog'),
+		description: t('blogPage.description'),
 		alternates: {
 			canonical: url,
 		},
@@ -41,11 +42,13 @@ function BlogPage() {
 					),
 				})}
 			</p>
-			<FilterPosts
-				posts={posts}
-				placeholder={t('common.placeholder')}
-				remindText={t('common.noResults')}
-			/>
+			<ClientIntlProvider messageKey='common'>
+				<FilterPosts
+					posts={posts}
+					placeholder={t('common.placeholder')}
+					remindText={t('common.noResults')}
+				/>
+			</ClientIntlProvider>
 		</>
 	);
 }
