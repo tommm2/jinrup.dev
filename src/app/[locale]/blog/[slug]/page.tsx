@@ -1,18 +1,18 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { RiArrowLeftLine } from 'react-icons/ri';
 import { allPosts } from 'contentlayer/generated';
 
 import Comment from '@/components/comment';
 import Callout from '@/components/mdx-components/callout';
+import ClientIntlProvider from '@/components/client-intl-provider';
 import Link from '@/components/link';
 import MDXContent from '@/components/mdx-content';
 import ViewCounter from '@/components/view-counter';
-import GradientText from '@/components/gradient-text';
-import { getArticleBySlugAndLocale } from '@/lib/contentlayer';
-import { getUrlWithLocale } from '@/lib/navigation';
-import { formatDate } from '@/utils/date';
+import { getArticleBySlugAndLocale } from '@/lib/blog';
+import { defaultLocale, getUrlWithLocale } from '@/lib/navigation';
+import { formatDate, getDistanceToNow } from '@/utils/date';
 
 export async function generateStaticParams() {
 	return allPosts.map((post) => ({ slug: post.slug }));
@@ -58,13 +58,27 @@ type BlogPostLayoutProps = {
 
 function BlogPostLayout ({ params }: BlogPostLayoutProps) {
 	const t = useTranslations('common');
+	const locale = useLocale() as Locale;
 	const post = getArticleBySlugAndLocale(allPosts, params.slug, params.locale);
 
 	if (!post) {
 		notFound();
 	}
 
-	const { title, language, publishedAt, slug } = post;
+	const {
+		title,
+		language,
+		publishedAt,
+		slug,
+	} = post;
+
+	const formatString = locale === defaultLocale ? 'PPP' : 'LLLL dd, yyyy';
+	const date = formatDate({
+		date: publishedAt,
+		formatString,
+		locale,
+	});
+	const distanceToNow = getDistanceToNow(publishedAt, locale);
 
 	return (
 		<>
@@ -73,28 +87,27 @@ function BlogPostLayout ({ params }: BlogPostLayoutProps) {
 				href='/blog'
 			>
 				<RiArrowLeftLine />
-				<span>Back to blog</span>
+				<span>{t('backToBlog')}</span>
 			</Link>
 			<div className='mt-8 animate-in'>
-				<GradientText
-					className='text-3xl font-bold'
-					as='h1'
-				>
-					{title}
-				</GradientText>
-				<div className='mt-3 text-base-300/60'>
-					<time dateTime={formatDate(publishedAt)}>
-						{formatDate(publishedAt)}
-					</time>
-					<span className='p-1'>．</span>
-					<ViewCounter
-						slug={slug}
-						shouldIncrement
-					/>
-				</div>
 				{language !== params.locale && (
 					<Callout type='warning'>{t('noSupport')}</Callout>
 				)}
+				<h1 className='text-2xl font-bold'>
+					{title}
+				</h1>
+				<div className='mt-3 text-base-300/60'>
+					<time dateTime={publishedAt}>
+						{`${date} (${distanceToNow})`}
+					</time>
+					<span className='p-1'>．</span>
+					<ClientIntlProvider messageKey='common'>
+						<ViewCounter
+							slug={slug}
+							shouldIncrement
+						/>
+					</ClientIntlProvider>
+				</div>
 			</div>
 			<div className='prose mt-5 animate-in'>
 				<MDXContent code={post.body.code} />
