@@ -2,7 +2,7 @@
 	@apply max-w-none text-base-300;
 
 	h1, h2, h3, h4 {
-		@apply  mb-[0.5em];
+		@apply mb-[0.5em] tracking-tight;
 
 		&.anchor > a {
 			@apply font-bold text-base-200;
@@ -34,7 +34,7 @@
 	}
 
 	blockquote {
-		@apply bg-base-900 p-4 text-base-300 border-primary-500 rounded;
+		@apply bg-base-900 p-4 text-base-300 border-primary-500 rounded-lg;
 
 		& > p {
 			@apply m-0;
@@ -42,7 +42,12 @@
 	}
 
 	:not(pre) > code {
-		@apply bg-base-800 my-1 p-0.5 rounded-lg text-base-300;
+		@apply bg-base-800/60 my-1 p-1 border rounded-lg text-base-300 border-base-800;
+
+		&::before,
+		&::after {
+			@apply content-[''];
+		}
 	}
 
 	/* rehype-pretty-code style */
@@ -57,7 +62,7 @@
 			}
 
 			&--highlighted {
-				@apply bg-base-600/10 border-emerald-600;
+				@apply bg-base-600/10 border-emerald-500;
 			}
 		}
 
