@@ -88,6 +88,8 @@ const messagesEN = `{
 const homePage = `import { useTranslations } from 'next-intl';
 import { RiPushpinLine } from 'react-icons/ri';
 
+import PinnedProjects from '@/components/pinned-projects';
+
 export default function HomePage() {
 	const t = useTranslations('homePage');
 
