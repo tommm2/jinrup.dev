@@ -1,10 +1,9 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { allPages } from 'contentlayer/generated';
 
-import GradientText from '@/components/gradient-text';
 import MDXContent from '@/components/mdx-content';
 import { getUrlWithLocale } from '@/lib/navigation';
 
@@ -24,6 +23,7 @@ export async function generateMetadata({
 }
 
 function AboutPage() {
+	const t = useTranslations('common');
 	const locale = useLocale() as Locale;
 	const page = allPages.find((page) => page.slug === 'about' && page.language === locale);
 
@@ -33,12 +33,9 @@ function AboutPage() {
 
 	return (
 		<>
-			<GradientText
-				className='animate-in text-3xl font-bold tracking-tight'
-				as='h1'
-			>
-				About
-			</GradientText>
+			<h1 className='animate-in text-2xl font-bold tracking-tight'>
+				{t('about')}
+			</h1>
 			<div className='prose mt-5 animate-in animation-delay-1'>
 				<MDXContent code={page.body.code} />
 			</div>
