@@ -7,7 +7,7 @@ import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import { getUrlWithLocale, locales } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
-import { fontSans } from '@/config/fonts';
+import { fontNoto, fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
 
 export async function generateMetadata({
@@ -75,7 +75,11 @@ function LocaleLayout({ children, params: { locale } }: LocaleLayoutProps) {
 
 	return (
 		<html
-			className={cn('bg-base-950 font-sans text-base-200', fontSans.variable)}
+			className={cn(
+				'bg-base-950 font-sans text-base-200',
+				fontSans.variable,
+				fontNoto.variable,
+			)}
 			lang={locale}
 		>
 			<body className='min-h-screen overflow-x-hidden antialiased'>
