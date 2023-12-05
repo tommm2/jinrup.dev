@@ -1,5 +1,5 @@
 import { format, parseISO } from 'date-fns';
 
-export function formatDate(date: string, dateFormat = 'LLLL d') {
-	return format(parseISO(date), dateFormat);
+export function formatDate(date: string, formatString = 'LLLL dd') {
+	return format(parseISO(date), formatString);
 }
