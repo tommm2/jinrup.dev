@@ -24,6 +24,11 @@ function PostCard({ post }: PostCardProps) {
 	} = post;
 
 	const formatString = locale === defaultLocale ? 'LLLd日' : 'LLLL d';
+	const date = formatDate({
+		date: publishedAt,
+		formatString,
+		locale,
+	});
 
 	return (
 		<div ref={intersectionRef}>
@@ -35,7 +40,7 @@ function PostCard({ post }: PostCardProps) {
 			</Link>
 			<div className='text-sm text-base-300/60'>
 				<time dateTime={publishedAt}>
-					{formatDate(publishedAt, formatString, locale)}
+					{date}
 				</time>
 				．
 				{enabled && <ViewCounter slug={slug} />}

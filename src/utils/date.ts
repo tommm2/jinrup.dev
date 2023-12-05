@@ -3,7 +3,17 @@ import { zhTW } from 'date-fns/locale';
 
 import { defaultLocale } from '@/lib/navigation';
 
-export function formatDate(date: string, formatString = 'LLLL dd', locale: Locale = defaultLocale) {
+type formatDateType = {
+	date: string;
+	formatString?: string;
+	locale: Locale;
+}
+
+export function formatDate({
+	date,
+	formatString = 'LLLL dd',
+	locale,
+}: formatDateType) {
 	return format(parseISO(date), formatString, {
 		locale: locale === defaultLocale ? zhTW : undefined,
 	});
