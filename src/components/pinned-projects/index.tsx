@@ -6,7 +6,7 @@ import Loading from '@/components/loading';
 import ProjectCard from '@/components/project-card';
 import { fetcher } from '@/lib/fetcher';
 
-function ProjectList() {
+function PinnedProjects() {
 	const {
 		data: projects,
 		isLoading,
@@ -30,4 +30,4 @@ function ProjectList() {
 	);
 }
 
-export default ProjectList;
+export default PinnedProjects;

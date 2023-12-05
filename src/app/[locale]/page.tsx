@@ -8,7 +8,7 @@ import {
 } from 'react-icons/ri';
 
 import Link from '@/components/link';
-import ProjectList from '@/components/project-list';
+import PinnedProjects from '@/components/pinned-projects';
 import { siteConfig } from '@/config/site';
 
 function HomePage() {
@@ -69,7 +69,7 @@ function HomePage() {
 					<RiPushpinLine className='h-5 w-5' />
 					{t('common.pinned')}
 				</h2>
-				<ProjectList />
+				<PinnedProjects />
 			</div>
 		</>
 	);
