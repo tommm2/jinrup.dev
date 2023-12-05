@@ -33,12 +33,12 @@ function BackToTop() {
 		<AnimatePresence>
 			{isVisible && (
 				<motion.button
-					className='fixed bottom-20 right-8 flex items-center rounded-md bg-base-800 p-2'
+					className='fixed bottom-20 right-8 flex items-center rounded-lg bg-base-800 p-2'
 					type='button'
 					aria-label='back to top'
-					initial={{ opacity: 0, x: 20 }}
-					animate={{ opacity: 1, x: 0 }}
-					exit={{ opacity: 0, x: 20 }}
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: 20 }}
 					onClick={handleClick}
 				>
 					<RiArrowUpSLine className='h-6 w-6' />
