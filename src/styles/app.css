@@ -6,7 +6,7 @@
 
 @layer utilities {
 	.layout {
-		@apply mx-auto max-w-[43.75rem] px-6;
+		@apply mx-auto max-w-2xl px-6;
 	}
 
 	.opacity-hover {
