@@ -1,4 +1,4 @@
-import { type Post } from 'contentlayer/generated';
+import type { Post } from 'contentlayer/generated';
 
 import { groupBy } from '@/utils/helpers';
 import { defaultLocale } from './navigation';
