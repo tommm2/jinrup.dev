@@ -7,7 +7,9 @@
 		"blog": "Blog",
 		"about": "About",
 		"pinned": "Pinned",
-		"noSupport": "The article does not support the current language."
+		"noSupport": "The article does not support the current language.",
+		"backToBlog": "Back to blog",
+		"views": "{count} views"
 	},
 	"homePage": {
 		"description": "👋 Welcome to my site where I share my readings, thoughts and some of my work.",
