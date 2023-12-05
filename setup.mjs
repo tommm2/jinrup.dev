@@ -99,7 +99,7 @@ export default function HomePage() {
 				{t('homePage.title')}
 			</h1>
 			<p className='text-base-300/80 animate-in animation-delay-1 mt-2'>
-				{t('paragraph')}
+				{t('homePage.paragraph')}
 			</p>
 			{/* Note: Your github account must have a pinned project, otherwise it will show coming soon text! */}
 			<div className='mt-16 animate-in space-y-4 animation-delay-2'>
