@@ -91,12 +91,12 @@ import { RiPushpinLine } from 'react-icons/ri';
 import PinnedProjects from '@/components/pinned-projects';
 
 export default function HomePage() {
-	const t = useTranslations('homePage');
+	const t = useTranslations();
 
 	return (
 		<>
 			<h1 className='text-2xl animate-in font-bold tracking-tight'>
-				{t('title')}
+				{t('homePage.title')}
 			</h1>
 			<p className='text-base-300/80 animate-in animation-delay-1 mt-2'>
 				{t('paragraph')}
