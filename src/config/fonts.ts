@@ -1,24 +1,15 @@
-import { Inter } from 'next/font/google';
+import { Inter, Noto_Sans_TC } from 'next/font/google';
 
 export const fontSans = Inter({
 	variable: '--font-sans',
-	adjustFontFallback: true,
-	fallback: [
-		'ui-sans-serif',
-		'system-ui',
-		'-apple-system',
-		'BlinkMacSystemFont',
-		'Segoe UI',
-		'Roboto',
-		'Helvetica Neue',
-		'Arial',
-		'Noto Sans',
-		'sans-serif',
-		'Apple Color Emoji',
-		'Segoe UI Emoji',
-		'Segoe UI Symbol',
-		'Noto Color Emoji',
-	],
+	display: 'swap',
+	subsets: ['latin'],
+	weight: ['400', '500', '700'],
+});
+
+export const fontNoto = Noto_Sans_TC({
+	variable: '--font-noto',
+	display: 'swap',
 	subsets: ['latin'],
 	weight: ['400', '500', '700'],
 });

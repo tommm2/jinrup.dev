@@ -30,6 +30,7 @@ export default {
 		fontFamily: {
 			sans: [
 				'var(--font-sans)',
+				'var(--font-noto)',
 				...defaultTheme.fontFamily.sans,
 			],
 		},
