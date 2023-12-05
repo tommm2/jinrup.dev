@@ -23,7 +23,7 @@ function CopyButton({
 	return (
 		<button
 			className={cn(
-				'absolute right-3 rounded-md border bg-base-800 border-base-700/60 p-2 opacity-0 transition-all group-hover:opacity-100',
+				'absolute right-3 rounded-lg bg-base-800/60 p-2.5 opacity-0 transition-all group-hover:opacity-100',
 				{ 'text-primary-500': isCopied },
 				className,
 			)}
