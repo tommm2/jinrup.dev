@@ -9,7 +9,7 @@ import {
 export default createMiddleware({
 	locales,
 	pathnames,
-	defaultLocale: defaultLocale,
+	defaultLocale,
 	localePrefix: 'as-needed',
 });
 
