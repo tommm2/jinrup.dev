@@ -18,11 +18,11 @@ function ProjectCard({ project }: ProjectCardProps) {
 	} = project;
 
 	return (
-		<div className='space-y-2 rounded-md border border-base-800 bg-base-900 p-4 text-base-300/60'>
+		<div className='space-y-2 rounded-md border border-base-800 bg-base-900 p-4 text-base-200/70'>
 			<div className='flex items-center gap-2'>
 				<RiGitRepositoryLine className='h-6 w-6' />
 				<Link
-					className='font-medium text-primary-500 hover:underline'
+					className='opacity-hover font-medium text-primary-500'
 					href={url}
 				>
 					{name}
