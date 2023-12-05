@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
 import BackToTop from '@/components/back-to-top';
 import Navbar from '@/components/navbar';
@@ -68,6 +68,8 @@ function LocaleLayout({ children, params: { locale } }: LocaleLayoutProps) {
 	if (!locales.includes(locale as any)) {
 		notFound();
 	}
+
+	unstable_setRequestLocale(locale);
 
 	return (
 		<html
