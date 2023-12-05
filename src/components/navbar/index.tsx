@@ -46,7 +46,7 @@ function Navbar() {
 				<Dropdown
 					className='block sm:hidden'
 					buttonAriaLabel='open menu'
-					buttonIcon={<RiMenu2Line />}
+					buttonIcon={<RiMenu2Line className='opacity-hover' />}
 				>
 					<nav className='flex flex-col gap-1 px-2 text-sm'>
 						{pageLinks.map((link) => {
