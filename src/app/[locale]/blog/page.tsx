@@ -5,7 +5,6 @@ import { compareDesc } from 'date-fns';
 import { allPosts } from 'contentlayer/generated';
 
 import FilterPosts from '@/components/filter-posts';
-import GradientText from '@/components/gradient-text';
 import { getUrlWithLocale } from '@/lib/navigation';
 
 export async function generateMetadata({
@@ -32,12 +31,9 @@ function BlogPage() {
 
 	return (
 		<>
-			<GradientText
-				className='animate-in text-3xl font-bold tracking-tight'
-				as='h1'
-			>
-				Blog
-			</GradientText>
+			<h1 className='animate-in text-2xl font-bold tracking-tight'>
+				{t('common.blog')}
+			</h1>
 			<p className='mt-1 animate-in text-base-300/80 animation-delay-1'>
 				{t.rich('blogPage.subTitle', {
 					highlight: () => (
