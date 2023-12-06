@@ -31,15 +31,17 @@ function ViewCounter({
 	}, []);
 
 	return (
-		<div className='inline'>
-			{viewsIsError || viewsIsLoading ? (
-				<Loading />
-			) : (
-				<span className='-mx-0.5 animate-[mutation_2s_ease-in-out_1] rounded-md px-0.5 slashed-zero tracking-tight'>
-					{t('views', { count: views?.toLocaleString() })}
-				</span>
-			)}{' '}
-		</div>
+		<span>
+			{t.rich('postViews', {
+				count: () => (viewsIsError || viewsIsLoading)
+					? <Loading />
+					: (
+						<span className='-mx-0.5 animate-[mutation_2s_ease-in-out_1] rounded-md px-0.5 slashed-zero tracking-tight'>
+							{views?.toLocaleString()}
+						</span>
+					),
+			})}
+		</span>
 	);
 }
 
