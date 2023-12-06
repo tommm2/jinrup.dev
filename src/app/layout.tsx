@@ -1,10 +1,10 @@
 import '@/styles/app.css';
 
-type Props = {
+type RootLayout = {
 	children: React.ReactNode;
 };
 
-function RootLayout({ children }: Props) {
+function RootLayout({ children }: RootLayout) {
 	return children;
 }
 
