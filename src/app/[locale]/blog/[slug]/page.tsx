@@ -96,7 +96,7 @@ function BlogPostLayout ({ params }: BlogPostLayoutProps) {
 				<h1 className='text-2xl font-bold'>
 					{title}
 				</h1>
-				<div className='mt-3 flex justify-between text-base-300/60'>
+				<div className='mt-3 flex justify-between text-sm text-base-300/60'>
 					<time dateTime={publishedAt}>
 						{`${date} (${distanceToNow})`}
 					</time>
