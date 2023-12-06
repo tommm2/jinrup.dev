@@ -9,7 +9,7 @@
 		"pinned": "Pinned",
 		"noSupport": "The article does not support the current language.",
 		"backToBlog": "Back to blog",
-		"views": "{count} views"
+		"postViews": "<count></count> views"
 	},
 	"homePage": {
 		"description": "👋 Welcome to my site where I share my readings, thoughts and some of my work.",
