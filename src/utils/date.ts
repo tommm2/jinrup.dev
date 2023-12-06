@@ -19,7 +19,7 @@ export function formatDate({
 	});
 }
 
-export function getDistanceToNow(date: string, locale: Locale = defaultLocale) {
+export function getDistanceToNow(date: string, locale: Locale) {
 	return formatDistanceToNow(new Date(date), {
 		locale: locale === defaultLocale ? zhTW : undefined,
 		addSuffix: true,
