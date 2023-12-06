@@ -1,15 +1,10 @@
-import { createLocalizedPathnamesNavigation, Pathnames } from 'next-intl/navigation';
+import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 
 import { siteConfig } from '@/config/site';
 
 export const defaultLocale = 'zh-TW';
 
 export const locales = [defaultLocale, 'en'] as const;
-
-export const pathnames = {
-	'/': '/',
-	'/blog': '/blog',
-} satisfies Pathnames<typeof locales>;
 
 export function getUrlWithLocale(
 	locale: Locale,
@@ -31,8 +26,5 @@ export const {
 	redirect,
 	usePathname,
 	useRouter,
-} = createLocalizedPathnamesNavigation({
-	locales,
-	pathnames: pathnames as typeof pathnames & Record<string & {}, string>,
-});
+} = createSharedPathnamesNavigation({ locales });
 
