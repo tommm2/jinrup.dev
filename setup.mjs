@@ -44,7 +44,7 @@ const messagesZH = `{
 		"pinned": "Pinned",
 		"noSupport": "The article does not support the current language.",
 		"backToBlog": "Back to blog",
-		"views": "{count} views"
+		"postViews": "<count></count> views"
 	},
 	"homePage": {
 		"title": "我的網站",
@@ -70,7 +70,7 @@ const messagesEN = `{
 		"pinned": "釘選",
 		"noSupport": "文章不支援目前語系",
 		"backToBlog": "返回部落格",
-		"views": "瀏覽次數：{count}"
+		"postViews": "瀏覽次數：<count></count>次"
 	},
 	"homePage": {
 		"title": "My Website",
