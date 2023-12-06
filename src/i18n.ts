@@ -3,6 +3,7 @@ import { IntlErrorCode } from 'next-intl';
 
 export default getRequestConfig(async ({ locale }) => ({
 	messages: (await import(`../messages/${locale}.json`)).default,
+	timeZone: 'Asia/Taipei',
 	onError(error) {
 		if (error.code === IntlErrorCode.MISSING_MESSAGE) {
 			console.error(error);
@@ -15,7 +16,6 @@ export default getRequestConfig(async ({ locale }) => ({
 
 		if (error.code === IntlErrorCode.MISSING_MESSAGE) {
 		  return `${path} is not yet translated`;
-
 		}
 
 		return `please fix this message: ${path}`;
