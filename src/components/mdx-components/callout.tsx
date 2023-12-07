@@ -14,13 +14,12 @@ const EmojiMap = {
 	warning: <RiErrorWarningLine /> ,
 };
 
-
 type CalloutType = keyof typeof EmojiMap;
 
 const classes: Record<CalloutType, string> = {
 	default: 'border-orange-500/40 bg-orange-900/40 text-orange-300',
 	error: 'border-red-500/40 bg-red-900/40 text-red-300',
-	info: 'border-primary-500/40 bg-primary-900/40 text-primary-300',
+	info: 'border-blue-500/40 bg-blue-900/40 text-blue-300',
 	warning: 'border-yellow-500/40 bg-yellow-900/40 text-yellow-300',
 };
 
