@@ -63,7 +63,7 @@ npm run dev
 - [ ] Add Table of content components for articles
 - [ ] Add image blur placeholder
 - [ ] Make 3D model(use three.js) in Home Page
-- [ ] Make brand logo
+- [x] Make brand logo
 - [ ] Make analytics
 - [ ] Import playwright to test
 - [ ] consider remove contentlayer & use vanilla Markdown
