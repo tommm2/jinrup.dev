@@ -141,16 +141,18 @@ const deleteFolderRecursive = async (path) => {
 (async () => {
 	const contentDir = path.join(process.cwd(), 'content');
 	const messagesDir = path.join(process.cwd(), 'messages');
-	// const imagesDir = path.join(process.cwd(), 'public', 'images');
+	const publicDir = path.join(process.cwd(), 'public');
 	const appDir = path.join(process.cwd(), 'src', 'app');
 
 	await deleteFolderRecursive(contentDir);
 	await deleteFolderRecursive(messagesDir);
+	await deleteFolderRecursive(publicDir);
 	// await deleteAllFilesExcept(imagesDir, 'test.jpg');
 
 	const postDir = path.join(contentDir, 'blog', 'hello-world');
 	const aboutDir = path.join(contentDir, 'pages', 'about');
 
+	await fs.mkdir(publicDir);
 	await fs.mkdir(postDir, { recursive: true });
 	await fs.mkdir(aboutDir, { recursive: true });
 	await fs.mkdir(messagesDir, { recursive: true });
