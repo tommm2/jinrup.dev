@@ -25,9 +25,7 @@ $PROJECT_ROOT
     ├── lib/
     ├── styles/
     ├── types/
-    ├── utils/
-    ├── i18n.ts # for next-intl
-    └── middleware.ts # for next-intl
+    └── utils/
 ```
 - `content/*`: MDX blog posts, projects and the content for the `about` page.
 - `messages/*`: Data for multi-language support
