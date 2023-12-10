@@ -8,7 +8,7 @@ export const siteConfig = {
 	githubUsername: 'tommm2',
 	ogImages: [
 		{
-			url: 'https://jinrup.vercel.app/opengraph-image.jpg',
+			url: '/opengraph-image.jpg',
 			width: 1200,
 			height: 630,
 			alt: 'Tom Jin',
