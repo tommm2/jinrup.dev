@@ -10,4 +10,18 @@ export const siteConfig = {
 		github: 'https://github.com/tommm2',
 		linkedin: 'https://www.linkedin.com/in/jinrup',
 	},
+	openGraph: {
+		type: 'website',
+		title: 'Tom Jin',
+		siteName: 'Tom Jin',
+		url: 'https://jinrup.vercel.app',
+		images: [
+			{
+				url: 'https://jinrup.vercel.app/opengraph-image.jpg',
+				width: 1200,
+				height: 630,
+				alt: 'Tom Jin',
+			},
+		],
+	},
 };
