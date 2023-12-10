@@ -6,20 +6,13 @@ import { allPosts } from 'contentlayer/generated';
 
 import ClientIntlProvider from '@/components/client-intl-provider';
 import FilterPosts from '@/components/filter-posts';
-import { getUrlWithLocale } from '@/lib/navigation';
 
-export async function generateMetadata({
-	params,
-}: { params: { locale: Locale }}): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations();
-	const url = getUrlWithLocale(params.locale, 'blog');
 
 	return {
 		title: t('common.blog'),
 		description: t('blogPage.description'),
-		alternates: {
-			canonical: url,
-		},
 	};
 }
 

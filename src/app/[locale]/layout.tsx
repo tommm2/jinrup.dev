@@ -5,7 +5,7 @@ import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import BackToTop from '@/components/back-to-top';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
-import { getUrlWithLocale, locales } from '@/lib/navigation';
+import { locales } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
 import { fontNoto, fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
@@ -22,7 +22,6 @@ export async function generateMetadata({
 	params: { locale: Locale };
 }): Promise<Metadata> {
 	const t = await getTranslations('homePage');
-	const url = getUrlWithLocale(locale, '');
 
 	return {
 		title: {
@@ -32,20 +31,9 @@ export async function generateMetadata({
 		creator: siteConfig.name,
 		description: t('description'),
 		openGraph: {
-			type: 'website',
+			...siteConfig.openGraph,
 			locale,
-			title: siteConfig.name,
 			description: t('description'),
-			url,
-			siteName: siteConfig.name,
-			images: [
-				{
-					url: `${url}opengraph-image.jpg`,
-					width: 1200,
-					height: 630,
-					alt: 'Tom Jin',
-				},
-			],
 		},
 		robots: {
 			index: true,
@@ -59,7 +47,7 @@ export async function generateMetadata({
 			},
 		},
 		alternates: {
-			canonical: url,
+			canonical: siteConfig.siteUrl,
 		},
 		icons: {
 			icon: '/favicon.ico',

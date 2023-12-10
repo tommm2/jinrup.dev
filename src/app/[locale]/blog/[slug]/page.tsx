@@ -11,8 +11,9 @@ import Link from '@/components/link';
 import MDXContent from '@/components/mdx-content';
 import ViewCounter from '@/components/view-counter';
 import { getPostBySlugAndLocale } from '@/lib/blog';
-import { defaultLocale, getUrlWithLocale } from '@/lib/navigation';
+import { defaultLocale } from '@/lib/navigation';
 import { formatDate, getDistanceToNow } from '@/utils/date';
+import { siteConfig } from '@/config/site';
 
 export async function generateStaticParams() {
 	return allPosts.map((post) => ({ slug: post.slug }));
@@ -29,9 +30,12 @@ export async function generateMetadata({
 		return;
 	}
 
-	const { title, description, publishedAt, slug } = post;
-
-	const url = getUrlWithLocale(params.locale, 'blog', slug);
+	const {
+		title,
+		slug,
+		description,
+		publishedAt,
+	} = post;
 
 	return {
 		title,
@@ -41,10 +45,7 @@ export async function generateMetadata({
 			title,
 			description,
 			publishedTime: publishedAt,
-			url,
-		},
-		alternates: {
-			canonical: url,
+			url: `${siteConfig}/blog/${slug}`,
 		},
 	};
 }
