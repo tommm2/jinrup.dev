@@ -3,11 +3,15 @@ import type { Post } from 'contentlayer/generated';
 import { groupBy } from '@/utils/helpers';
 import { defaultLocale } from './navigation';
 
-export function getPostBySlugAndLocale(
-	posts: Post[],
-	slug: string,
-	locale: Locale
-) {
+export function getPostBySlugAndLocale({
+	posts,
+	slug,
+	locale,
+}: {
+	posts: Post[];
+	slug: string;
+	locale: Locale;
+}) {
 	const postsWithMatchSlug = posts.filter((post) => post.slug === slug);
 	const index = postsWithMatchSlug.findIndex((post) => post.language === locale);
 
