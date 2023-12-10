@@ -2,12 +2,18 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
 	name: 'Tom Jin',
-	description: 'Hey, I\'m Tom Jin! I’m passionate about building web application. I like learning new technologies.',
-	ogImage: '',
 	author: 'Tom Jin',
-	githubUsername: 'tommm2',
 	email: 'tom875694231@gmail.com',
 	siteUrl: 'https://jinrup.vercel.app',
+	githubUsername: 'tommm2',
+	ogImages: [
+		{
+			url: 'https://jinrup.vercel.app/opengraph-image.jpg',
+			width: 1200,
+			height: 630,
+			alt: 'Tom Jin',
+		},
+	],
 	links: {
 		github: 'https://github.com/tommm2',
 		linkedin: 'https://www.linkedin.com/in/jinrup',

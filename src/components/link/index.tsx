@@ -32,6 +32,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>((props: LinkProps, ref) =>
 				className={cn(className)}
 				href={href}
 				locale={locale}
+				aria-label={otherProps['aria-label']}
 			>
 				{children}
 			</NextIntlLink>

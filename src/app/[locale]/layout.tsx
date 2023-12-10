@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
@@ -9,6 +9,12 @@ import { getUrlWithLocale, locales } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
 import { fontNoto, fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
+
+export const viewport: Viewport = {
+	themeColor: {
+		color: '#0f0f0f',
+	},
+};
 
 export async function generateMetadata({
 	params: { locale },
@@ -32,7 +38,7 @@ export async function generateMetadata({
 			description: t('description'),
 			url,
 			siteName: siteConfig.name,
-			images: [],
+			images: siteConfig.ogImages,
 		},
 		robots: {
 			index: true,
@@ -48,10 +54,12 @@ export async function generateMetadata({
 		alternates: {
 			canonical: url,
 		},
-		// manifest: '',
-		// icons: {
-		// 	shortcut: '',
-		// },
+		icons: {
+			icon: '/favicon.ico',
+			shortcut: '/favicon-32x32.png',
+			apple: '/apple-touch-icon.png',
+		},
+		manifest: '/manifest.json',
 	};
 }
 
