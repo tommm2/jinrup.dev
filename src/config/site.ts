@@ -1,10 +1,14 @@
 export type SiteConfig = typeof siteConfig;
 
+const baseUrl = process.env.NODE_ENV === 'production'
+	? 'https://jinrup.vercel.app'
+	: 'http://localhost:3000';
+
 export const siteConfig = {
 	name: 'Tom Jin',
 	author: 'Tom Jin',
 	email: 'tom875694231@gmail.com',
-	siteUrl: 'https://jinrup.vercel.app',
+	siteUrl: baseUrl,
 	githubUsername: 'tommm2',
 	links: {
 		github: 'https://github.com/tommm2',
@@ -14,10 +18,10 @@ export const siteConfig = {
 		type: 'website',
 		title: 'Tom Jin',
 		siteName: 'Tom Jin',
-		url: 'https://jinrup.vercel.app',
+		url: baseUrl,
 		images: [
 			{
-				url: 'https://jinrup.vercel.app/opengraph-image.jpg',
+				url: '/opengraph-image.jpg',
 				width: 1200,
 				height: 630,
 				alt: 'Tom Jin',
