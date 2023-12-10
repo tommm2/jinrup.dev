@@ -38,7 +38,7 @@ export async function generateMetadata({
 			description: t('description'),
 			url,
 			siteName: siteConfig.name,
-			images: [],
+			images: siteConfig.ogImages,
 		},
 		robots: {
 			index: true,
