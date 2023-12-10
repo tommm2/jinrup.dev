@@ -38,7 +38,14 @@ export async function generateMetadata({
 			description: t('description'),
 			url,
 			siteName: siteConfig.name,
-			images: siteConfig.ogImages,
+			images: [
+				{
+					url: `${url}opengraph-image.jpg`,
+					width: 1200,
+					height: 630,
+					alt: 'Tom Jin',
+				},
+			],
 		},
 		robots: {
 			index: true,
