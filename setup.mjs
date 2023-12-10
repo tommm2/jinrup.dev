@@ -126,27 +126,27 @@ const deleteFolderRecursive = async (path) => {
 	}
 };
 
-const deleteAllFilesExcept = async (directoryPath, fileToKeep) => {
-	const files = await fs.readdir(directoryPath);
+// const deleteAllFilesExcept = async (directoryPath, fileToKeep) => {
+// 	const files = await fs.readdir(directoryPath);
 
-	const filesToDelete = files.filter(file => file !== fileToKeep);
+// 	const filesToDelete = files.filter(file => file !== fileToKeep);
 
-	await Promise.all(filesToDelete.map(async file => {
-		const filePath = path.join(directoryPath, file);
+// 	await Promise.all(filesToDelete.map(async file => {
+// 		const filePath = path.join(directoryPath, file);
 
-		await fs.unlink(filePath);
-	}));
-};
+// 		await fs.unlink(filePath);
+// 	}));
+// };
 
 (async () => {
 	const contentDir = path.join(process.cwd(), 'content');
 	const messagesDir = path.join(process.cwd(), 'messages');
-	const imagesDir = path.join(process.cwd(), 'public', 'images');
+	// const imagesDir = path.join(process.cwd(), 'public', 'images');
 	const appDir = path.join(process.cwd(), 'src', 'app');
 
 	await deleteFolderRecursive(contentDir);
 	await deleteFolderRecursive(messagesDir);
-	await deleteAllFilesExcept(imagesDir, 'test.jpg');
+	// await deleteAllFilesExcept(imagesDir, 'test.jpg');
 
 	const postDir = path.join(contentDir, 'blog', 'hello-world');
 	const aboutDir = path.join(contentDir, 'pages', 'about');
