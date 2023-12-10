@@ -6,6 +6,7 @@ import BackToTop from '@/components/back-to-top';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import { locales } from '@/lib/navigation';
+import { getLocalizedUrl } from '@/utils/url';
 import { cn } from '@/utils/cn';
 import { fontNoto, fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
@@ -17,13 +18,15 @@ export const viewport: Viewport = {
 };
 
 export async function generateMetadata({
-	params: { locale },
+	params,
 }: {
 	params: { locale: Locale };
 }): Promise<Metadata> {
 	const t = await getTranslations('homePage');
+	const url = getLocalizedUrl({ locale: params.locale });
 
 	return {
+		metadataBase: new URL(siteConfig.siteUrl),
 		title: {
 			default: siteConfig.name,
 			template: `%s - ${siteConfig.name}`,
@@ -32,7 +35,7 @@ export async function generateMetadata({
 		description: t('description'),
 		openGraph: {
 			...siteConfig.openGraph,
-			locale,
+			locale: params.locale,
 			description: t('description'),
 		},
 		robots: {
@@ -47,7 +50,7 @@ export async function generateMetadata({
 			},
 		},
 		alternates: {
-			canonical: siteConfig.siteUrl,
+			canonical: url,
 		},
 		icons: {
 			icon: '/favicon.ico',

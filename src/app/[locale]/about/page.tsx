@@ -5,13 +5,23 @@ import { getTranslations } from 'next-intl/server';
 import { allPages } from 'contentlayer/generated';
 
 import MDXContent from '@/components/mdx-content';
+import { getLocalizedUrl } from '@/utils/url';
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+	params,
+}: { params: { locale: Locale } }): Promise<Metadata> {
 	const t = await getTranslations();
+	const url = getLocalizedUrl({
+		locale: params.locale,
+		pathname: 'about',
+	});
 
 	return {
 		title: t('common.about'),
 		description: t('aboutPage.description'),
+		alternates: {
+			canonical: url,
+		},
 	};
 }
 

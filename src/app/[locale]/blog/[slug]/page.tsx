@@ -12,8 +12,8 @@ import MDXContent from '@/components/mdx-content';
 import ViewCounter from '@/components/view-counter';
 import { getPostBySlugAndLocale } from '@/lib/blog';
 import { defaultLocale } from '@/lib/navigation';
+import { getLocalizedUrl } from '@/utils/url';
 import { formatDate, getDistanceToNow } from '@/utils/date';
-import { siteConfig } from '@/config/site';
 
 export async function generateStaticParams() {
 	return allPosts.map((post) => ({ slug: post.slug }));
@@ -21,10 +21,12 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({
 	params,
-}: {
-	params: { locale: Locale; slug: string };
-}): Promise<Metadata | undefined> {
-	const post = getPostBySlugAndLocale(allPosts, params.slug, params.locale);
+}: { params: { locale: Locale; slug: string; }}): Promise<Metadata | undefined> {
+	const post = getPostBySlugAndLocale({
+		posts: allPosts,
+		slug: params.slug,
+		locale: params.locale,
+	});
 
 	if (!post) {
 		return;
@@ -32,10 +34,15 @@ export async function generateMetadata({
 
 	const {
 		title,
-		slug,
 		description,
 		publishedAt,
+		slug,
 	} = post;
+
+	const url = getLocalizedUrl({
+		locale: params.locale,
+		slug,
+	});
 
 	return {
 		title,
@@ -45,7 +52,10 @@ export async function generateMetadata({
 			title,
 			description,
 			publishedTime: publishedAt,
-			url: `${siteConfig}/blog/${slug}`,
+			url,
+		},
+		alternates: {
+			canonical: url,
 		},
 	};
 }
@@ -57,10 +67,14 @@ type BlogPostLayoutProps = {
 	};
 };
 
-function BlogPostLayout ({ params }: BlogPostLayoutProps) {
+function BlogPostLayout({ params }: BlogPostLayoutProps) {
 	const t = useTranslations('common');
 	const locale = useLocale() as Locale;
-	const post = getPostBySlugAndLocale(allPosts, params.slug, params.locale);
+	const post = getPostBySlugAndLocale({
+		posts: allPosts,
+		slug: params.slug,
+		locale: params.locale,
+	});
 
 	if (!post) {
 		notFound();
