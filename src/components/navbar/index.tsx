@@ -18,8 +18,9 @@ function Navbar() {
 				<Link
 					className='flex gap-4'
 					href='/'
+					aria-label={t('home')}
 				>
-					<Logo className='h-6 w-6' />
+					<Logo className='h-7 w-7 rounded bg-base-100 p-1 text-base-950' />
 				</Link>
 				<div className='hidden items-center gap-2 sm:flex'>
 					<nav className='items-center gap-1 text-sm sm:flex'>
