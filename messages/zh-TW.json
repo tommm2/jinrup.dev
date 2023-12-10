@@ -10,7 +10,7 @@
 		"pinned": "釘選",
 		"noSupport": "文章不支援目前語系",
 		"backToBlog": "返回部落格",
-		"postViews": "瀏覽次數：<count></count>次"
+		"postViews": "瀏覽次數: <count></count> 次"
 	},
 	"homePage": {
 		"description": "👋 歡迎造訪我的網站，我會在這裡分享我閱讀、思考的內容，以及展示一些作品。",
