@@ -35,7 +35,7 @@ function FilterPosts({
 				{groupPosts.length > 0
 					? groupPosts.map(({ year, posts }) => (
 						<section key={year}>
-							<h2 className='mb-4 flex items-end gap-1 text-lg font-medium tracking-tight'>
+							<h2 className='mb-4 flex items-end gap-3 text-lg font-medium tracking-tight'>
 								{year}
 								<div className='mb-2 h-px w-full bg-base-800'></div>
 							</h2>
