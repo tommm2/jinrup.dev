@@ -6,10 +6,12 @@
 		"noResults": "No Search Results",
 		"home": "Home",
 		"blog": "Blog",
+		"projects": "Projects",
 		"about": "About",
 		"pinned": "Pinned",
 		"noSupport": "The article does not support the current language.",
 		"backToBlog": "Back to blog",
+		"backToProjects": "Back to Projects",
 		"postViews": "<count></count> views"
 	},
 	"homePage": {
@@ -19,6 +21,9 @@
 	"blogPage": {
 		"description": "Welcome to my blog! Here I will record my learning experience and knowledge in software development.",
 		"subTitle": "<highlight></highlight> posts about code and more..."
+	},
+	"projectsPage": {
+		"description": "Showcase of my projects."
 	},
 	"aboutPage": {
 		"description": "About my work experience, learning record, etc..."

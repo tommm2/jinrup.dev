@@ -6,10 +6,12 @@
 		"noResults": "查無結果",
 		"home": "首頁",
 		"blog": "部落格",
+		"projects": "專案",
 		"about": "關於",
 		"pinned": "釘選",
 		"noSupport": "文章不支援目前語系",
 		"backToBlog": "返回部落格",
+		"backToProjects": "返回專案",
 		"postViews": "瀏覽次數: <count></count> 次"
 	},
 	"homePage": {
@@ -19,6 +21,9 @@
 	"blogPage": {
 		"description": "歡迎來到我的部落格！這裡會記錄著我在軟體開發關領域的學習心得、知識分享。",
 		"subTitle": "<highlight></highlight> 篇關於程式及其他的文章..."
+	},
+	"projectsPage": {
+		"description": "展示一些我做的專案。"
 	},
 	"aboutPage": {
 		"description": "關於我的工作經歷、學習記錄等等..."
