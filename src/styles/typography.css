@@ -21,10 +21,10 @@
 		@apply pl-[1em];
 
 		& > li {
-			@apply p-0 marker:text-base-600;
+			@apply p-0.5 m-0 marker:text-base-600;
 
 			& > input {
-				@apply my-4;
+				@apply my-0;
 			}
 		}
 	}
