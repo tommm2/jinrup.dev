@@ -34,6 +34,20 @@ export const Post = defineDocumentType(() => ({
 	},
 }));
 
+export const Project = defineDocumentType(() => ({
+	name: 'Project',
+	filePathPattern: 'projects/**/*.mdx',
+	contentType: 'mdx',
+	fields: {
+		title: { type: 'string', required: true },
+		description: { type: 'string', required: true },
+		imageUrl: { type: 'string', required: true },
+		language: { type: 'string', required: true },
+		tags: { type: 'list', of: { type: 'string' } },
+	},
+	computedFields,
+}));
+
 export const Page = defineDocumentType(() => ({
 	name: 'Page',
 	filePathPattern: 'pages/**/*.mdx',
@@ -46,7 +60,7 @@ export const Page = defineDocumentType(() => ({
 
 export default makeSource({
 	contentDirPath: 'content',
-	documentTypes: [Post, Page],
+	documentTypes: [Post, Project, Page],
 	mdx: {
 		esbuildOptions: (opts) => {
 			opts.tsconfig = `${process.env.PWD}/tsconfig.mdx.json`;
