@@ -7,7 +7,7 @@ export function getLocalizedUrl({
 	slug = '',
 }:{
 	locale: Locale;
-	pathname?: '' | 'blog' | 'about';
+	pathname?: '' | 'blog' | 'about' | 'projects';
 	slug?: string;
 }) {
 	let localPrefix = locale === defaultLocale ? '' : 'en/';
