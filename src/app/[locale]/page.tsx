@@ -4,11 +4,9 @@ import {
 	RiGithubFill,
 	RiLinkedinBoxFill,
 	RiMailSendFill,
-	RiPushpinLine,
 } from 'react-icons/ri';
 
 import Link from '@/components/link';
-import PinnedProjects from '@/components/pinned-projects';
 import { siteConfig } from '@/config/site';
 
 function HomePage() {
@@ -66,10 +64,8 @@ function HomePage() {
 			</div>
 			<div className='mt-16 animate-in space-y-4 animation-delay-4'>
 				<h2 className='flex items-center gap-2 tracking-tight text-base-200'>
-					<RiPushpinLine className='h-5 w-5' />
 					{t('common.pinned')}
 				</h2>
-				<PinnedProjects />
 			</div>
 		</>
 	);
