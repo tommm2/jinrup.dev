@@ -10,8 +10,8 @@ import ClientIntlProvider from '@/components/client-intl-provider';
 import Link from '@/components/link';
 import MDXContent from '@/components/mdx-content';
 import ViewCounter from '@/components/view-counter';
-import { getPostBySlugAndLocale } from '@/lib/blog';
 import { defaultLocale } from '@/lib/navigation';
+import { getContentBySlugAndLocale } from '@/utils/content';
 import { getLocalizedUrl } from '@/utils/url';
 import { formatDate, getDistanceToNow } from '@/utils/date';
 
@@ -22,8 +22,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({
 	params,
 }: { params: { locale: Locale; slug: string; }}): Promise<Metadata | undefined> {
-	const post = getPostBySlugAndLocale({
-		posts: allPosts,
+	const post = getContentBySlugAndLocale({
+		contentItems: allPosts,
 		slug: params.slug,
 		locale: params.locale,
 	});
@@ -70,8 +70,8 @@ type BlogPostLayoutProps = {
 function BlogPostLayout({ params }: BlogPostLayoutProps) {
 	const t = useTranslations('common');
 	const locale = useLocale() as Locale;
-	const post = getPostBySlugAndLocale({
-		posts: allPosts,
+	const post = getContentBySlugAndLocale({
+		contentItems: allPosts,
 		slug: params.slug,
 		locale: params.locale,
 	});
