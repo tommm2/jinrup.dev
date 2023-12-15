@@ -8,7 +8,7 @@ export default async function sitemap() {
 		lastModified: post.publishedAt.split('T')[0],
 	}));
 
-	const routes = ['', 'about', 'blog']
+	const routes = ['', 'about', 'blog', 'projects']
 		.map((route) => ({
 			url: `${siteConfig.siteUrl}/${route}`,
 			lastModified: new Date().toISOString().split('T')[0],
