@@ -1,56 +1,107 @@
-import { RiGitRepositoryLine, RiStarLine } from 'react-icons/ri';
-import { FaCodeFork } from 'react-icons/fa6';
+'use client';
+
+import { Project } from 'contentlayer/generated';
+import useSWR from 'swr';
+import {
+	useMotionValue,
+	motion,
+	useMotionTemplate,
+	MotionValue,
+	MotionStyle,
+} from 'framer-motion';
+import Image from 'next/image';
+import { MouseEvent } from 'react';
+import { RiStarLine } from 'react-icons/ri';
+import { GoRepoForked } from 'react-icons/go';
 
 import Link from '@/components/link';
+import { fetcher } from '@/lib/fetcher';
+import Loading from '../loading';
+
+type Repo = {
+	star: number,
+	forksCount: number,
+}
+
+type WrapperStyle = MotionStyle & {
+	'--x': MotionValue<string>;
+	'--y': MotionValue<string>;
+};
 
 type ProjectCardProps = {
-	project: PinnedRepo;
+	project: Project;
 };
 
 function ProjectCard({ project }: ProjectCardProps) {
+	const mouseX = useMotionValue(0);
+	const mouseY = useMotionValue(0);
+
 	const {
-		name,
-		primaryLanguage,
-		stargazerCount = 0,
+		title,
+		slug,
 		description,
-		forkCount = 0,
-		url,
+		imageUrl,
 	} = project;
 
+	const { data: repo, isLoading } = useSWR<Repo>(`/api/github?slug=${slug}`, fetcher);
+
+	function handleMouseMove({
+		currentTarget,
+		clientX,
+		clientY,
+	}: MouseEvent<Element>) {
+		const { left, top } = currentTarget.getBoundingClientRect();
+
+		mouseX.set(clientX - left);
+		mouseY.set(clientY - top);
+	}
+
 	return (
-		<div className='space-y-2 rounded-md border border-base-800 bg-base-900 p-4 text-base-200/70'>
-			<div className='flex items-center gap-2'>
-				<RiGitRepositoryLine className='h-6 w-6' />
-				<Link
-					className='opacity-hover font-medium text-primary-500'
-					href={url}
+		<motion.div
+			className='animated-cards relative'
+			style={
+				{
+					'--x': useMotionTemplate`${mouseX}px`,
+					'--y': useMotionTemplate`${mouseY}px`,
+				} as WrapperStyle
+			}
+			onMouseMove={handleMouseMove}
+		>
+			<Link
+				className='block cursor-pointer space-y-2 overflow-hidden rounded-lg border border-base-800 bg-gradient-to-br from-base-950 to-base-900/80 p-6 shadow-rose-300 transition duration-300 hover:drop-shadow-[0_0_15px_rgba(59,130,246,0.1)]'
+				href={`/projects/${slug}`}
+			>
+				<h2 className='font-bold tracking-tight'>{title}</h2>
+				<p
+					className='line-clamp-2 text-sm text-base-300/80'
+					title={description}
 				>
-					{name}
-				</Link>
-			</div>
-			<p className='text-sm'>{description}</p>
-			<div className='flex gap-4'>
-				<div className='flex items-center gap-0.5 text-sm'>
-					<div
-						className='h-3 w-3 rounded-full'
-						style={{ backgroundColor: primaryLanguage?.color }}
-					></div>
-					<span>{primaryLanguage?.name}</span>
-				</div>
-				{stargazerCount > 0 ? (
-					<div className='flex items-center gap-0.5'>
+					{description}
+				</p>
+				<div className='flex gap-3 text-sm text-base-300/80'>
+					<span className='flex items-center gap-1'>
 						<RiStarLine />
-						<span className='text-sm'>{stargazerCount}</span>
-					</div>
-				) : null}
-				{forkCount > 0 ? (
-					<div className='flex items-center gap-0.5'>
-						<FaCodeFork />
-						<span className='text-sm'>{stargazerCount}</span>
-					</div>
-				) : null}
-			</div>
-		</div>
+						{isLoading ? (
+							<Loading />
+						) : (
+							<span className='-mx-0.5 animate-[mutation_2s_ease-in-out_1] rounded-md px-0.5 slashed-zero tracking-tight'>
+								{repo?.star.toLocaleString()}
+							</span>
+						)}
+					</span>
+					<span className='flex items-center gap-1'>
+						<GoRepoForked />
+						{isLoading ? (
+							<Loading />
+						) : (
+							<span className='-mx-0.5 animate-[mutation_2s_ease-in-out_1] rounded-md px-0.5 slashed-zero tracking-tight'>
+								{repo?.forksCount.toLocaleString()}
+							</span>
+						)}
+					</span>
+				</div>
+			</Link>
+		</motion.div>
 	);
 }
 
