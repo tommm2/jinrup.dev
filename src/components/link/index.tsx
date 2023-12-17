@@ -1,5 +1,5 @@
 import { ComponentProps, forwardRef } from 'react';
-import { RiExternalLinkLine } from 'react-icons/ri';
+import { RiArrowRightUpLine } from 'react-icons/ri';
 
 import { NextIntlLink } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
@@ -15,7 +15,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>((props: LinkProps, ref) =>
 		className,
 		href = '',
 		showAnchorIcon = false,
-		anchorIcon = <RiExternalLinkLine className='mx-1 inline-flex self-center text-current' />,
+		anchorIcon = <RiArrowRightUpLine className='mx-1 inline-flex self-center text-current' />,
 		locale,
 		children,
 		...otherProps
