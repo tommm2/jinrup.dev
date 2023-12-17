@@ -42,6 +42,10 @@ export const Project = defineDocumentType(() => ({
 		title: { type: 'string', required: true },
 		description: { type: 'string', required: true },
 		imageUrl: { type: 'string', required: true },
+		demoUrl: { type: 'string', required: true },
+		repoUrl: { type: 'string', required: true },
+		// The repoId is created to get the number of stars and forks count for a particular repo.
+		repoId: { type: 'number', required: true },
 		language: { type: 'string', required: true },
 		tags: { type: 'list', of: { type: 'string' } },
 	},
