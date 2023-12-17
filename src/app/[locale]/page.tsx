@@ -17,7 +17,7 @@ function HomePage() {
 			<div className='flex flex-col gap-4 sm:flex-row sm:items-center'>
 				<Image
 					className='animate-in rounded-full bg-base-200'
-					src='/images/avatar.png'
+					src='/avatar.png'
 					alt='avatar'
 					width={80}
 					height={80}
