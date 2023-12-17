@@ -1,11 +1,10 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
-import { RiArrowLeftLine } from 'react-icons/ri';
+import Image from 'next/image';
+import { RiArrowLeftLine, RiCodeSSlashLine, RiLinksLine } from 'react-icons/ri';
 import { allProjects } from 'contentlayer/generated';
 
-import Comment from '@/components/comment';
-import Callout from '@/components/mdx-components/callout';
 import Link from '@/components/link';
 import MDXContent from '@/components/mdx-content';
 import { getLocalizedUrl } from '@/utils/url';
@@ -63,20 +62,22 @@ type ProjectLayoutProps = {
 
 function ProjectLayout({ params }: ProjectLayoutProps) {
 	const t = useTranslations('common');
-	const post = getContentBySlugAndLocale({
+	const project = getContentBySlugAndLocale({
 		contentItems: allProjects,
 		slug: params.slug,
 		locale: params.locale,
 	});
 
-	if (!post) {
+	if (!project) {
 		notFound();
 	}
 
 	const {
 		title,
-		language,
-	} = post;
+		imageUrl,
+		demoUrl,
+		repoUrl,
+	} = project;
 
 	return (
 		<>
@@ -87,18 +88,35 @@ function ProjectLayout({ params }: ProjectLayoutProps) {
 				<RiArrowLeftLine />
 				<span>{t('backToProjects')}</span>
 			</Link>
-			<div className='mt-8 animate-in'>
-				<h1 className='text-2xl font-bold'>
-					{title}
-				</h1>
-				{language !== params.locale && (
-					<Callout type='warning'>{t('noSupport')}</Callout>
-				)}
+			<div className='mt-8 animate-in space-y-2 animation-delay-1'>
+				<h1 className='text-2xl font-bold'>{title}</h1>
+				<div className='flex items-center gap-2 text-sm font-medium'>
+					<Link
+						className='group rounded-lg border border-base-800 px-3 py-2 transition-colors duration-300 hover:border-base-700 hover:bg-base-900/70'
+						href={demoUrl}
+					>
+						<RiLinksLine className='mr-2 inline-block text-base-300/60 transition-colors duration-300 group-hover:text-base-300' />
+						Live Demo
+					</Link>
+					<Link
+						className='group rounded-lg border border-base-800 px-3 py-2 transition-colors duration-300 hover:border-base-700 hover:bg-base-900/70'
+						href={repoUrl}
+					>
+						<RiCodeSSlashLine className='mr-2 inline-block text-base-300/60 transition-colors duration-300 group-hover:text-base-300' />
+						Source Code
+					</Link>
+				</div>
+				<Image
+					className='w-full rounded-lg object-cover'
+					width={800}
+					height={600}
+					src={imageUrl}
+					alt={title}
+				/>
 			</div>
-			<div className='prose mt-5 animate-in animation-delay-1'>
-				<MDXContent code={post.body.code} />
+			<div className='prose mt-5 animate-in animation-delay-2'>
+				<MDXContent code={project.body.code} />
 			</div>
-			<Comment locale={params.locale} />
 		</>
 	);
 }
