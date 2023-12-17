@@ -5,7 +5,7 @@ type Views = {
 	views: number;
 }
 
-type Stats = {
-	followers: number;
+type RepoInfo = {
 	stars: number;
+	forksCount: number;
 }
