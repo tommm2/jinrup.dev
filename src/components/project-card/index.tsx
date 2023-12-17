@@ -9,19 +9,13 @@ import {
 	MotionValue,
 	MotionStyle,
 } from 'framer-motion';
-import Image from 'next/image';
 import { MouseEvent } from 'react';
-import { RiStarLine } from 'react-icons/ri';
+import { RiGitRepositoryLine, RiStarLine } from 'react-icons/ri';
 import { GoRepoForked } from 'react-icons/go';
 
 import Link from '@/components/link';
 import { fetcher } from '@/lib/fetcher';
 import Loading from '../loading';
-
-type Repo = {
-	star: number,
-	forksCount: number,
-}
 
 type WrapperStyle = MotionStyle & {
 	'--x': MotionValue<string>;
@@ -40,10 +34,10 @@ function ProjectCard({ project }: ProjectCardProps) {
 		title,
 		slug,
 		description,
-		imageUrl,
+		repoId,
 	} = project;
 
-	const { data: repo, isLoading } = useSWR<Repo>(`/api/github?slug=${slug}`, fetcher);
+	const { data: repo, isLoading } = useSWR<RepoInfo>(`/api/github?repoId=${repoId}`, fetcher);
 
 	function handleMouseMove({
 		currentTarget,
@@ -68,10 +62,13 @@ function ProjectCard({ project }: ProjectCardProps) {
 			onMouseMove={handleMouseMove}
 		>
 			<Link
-				className='block cursor-pointer space-y-2 overflow-hidden rounded-lg border border-base-800 bg-gradient-to-br from-base-950 to-base-900/80 p-6 shadow-rose-300 transition duration-300 hover:drop-shadow-[0_0_15px_rgba(59,130,246,0.1)]'
+				className='block cursor-pointer space-y-2 overflow-hidden rounded-lg border border-base-800 bg-gradient-to-br from-base-950 to-base-900/80 p-6 shadow-rose-300 transition duration-300 hover:drop-shadow-[0_0_15px_rgba(39,42,216,0.4)]'
 				href={`/projects/${slug}`}
 			>
-				<h2 className='font-bold tracking-tight'>{title}</h2>
+				<h2 className='flex items-center gap-2 font-medium tracking-tight'>
+					<RiGitRepositoryLine className='h-5 w-5 text-base-300/80' />
+					{title}
+				</h2>
 				<p
 					className='line-clamp-2 text-sm text-base-300/80'
 					title={description}
@@ -80,12 +77,12 @@ function ProjectCard({ project }: ProjectCardProps) {
 				</p>
 				<div className='flex gap-3 text-sm text-base-300/80'>
 					<span className='flex items-center gap-1'>
-						<RiStarLine />
+						<RiStarLine className='text-yellow-500' />
 						{isLoading ? (
 							<Loading />
 						) : (
 							<span className='-mx-0.5 animate-[mutation_2s_ease-in-out_1] rounded-md px-0.5 slashed-zero tracking-tight'>
-								{repo?.star.toLocaleString()}
+								{repo?.stars.toLocaleString()}
 							</span>
 						)}
 					</span>
