@@ -4,7 +4,7 @@ import { Octokit } from 'octokit';
 import { siteConfig } from '@/config/site';
 
 export async function GET(req: NextRequest) {
-	const slug = req.nextUrl.searchParams.get('slug');
+	const repoId = req.nextUrl.searchParams.get('repoId');
 
 	const octokit = new Octokit({
 		auth: process.env.GITHUB_AUTH_TOKEN,
@@ -14,11 +14,11 @@ export async function GET(req: NextRequest) {
 		username: siteConfig.githubUsername,
 	});
 
-	if (slug) {
-		const repo = repos.find(item => item.name === slug);
+	if (repoId) {
+		const repo = repos.find(item => item.id === Number(repoId));
 
 		return NextResponse.json({
-			star: repo?.stargazers_count,
+			stars: repo?.stargazers_count,
 			forksCount: repo?.forks_count,
 		});
 	}
