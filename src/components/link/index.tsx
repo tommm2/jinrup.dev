@@ -15,7 +15,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>((props: LinkProps, ref) =>
 		className,
 		href = '',
 		showAnchorIcon = false,
-		anchorIcon = <RiArrowRightUpLine className='mx-1 inline-flex self-center text-current' />,
+		anchorIcon = <RiArrowRightUpLine className='inline text-current' />,
 		locale,
 		children,
 		...otherProps
