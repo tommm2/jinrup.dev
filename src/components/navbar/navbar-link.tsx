@@ -1,9 +1,9 @@
 'use client';
 
 import {
-	RiGitRepositoryLine,
-	RiProfileLine,
-	RiQuillPenLine,
+	RiGitRepositoryFill,
+	RiQuillPenFill,
+	RiUser3Fill,
 } from 'react-icons/ri';
 
 import Link from '@/components/link';
@@ -11,9 +11,9 @@ import { usePathname } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
 
 const IconMap: { [key: string]: React.ReactNode } = {
-	['/blog']: <RiQuillPenLine className='h-5 w-5' />,
-	['/projects']: <RiGitRepositoryLine className='h-5 w-5' />,
-	['/about']: <RiProfileLine className='h-5 w-5' />,
+	['/blog']: <RiQuillPenFill />,
+	['/projects']: <RiGitRepositoryFill />,
+	['/about']: <RiUser3Fill />,
 };
 
 type NavbarLinkProps = {
