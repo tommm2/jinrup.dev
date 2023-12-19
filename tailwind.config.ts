@@ -37,7 +37,7 @@ export default {
 		extend: {
 			colors: {
 				primary: colors.blue,
-				accent: colors.sky,
+				accent: colors.teal,
 				base: {
 					...colors.neutral,
 					'950': '#0f0f0f',
