@@ -10,7 +10,7 @@ import {
 	MotionStyle,
 } from 'framer-motion';
 import { MouseEvent } from 'react';
-import { RiGitRepositoryLine, RiStarLine } from 'react-icons/ri';
+import { RiStarLine } from 'react-icons/ri';
 import { GoRepoForked } from 'react-icons/go';
 
 import Link from '@/components/link';
@@ -62,11 +62,10 @@ function ProjectCard({ project }: ProjectCardProps) {
 			onMouseMove={handleMouseMove}
 		>
 			<Link
-				className='block cursor-pointer space-y-2 overflow-hidden rounded-lg border border-base-800 bg-gradient-to-br from-base-950 to-base-900/80 p-6 shadow-rose-300 transition duration-300 hover:drop-shadow-[0_0_15px_rgba(39,42,216,0.4)]'
+				className='block cursor-pointer space-y-2 overflow-hidden rounded-lg border border-base-800 bg-gradient-to-br from-base-950 to-base-900/80 p-6 shadow-rose-300 transition duration-300 hover:drop-shadow-[0_0_15px_rgba(39,42,216,0.3)]'
 				href={`/projects/${slug}`}
 			>
 				<h2 className='flex items-center gap-2 font-medium tracking-tight'>
-					<RiGitRepositoryLine className='h-5 w-5 text-base-300/80' />
 					{title}
 				</h2>
 				<p
