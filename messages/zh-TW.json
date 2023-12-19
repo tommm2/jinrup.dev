@@ -15,7 +15,7 @@
 		"postViews": "瀏覽次數: <count></count> 次"
 	},
 	"homePage": {
-		"description": "👋 歡迎造訪我的網站，我會在這裡分享我閱讀、思考的內容，以及展示一些作品。",
+		"description": "👋 嗨，我是Tom Jin，我是一位前端工程師。專注於使用 React 和 Next.js，我在這裡分享我的學習筆記和專案實作。歡迎閱讀與探索。",
 		"subTitle": "前端工程師"
 	},
 	"blogPage": {

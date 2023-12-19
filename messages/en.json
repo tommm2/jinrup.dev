@@ -15,8 +15,8 @@
 		"postViews": "<count></count> views"
 	},
 	"homePage": {
-		"description": "👋 Welcome to my site where I share my readings, thoughts and some of my work.",
-		"subTitle": "A frontend engineer based in Taiwan."
+		"description": "👋 Hi, I'm Tom Jin, a frontend developer based in Taiwan who specializes in React and Next.js. I'm here to share learning and projects. Please feel free to read and discover.",
+		"subTitle": "Frontend.dev"
 	},
 	"blogPage": {
 		"description": "Welcome to my blog! Here I will record my learning experience and knowledge in software development.",
