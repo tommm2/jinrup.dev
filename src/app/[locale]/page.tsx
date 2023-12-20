@@ -85,9 +85,8 @@ function HomePage() {
 					<Link
 						className='opacity-hover flex items-center gap-1 text-sm '
 						href='/projects'
-						aria-label={t('common.projects')}
 					>
-						See More
+						{t('common.viewMore')}
 						<RiArrowRightFill />
 					</Link>
 				</div>
