@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { RiHashtag } from 'react-icons/ri';
 
 import Link from '@/components/link';
 
@@ -33,9 +34,7 @@ function Anchor({
 			href={`#${id || anchorId}`}
 		>
 			{children}
-			<span className='opacity-0 transition-opacity group-hover:opacity-100'>
-				#
-			</span>
+			<RiHashtag className='hidden h-6 w-6 rounded-lg border border-base-800 fill-base-400 p-1 group-hover:block' />
 		</Link>
 	);
 };

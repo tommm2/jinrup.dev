@@ -4,21 +4,27 @@
 		"allPosts": "All Posts",
 		"placeholder": "Search articles",
 		"noResults": "No Search Results",
+		"viewMore": "view more",
 		"home": "Home",
 		"blog": "Blog",
+		"projects": "Projects",
 		"about": "About",
 		"pinned": "Pinned",
 		"noSupport": "The article does not support the current language.",
 		"backToBlog": "Back to blog",
+		"backToProjects": "Back to Projects",
 		"postViews": "<count></count> views"
 	},
 	"homePage": {
-		"description": "👋 Welcome to my site where I share my readings, thoughts and some of my work.",
-		"subTitle": "Fronted Engineer"
+		"description": "👋 Hi, I'm Tom Jin, a frontend developer based in Taiwan who specializes in React and Next.js. I'm here to share learning and projects. Please feel free to read and discover.",
+		"subTitle": "Frontend.dev"
 	},
 	"blogPage": {
 		"description": "Welcome to my blog! Here I will record my learning experience and knowledge in software development.",
 		"subTitle": "<highlight></highlight> posts about code and more..."
+	},
+	"projectsPage": {
+		"description": "Showcase of my projects."
 	},
 	"aboutPage": {
 		"description": "About my work experience, learning record, etc..."

@@ -14,8 +14,6 @@
     }
   },
   "dependencies": {
-    "@apollo/client": "^3.8.7",
-    "@apollo/experimental-nextjs-app-support": "^0.5.1",
     "@giscus/react": "^2.3.0",
     "@prisma/client": "^4.15.0",
     "clsx": "^1.2.1",

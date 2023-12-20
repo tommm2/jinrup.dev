@@ -1,28 +1,6 @@
 import type { Post } from 'contentlayer/generated';
 
 import { groupBy } from '@/utils/helpers';
-import { defaultLocale } from './navigation';
-
-export function getPostBySlugAndLocale({
-	posts,
-	slug,
-	locale,
-}: {
-	posts: Post[];
-	slug: string;
-	locale: Locale;
-}) {
-	const postsWithMatchSlug = posts.filter((post) => post.slug === slug);
-	const index = postsWithMatchSlug.findIndex((post) => post.language === locale);
-
-	if (index === -1) {
-		const defaultPost = postsWithMatchSlug.find(item => item.language === defaultLocale);
-
-		return defaultPost;
-	}
-
-	return postsWithMatchSlug[index];
-}
 
 export function getGroupPostsWithYear(posts: Post[], query: string) {
 	if (!posts) return [];
@@ -36,7 +14,7 @@ export function getGroupPostsWithYear(posts: Post[], query: string) {
 				.includes(query.toLowerCase());
 
 			return isTitleMatch || isDescriptionMatch;
-		  });
+		});
 
 	const groups = groupBy(filteredPosts, (post) => post.year);
 

@@ -1,56 +1,92 @@
-import { RiGitRepositoryLine, RiStarLine } from 'react-icons/ri';
-import { FaCodeFork } from 'react-icons/fa6';
+'use client';
+
+import { Project } from 'contentlayer/generated';
+import useSWR from 'swr';
+import {
+	useMotionValue,
+	motion,
+	useMotionTemplate,
+	MotionValue,
+	MotionStyle,
+} from 'framer-motion';
+import { MouseEvent } from 'react';
+import { RiStarLine } from 'react-icons/ri';
+import { GoRepoForked } from 'react-icons/go';
 
 import Link from '@/components/link';
+import Loading from '@/components/loading';
+import Metric from '@/components/metric';
+import { fetcher } from '@/lib/fetcher';
+
+type WrapperStyle = MotionStyle & {
+	'--x': MotionValue<string>;
+	'--y': MotionValue<string>;
+};
 
 type ProjectCardProps = {
-	project: PinnedRepo;
+	project: Project;
 };
 
 function ProjectCard({ project }: ProjectCardProps) {
+	const mouseX = useMotionValue(0);
+	const mouseY = useMotionValue(0);
+
 	const {
-		name,
-		primaryLanguage,
-		stargazerCount = 0,
+		title,
+		slug,
 		description,
-		forkCount = 0,
-		url,
+		repoId,
 	} = project;
 
+	const { data: repo, isLoading } = useSWR<RepoInfo>(`/api/github?repoId=${repoId}`, fetcher);
+
+	function handleMouseMove({
+		currentTarget,
+		clientX,
+		clientY,
+	}: MouseEvent<Element>) {
+		const { left, top } = currentTarget.getBoundingClientRect();
+
+		mouseX.set(clientX - left);
+		mouseY.set(clientY - top);
+	}
+
 	return (
-		<div className='space-y-2 rounded-md border border-base-800 bg-base-900 p-4 text-base-200/70'>
-			<div className='flex items-center gap-2'>
-				<RiGitRepositoryLine className='h-6 w-6' />
-				<Link
-					className='opacity-hover font-medium text-primary-500'
-					href={url}
+		<motion.div
+			className='animated-cards relative'
+			style={
+				{
+					'--x': useMotionTemplate`${mouseX}px`,
+					'--y': useMotionTemplate`${mouseY}px`,
+				} as WrapperStyle
+			}
+			onMouseMove={handleMouseMove}
+		>
+			<Link
+				className='block cursor-pointer space-y-2 overflow-hidden rounded-lg border border-base-800 bg-gradient-to-br from-base-950 to-base-900/80 p-6 shadow-rose-300 transition duration-300 hover:drop-shadow-[0_0_15px_rgba(39,42,216,0.3)]'
+				href={`/projects/${slug}`}
+			>
+				<h2 className='flex items-center gap-2 font-medium tracking-tight'>
+					{title}
+				</h2>
+				<p
+					className='line-clamp-2 text-sm text-base-300/80'
+					title={description}
 				>
-					{name}
-				</Link>
-			</div>
-			<p className='text-sm'>{description}</p>
-			<div className='flex gap-4'>
-				<div className='flex items-center gap-0.5 text-sm'>
-					<div
-						className='h-3 w-3 rounded-full'
-						style={{ backgroundColor: primaryLanguage?.color }}
-					></div>
-					<span>{primaryLanguage?.name}</span>
+					{description}
+				</p>
+				<div className='flex gap-3 text-sm text-base-300/80'>
+					<span className='flex items-center gap-1'>
+						<RiStarLine className='text-yellow-500' />
+						{isLoading ? <Loading /> : <Metric stat={repo?.stars} />}
+					</span>
+					<span className='flex items-center gap-1'>
+						<GoRepoForked />
+						{isLoading ?  <Loading /> : <Metric stat={repo?.forksCount} />}
+					</span>
 				</div>
-				{stargazerCount > 0 ? (
-					<div className='flex items-center gap-0.5'>
-						<RiStarLine />
-						<span className='text-sm'>{stargazerCount}</span>
-					</div>
-				) : null}
-				{forkCount > 0 ? (
-					<div className='flex items-center gap-0.5'>
-						<FaCodeFork />
-						<span className='text-sm'>{stargazerCount}</span>
-					</div>
-				) : null}
-			</div>
-		</div>
+			</Link>
+		</motion.div>
 	);
 }
 

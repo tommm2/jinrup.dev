@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { allPages } from 'contentlayer/generated';
 
+import GradientText from '@/components/gradient-text';
 import MDXContent from '@/components/mdx-content';
 import { getLocalizedUrl } from '@/utils/url';
 
@@ -36,9 +37,12 @@ function AboutPage() {
 
 	return (
 		<>
-			<h1 className='animate-in text-2xl font-bold tracking-tight'>
+			<GradientText
+				as='h1'
+				className='animate-in text-2xl font-bold tracking-tight'
+			>
 				{t('about')}
-			</h1>
+			</GradientText>
 			<div className='prose mt-5 animate-in animation-delay-1'>
 				<MDXContent code={page.body.code} />
 			</div>

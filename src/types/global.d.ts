@@ -5,24 +5,7 @@ type Views = {
 	views: number;
 }
 
-type PinnedRepo = {
-	id: any;
-	name?: string;
-	url?: string;
-	stargazerCount?: number;
-	primaryLanguage?: {
-		name: string;
-		color: string;
-		id: string;
-	};
-	description?: string;
-	createdAt?: string;
-	forkCount?: number;
-	isArchived?: boolean;
-	isFork?: boolean;
-}
-
-type Stats = {
-	followers: number;
+type RepoInfo = {
 	stars: number;
+	forksCount: number;
 }
