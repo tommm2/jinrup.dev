@@ -2,10 +2,10 @@
 	@apply max-w-none text-base-300;
 
 	h1, h2, h3, h4 {
-		@apply mb-[0.5em] tracking-tight;
+		@apply mb-[0.5em] tracking-tight w-fit;
 
 		&.anchor > a {
-			@apply font-bold text-base-200;
+			@apply font-bold text-transparent bg-clip-text bg-gradient-to-r from-base-200 to-base-200/40;
 		}
 	}
 
