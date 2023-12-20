@@ -14,8 +14,9 @@ import { RiStarLine } from 'react-icons/ri';
 import { GoRepoForked } from 'react-icons/go';
 
 import Link from '@/components/link';
+import Loading from '@/components/loading';
+import Metric from '@/components/metric';
 import { fetcher } from '@/lib/fetcher';
-import Loading from '../loading';
 
 type WrapperStyle = MotionStyle & {
 	'--x': MotionValue<string>;
@@ -77,23 +78,11 @@ function ProjectCard({ project }: ProjectCardProps) {
 				<div className='flex gap-3 text-sm text-base-300/80'>
 					<span className='flex items-center gap-1'>
 						<RiStarLine className='text-yellow-500' />
-						{isLoading ? (
-							<Loading />
-						) : (
-							<span className='-mx-0.5 animate-[mutation_2s_ease-in-out_1] rounded-md px-0.5 slashed-zero tracking-tight'>
-								{repo?.stars.toLocaleString()}
-							</span>
-						)}
+						{isLoading ? <Loading /> : <Metric stat={repo?.stars} />}
 					</span>
 					<span className='flex items-center gap-1'>
 						<GoRepoForked />
-						{isLoading ? (
-							<Loading />
-						) : (
-							<span className='-mx-0.5 animate-[mutation_2s_ease-in-out_1] rounded-md px-0.5 slashed-zero tracking-tight'>
-								{repo?.forksCount.toLocaleString()}
-							</span>
-						)}
+						{isLoading ?  <Loading /> : <Metric stat={repo?.forksCount} />}
 					</span>
 				</div>
 			</Link>
