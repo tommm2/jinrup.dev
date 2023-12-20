@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
 import { useLocale, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
+import { allProjects } from 'contentlayer/generated';
 
 import ProjectCard from '@/components/project-card';
+import GradientText from '@/components/gradient-text';
 import { getLocalizedUrl } from '@/utils/url';
-import { allProjects } from 'contentlayer/generated';
 
 export async function generateMetadata({
 	params,
@@ -31,9 +32,12 @@ function ProjectsPage() {
 
 	return (
 		<>
-			<h1 className='animate-in text-2xl font-bold tracking-tight'>
+			<GradientText
+				as='h1'
+				className='animate-in text-2xl font-bold tracking-tight'
+			>
 				{t('common.projects')}
-			</h1>
+			</GradientText>
 			<p className='mt-1 animate-in text-base-300/80 animation-delay-1'>
 				{t('projectsPage.description')}
 			</p>

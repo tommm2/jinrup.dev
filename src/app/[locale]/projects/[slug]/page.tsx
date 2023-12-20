@@ -82,7 +82,7 @@ function ProjectLayout({ params }: ProjectLayoutProps) {
 	return (
 		<>
 			<Link
-				className='-ml-2 inline-flex animate-in items-center gap-1 rounded-md p-1.5 text-base-300/80 transition-colors duration-300 hover:bg-base-800/60 hover:text-base-300'
+				className='-ml-2 inline-flex animate-in items-center gap-1 rounded-lg p-1.5 text-base-300/80 transition-colors duration-300 hover:bg-base-800/60 hover:text-base-300'
 				href='/projects'
 			>
 				<RiArrowLeftLine />

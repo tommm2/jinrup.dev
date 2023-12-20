@@ -6,6 +6,7 @@ import { allPosts } from 'contentlayer/generated';
 
 import ClientIntlProvider from '@/components/client-intl-provider';
 import FilterPosts from '@/components/filter-posts';
+import GradientText from '@/components/gradient-text';
 import { getLocalizedUrl } from '@/utils/url';
 
 export async function generateMetadata({
@@ -35,9 +36,12 @@ function BlogPage() {
 
 	return (
 		<>
-			<h1 className='animate-in text-2xl font-bold tracking-tight'>
+			<GradientText
+				as='h1'
+				className='animate-in text-2xl font-bold tracking-tight'
+			>
 				{t('common.blog')}
-			</h1>
+			</GradientText>
 			<p className='mt-1 animate-in text-base-300/80 animation-delay-1'>
 				{t.rich('blogPage.subTitle', {
 					highlight: () => (
