@@ -36,17 +36,17 @@ function AboutPage() {
 	}
 
 	return (
-		<>
+		<div className='animate-in animation-delay-1'>
 			<GradientText
 				as='h1'
-				className='animate-in text-2xl font-bold tracking-tight'
+				className='text-2xl font-bold tracking-tight'
 			>
 				{t('about')}
 			</GradientText>
-			<div className='prose mt-5 animate-in animation-delay-1'>
+			<div className='prose mt-5'>
 				<MDXContent code={page.body.code} />
 			</div>
-		</>
+		</div>
 	);
 }
 
