@@ -9,6 +9,7 @@ import Link from '@/components/link';
 import MDXContent from '@/components/mdx-content';
 import { getLocalizedUrl } from '@/utils/url';
 import { getContentBySlugAndLocale } from '@/utils/content';
+import GradientText from '@/components/gradient-text';
 
 export async function generateStaticParams() {
 	return allProjects.map((project) => ({ slug: project.slug }));
@@ -80,16 +81,16 @@ function ProjectLayout({ params }: ProjectLayoutProps) {
 	} = project;
 
 	return (
-		<>
+		<div className='animate-in animation-delay-1'>
 			<Link
-				className='-ml-2 inline-flex animate-in items-center gap-1 rounded-lg p-1.5 text-base-300/80 transition-colors duration-300 hover:bg-base-800/60 hover:text-base-300'
+				isBlock
 				href='/projects'
 			>
 				<RiArrowLeftLine />
 				<span>{t('backToProjects')}</span>
 			</Link>
-			<div className='mt-8 animate-in space-y-2 animation-delay-1'>
-				<h1 className='text-2xl font-bold'>{title}</h1>
+			<div className='mt-8 space-y-2'>
+				<GradientText as='h1' className='text-2xl font-bold'>{title}</GradientText>
 				<div className='flex items-center gap-2 text-sm font-medium'>
 					<Link
 						className='group rounded-lg border border-base-800 px-3 py-2 transition-colors duration-300 hover:border-base-700 hover:bg-base-900/70'
@@ -117,7 +118,7 @@ function ProjectLayout({ params }: ProjectLayoutProps) {
 			<div className='prose mt-5 animate-in animation-delay-2'>
 				<MDXContent code={project.body.code} />
 			</div>
-		</>
+		</div>
 	);
 }
 
