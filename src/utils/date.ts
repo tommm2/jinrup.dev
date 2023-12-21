@@ -11,7 +11,7 @@ type formatDateType = {
 
 export function formatDate({
 	date,
-	formatString = 'LLLL dd',
+	formatString = 'LLLL dd, yyyy',
 	locale,
 }: formatDateType) {
 	return format(parseISO(date), formatString, {
