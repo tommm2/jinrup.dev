@@ -1,8 +1,8 @@
 'use client';
 
 import { RiCheckFill, RiFileCopy2Fill } from 'react-icons/ri';
+import { useCopyToClipboard } from 'react-use';
 
-import { useClipboard } from '@/hooks';
 import { cn } from '@/utils/cn';
 
 type CopyButtonProps = {
@@ -14,25 +14,25 @@ function CopyButton({
 	className = '',
 	copyText,
 }: CopyButtonProps) {
-	const { copy, isCopied } = useClipboard();
+	const [{ value }, copyToClipboard] = useCopyToClipboard();
 
 	const _handleCopy = () => {
-		copy(copyText);
+		copyToClipboard(copyText);
 	};
 
 	return (
 		<button
 			className={cn(
 				'absolute right-3 rounded-lg bg-base-800/60 p-2.5 opacity-0 transition-all group-hover:opacity-100',
-				{ 'text-primary-500': isCopied },
+				{ 'text-emerald-500': !!value },
 				className,
 			)}
 			title='copy code'
 			aria-label='copy code'
-			disabled={isCopied}
+			disabled={!!value}
 			onClick={_handleCopy}
 		>
-			{isCopied ? <RiCheckFill /> : <RiFileCopy2Fill />}
+			{!!value ? <RiCheckFill /> : <RiFileCopy2Fill />}
 		</button>
 	);
 }
