@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useClickAway } from 'react-use';
 
-import { useClickOutside } from '@/hooks';
 import { usePathname } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
 
@@ -24,7 +24,7 @@ function Dropdown({
 	const pathname = usePathname();
 	const [isVisible, setIsVisible] = useState(false);
 
-	useClickOutside(dropdownRef, () => setIsVisible(false));
+	useClickAway(dropdownRef, () => setIsVisible(false));
 
 	useEffect(() => {
 		setIsVisible(false);
