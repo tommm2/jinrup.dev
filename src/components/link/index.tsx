@@ -5,6 +5,7 @@ import { NextIntlLink } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
 
 type LinkProps = {
+	isBlock?: boolean;
 	showAnchorIcon?: boolean;
 	anchorIcon?: React.ReactNode;
 	locale?: Locale;
@@ -13,6 +14,7 @@ type LinkProps = {
 const Link = forwardRef<HTMLAnchorElement, LinkProps>((props: LinkProps, ref) => {
 	const {
 		className,
+		isBlock = false,
 		href = '',
 		showAnchorIcon = false,
 		anchorIcon = <RiArrowRightUpLine className='inline text-current' />,
@@ -20,6 +22,8 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>((props: LinkProps, ref) =>
 		children,
 		...otherProps
 	} = props;
+
+	const blockStyle = isBlock ? 'flex h-8 w-fit items-center gap-1 rounded-lg bg-base-800/60 p-4 text-sm text-base-300 transition-colors hover:bg-base-800/80' : '';
 
 	if (href.startsWith('http')) {
 		otherProps.rel = otherProps.rel ?? 'noopener noreferrer';
@@ -29,12 +33,13 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>((props: LinkProps, ref) =>
 	if (href.startsWith('/')) {
 		return (
 			<NextIntlLink
-				className={cn(className)}
+				className={cn(blockStyle, className)}
 				href={href}
 				locale={locale}
 				aria-label={otherProps['aria-label']}
 			>
 				{children}
+				{showAnchorIcon && anchorIcon}
 			</NextIntlLink>
 		);
 	}
@@ -42,7 +47,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>((props: LinkProps, ref) =>
 	return (
 		<a
 			ref={ref}
-			className={cn(className)}
+			className={cn(blockStyle, className)}
 			href={href}
 			{...otherProps}
 		>
