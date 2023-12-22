@@ -90,21 +90,22 @@ function ProjectLayout({ params }: ProjectLayoutProps) {
 				<RiArrowLeftLine />
 				<span>{t('backToProjects')}</span>
 			</Link>
-			<div className='mt-8 animate-in space-y-2 animation-delay-1'>
+			<div className='mt-8 animate-in space-y-3 animation-delay-1'>
 				<GradientText as='h1' className='text-2xl font-bold'>{title}</GradientText>
-				<div className='flex items-center gap-2 text-sm font-medium'>
+				<div className='flex items-center gap-1 text-sm font-medium'>
 					<Link
-						className='group rounded-lg border border-base-800 px-3 py-2 transition-colors duration-300 hover:border-base-700 hover:bg-base-900/70'
+						className='group flex items-center gap-1'
 						href={demoUrl}
 					>
-						<RiLinksLine className='mr-2 inline-block text-base-300/60 transition-colors duration-300 group-hover:text-base-300' />
+						<RiLinksLine className='text-base-200/60 transition-colors duration-300 group-hover:text-base-200' />
 						Live Demo
 					</Link>
+					．
 					<Link
-						className='group rounded-lg border border-base-800 px-3 py-2 transition-colors duration-300 hover:border-base-700 hover:bg-base-900/70'
+						className='group flex items-center gap-1'
 						href={repoUrl}
 					>
-						<RiCodeSSlashLine className='mr-2 inline-block text-base-300/60 transition-colors duration-300 group-hover:text-base-300' />
+						<RiCodeSSlashLine className='text-base-200/60 transition-colors duration-300 group-hover:text-base-200' />
 						Source Code
 					</Link>
 				</div>
