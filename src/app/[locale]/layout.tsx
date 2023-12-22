@@ -80,7 +80,7 @@ function LocaleLayout({ children, params: { locale } }: LocaleLayoutProps) {
 	return (
 		<html
 			className={cn(
-				'bg-base-950 font-sans text-base-200',
+				'bg-base-950 font-sans text-base-300',
 				fontSans.variable,
 				fontNoto.variable,
 			)}
