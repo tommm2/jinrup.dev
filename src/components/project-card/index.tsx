@@ -35,10 +35,9 @@ function ProjectCard({ project }: ProjectCardProps) {
 		title,
 		slug,
 		description,
-		repoId,
 	} = project;
 
-	const { data: repo, isLoading } = useSWR<RepoInfo>(`/api/github?repoId=${repoId}`, fetcher);
+	const { data: repo, isLoading } = useSWR<RepoInfo>(`/api/github?slug=${slug}`, fetcher);
 
 	function handleMouseMove({
 		currentTarget,
