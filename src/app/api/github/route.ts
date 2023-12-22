@@ -4,18 +4,17 @@ import { Octokit } from 'octokit';
 import { siteConfig } from '@/config/site';
 
 export async function GET(req: NextRequest) {
-	const repoId = req.nextUrl.searchParams.get('repoId');
+	const slug = req.nextUrl.searchParams.get('slug');
 
 	const octokit = new Octokit({
 		auth: process.env.GITHUB_AUTH_TOKEN,
 	});
 
-	const { data: repos } = await octokit.request('GET /users/{username}/repos', {
-		username: siteConfig.githubUsername,
-	});
-
-	if (repoId) {
-		const repo = repos.find(item => item.id === Number(repoId));
+	if (slug) {
+		const { data: repo } = await octokit.request('GET /repos/{owner}/{repo}', {
+			owner: siteConfig.githubUsername,
+			repo: slug,
+		});
 
 		return NextResponse.json({
 			stars: repo?.stargazers_count,
@@ -23,6 +22,9 @@ export async function GET(req: NextRequest) {
 		});
 	}
 
+	const { data: repos } = await octokit.request('GET /users/{username}/repos', {
+		username: siteConfig.githubUsername,
+	});
 	const { data: followers } = await octokit.request('GET /users/{username}/followers', {
 		username: siteConfig.githubUsername,
 	});
