@@ -9,8 +9,8 @@
 		}
 	}
 
-	a {
-		@apply no-underline text-primary-500 transition-colors duration-300 hover:text-primary-500/70;
+	:not(.anchor) > a {
+		@apply text-base-100 font-medium underline decoration-primary-400 decoration-2 underline-offset-4 transition-all duration-300 hover:decoration-primary-400/50 hover:text-primary-400;
 	}
 
 	hr {
@@ -30,7 +30,7 @@
 	}
 
 	strong {
-		@apply font-bold text-current;
+		@apply font-bold text-base-100;
 	}
 
 	blockquote {
@@ -42,7 +42,7 @@
 	}
 
 	:not(pre) > code {
-		@apply bg-base-800/60 my-1 p-1 border rounded-lg text-base-300 border-base-800;
+		@apply bg-base-800 my-1 p-1 border rounded-lg text-base-100 border-base-700/60;
 
 		&::before,
 		&::after {
@@ -56,7 +56,7 @@
 			@apply px-4 border-l-2 border-transparent;
 
 			&::before {
-				@apply inline-block w-4 mr-4 py-0.5 text-base-600 text-center;
+				@apply inline-block w-4 mr-4 py-0.5 text-base-500 text-center;
 				counter-increment: line;
 				content: counter(line);
 			}
