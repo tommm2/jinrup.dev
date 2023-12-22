@@ -1,7 +1,7 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { allPosts, allProjects } from 'contentlayer/generated';
 
-import HeroSection from './partials/hero';
+import HeroSection from './partials/hero-section';
 import ProjectSection from './partials/project-section';
 import PostSection from './partials/post-section';
 
