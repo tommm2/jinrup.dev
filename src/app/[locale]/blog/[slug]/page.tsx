@@ -22,7 +22,9 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({
 	params,
-}: { params: { locale: Locale; slug: string; }}): Promise<Metadata | undefined> {
+}: {
+	params: { locale: Locale; slug: string };
+}): Promise<Metadata | undefined> {
 	const post = getContentBySlugAndLocale({
 		contentItems: allPosts,
 		slug: params.slug,
@@ -107,16 +109,14 @@ function BlogPostLayout({ params }: BlogPostLayoutProps) {
 				<span>{t('backToBlog')}</span>
 			</Link>
 			<div className='mt-8 animate-in animation-delay-1'>
-				{language !== params.locale && (
-					<Callout type='warning'>{t('noSupport')}</Callout>
-				)}
-				<GradientText as='h1' className='text-2xl font-bold'>
+				<GradientText
+					as='h1'
+					className='text-2xl font-bold'
+				>
 					{title}
 				</GradientText>
 				<div className='mt-3 flex justify-between text-sm text-base-300/60'>
-					<time dateTime={publishedAt}>
-						{`${date} (${distanceToNow})`}
-					</time>
+					<time dateTime={publishedAt}>{`${date} (${distanceToNow})`}</time>
 					<ClientIntlProvider messageKey='common'>
 						<ViewCounter
 							slug={slug}
@@ -124,6 +124,9 @@ function BlogPostLayout({ params }: BlogPostLayoutProps) {
 						/>
 					</ClientIntlProvider>
 				</div>
+				{language !== params.locale && (
+					<Callout type='warning'>{t('noSupport')}</Callout>
+				)}
 			</div>
 			<article className='prose mt-5 animate-in animation-delay-2'>
 				<MDXContent code={post.body.code} />
