@@ -4,16 +4,16 @@ import { Octokit } from 'octokit';
 import { siteConfig } from '@/config/site';
 
 export async function GET(req: NextRequest) {
-	const slug = req.nextUrl.searchParams.get('slug');
+	const repoName = req.nextUrl.searchParams.get('repoName');
 
 	const octokit = new Octokit({
 		auth: process.env.GITHUB_AUTH_TOKEN,
 	});
 
-	if (slug) {
+	if (repoName) {
 		const { data: repo } = await octokit.request('GET /repos/{owner}/{repo}', {
 			owner: siteConfig.githubUsername,
-			repo: slug,
+			repo: repoName,
 		});
 
 		return NextResponse.json({
