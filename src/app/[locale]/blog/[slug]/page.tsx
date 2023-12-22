@@ -97,15 +97,16 @@ function BlogPostLayout({ params }: BlogPostLayoutProps) {
 	const distanceToNow = getDistanceToNow(publishedAt, locale);
 
 	return (
-		<div className='animate-in animation-delay-1'>
+		<>
 			<Link
+				className='animate-in'
 				isBlock
 				href='/blog'
 			>
 				<RiArrowLeftLine />
 				<span>{t('backToBlog')}</span>
 			</Link>
-			<div className='mt-8'>
+			<div className='mt-8 animate-in animation-delay-1'>
 				{language !== params.locale && (
 					<Callout type='warning'>{t('noSupport')}</Callout>
 				)}
@@ -124,11 +125,11 @@ function BlogPostLayout({ params }: BlogPostLayoutProps) {
 					</ClientIntlProvider>
 				</div>
 			</div>
-			<article className='prose mt-5'>
+			<article className='prose mt-5 animate-in animation-delay-2'>
 				<MDXContent code={post.body.code} />
 			</article>
 			<Comment locale={params.locale} />
-		</div>
+		</>
 	);
 }
 

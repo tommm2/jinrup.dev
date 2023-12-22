@@ -16,7 +16,7 @@ function HomePage() {
 		.splice(0, 3);
 
 	return (
-		<div className='animate-in space-y-16 animation-delay-1'>
+		<div className='space-y-16'>
 			<HeroSection
 				name='Tom Jin'
 				subTitle={t('homePage.subTitle')}

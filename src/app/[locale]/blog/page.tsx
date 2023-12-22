@@ -35,14 +35,14 @@ function BlogPage() {
 		.sort((a, b) => compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)));
 
 	return (
-		<div className='animate-in animation-delay-1'>
+		<>
 			<GradientText
 				as='h1'
-				className='text-2xl font-bold tracking-tight'
+				className='animate-in text-2xl font-bold tracking-tight'
 			>
 				{t('common.blog')}
 			</GradientText>
-			<p className='mt-1 text-base-300/80'>
+			<p className='mt-1 animate-in text-base-300/80 animation-delay-1'>
 				{t.rich('blogPage.subTitle', {
 					highlight: () => (
 						<span className='font-medium text-primary-500'>{posts.length}</span>
@@ -56,7 +56,7 @@ function BlogPage() {
 					remindText={t('common.noResults')}
 				/>
 			</ClientIntlProvider>
-		</div>
+		</>
 	);
 }
 

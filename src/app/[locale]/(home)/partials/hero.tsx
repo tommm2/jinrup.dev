@@ -42,14 +42,14 @@ function HeroSection({ name, subTitle, description }: HeroSectionProps) {
 		<section className='space-y-4'>
 			<div className='flex items-center gap-4'>
 				<Image
-					className='rounded-full bg-base-200'
+					className='animate-in rounded-full bg-base-200'
 					src='/avatar.png'
 					alt='avatar'
 					width={80}
 					height={80}
 					priority
 				/>
-				<div>
+				<div className='animate-in animation-delay-1'>
 					<GradientText
 						as='h1'
 						className='text-2xl font-bold tracking-tight'
@@ -68,8 +68,8 @@ function HeroSection({ name, subTitle, description }: HeroSectionProps) {
 					</div>
 				</div>
 			</div>
-			<p>{description}</p>
-			<div className='flex flex-wrap items-center gap-4'>
+			<p className='animate-in animation-delay-2'>{description}</p>
+			<div className='flex animate-in flex-wrap items-center gap-4 animation-delay-3'>
 				{CONTACTS.map(({ name, href, icon: Icon, colorClass }) => (
 					<Link
 						key={name}

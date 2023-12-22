@@ -81,15 +81,16 @@ function ProjectLayout({ params }: ProjectLayoutProps) {
 	} = project;
 
 	return (
-		<div className='animate-in animation-delay-1'>
+		<>
 			<Link
+				className='animate-in'
 				isBlock
 				href='/projects'
 			>
 				<RiArrowLeftLine />
 				<span>{t('backToProjects')}</span>
 			</Link>
-			<div className='mt-8 space-y-2'>
+			<div className='mt-8 animate-in space-y-2 animation-delay-1'>
 				<GradientText as='h1' className='text-2xl font-bold'>{title}</GradientText>
 				<div className='flex items-center gap-2 text-sm font-medium'>
 					<Link
@@ -118,7 +119,7 @@ function ProjectLayout({ params }: ProjectLayoutProps) {
 			<div className='prose mt-5 animate-in animation-delay-2'>
 				<MDXContent code={project.body.code} />
 			</div>
-		</div>
+		</>
 	);
 }
 

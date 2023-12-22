@@ -31,17 +31,17 @@ function ProjectsPage() {
 	const projects = allProjects.filter((project) => project.language === locale);
 
 	return (
-		<div className='animate-in animation-delay-1'>
+		<>
 			<GradientText
 				as='h1'
-				className='text-2xl font-bold tracking-tight'
+				className='animate-in text-2xl font-bold tracking-tight'
 			>
 				{t('common.projects')}
 			</GradientText>
-			<p className='mt-1 text-base-300/80'>
+			<p className='mt-1 animate-in text-base-300/80 animation-delay-1'>
 				{t('projectsPage.description')}
 			</p>
-			<div className='mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2'>
+			<div className='mt-4 grid animate-in grid-cols-1 gap-4 animation-delay-2 sm:grid-cols-2'>
 				{projects.map(project => (
 					<ProjectCard
 						key={project.slug}
@@ -49,7 +49,7 @@ function ProjectsPage() {
 					/>
 				))}
 			</div>
-		</div>
+		</>
 	);
 }
 

@@ -12,7 +12,7 @@ type ProjectSectionProps = {
 
 function ProjectSection({ title, projects }: ProjectSectionProps) {
 	return (
-		<section>
+		<section className='animate-in animation-delay-4'>
 			<GradientText
 				as='h2'
 				className='text-xl font-bold tracking-tight'

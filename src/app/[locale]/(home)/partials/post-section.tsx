@@ -15,7 +15,7 @@ function PostSection({ title, posts }: PostSectionProps) {
 	const locale = useLocale() as Locale;
 
 	return (
-		<section>
+		<section className='animate-in animation-delay-5'>
 			<GradientText
 				as='h2'
 				className='text-xl font-bold tracking-tight'
