@@ -25,10 +25,12 @@ function HomePage() {
 			<ProjectSection
 				title={t('common.projects')}
 				projects={projects}
+				viewMoreText={t('common.viewMore')}
 			/>
 			<PostSection
 				title={t('common.latestPosts')}
 				posts={posts}
+				viewMoreText={t('common.viewMore')}
 			/>
 		</div>
 	);

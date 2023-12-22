@@ -8,17 +8,32 @@ import Link from '@/components/link';
 type ProjectSectionProps = {
 	title: string;
 	projects: Project[];
+	viewMoreText: string;
 };
 
-function ProjectSection({ title, projects }: ProjectSectionProps) {
+function ProjectSection({
+	title,
+	projects,
+	viewMoreText,
+}: ProjectSectionProps) {
 	return (
 		<section className='animate-in animation-delay-4'>
-			<GradientText
-				as='h2'
-				className='text-xl font-bold tracking-tight'
-			>
-				{title}
-			</GradientText>
+			<div className='flex items-center justify-between'>
+				<GradientText
+					as='h2'
+					className='text-xl font-bold tracking-tight'
+				>
+					{title}
+				</GradientText>
+				<Link
+					isBlock
+					showAnchorIcon
+					anchorIcon={<RiArrowRightSLine />}
+					href='/projects'
+				>
+					{viewMoreText}
+				</Link>
+			</div>
 			<div className='mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2'>
 				{projects.map((project) => (
 					<ProjectCard
@@ -27,15 +42,6 @@ function ProjectSection({ title, projects }: ProjectSectionProps) {
 					/>
 				))}
 			</div>
-			<Link
-				className='mt-8'
-				isBlock
-				showAnchorIcon
-				anchorIcon={<RiArrowRightSLine />}
-				href='/projects'
-			>
-				view more
-			</Link>
 		</section>
 	);
 }
