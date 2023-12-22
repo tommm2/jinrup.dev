@@ -23,7 +23,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>((props: LinkProps, ref) =>
 		...otherProps
 	} = props;
 
-	const blockStyle = isBlock ? 'flex h-8 w-fit items-center gap-1 rounded-lg bg-base-800/60 p-4 text-sm text-base-300 transition-colors hover:bg-base-800/80' : '';
+	const blockStyle = isBlock ? 'flex h-8 w-fit items-center gap-1 rounded-full bg-base-800/60 p-4 text-sm text-base-300 transition-colors hover:bg-base-800/80' : '';
 
 	if (href.startsWith('http')) {
 		otherProps.rel = otherProps.rel ?? 'noopener noreferrer';
