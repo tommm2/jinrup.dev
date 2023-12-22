@@ -7,39 +7,39 @@ import {
 
 import { cn } from '@/utils/cn';
 
-const EmojiMap = {
+const IconMap = {
 	default: <RiLightbulbLine />,
 	error: <RiForbid2Line />,
 	info: <RiInformationLine />,
 	warning: <RiErrorWarningLine /> ,
 };
 
-type CalloutType = keyof typeof EmojiMap;
+type CalloutType = keyof typeof IconMap;
 
 const classes: Record<CalloutType, string> = {
-	default: 'border-orange-500/40 bg-orange-900/40 text-orange-300',
+	default: 'border-amber-500/40 bg-amber-900/40 text-amber-300',
 	error: 'border-red-500/40 bg-red-900/40 text-red-300',
 	info: 'border-blue-500/40 bg-blue-900/40 text-blue-300',
-	warning: 'border-yellow-500/40 bg-yellow-900/40 text-yellow-300',
+	warning: 'border-violet-500/40 bg-violet-900/40 text-violet-300',
 };
 
 type CalloutProps = {
 	type?: CalloutType;
-	emoji?: string | React.ReactNode;
+	icon?: string | React.ReactNode;
 	children: React.ReactNode;
 };
 
 function Callout({
 	children,
 	type = 'default',
-	emoji = EmojiMap[type],
+	icon = IconMap[type],
 }: CalloutProps) {
 	return (
 		<div className={cn('overflow-x-auto mt-6 flex rounded-md border py-2 pr-4', classes[type])}>
 			<div className='select-none pl-3 pr-2 pt-1 text-xl'>
-				{emoji}
+				{icon}
 			</div>
-			<div className='w-full min-w-0 leading-7 [&>p]:m-0'>{children}</div>
+			<div className='w-full min-w-0 leading-7 [&>p]:m-0 [&_strong]:!text-inherit'>{children}</div>
 		</div>
 	);
 }
