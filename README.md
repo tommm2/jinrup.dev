@@ -58,7 +58,6 @@ npm run dev
 
 ## 📝 TODO
 - [ ] Add Not Found Page
-- [ ] Add image blur placeholder
 - [ ] Make 3D model(use three.js) in Home Page
 - [x] Make brand logo
 - [ ] Make analytics
