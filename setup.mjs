@@ -19,6 +19,30 @@ language: 'en'
 
 Hello, World!`;
 
+const projectZHTemplate = `---
+title: 第一個專案
+description: 我的第一個專案。
+imageUrl: ''
+repoName: 'first-post'
+repoUrl: 'https://github.com/tommm2'
+demoUrl: 'https://github.com/tommm2'
+language: zh-TW
+---
+
+我的第一個專案。`;
+
+const projectENTemplate = `---
+title: First Project
+description: My first project.
+imageUrl: ''
+repoName: 'first-post'
+repoUrl: 'https://github.com/tommm2'
+demoUrl: 'https://github.com/tommm2'
+language: en
+---
+
+My first project。`;
+
 const aboutZHTemplate = `---
 language: 'zh-TW'
 ---
@@ -50,8 +74,9 @@ const messagesZH = `{
 		"postViews": "瀏覽次數: <count></count> 次"
 	},
 	"homePage": {
-		"title": "我的網站",
-		"paragraph": "這是首頁"
+		"title": "帥氣小子",
+		"subTitle": "軟體工程師",
+		"description": "歡迎來到我的網站。"
 	},
 	"blogPage": {
 		"description": "這是部落格頁面",
@@ -82,8 +107,9 @@ const messagesEN = `{
 		"postViews": "<count></count> views"
 	},
 	"homePage": {
-		"title": "My Website",
-		"paragraph": "This is home page"
+		"title": "Handsome boy",
+		"subTitle": "Software Engineer",
+		"description": "Welcome to my website."
 	},
 	"blogPage": {
 		"description": "This is blog page",
@@ -97,23 +123,46 @@ const messagesEN = `{
 	}
 }`;
 
-const homePage = `import { useTranslations } from 'next-intl';
-import { RiPushpinLine } from 'react-icons/ri';
+const homePageTemplate = `import { useLocale, useTranslations } from 'next-intl';
+import { allPosts, allProjects } from 'contentlayer/generated';
 
-export default function HomePage() {
+import HeroSection from './partials/hero-section';
+import ProjectSection from './partials/project-section';
+import PostSection from './partials/post-section';
+
+function HomePage() {
 	const t = useTranslations();
+	const locale = useLocale() as Locale;
+	const projects = allProjects
+		.filter((project) => project.language === locale)
+		.splice(0, 2);
+	const posts = allPosts
+		.filter((posts) => posts.language === locale)
+		.splice(0, 3);
 
 	return (
-		<>
-			<h1 className='text-2xl animate-in font-bold tracking-tight'>
-				{t('homePage.title')}
-			</h1>
-			<p className='text-base-300/80 animate-in animation-delay-1 mt-2'>
-				{t('homePage.paragraph')}
-			</p>
-		</>
+		<div className='space-y-16'>
+			<HeroSection
+				name='Your Name'
+				subTitle={t('homePage.subTitle')}
+				description={t('homePage.description')}
+			/>
+			<ProjectSection
+				title={t('common.projects')}
+				projects={projects}
+				viewMoreText={t('common.viewMore')}
+			/>
+			<PostSection
+				title={t('common.latestPosts')}
+				posts={posts}
+				viewMoreText={t('common.viewMore')}
+			/>
+		</div>
 	);
-}`;
+}
+
+export default HomePage;
+`;
 
 const deleteFolderRecursive = async (path) => {
 	const stat = await fs.stat(path);
@@ -151,21 +200,24 @@ const deleteFolderRecursive = async (path) => {
 	await deleteFolderRecursive(publicDir);
 	// await deleteAllFilesExcept(imagesDir, 'test.jpg');
 
-	const postDir = path.join(contentDir, 'blog', 'hello-world');
+	const helloWorldDir = path.join(contentDir, 'blog', 'hello-world');
+	const firstProjectDir = path.join(contentDir, 'projects', 'first-project');
 	const aboutDir = path.join(contentDir, 'pages', 'about');
 
 	await fs.mkdir(publicDir);
-	await fs.mkdir(postDir, { recursive: true });
-	await fs.mkdir(aboutDir, { recursive: true });
 	await fs.mkdir(messagesDir, { recursive: true });
-
-	await fs.writeFile(path.join(postDir, 'index.mdx'), blogPostZHTemplate);
-	await fs.writeFile(path.join(postDir, 'index.en.mdx'), blogPostENTemplate);
-	await fs.writeFile(path.join(aboutDir, 'index.mdx'), aboutZHTemplate);
-	await fs.writeFile(path.join(aboutDir, 'index.en.mdx'), aboutENTemplate);
+	await fs.mkdir(helloWorldDir, { recursive: true });
+	await fs.mkdir(firstProjectDir, { recursive: true });
+	await fs.mkdir(aboutDir, { recursive: true });
 
 	await fs.writeFile(path.join(messagesDir, 'zh-TW.json'), messagesZH);
 	await fs.writeFile(path.join(messagesDir, 'en.json'), messagesEN);
+	await fs.writeFile(path.join(helloWorldDir, 'index.mdx'), blogPostZHTemplate);
+	await fs.writeFile(path.join(helloWorldDir, 'index.en.mdx'), blogPostENTemplate);
+	await fs.writeFile(path.join(firstProjectDir, 'index.mdx'), projectZHTemplate);
+	await fs.writeFile(path.join(firstProjectDir, 'index.en.mdx'), projectENTemplate);
+	await fs.writeFile(path.join(aboutDir, 'index.mdx'), aboutZHTemplate);
+	await fs.writeFile(path.join(aboutDir, 'index.en.mdx'), aboutENTemplate);
 
-	await fs.writeFile(path.join(homeDir, 'page.tsx'), homePage);
+	await fs.writeFile(path.join(homeDir, 'page.tsx'), homePageTemplate);
 })();
