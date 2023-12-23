@@ -144,7 +144,7 @@ const deleteFolderRecursive = async (path) => {
 	const contentDir = path.join(process.cwd(), 'content');
 	const messagesDir = path.join(process.cwd(), 'messages');
 	const publicDir = path.join(process.cwd(), 'public');
-	const appDir = path.join(process.cwd(), 'src', 'app');
+	const homeDir = path.join(process.cwd(), 'src', 'app', '[locale]', '(home)');
 
 	await deleteFolderRecursive(contentDir);
 	await deleteFolderRecursive(messagesDir);
@@ -167,5 +167,5 @@ const deleteFolderRecursive = async (path) => {
 	await fs.writeFile(path.join(messagesDir, 'zh-TW.json'), messagesZH);
 	await fs.writeFile(path.join(messagesDir, 'en.json'), messagesEN);
 
-	await fs.writeFile(path.join(appDir, '[locale]', 'page.tsx'), homePage);
+	await fs.writeFile(path.join(homeDir, 'page.tsx'), homePage);
 })();
