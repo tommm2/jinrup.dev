@@ -35,16 +35,19 @@ Introduce yourself!
 
 const messagesZH = `{
 	"common": {
-		"latestPosts": "Latest Posts",
-		"allPosts": "All Posts",
-		"placeholder": "Search articles",
-		"noResults": "No Search Results",
-		"blog": "Blog",
-		"about": "About",
-		"pinned": "Pinned",
-		"noSupport": "The article does not support the current language.",
-		"backToBlog": "Back to blog",
-		"postViews": "<count></count> views"
+		"latestPosts": "最新文章",
+		"allPosts": "所有文章",
+		"placeholder": "查詢文章",
+		"noResults": "查無結果",
+		"viewMore": "查看更多",
+		"home": "首頁",
+		"blog": "部落格",
+		"projects": "專案",
+		"about": "關於",
+		"noSupport": "文章不支援目前語系",
+		"backToBlog": "返回部落格",
+		"backToProjects": "返回專案",
+		"postViews": "瀏覽次數: <count></count> 次"
 	},
 	"homePage": {
 		"title": "我的網站",
@@ -54,6 +57,9 @@ const messagesZH = `{
 		"description": "這是部落格頁面",
 		"subTitle": "<highlight></highlight> 關於程式碼等等的文章..."
 	},
+	"projectsPage": {
+		"description": "展示一些我做的專案。"
+	},
 	"aboutPage": {
 		"description": "這是關於頁面"
 	}
@@ -61,16 +67,19 @@ const messagesZH = `{
 
 const messagesEN = `{
 	"common": {
-		"latestPosts": "最新文章",
-		"allPosts": "所有文章",
-		"placeholder": "查詢文章",
-		"noResults": "查無結果",
-		"blog": "部落格",
-		"about": "關於",
-		"pinned": "釘選",
-		"noSupport": "文章不支援目前語系",
-		"backToBlog": "返回部落格",
-		"postViews": "瀏覽次數：<count></count>次"
+		"latestPosts": "Latest Posts",
+		"allPosts": "All Posts",
+		"placeholder": "Search articles",
+		"noResults": "No Search Results",
+		"viewMore": "view more",
+		"home": "Home",
+		"blog": "Blog",
+		"projects": "Projects",
+		"about": "About",
+		"noSupport": "The article does not support the current language.",
+		"backToBlog": "Back to blog",
+		"backToProjects": "Back to Projects",
+		"postViews": "<count></count> views"
 	},
 	"homePage": {
 		"title": "My Website",
@@ -80,6 +89,9 @@ const messagesEN = `{
 		"description": "This is blog page",
 		"subTitle": "<highlight></highlight> posts about code and more..."
 	},
+	"projectsPage": {
+		"description": "Showcase of my projects."
+	},
 	"aboutPage": {
 		"description": "This is about page"
 	}
@@ -87,8 +99,6 @@ const messagesEN = `{
 
 const homePage = `import { useTranslations } from 'next-intl';
 import { RiPushpinLine } from 'react-icons/ri';
-
-import PinnedProjects from '@/components/pinned-projects';
 
 export default function HomePage() {
 	const t = useTranslations();
@@ -101,14 +111,6 @@ export default function HomePage() {
 			<p className='text-base-300/80 animate-in animation-delay-1 mt-2'>
 				{t('homePage.paragraph')}
 			</p>
-			{/* Note: Your github account must have a pinned project, otherwise it will show coming soon text! */}
-			<div className='mt-16 animate-in space-y-4 animation-delay-2'>
-				<h2 className='flex items-center gap-2 tracking-tight text-base-200'>
-					<RiPushpinLine className='h-5 w-5' />
-					{t('common.pinned')}
-				</h2>
-				<PinnedProjects />
-			</div>
 		</>
 	);
 }`;
