@@ -44,6 +44,7 @@ export const Project = defineDocumentType(() => ({
 		imageUrl: { type: 'string', required: true },
 		demoUrl: { type: 'string', required: true },
 		repoUrl: { type: 'string', required: true },
+		// repoName should be the same as your Github repo name in order to fetch data successfully.
 		repoName: { type: 'string', required: true },
 		language: { type: 'string', required: true },
 		tags: { type: 'list', of: { type: 'string' } },
