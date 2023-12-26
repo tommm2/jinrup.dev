@@ -1,7 +1,9 @@
 import {
 	RiGithubFill,
 	RiLinkedinBoxFill,
+	RiRssFill,
 } from 'react-icons/ri';
+import { default as NextLink } from 'next/link';
 
 import Link from '@/components/link';
 import { siteConfig } from '@/config/site';
@@ -28,6 +30,16 @@ function Footer() {
 					>
 						<RiLinkedinBoxFill className='h-7 w-7' />
 					</Link>
+					{/*  using origin next link */}
+					<NextLink
+						className='transition-colors duration-300 hover:text-base-300/60'
+						href='/feed.xml'
+						aria-label='RSS feed'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						<RiRssFill className='h-7 w-7' />
+					</NextLink>
 				</div>
 			</div>
 		</footer>
