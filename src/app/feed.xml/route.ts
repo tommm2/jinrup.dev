@@ -10,7 +10,7 @@ export function GET() {
 		title: 'Tom Jin',
 		description: 'A developer website by Tom Jin.',
 		site_url: `${siteConfig.siteUrl}`,
-		feed_url: `${siteConfig.siteUrl}/rss.xml`,
+		feed_url: `${siteConfig.siteUrl}/feed.xml`,
 		language: 'en',
 		image_url: `${siteConfig.siteUrl}/opengraph-image.jpg`,
 	};
