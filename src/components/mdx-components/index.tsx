@@ -13,7 +13,7 @@ const MDXComponents: MDXComponentsProps = {
 	h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => <LinkedHeading as='h2' {...props} />,
 	h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => <LinkedHeading as='h3' {...props} />,
 	h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => <LinkedHeading as='h4' {...props} />,
-	a: (props: React.HTMLAttributes<HTMLAnchorElement>) => <Link {...props} />,
+	a: (props: React.HTMLAttributes<HTMLAnchorElement>) => <Link showAnchorIcon {...props} />,
 	input: (props) => <input aria-label='todo' {...props} />,
 	pre: Pre,
 };
