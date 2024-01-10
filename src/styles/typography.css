@@ -1,8 +1,8 @@
 .prose {
-	@apply max-w-none text-base-300;
+	@apply max-w-none text-base-200;
 
 	h1, h2, h3, h4 {
-		@apply mb-[0.5em] tracking-tight w-fit;
+		@apply mb-[0.5em] mt-[1em] tracking-tight w-fit;
 
 		&.anchor > a {
 			@apply font-bold text-transparent bg-clip-text bg-gradient-to-b from-base-200 from-30% to-base-200/40;
@@ -10,7 +10,7 @@
 	}
 
 	:not(.anchor) > a {
-		@apply text-base-100 font-medium underline decoration-primary-400 decoration-2 underline-offset-4 transition-all duration-300 hover:decoration-primary-400/50 hover:text-primary-400;
+		@apply font-semibold text-primary-500 no-underline opacity-hover;
 	}
 
 	hr {
@@ -20,10 +20,10 @@
 	ul {
 		@apply pl-[1em];
 
-		& > li {
+		> li {
 			@apply p-0.5 m-0 marker:text-base-600;
 
-			& > input {
+			> input {
 				@apply my-0;
 			}
 		}
@@ -36,7 +36,7 @@
 	blockquote {
 		@apply bg-base-900 p-4 text-base-300 border-primary-500 rounded-lg;
 
-		& > p {
+		> p {
 			@apply m-0;
 		}
 	}
