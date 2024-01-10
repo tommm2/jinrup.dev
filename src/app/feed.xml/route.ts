@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { allPosts } from 'contentlayer/generated';
 import RSS from 'rss';
 
+import { defaultLocale } from '@/lib/navigation';
 import { getLocalizedUrl } from '@/utils/url';
 import { siteConfig } from '@/config/site';
 
@@ -11,14 +12,14 @@ export function GET() {
 		description: 'A developer website by Tom Jin.',
 		site_url: `${siteConfig.siteUrl}`,
 		feed_url: `${siteConfig.siteUrl}/feed.xml`,
-		language: 'en',
+		language: 'zh-TW',
 		image_url: `${siteConfig.siteUrl}/opengraph-image.jpg`,
 	};
 
 	const feed = new RSS(feedOptions);
 
 	allPosts
-		.filter((post) => post.language === 'en')
+		.filter((post) => post.language === defaultLocale)
 		.map(post => {
 			feed.item({
 				title: post.title,
