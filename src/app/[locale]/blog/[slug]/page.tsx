@@ -128,7 +128,7 @@ function BlogPostLayout({ params }: BlogPostLayoutProps) {
 					<Callout type='warning'>{t('noSupport')}</Callout>
 				)}
 			</div>
-			<article className='prose mt-5 animate-in animation-delay-2'>
+			<article className='prose my-8 animate-in animation-delay-2'>
 				<MDXContent code={post.body.code} />
 			</article>
 			<Comment locale={params.locale} />
