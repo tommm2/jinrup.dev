@@ -7,7 +7,7 @@ import { allPosts } from 'contentlayer/generated';
 import ClientIntlProvider from '@/components/client-intl-provider';
 import GradientText from '@/components/gradient-text';
 import { getLocalizedUrl } from '@/utils/url';
-import FilterPosts from './partials/filter-posts';
+import FilterPosts from './filter-posts';
 
 export async function generateMetadata({
 	params,
