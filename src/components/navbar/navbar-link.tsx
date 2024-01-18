@@ -1,6 +1,7 @@
 'use client';
 
 import {
+	RiChat3Fill,
 	RiGitRepositoryFill,
 	RiQuillPenFill,
 	RiUser3Fill,
@@ -12,6 +13,7 @@ import { cn } from '@/utils/cn';
 
 const IconMap: { [key: string]: React.ReactNode } = {
 	['/blog']: <RiQuillPenFill />,
+	['/guestbook']: <RiChat3Fill />,
 	['/projects']: <RiGitRepositoryFill />,
 	['/about']: <RiUser3Fill />,
 };
