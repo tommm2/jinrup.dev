@@ -1,9 +1,9 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { allPosts, allProjects } from 'contentlayer/generated';
 
-import HeroSection from './partials/hero-section';
-import ProjectSection from './partials/project-section';
-import PostSection from './partials/post-section';
+import HeroSection from './hero-section';
+import ProjectSection from './project-section';
+import PostSection from './post-section';
 
 function HomePage() {
 	const t = useTranslations();
