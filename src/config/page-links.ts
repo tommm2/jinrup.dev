@@ -4,6 +4,10 @@ export const pageLinks = [
 		href: '/blog',
 	},
 	{
+		title: 'guestbook',
+		href: '/guestbook',
+	},
+	{
 		title: 'projects',
 		href: '/projects',
 	},
