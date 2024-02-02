@@ -1,9 +1,9 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { allPosts, allProjects } from 'contentlayer/generated';
 
-import HeroSection from './hero-section';
-import ProjectSection from './project-section';
-import PostSection from './post-section';
+import Hero from './hero';
+import Projects from './projects';
+import Posts from './posts';
 
 function HomePage() {
 	const t = useTranslations();
@@ -17,17 +17,17 @@ function HomePage() {
 
 	return (
 		<div className='space-y-16'>
-			<HeroSection
+			<Hero
 				name='Tom Jin'
 				subTitle={t('homePage.subTitle')}
 				description={t('homePage.description')}
 			/>
-			<ProjectSection
+			<Projects
 				title={t('common.projects')}
 				projects={projects}
 				viewMoreText={t('common.viewMore')}
 			/>
-			<PostSection
+			<Posts
 				title={t('common.latestPosts')}
 				posts={posts}
 				viewMoreText={t('common.viewMore')}

@@ -7,13 +7,13 @@ import { formatDate } from '@/utils/date';
 import Link from '@/components/link';
 import { defaultLocale } from '@/lib/navigation';
 
-type PostSectionProps = {
+type PostsProps = {
 	title: string;
 	posts: Post[];
 	viewMoreText: string;
 };
 
-function PostSection({ title, posts, viewMoreText }: PostSectionProps) {
+function Posts({ title, posts, viewMoreText }: PostsProps) {
 	const locale = useLocale() as Locale;
 
 	return (
@@ -67,4 +67,4 @@ function PostSection({ title, posts, viewMoreText }: PostSectionProps) {
 	);
 }
 
-export default PostSection;
+export default Posts;
