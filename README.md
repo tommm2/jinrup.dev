@@ -48,9 +48,9 @@ This application requires Node.js v19.1+.
 git clone https://github.com/tommm2/jinrup.dev.git
 
 cd jinrup.dev
-npm install
+pnpm install
 node setup.mjs # Remove my personal information
-npm run dev
+pnpm run dev
 ```
 
 - Create `.env` file similar to `.env.example`.
