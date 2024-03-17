@@ -31,13 +31,13 @@ const CONTACTS = [
 	},
 ];
 
-type HeroSectionProps = {
+type HeroProps = {
 	name: string;
 	subTitle: string;
 	description: string;
 };
 
-function HeroSection({ name, subTitle, description }: HeroSectionProps) {
+function Hero({ name, subTitle, description }: HeroProps) {
 	return (
 		<section className='space-y-4'>
 			<div className='flex items-center gap-4'>
@@ -90,4 +90,4 @@ function HeroSection({ name, subTitle, description }: HeroSectionProps) {
 	);
 }
 
-export default HeroSection;
+export default Hero;

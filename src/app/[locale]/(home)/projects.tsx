@@ -5,17 +5,17 @@ import GradientText from '@/components/gradient-text';
 import ProjectCard from '@/components/project-card';
 import Link from '@/components/link';
 
-type ProjectSectionProps = {
+type ProjectsProps = {
 	title: string;
 	projects: Project[];
 	viewMoreText: string;
 };
 
-function ProjectSection({
+function Projects({
 	title,
 	projects,
 	viewMoreText,
-}: ProjectSectionProps) {
+}: ProjectsProps) {
 	return (
 		<section className='animate-in animation-delay-4'>
 			<div className='flex items-center justify-between'>
@@ -46,4 +46,4 @@ function ProjectSection({
 	);
 }
 
-export default ProjectSection;
+export default Projects;
