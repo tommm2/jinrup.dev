@@ -1,5 +1,5 @@
 import NextImage from 'next/image';
-import { MDXComponents as MDXComponentsProps } from 'mdx/types';
+import { MDXComponents as MDXComponentsProps } from '@mdx-js/react/lib';
 
 import Link from '@/components/link';
 import Callout from './callout';
@@ -8,7 +8,7 @@ import Pre from './pre';
 
 const MDXComponents: MDXComponentsProps = {
 	Callout,
-	Image: (props) => <NextImage {...props} className='h-auto w-auto rounded-lg' priority />,
+	Image: (props) => <NextImage {...props} className='size-auto rounded-lg' priority />,
 	h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => <LinkedHeading as='h1' isLinked={false} {...props} />,
 	h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => <LinkedHeading as='h2' {...props} />,
 	h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => <LinkedHeading as='h3' {...props} />,
