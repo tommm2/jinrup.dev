@@ -30,7 +30,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".contentlayer/generated"
+    "./.veltie"
   ],
   "exclude": ["node_modules"]
 }
