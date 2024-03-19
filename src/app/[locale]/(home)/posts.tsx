@@ -1,4 +1,4 @@
-import type { Post } from 'contentlayer/generated';
+import type { Post } from '@/.velite';
 import { useLocale } from 'next-intl';
 import { RiArrowRightSLine } from 'react-icons/ri';
 
@@ -55,7 +55,7 @@ function Posts({ title, posts, viewMoreText }: PostsProps) {
 							</time>
 							<Link
 								className='opacity-hover font-medium'
-								href={`/blog/${post.slug}`}
+								href={post.permalink}
 							>
 								{post.title}
 							</Link>

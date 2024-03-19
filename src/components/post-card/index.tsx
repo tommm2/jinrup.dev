@@ -1,6 +1,6 @@
 'use client';
 
-import type { Post } from 'contentlayer/generated';
+import type { Post } from '@/.velite';
 import { useLocale } from 'next-intl';
 
 import Link from '@/components/link';
@@ -21,6 +21,7 @@ function PostCard({ post }: PostCardProps) {
 		slug,
 		title,
 		publishedAt,
+		permalink,
 	} = post;
 
 	const formatString = locale === defaultLocale ? 'LLLd日' : 'LLLL d';
@@ -34,7 +35,7 @@ function PostCard({ post }: PostCardProps) {
 		<div ref={intersectionRef}>
 			<Link
 				className='opacity-hover font-medium'
-				href={`/blog/${slug}`}
+				href={permalink}
 			>
 				{title}
 			</Link>

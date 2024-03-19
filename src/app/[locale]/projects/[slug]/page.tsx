@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { RiArrowLeftLine, RiCodeSSlashLine, RiLinksLine } from 'react-icons/ri';
-import { allProjects } from 'contentlayer/generated';
+import { allProjects } from '@/.velite';
 
 import Link from '@/components/link';
 import MDXContent from '@/components/mdx-content';
@@ -118,7 +118,7 @@ function ProjectLayout({ params }: ProjectLayoutProps) {
 				/>
 			</div>
 			<div className='prose mt-5 animate-in animation-delay-2'>
-				<MDXContent code={project.body.code} />
+				<MDXContent code={project.content} />
 			</div>
 		</>
 	);

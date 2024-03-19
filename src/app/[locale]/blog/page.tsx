@@ -2,12 +2,12 @@ import { Metadata } from 'next';
 import { useLocale, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { compareDesc } from 'date-fns';
-import { allPosts } from 'contentlayer/generated';
+import { allPosts } from '@/.velite';
 
 import ClientIntlProvider from '@/components/client-intl-provider';
 import GradientText from '@/components/gradient-text';
 import { getLocalizedUrl } from '@/utils/url';
-import FilterPosts from './partials/filter-posts';
+import FilterPosts from './filter-posts';
 
 export async function generateMetadata({
 	params,

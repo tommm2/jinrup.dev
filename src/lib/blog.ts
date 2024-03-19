@@ -1,4 +1,4 @@
-import type { Post } from 'contentlayer/generated';
+import type { Post } from '@/.velite';
 
 import { groupBy } from '@/utils/helpers';
 

@@ -1,5 +1,5 @@
 import { useLocale, useTranslations } from 'next-intl';
-import { allPosts, allProjects } from 'contentlayer/generated';
+import { allPosts, allProjects } from '@/.velite';
 
 import Hero from './hero';
 import Projects from './projects';

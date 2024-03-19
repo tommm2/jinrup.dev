@@ -1,6 +1,6 @@
 'use client';
 
-import { Project } from 'contentlayer/generated';
+import type { Project } from '@/.velite';
 import useSWR from 'swr';
 import {
 	useMotionValue,
@@ -33,9 +33,9 @@ function ProjectCard({ project }: ProjectCardProps) {
 
 	const {
 		title,
-		slug,
 		description,
 		repoName,
+		permalink,
 	} = project;
 
 	const { data: repo, isLoading } = useSWR<RepoInfo>(`/api/github?repoName=${repoName}`, fetcher);
@@ -64,7 +64,7 @@ function ProjectCard({ project }: ProjectCardProps) {
 		>
 			<Link
 				className='block cursor-pointer space-y-2 overflow-hidden rounded-lg border border-base-800 bg-gradient-to-br from-base-950 to-base-900/80 p-6 shadow-rose-300 transition duration-300 hover:drop-shadow-[0_0_15px_rgba(39,42,216,0.3)]'
-				href={`/projects/${slug}`}
+				href={permalink}
 			>
 				<h2 className='flex items-center gap-2 font-medium tracking-tight'>
 					{title}

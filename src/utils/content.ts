@@ -1,4 +1,4 @@
-import type { Post, Project } from 'contentlayer/generated';
+import type { Post, Project } from '@/.velite';
 import { defaultLocale } from '@/lib/navigation';
 
 export function getContentBySlugAndLocale<T extends Post | Project>({

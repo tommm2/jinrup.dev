@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { allPosts } from 'contentlayer/generated';
+import { allPosts } from '@/.velite';
 import RSS from 'rss';
 
 import { defaultLocale } from '@/lib/navigation';

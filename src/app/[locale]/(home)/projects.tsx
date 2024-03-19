@@ -1,4 +1,4 @@
-import type { Project } from 'contentlayer/generated';
+import type { Project } from '@/.velite';
 import { RiArrowRightSLine } from 'react-icons/ri';
 
 import GradientText from '@/components/gradient-text';

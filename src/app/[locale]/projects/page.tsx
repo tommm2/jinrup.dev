@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { useLocale, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { allProjects } from 'contentlayer/generated';
+import { allProjects } from '@/.velite';
 
 import ProjectCard from '@/components/project-card';
 import GradientText from '@/components/gradient-text';
