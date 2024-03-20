@@ -81,7 +81,7 @@ function Hero({ name, subTitle, description }: HeroProps) {
 						title={name}
 						href={href}
 					>
-						<Icon className='h-5 w-5' />
+						<Icon className='size-5' />
 						<span className='hidden sm:inline'>{name}</span>
 					</Link>
 				))}

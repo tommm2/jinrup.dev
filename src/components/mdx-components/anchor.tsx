@@ -34,7 +34,7 @@ function Anchor({
 			href={`#${id || anchorId}`}
 		>
 			{children}
-			<RiHashtag className='hidden h-6 w-6 rounded-lg border border-base-800 fill-base-400 p-1 group-hover:block' />
+			<RiHashtag className='hidden size-6 rounded-lg border border-base-800 fill-base-400 p-1 group-hover:block' />
 		</Link>
 	);
 };
