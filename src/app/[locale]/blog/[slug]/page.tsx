@@ -12,7 +12,7 @@ import MDXContent from '@/components/mdx-content';
 import ViewCounter from '@/components/view-counter';
 import GradientText from '@/components/gradient-text';
 import { defaultLocale } from '@/lib/navigation';
-import { getContentBySlugAndLocale } from '@/utils/content';
+import { getContentWithFallback } from '@/utils/content';
 import { getLocalizedUrl } from '@/utils/url';
 import { formatDate, getDistanceToNow } from '@/utils/date';
 
@@ -25,7 +25,7 @@ export async function generateMetadata({
 }: {
 	params: { locale: Locale; slug: string };
 }): Promise<Metadata | undefined> {
-	const post = getContentBySlugAndLocale({
+	const post = getContentWithFallback({
 		contentItems: allPosts,
 		slug: params.slug,
 		locale: params.locale,
@@ -44,6 +44,7 @@ export async function generateMetadata({
 
 	const url = getLocalizedUrl({
 		locale: params.locale,
+		pathname: 'blog',
 		slug,
 	});
 
@@ -73,7 +74,7 @@ type BlogPostLayoutProps = {
 function BlogPostLayout({ params }: BlogPostLayoutProps) {
 	const t = useTranslations('common');
 	const locale = useLocale() as Locale;
-	const post = getContentBySlugAndLocale({
+	const post = getContentWithFallback({
 		contentItems: allPosts,
 		slug: params.slug,
 		locale: params.locale,
