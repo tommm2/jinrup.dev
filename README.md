@@ -8,7 +8,7 @@
 - **Database**: [PlanetScale](https://planetscale.com/)
 - **ORM**: [Prisma](https://www.prisma.io/)
 - **Deployment**: [Vercel](https://vercel.com/)
-- **Content Management**: [Contentlayer](https://www.contentlayer.dev/)
+- **Content Management**: [Velite](https://velite.js.org/)
 
 ## 📁 Project Structure
 ```

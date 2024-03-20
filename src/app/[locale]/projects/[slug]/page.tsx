@@ -3,12 +3,12 @@ import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { RiArrowLeftLine, RiCodeSSlashLine, RiLinksLine } from 'react-icons/ri';
-import { allProjects } from 'contentlayer/generated';
+import { allProjects } from '@/.velite';
 
 import Link from '@/components/link';
 import MDXContent from '@/components/mdx-content';
 import { getLocalizedUrl } from '@/utils/url';
-import { getContentBySlugAndLocale } from '@/utils/content';
+import { getContentWithFallback } from '@/utils/content';
 import GradientText from '@/components/gradient-text';
 
 export async function generateStaticParams() {
@@ -18,7 +18,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
 	params,
 }: { params: { locale: Locale; slug: string; }}): Promise<Metadata | undefined> {
-	const post = getContentBySlugAndLocale({
+	const post = getContentWithFallback({
 		contentItems: allProjects,
 		slug: params.slug,
 		locale: params.locale,
@@ -63,7 +63,7 @@ type ProjectLayoutProps = {
 
 function ProjectLayout({ params }: ProjectLayoutProps) {
 	const t = useTranslations('common');
-	const project = getContentBySlugAndLocale({
+	const project = getContentWithFallback({
 		contentItems: allProjects,
 		slug: params.slug,
 		locale: params.locale,
@@ -118,7 +118,7 @@ function ProjectLayout({ params }: ProjectLayoutProps) {
 				/>
 			</div>
 			<div className='prose mt-5 animate-in animation-delay-2'>
-				<MDXContent code={project.body.code} />
+				<MDXContent code={project.content} />
 			</div>
 		</>
 	);

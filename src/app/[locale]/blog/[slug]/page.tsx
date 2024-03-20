@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { useLocale, useTranslations } from 'next-intl';
 import { RiArrowLeftLine } from 'react-icons/ri';
-import { allPosts } from 'contentlayer/generated';
+import { allPosts } from '@/.velite';
 
 import Comment from '@/components/comment';
 import Callout from '@/components/mdx-components/callout';
@@ -10,11 +10,11 @@ import ClientIntlProvider from '@/components/client-intl-provider';
 import Link from '@/components/link';
 import MDXContent from '@/components/mdx-content';
 import ViewCounter from '@/components/view-counter';
+import GradientText from '@/components/gradient-text';
 import { defaultLocale } from '@/lib/navigation';
-import { getContentBySlugAndLocale } from '@/utils/content';
+import { getContentWithFallback } from '@/utils/content';
 import { getLocalizedUrl } from '@/utils/url';
 import { formatDate, getDistanceToNow } from '@/utils/date';
-import GradientText from '@/components/gradient-text';
 
 export async function generateStaticParams() {
 	return allPosts.map((post) => ({ slug: post.slug }));
@@ -25,7 +25,7 @@ export async function generateMetadata({
 }: {
 	params: { locale: Locale; slug: string };
 }): Promise<Metadata | undefined> {
-	const post = getContentBySlugAndLocale({
+	const post = getContentWithFallback({
 		contentItems: allPosts,
 		slug: params.slug,
 		locale: params.locale,
@@ -44,6 +44,7 @@ export async function generateMetadata({
 
 	const url = getLocalizedUrl({
 		locale: params.locale,
+		pathname: 'blog',
 		slug,
 	});
 
@@ -73,7 +74,7 @@ type BlogPostLayoutProps = {
 function BlogPostLayout({ params }: BlogPostLayoutProps) {
 	const t = useTranslations('common');
 	const locale = useLocale() as Locale;
-	const post = getContentBySlugAndLocale({
+	const post = getContentWithFallback({
 		contentItems: allPosts,
 		slug: params.slug,
 		locale: params.locale,
@@ -129,7 +130,7 @@ function BlogPostLayout({ params }: BlogPostLayoutProps) {
 				)}
 			</div>
 			<article className='prose my-8 animate-in animation-delay-2'>
-				<MDXContent code={post.body.code} />
+				<MDXContent code={post.content} />
 			</article>
 			<Comment locale={params.locale} />
 		</>

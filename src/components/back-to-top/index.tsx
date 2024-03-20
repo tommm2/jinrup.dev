@@ -41,7 +41,7 @@ function BackToTop() {
 					exit={{ opacity: 0, y: 20 }}
 					onClick={handleClick}
 				>
-					<RiArrowUpSLine className='h-6 w-6' />
+					<RiArrowUpSLine className='size-6' />
 				</motion.button>
 			)}
 		</AnimatePresence>

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { RiSearch2Line } from 'react-icons/ri';
-import type { Post } from 'contentlayer/generated';
+import type { Post } from '@/.velite';
 
 import PostCard from '@/components/post-card';
 import { getGroupPostsWithYear } from '@/lib/blog';
@@ -24,7 +24,7 @@ function FilterPosts({
 	return (
 		<>
 			<div className='relative mt-4 animate-in animation-delay-2'>
-				<RiSearch2Line className='absolute left-2 top-2.5 h-5 w-5 text-base-500' />
+				<RiSearch2Line className='absolute left-2 top-2.5 size-5 text-base-500' />
 				<input
 					className='w-full rounded-lg border border-base-600/40 bg-base-900 p-2 pl-8 text-sm outline-none ring-primary-500/10 duration-300 placeholder:text-base-500 focus:border-primary-500 focus:ring-4 sm:w-[18.75rem]'
 					placeholder={placeholder}

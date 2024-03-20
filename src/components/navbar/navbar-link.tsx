@@ -50,7 +50,7 @@ function NavbarLink({
 			className='group relative flex h-8 items-center gap-1.5 pl-5 pr-2'
 			href={href}
 		>
-			<div className='absolute left-2 flex h-1.5 w-1.5 items-center justify-center'>
+			<div className='absolute left-2 flex size-1.5 items-center justify-center'>
 				<div
 					className={cn(
 						'absolute duration-300 transition-all will-change-[width,height] inset-auto h-0 w-0 flex-none rounded-full bg-primary-500 group-hover:h-full group-hover:w-full',

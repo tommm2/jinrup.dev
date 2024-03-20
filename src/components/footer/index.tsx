@@ -21,14 +21,14 @@ function Footer() {
 						href={siteConfig.links.github}
 						aria-label='github'
 					>
-						<RiGithubFill className='h-6 w-6' />
+						<RiGithubFill className='size-6' />
 					</Link>
 					<Link
 						className='transition-colors duration-300 hover:text-base-300/60'
 						href={siteConfig.links.linkedin}
 						aria-label='linkedin'
 					>
-						<RiLinkedinBoxFill className='h-6 w-6' />
+						<RiLinkedinBoxFill className='size-6' />
 					</Link>
 					<NextLink
 						className='transition-colors duration-300 hover:text-base-300/60'
@@ -37,7 +37,7 @@ function Footer() {
 						target='_blank'
 						rel='noopener noreferrer'
 					>
-						<RiRssFill className='h-6 w-6' />
+						<RiRssFill className='size-6' />
 					</NextLink>
 				</div>
 			</div>

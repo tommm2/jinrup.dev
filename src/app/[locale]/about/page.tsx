@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { useLocale, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { allPages } from 'contentlayer/generated';
+import { allPages } from '@/.velite';
 
 import GradientText from '@/components/gradient-text';
 import MDXContent from '@/components/mdx-content';
@@ -44,7 +44,7 @@ function AboutPage() {
 				{t('about')}
 			</GradientText>
 			<div className='prose mt-5 animate-in animation-delay-1'>
-				<MDXContent code={page.body.code} />
+				<MDXContent code={page.content} />
 			</div>
 		</>
 	);

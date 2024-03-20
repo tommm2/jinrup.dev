@@ -10,12 +10,9 @@ export function getLocalizedUrl({
 	pathname?: '' | 'blog' | 'about' | 'projects';
 	slug?: string;
 }) {
-	let localPrefix = locale === defaultLocale ? '' : 'en/';
-	let url = `${siteConfig.siteUrl}/${localPrefix}${pathname}`;
+	let localPrefix = locale === defaultLocale ? '' : 'en';
 
-	if (slug) {
-		url += `/${slug}`;
-	}
+	let url = [localPrefix, pathname, slug].join('/');
 
 	return url;
 }
