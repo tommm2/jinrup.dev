@@ -12,7 +12,9 @@ export function getLocalizedUrl({
 }) {
 	let localPrefix = locale === defaultLocale ? '' : 'en';
 
-	let url = [localPrefix, pathname, slug].join('/');
+	let url = [siteConfig.siteUrl, localPrefix, pathname, slug]
+		.filter(item => item)
+		.join('/');
 
 	return url;
 }
