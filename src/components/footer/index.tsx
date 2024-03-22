@@ -3,7 +3,6 @@ import {
 	RiLinkedinBoxFill,
 	RiRssFill,
 } from 'react-icons/ri';
-import { default as NextLink } from 'next/link';
 
 import Link from '@/components/link';
 import { siteConfig } from '@/config/site';
@@ -30,7 +29,7 @@ function Footer() {
 					>
 						<RiLinkedinBoxFill className='size-6' />
 					</Link>
-					<NextLink
+					<Link
 						className='transition-colors duration-300 hover:text-base-300/60'
 						href='/feed.xml'
 						aria-label='RSS feed'
@@ -38,7 +37,7 @@ function Footer() {
 						rel='noopener noreferrer'
 					>
 						<RiRssFill className='size-6' />
-					</NextLink>
+					</Link>
 				</div>
 			</div>
 		</footer>
