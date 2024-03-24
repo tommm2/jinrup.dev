@@ -7,7 +7,7 @@ type PreProps = {
 } & ComponentProps<'pre'>;
 
 function Pre(props: PreProps) {
-	const isMultiLine = (props.raw as string).split('\n').filter((item) => !!item).length > 1;
+	// const isMultiLine = (props.raw as string).split('\n').filter((item) => !!item).length > 1;
 
 	return (
 		<pre
@@ -16,7 +16,7 @@ function Pre(props: PreProps) {
 		>
 			{props.children}
 			<CopyButton
-				className={isMultiLine ? 'top-3' : 'top-2.5'}
+				// className={isMultiLine ? 'top-3' : 'top-2.5'}
 				copyText={props.raw || ''}
 			/>
 		</pre>
