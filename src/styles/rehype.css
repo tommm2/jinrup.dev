@@ -1,0 +1,25 @@
+[data-rehype-pretty-code-figure] {
+	@apply relative my-[2.5em];
+
+	pre {
+		@apply bg-base-800 px-0 before:content-[attr(data-language)] before:absolute before:-top-6 before:right-10 before:bg-base-800 before:px-3 before:py-1 before:font-bold before:rounded-t-lg;
+	}
+
+	code {
+		counter-reset: line;
+	}
+}
+
+[data-line] {
+	@apply pl-4 border-l-2 border-transparent;
+
+	&::before {
+		@apply inline-block w-4 mr-4 py-0.5 text-base-500 text-center;
+		counter-increment: line;
+		content: counter(line);
+	}
+}
+
+[data-highlighted-line]{
+	@apply bg-base-600/40 border-emerald-500;
+}

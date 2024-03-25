@@ -3,6 +3,7 @@
 @import 'tailwindcss/utilities';
 
 @import 'typography.css';
+@import 'rehype.css';
 
 @layer utilities {
 	.layout {

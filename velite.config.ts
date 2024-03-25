@@ -1,7 +1,6 @@
 import { defineCollection, defineConfig, s } from 'velite';
-import remarkGfm from 'remark-gfm';
-import rehypePrettyCode from 'rehype-pretty-code';
-import { visit } from 'unist-util-visit';
+
+import { prettyCode } from '@/lib/rehype';
 
 const allPosts = defineCollection({
 	name: 'Post',
@@ -61,4 +60,9 @@ const allPages = defineCollection({
 
 export default defineConfig({
 	collections: { allPosts, allProjects, allPages },
+	mdx: {
+		rehypePlugins: [
+			prettyCode,
+		],
+	},
 });
