@@ -42,47 +42,6 @@
 	}
 
 	:not(pre) > code {
-		@apply bg-base-800 my-1 p-1 border rounded-lg text-base-100 border-base-700/60;
-
-		&::before,
-		&::after {
-			@apply content-[''];
-		}
-	}
-
-	/* rehype-pretty-code style */
-	[data-rehype-pretty-code-fragment] {
-		.line {
-			@apply px-4 border-l-2 border-transparent;
-
-			&::before {
-				@apply inline-block w-4 mr-4 py-0.5 text-base-500 text-center;
-				counter-increment: line;
-				content: counter(line);
-			}
-
-			&--highlighted {
-				@apply bg-base-600/10 border-emerald-500;
-			}
-		}
-
-		pre {
-			@apply relative mt-0 bg-base-900 px-0;
-		}
-
-		code {
-			@apply grid;
-			counter-reset: line;
-		}
-	}
-
-	[data-rehype-pretty-code-title] {
-		@apply px-4 py-2 text-base-300 text-sm border-b rounded-t-md border-base-800 bg-base-900;
-
-		& + pre {
-			@apply rounded-t-none;
-		}
+		@apply bg-base-800 my-1 p-1 border rounded-lg text-base-100 border-base-800;
 	}
 }
-
-
