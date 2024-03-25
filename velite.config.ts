@@ -1,6 +1,6 @@
-import { visit } from 'unist-util-visit';
 import { defineCollection, defineConfig, s } from 'velite';
-import rehypePrettyCode from 'rehype-pretty-code';
+
+import { prettyCode } from '@/lib/rehype';
 
 const allPosts = defineCollection({
 	name: 'Post',
@@ -62,45 +62,7 @@ export default defineConfig({
 	collections: { allPosts, allProjects, allPages },
 	mdx: {
 		rehypePlugins: [
-			[rehypePrettyCode, {
-				keepBackground: false,
-				theme: 'github-dark',
-				onVisitLine(node: any) {
-					// Prevent lines from collapsing in `display: grid` mode, and allow empty
-					if (node.children.length === 0) {
-						node.children = [{ type: 'text', value: ' ' }];
-					}
-				},
-				onVisitHighlightedLine(node: any) {
-					node.properties.className.push('line--highlighted');
-				},
-			}],
-			// () => (tree) => {
-			// 	visit(tree, (node) => {
-			// 	  if (node?.type === 'element' && node?.tagName === 'pre') {
-			// 			const [codeEl] = node.children;
-
-			// 			if (codeEl.tagName !== 'code') return;
-
-			// 			node.raw = codeEl.children?.[0].value;
-			// 	  }
-			// 	});
-			// },
-			// () => (tree) => {
-			// 	visit(tree, (node) => {
-			// 		if (node?.type === 'element' && node?.tagName === 'div') {
-			// 			if (!('data-rehype-pretty-code-figure' in node.properties)) {
-			// 				return;
-			// 			}
-
-			// 			for (const child of node.children) {
-			// 				if (child.tagName === 'pre') {
-			// 					child.properties['raw'] = node.raw;
-			// 				}
-			// 			}
-			// 		}
-			// 	});
-			// },
+			prettyCode,
 		],
 	},
 });
