@@ -9,6 +9,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm install && npm install -g @lhci/cli@0.13.x
-      - run: npm run build
+      - run: pnpm install && pnpm add -g @lhci/cli@0.13.x
+      - run: pnpm run build
       - run: lhci autorun
