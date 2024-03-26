@@ -19,7 +19,7 @@ jobs:
           node-version: 18
 
       - name: Install, Build
-        run: pnpm install & pnpm add -g @lhci/cli@0.13.x
+        run: pnpm install
 
       - name: Build packages
         run: pnpm run build
