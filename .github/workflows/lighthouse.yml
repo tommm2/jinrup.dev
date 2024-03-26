@@ -18,13 +18,14 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build packages
-        run: pnpm run build
+      - name: Install, build
+        run: |
+          pnpm install
+          pnpm build
 
       - name: Run lighthouseci
-        run: lhci autorun
+        run: |
+          pnpm add -g @lhci/cli@0.13.x
+          lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
