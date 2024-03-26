@@ -1,28 +1,13 @@
-name: LIGHTHOUSE CI
+name: CI
 on: [push]
-
 jobs:
-  lhci:
-    name: Lighthouse
+  lighthouseci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
-
-      - name: Use Node.js 19.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 19.x
-
-      - name: pnpm install, build
-        run: |
-          pnpm install
-          pnpm run build
-
-      - name: run Lighthouse CI
-        run: |
-          pnpm add @lhci/cli@0.13.x
-          lhci autorun
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          node-version: 18
+      - run: npm install && npm install -g @lhci/cli@0.13.x
+      - run: npm run build
+      - run: lhci autorun
