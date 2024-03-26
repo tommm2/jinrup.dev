@@ -15,14 +15,14 @@ jobs:
         with:
           node-version: 19.x
 
-      - name: npm install, build
+      - name: pnpm install, build
         run: |
-          npm install
-          npm run build
+          pnpm install
+          pnpm run build
 
       - name: run Lighthouse CI
         run: |
-          npm install -g @lhci/cli@0.13.x
+          pnpm add @lhci/cli@0.13.x
           lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
