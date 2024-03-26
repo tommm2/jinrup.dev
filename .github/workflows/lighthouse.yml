@@ -1,13 +1,55 @@
-name: CI
+name: Lighthouse
+
 on: [push]
+
+defaults:
+  run:
+    # This ensures that the working directory is the root of the repository
+    working-directory: ./
+
 jobs:
-  lighthouseci:
+  lighthouse-ci:
+    name: Lighthouse Report
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Capture Vercel Preview
+        uses: patrickedqvist/wait-for-vercel-preview@dca4940010f36d2d44caa487087a09b57939b24a # v1.3.1
+        id: vercel_preview_url
         with:
-          node-version: 18
-      - run: npm install && npm install -g @lhci/cli@0.13.x
-      - run: npm run build
-      - run: lhci autorun
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 300
+          check_interval: 10
+
+      - name: Audit Preview URL with Lighthouse
+        # Conduct the lighthouse audit
+        id: lighthouse_audit
+        uses: treosh/lighthouse-ci-action@1b0e7c33270fbba31a18a0fbb1de7cc5256b6d39 # v11.4.0
+        with:
+          # Defines the settings and assertions to audit
+          configPath: './.lighthouserc.json'
+          # These URLS capture critical pages / site functionality.
+          urls: |
+            ${{ steps.vercel_preview_url.outputs.url }}/
+            ${{ steps.vercel_preview_url.outputs.url }}/blog
+            ${{ steps.vercel_preview_url.outputs.url }}/projects
+            ${{ steps.vercel_preview_url.outputs.url }}/about
+          uploadArtifacts: true # save results as a action artifacts
+          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+
+      - name: Format Lighthouse Score
+        # Transform the audit results into a single, friendlier output
+        id: format_lighthouse_score
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        env:
+          # using env as input to our script
+          # see https://github.com/actions/github-script#use-env-as-input
+          LIGHTHOUSE_RESULT: ${{ steps.lighthouse_audit.outputs.manifest }}
+          LIGHTHOUSE_LINKS: ${{ steps.lighthouse_audit.outputs.links }}
+          VERCEL_PREVIEW_URL: ${{ steps.vercel_preview_url.outputs.url }}
+        with:
+          # Run as a separate file so we do not have to inline all of our formatting logic.
+          # See https://github.com/actions/github-script#run-a-separate-file for more info.
+          script: |
+            const { formatLighthouseResults } = await import('${{github.workspace}}/scripts/lighthouse/index.mjs')
+            await formatLighthouseResults({core})
