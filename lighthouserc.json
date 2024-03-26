@@ -11,6 +11,9 @@
         ],
         "settings": {
             "preset": "desktop"
+        },
+        "upload": {
+          "target": "temporary-public-storage"
         }
     },
     "assert": {
