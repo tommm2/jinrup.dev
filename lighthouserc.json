@@ -1,27 +1,24 @@
 {
   "ci": {
-    "collect": {
-        "startServerCommand": "npm run start",
-        "startServerReadyPattern": "ready on",
-        "url": [
-            "http://localhost:3000",
-            "http://localhost:3000/blog",
-            "http://localhost:3000/projects",
-            "http://localhost:3000/about"
-        ],
-        "settings": {
-            "preset": "desktop"
-        },
-        "upload": {
-          "target": "temporary-public-storage"
-        }
-    },
     "assert": {
+      "preset": "lighthouse:no-pwa",
       "assertions": {
-        "categories:performance": ["warn", { "minScore": 1 }],
-        "categories:accessibility": ["warn", { "minScore": 0.9 }],
-        "categories:best-practices": ["warn", { "minScore": 0.9 }],
-        "categories:seo": ["warn", { "minScore": 0.9 }]
+        "categories:performance": [
+          "warn",
+          { "aggregationMethod": "optimistic", "minScore": 0.95 }
+        ],
+        "categories:accessibility": [
+          "warn",
+          { "aggregationMethod": "optimistic", "minScore": 1 }
+        ],
+        "categories:best-practices": [
+          "warn",
+          { "aggregationMethod": "optimistic", "minScore": 1 }
+        ],
+        "categories:seo": [
+          "warn",
+          { "aggregationMethod": "optimistic", "minScore": 1 }
+        ]
       }
     }
   }

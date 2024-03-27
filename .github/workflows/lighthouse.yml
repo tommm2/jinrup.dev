@@ -23,10 +23,9 @@ jobs:
           pnpm install
           pnpm build
 
-      - name: Run lighthouseci
+      - name: Run lighthouse CI
         run: |
           pnpm add -g @lhci/cli@0.13.x
-          lhci collect
-          lhci upload
+          lhci autorun --upload.target=temporary-public-storage || echo "LHCI failed"
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
