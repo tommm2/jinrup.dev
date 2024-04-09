@@ -5,8 +5,8 @@
 - **Styling**: [Tailwindcss](https://tailwindcss.com/)
 - **Animation**: [Framer motion](https://www.framer.com/motion/)
 - **internationalization**: [next-intl](https://next-intl-docs.vercel.app)
-- **Database**: [PlanetScale](https://planetscale.com/)
-- **ORM**: [Neon](https://neon.tech/)
+- **Database**: [Neon](https://neon.tech/)
+- **ORM**: [Prisma](https://www.prisma.io/)
 - **Deployment**: [Vercel](https://vercel.com/)
 - **Content Management**: [Velite](https://velite.js.org/)
 
