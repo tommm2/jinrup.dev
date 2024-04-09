@@ -6,7 +6,7 @@
 - **Animation**: [Framer motion](https://www.framer.com/motion/)
 - **internationalization**: [next-intl](https://next-intl-docs.vercel.app)
 - **Database**: [PlanetScale](https://planetscale.com/)
-- **ORM**: [Prisma](https://www.prisma.io/)
+- **ORM**: [Neon](https://neon.tech/)
 - **Deployment**: [Vercel](https://vercel.com/)
 - **Content Management**: [Velite](https://velite.js.org/)
 
