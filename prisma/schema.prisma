@@ -3,12 +3,11 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Post {
-  slug        String   @unique
-  views       Int      @default(0)
+  slug  String @unique
+  views Int    @default(0)
 }
