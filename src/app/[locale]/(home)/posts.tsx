@@ -1,37 +1,34 @@
-import type { Post } from '@/.velite';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { RiArrowRightSLine } from 'react-icons/ri';
 
+import { allPosts } from '@/.velite';
 import GradientText from '@/components/gradient-text';
-import { formatDate } from '@/utils/date';
-import Link from '@/components/link';
+import Link from '@/components/ui/link';
 import { defaultLocale } from '@/lib/navigation';
+import { formatDate } from '@/utils/date';
 
-type PostsProps = {
-	title: string;
-	posts: Post[];
-	viewMoreText: string;
-};
-
-function Posts({ title, posts, viewMoreText }: PostsProps) {
+const Posts = () => {
+	const t = useTranslations('common');
 	const locale = useLocale() as Locale;
+	const posts = allPosts
+		.filter((post) => post.language === locale)
+		.splice(0, 2);
 
 	return (
-		<section className='animate-in animation-delay-5'>
+		<section className='animate-fade-in animation-delay-5'>
 			<div className='flex justify-between'>
 				<GradientText
 					as='h2'
 					className='text-xl font-bold tracking-tight'
 				>
-					{title}
+					{t('latestPosts')}
 				</GradientText>
 				<Link
-					isBlock
-					showAnchorIcon
-					anchorIcon={<RiArrowRightSLine />}
-					href='/blog'
+					variant='block'
+					href='/projects'
 				>
-					{viewMoreText}
+					{t('viewMore')}
+					<RiArrowRightSLine />
 				</Link>
 			</div>
 			<div className='mt-4 space-y-6'>
@@ -48,13 +45,13 @@ function Posts({ title, posts, viewMoreText }: PostsProps) {
 							className='flex flex-col-reverse sm:flex-row sm:gap-8'
 						>
 							<time
-								className='text-base-300/60'
+								className='text-foreground/60'
 								dateTime={post.publishedAt}
 							>
 								{date}
 							</time>
 							<Link
-								className='opacity-hover font-medium'
+								className='font-medium'
 								href={post.permalink}
 							>
 								{post.title}
@@ -65,6 +62,6 @@ function Posts({ title, posts, viewMoreText }: PostsProps) {
 			</div>
 		</section>
 	);
-}
+};
 
 export default Posts;

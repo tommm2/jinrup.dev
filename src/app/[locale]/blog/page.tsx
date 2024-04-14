@@ -1,17 +1,20 @@
+import { compareDesc } from 'date-fns';
 import { Metadata } from 'next';
 import { useLocale, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { compareDesc } from 'date-fns';
-import { allPosts } from '@/.velite';
 
+import { allPosts } from '@/.velite';
 import ClientIntlProvider from '@/components/client-intl-provider';
 import GradientText from '@/components/gradient-text';
 import { getLocalizedUrl } from '@/utils/url';
+
 import FilterPosts from './filter-posts';
 
 export async function generateMetadata({
 	params,
-}: { params: { locale: Locale }}): Promise<Metadata> {
+}: {
+	params: { locale: Locale };
+}): Promise<Metadata> {
 	const t = await getTranslations();
 	const url = getLocalizedUrl({
 		locale: params.locale,
@@ -27,25 +30,27 @@ export async function generateMetadata({
 	};
 }
 
-function BlogPage() {
+const BlogPage = () => {
 	const t = useTranslations();
 	const locale = useLocale();
 	const posts = allPosts
 		.filter((post) => post.language === locale)
-		.sort((a, b) => compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)));
+		.sort((a, b) =>
+			compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)),
+		);
 
 	return (
 		<>
 			<GradientText
 				as='h1'
-				className='animate-in text-2xl font-bold tracking-tight'
+				className='animate-fade-in text-2xl font-bold tracking-tight'
 			>
 				{t('common.blog')}
 			</GradientText>
-			<p className='mt-1 animate-in text-base-300/80 animation-delay-1'>
+			<p className='mt-1 animate-fade-in text-foreground/80 animation-delay-1'>
 				{t.rich('blogPage.subTitle', {
 					highlight: () => (
-						<span className='font-medium text-primary-500'>{posts.length}</span>
+						<span className='font-medium text-primary'>{posts.length}</span>
 					),
 				})}
 			</p>
@@ -58,6 +63,6 @@ function BlogPage() {
 			</ClientIntlProvider>
 		</>
 	);
-}
+};
 
 export default BlogPage;

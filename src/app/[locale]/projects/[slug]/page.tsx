@@ -1,23 +1,25 @@
-import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import { RiArrowLeftLine, RiCodeSSlashLine, RiLinksLine } from 'react-icons/ri';
+
 import { allProjects } from '@/.velite';
-
-import Link from '@/components/link';
-import MDXContent from '@/components/mdx-content';
-import { getLocalizedUrl } from '@/utils/url';
-import { getContentWithFallback } from '@/utils/content';
 import GradientText from '@/components/gradient-text';
+import MDXContent from '@/components/mdx';
+import Link from '@/components/ui/link';
+import { getContentWithFallback } from '@/utils/content';
+import { getLocalizedUrl } from '@/utils/url';
 
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
 	return allProjects.map((project) => ({ slug: project.slug }));
-}
+};
 
-export async function generateMetadata({
+export const generateMetadata = async ({
 	params,
-}: { params: { locale: Locale; slug: string; }}): Promise<Metadata | undefined> {
+}: {
+	params: { locale: Locale; slug: string };
+}): Promise<Metadata | undefined> => {
 	const post = getContentWithFallback({
 		contentItems: allProjects,
 		slug: params.slug,
@@ -28,11 +30,7 @@ export async function generateMetadata({
 		return;
 	}
 
-	const {
-		title,
-		description,
-		slug,
-	} = post;
+	const { title, description, slug } = post;
 
 	const url = getLocalizedUrl({
 		locale: params.locale,
@@ -52,7 +50,7 @@ export async function generateMetadata({
 			canonical: url,
 		},
 	};
-}
+};
 
 type ProjectLayoutProps = {
 	params: {
@@ -61,7 +59,7 @@ type ProjectLayoutProps = {
 	};
 };
 
-function ProjectLayout({ params }: ProjectLayoutProps) {
+const ProjectLayout = ({ params }: ProjectLayoutProps) => {
 	const t = useTranslations('common');
 	const project = getContentWithFallback({
 		contentItems: allProjects,
@@ -73,31 +71,31 @@ function ProjectLayout({ params }: ProjectLayoutProps) {
 		notFound();
 	}
 
-	const {
-		title,
-		imageUrl,
-		demoUrl,
-		repoUrl,
-	} = project;
+	const { title, imageUrl, demoUrl, repoUrl } = project;
 
 	return (
 		<>
 			<Link
-				className='animate-in'
-				isBlock
+				variant='block'
+				className='animate-fade-in gap-1'
 				href='/projects'
 			>
 				<RiArrowLeftLine />
 				<span>{t('backToProjects')}</span>
 			</Link>
-			<div className='mt-8 animate-in space-y-3 animation-delay-1'>
-				<GradientText as='h1' className='text-2xl font-bold'>{title}</GradientText>
+			<div className='mt-8 animate-fade-in space-y-3 animation-delay-1'>
+				<GradientText
+					as='h1'
+					className='text-2xl font-bold'
+				>
+					{title}
+				</GradientText>
 				<div className='flex items-center gap-1 text-sm font-medium'>
 					<Link
 						className='group flex items-center gap-1'
 						href={demoUrl}
 					>
-						<RiLinksLine className='text-base-200/60 transition-colors duration-300 group-hover:text-base-200' />
+						<RiLinksLine className='text-foreground/60 transition-colors duration-300 group-hover:text-foreground' />
 						Live Demo
 					</Link>
 					．
@@ -105,7 +103,7 @@ function ProjectLayout({ params }: ProjectLayoutProps) {
 						className='group flex items-center gap-1'
 						href={repoUrl}
 					>
-						<RiCodeSSlashLine className='text-base-200/60 transition-colors duration-300 group-hover:text-base-200' />
+						<RiCodeSSlashLine className='text-foreground/60 transition-colors duration-300 group-hover:text-foreground' />
 						Source Code
 					</Link>
 				</div>
@@ -117,11 +115,11 @@ function ProjectLayout({ params }: ProjectLayoutProps) {
 					alt={title}
 				/>
 			</div>
-			<div className='prose mt-5 animate-in animation-delay-2'>
+			<div className='prose mt-5 animate-fade-in animation-delay-2'>
 				<MDXContent code={project.content} />
 			</div>
 		</>
 	);
-}
+};
 
 export default ProjectLayout;

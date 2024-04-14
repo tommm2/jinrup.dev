@@ -5,21 +5,58 @@
 @import 'typography.css';
 @import 'rehype.css';
 
+@layer base {
+	:root {
+		--background: 240, 20%, 3%;
+		--foreground: 0 0% 96%;
+
+		--card: 240, 7%, 8%;
+		--card-foreground: 0 0% 98%;
+
+		--popover: 240, 7%, 8%;
+		--popover-foreground: 0 0% 98%;
+
+		--primary: 217, 91%, 60%;
+		--primary-foreground: 0 0% 9%;
+
+		--secondary: 0 0% 14.9%;
+		--secondary-foreground: 0 0% 98%;
+
+		--muted: 0 0% 14.9%;
+		--muted-foreground: 0 0% 63.9%;
+
+		--accent: 0 0% 14.9%;
+		--accent-foreground: 0 0% 98%;
+
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 0 0% 98%;
+
+		--border: 220, 8%, 14%;
+		--input: 0 0% 14.9%;
+		--ring: 217, 91%, 60%;
+
+		--radius: 0.5rem;
+	}
+
+	* {
+		@apply border-border;
+	}
+
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
 @layer utilities {
 	.layout {
 		@apply mx-auto max-w-3xl px-6;
-	}
-
-	.opacity-hover {
-		@apply hover:opacity-70 opacity-100 transition-opacity duration-300;
 	}
 
 	.animated-cards::before {
 		@apply pointer-events-none absolute select-none rounded-lg opacity-0 transition-opacity duration-300 hover:opacity-100 z-[-1] content-[''] -inset-px;
 		background: radial-gradient(
 		  400px circle at var(--x) var(--y),
-		  theme('colors.accent.500') 0,
-		  theme('colors.primary.500') 25%,
+		  theme('colors.primary.DEFAULT') 25%,
 		  rgba(255, 255, 255, 0) 50%,
 		  transparent 80%
 		);

@@ -4,8 +4,8 @@ type RootLayout = {
 	children: React.ReactNode;
 };
 
-function RootLayout({ children }: RootLayout) {
+const RootLayout = ({ children }: RootLayout) => {
 	return children;
-}
+};
 
 export default RootLayout;

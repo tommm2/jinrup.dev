@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { RiSearch2Line } from 'react-icons/ri';
-import type { Post } from '@/.velite';
 
+import type { Post } from '@/.velite';
 import PostCard from '@/components/post-card';
 import { getGroupPostsWithYear } from '@/lib/blog';
 
@@ -11,47 +11,50 @@ type PostListProps = {
 	posts: Post[];
 	placeholder?: string;
 	remindText?: string;
-}
+};
 
-function FilterPosts({
+const FilterPosts = ({
 	posts,
 	placeholder = '',
 	remindText = '',
-}: PostListProps) {
+}: PostListProps) => {
 	const [query, setQuery] = useState('');
 	const groupPosts = getGroupPostsWithYear(posts, query);
 
 	return (
 		<>
-			<div className='relative mt-4 animate-in animation-delay-2'>
-				<RiSearch2Line className='absolute left-2 top-2.5 size-5 text-base-500' />
+			<div className='relative mt-4 animate-fade-in animation-delay-2'>
+				<RiSearch2Line className='absolute left-2 top-2.5 size-5 text-foreground/60' />
 				<input
-					className='w-full rounded-lg border border-base-600/40 bg-base-900 p-2 pl-8 text-sm outline-none ring-primary-500/10 duration-300 placeholder:text-base-500 focus:border-primary-500 focus:ring-4 sm:w-[18.75rem]'
+					className='w-full rounded-md border border-border bg-input/40 p-2 pl-8 text-sm outline-none ring-blue-500/20 duration-300 placeholder:text-foreground/80 focus:border-primary focus:ring-4 sm:w-[18.75rem]'
 					placeholder={placeholder}
 					onChange={(e) => setQuery(e.target.value)}
 				/>
 			</div>
-			<div className='mt-16 flex animate-in flex-col gap-8 animation-delay-3'>
+			<div className='mt-16 flex animate-fade-in flex-col gap-8 animation-delay-3'>
 				{groupPosts.length > 0
-					? groupPosts.map(({ year, posts }) => (
-						<section key={year}>
-							<h2 className='mb-4 flex items-end gap-3 text-lg font-medium tracking-tight'>
-								{year}
-								<div className='mb-2 h-px w-full bg-base-800'></div>
-							</h2>
-							<div className='flex flex-col gap-4'>
-								{posts.map((post) => (
-									<PostCard
-										key={post.slug}
-										post={post}
-									/>
-								))}
-							</div>
-						</section>))
+					? groupPosts.map(({ year, posts }) => {
+						return (
+							<section key={year}>
+								<h2 className='mb-4 flex items-end gap-3 text-lg font-medium tracking-tight'>
+									{year}
+									<div className='mb-2 h-px w-full bg-border'></div>
+								</h2>
+								<div className='flex flex-col gap-4'>
+									{posts.map((post) => (
+										<PostCard
+											key={post.slug}
+											post={post}
+										/>
+									))}
+								</div>
+							</section>
+						);
+					})
 					: remindText}
 			</div>
 		</>
 	);
-}
+};
 
 export default FilterPosts;

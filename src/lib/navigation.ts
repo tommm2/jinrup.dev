@@ -5,7 +5,7 @@ export const defaultLocale = 'zh-TW';
 export const locales = [defaultLocale, 'en'] as const;
 
 export const {
-	Link: NextIntlLink,
+	Link,
 	redirect,
 	usePathname,
 	useRouter,
