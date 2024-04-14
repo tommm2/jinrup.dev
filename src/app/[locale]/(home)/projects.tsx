@@ -1,37 +1,33 @@
-import type { Project } from '@/.velite';
+import { useLocale, useTranslations } from 'next-intl';
+import { allProjects } from '@/.velite';
 import { RiArrowRightSLine } from 'react-icons/ri';
 
 import GradientText from '@/components/gradient-text';
 import ProjectCard from '@/components/project-card';
-import Link from '@/components/link';
+import Link from '@/components/ui/link';
 
-type ProjectsProps = {
-	title: string;
-	projects: Project[];
-	viewMoreText: string;
-};
+const Projects = () => {
+	const t = useTranslations('common');
+	const locale = useLocale() as Locale;
+	const projects = allProjects
+		.filter((project) => project.language === locale)
+		.splice(0, 2);
 
-function Projects({
-	title,
-	projects,
-	viewMoreText,
-}: ProjectsProps) {
 	return (
-		<section className='animate-in animation-delay-4'>
+		<section className='animate-fade-in animation-delay-4'>
 			<div className='flex items-center justify-between'>
 				<GradientText
 					as='h2'
 					className='text-xl font-bold tracking-tight'
 				>
-					{title}
+					{t('projects')}
 				</GradientText>
 				<Link
-					isBlock
-					showAnchorIcon
-					anchorIcon={<RiArrowRightSLine />}
+					variant='block'
 					href='/projects'
 				>
-					{viewMoreText}
+					{t('viewMore')}
+					<RiArrowRightSLine />
 				</Link>
 			</div>
 			<div className='mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2'>
@@ -44,6 +40,6 @@ function Projects({
 			</div>
 		</section>
 	);
-}
+};
 
 export default Projects;

@@ -6,9 +6,10 @@ import {
 import Image from 'next/image';
 
 import GradientText from '@/components/gradient-text';
-import Link from '@/components/link';
+import Link from '@/components/ui/link';
 import { cn } from '@/utils/cn';
 import { siteConfig } from '@/config/site';
+import { useTranslations } from 'next-intl';
 
 const CONTACTS = [
 	{
@@ -31,45 +32,43 @@ const CONTACTS = [
 	},
 ];
 
-type HeroProps = {
-	name: string;
-	subTitle: string;
-	description: string;
-};
+const Hero = () => {
+	const t = useTranslations('homePage');
 
-function Hero({ name, subTitle, description }: HeroProps) {
 	return (
 		<section className='space-y-4'>
 			<div className='flex items-center gap-4'>
 				<Image
-					className='animate-in rounded-full bg-base-200'
+					className='animate-fade-in rounded-full bg-foreground/20'
 					src='/avatar.png'
 					alt='avatar'
 					width={80}
 					height={80}
 					priority
 				/>
-				<div className='animate-in animation-delay-1'>
+				<div className='animate-fade-in animation-delay-1'>
 					<GradientText
 						as='h1'
 						className='text-2xl font-bold tracking-tight'
 					>
-						{name}
+						Tom Jin
 					</GradientText>
-					<div className='w-fit rounded-lg bg-gradient-to-r from-primary-400 to-accent-400 p-px'>
-						<div className='rounded-lg bg-base-950/80 text-sm'>
+					<div className='w-fit rounded-lg bg-gradient-to-r from-blue-400 to-teal-400 p-px'>
+						<div className='rounded-lg bg-neutral-950/80 text-sm'>
 							<GradientText
 								as='span'
-								className='flex items-center gap-0.5 bg-gradient-to-r from-primary-400 to-accent-400 px-2 py-px text-sm font-medium'
+								className='flex items-center gap-0.5 bg-gradient-to-r from-blue-400 to-teal-400 px-2 py-px text-sm font-medium'
 							>
-								{subTitle}
+								{t('subTitle')}
 							</GradientText>
 						</div>
 					</div>
 				</div>
 			</div>
-			<p className='animate-in animation-delay-2'>{description}</p>
-			<div className='flex animate-in flex-wrap items-center gap-4 animation-delay-3'>
+			<p className='animate-fade-in animation-delay-2'>
+				{t('description')}
+			</p>
+			<div className='flex animate-fade-in flex-wrap items-center gap-4 animation-delay-3'>
 				{CONTACTS.map(({ name, href, icon: Icon, colorClass }) => (
 					<Link
 						key={name}
@@ -88,6 +87,6 @@ function Hero({ name, subTitle, description }: HeroProps) {
 			</div>
 		</section>
 	);
-}
+};
 
 export default Hero;

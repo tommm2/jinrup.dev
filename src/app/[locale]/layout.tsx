@@ -1,19 +1,22 @@
 import { Metadata, Viewport } from 'next';
-import { notFound } from 'next/navigation';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { notFound } from 'next/navigation';
 
 import BackToTop from '@/components/back-to-top';
-import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
+import Header from '@/components/header';
+
 import { locales } from '@/lib/navigation';
-import { getLocalizedUrl } from '@/utils/url';
+
 import { cn } from '@/utils/cn';
+import { getLocalizedUrl } from '@/utils/url';
+
 import { fontNoto, fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
 
 export const viewport: Viewport = {
 	themeColor: {
-		color: '#0f0f0f',
+		color: '#060609',
 	},
 };
 
@@ -80,15 +83,11 @@ function LocaleLayout({ children, params: { locale } }: LocaleLayoutProps) {
 
 	return (
 		<html
-			className={cn(
-				'bg-base-950 font-sans text-base-300',
-				fontSans.variable,
-				fontNoto.variable,
-			)}
+			className={cn(fontSans.variable, fontNoto.variable)}
 			lang={locale}
 		>
 			<body className='min-h-screen overflow-x-hidden antialiased'>
-				<Navbar />
+				<Header />
 				<main className='layout mt-12 min-h-[calc(100vh_-_56px_-_196px)]'>
 					{children}
 				</main>

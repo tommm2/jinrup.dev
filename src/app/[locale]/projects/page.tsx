@@ -34,14 +34,14 @@ function ProjectsPage() {
 		<>
 			<GradientText
 				as='h1'
-				className='animate-in text-2xl font-bold tracking-tight'
+				className='animate-fade-in text-2xl font-bold tracking-tight'
 			>
 				{t('common.projects')}
 			</GradientText>
-			<p className='mt-1 animate-in text-base-300/80 animation-delay-1'>
+			<p className='mt-1 animate-fade-in text-foreground/80 animation-delay-1'>
 				{t('projectsPage.description')}
 			</p>
-			<div className='mt-4 grid animate-in grid-cols-1 gap-4 animation-delay-2 sm:grid-cols-2'>
+			<div className='mt-4 grid animate-fade-in grid-cols-1 gap-4 animation-delay-2 sm:grid-cols-2'>
 				{projects.map(project => (
 					<ProjectCard
 						key={project.slug}

@@ -5,7 +5,7 @@ import { getTranslations } from 'next-intl/server';
 import { allPages } from '@/.velite';
 
 import GradientText from '@/components/gradient-text';
-import MDXContent from '@/components/mdx-content';
+import MDXContent from '@/components/mdx';
 import { getLocalizedUrl } from '@/utils/url';
 
 export async function generateMetadata({
@@ -26,7 +26,7 @@ export async function generateMetadata({
 	};
 }
 
-function AboutPage() {
+const AboutPage = () => {
 	const t = useTranslations('common');
 	const locale = useLocale() as Locale;
 	const page = allPages.find((page) => page.slug === 'about' && page.language === locale);
@@ -39,15 +39,15 @@ function AboutPage() {
 		<>
 			<GradientText
 				as='h1'
-				className='animate-in text-2xl font-bold tracking-tight'
+				className='animate-fade-in text-2xl font-bold tracking-tight'
 			>
 				{t('about')}
 			</GradientText>
-			<div className='prose mt-5 animate-in animation-delay-1'>
+			<div className='prose mt-5 animate-fade-in animation-delay-1'>
 				<MDXContent code={page.content} />
 			</div>
 		</>
 	);
-}
+};
 
 export default AboutPage;

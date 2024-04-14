@@ -27,7 +27,7 @@ export async function generateMetadata({
 	};
 }
 
-function BlogPage() {
+const BlogPage = () => {
 	const t = useTranslations();
 	const locale = useLocale();
 	const posts = allPosts
@@ -38,14 +38,14 @@ function BlogPage() {
 		<>
 			<GradientText
 				as='h1'
-				className='animate-in text-2xl font-bold tracking-tight'
+				className='animate-fade-in text-2xl font-bold tracking-tight'
 			>
 				{t('common.blog')}
 			</GradientText>
-			<p className='mt-1 animate-in text-base-300/80 animation-delay-1'>
+			<p className='mt-1 animate-fade-in text-foreground/80 animation-delay-1'>
 				{t.rich('blogPage.subTitle', {
 					highlight: () => (
-						<span className='font-medium text-primary-500'>{posts.length}</span>
+						<span className='font-medium text-primary'>{posts.length}</span>
 					),
 				})}
 			</p>
@@ -58,6 +58,6 @@ function BlogPage() {
 			</ClientIntlProvider>
 		</>
 	);
-}
+};
 
 export default BlogPage;
