@@ -2,7 +2,7 @@
 	@apply max-w-none text-foreground/80;
 
 	h1, h2, h3, h4, h5 {
-		@apply mb-[0.5em] mt-[1em] w-fit tracking-tight bg-gradient-to-b from-foreground from-30% to-foreground/40 bg-clip-text text-transparent relative;
+		@apply mb-[0.5em] mt-[1em] w-fit tracking-tight bg-gradient-to-b from-foreground from-30% to-foreground/40 bg-clip-text text-transparent relative scroll-mt-20;
 
 		.anchor {
 			@apply inset-0 absolute;
