@@ -1,5 +1,4 @@
 import type { Config } from 'tailwindcss';
-import colors from 'tailwindcss/colors';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
 function animationDelay({ matchUtilities, theme }: { matchUtilities: any, theme: any }) {
@@ -36,12 +35,44 @@ export default {
 		},
 		extend: {
 			colors: {
-				primary: colors.blue,
-				accent: colors.cyan,
-				base: {
-					...colors.neutral,
-					'950': '#0f0f0f',
+				border: 'hsl(var(--border))',
+				input: 'hsl(var(--input))',
+				ring: 'hsl(var(--ring))',
+				background: 'hsl(var(--background))',
+				foreground: 'hsl(var(--foreground))',
+				primary: {
+					DEFAULT: 'hsl(var(--primary))',
+					foreground: 'hsl(var(--primary-foreground))',
 				},
+				secondary: {
+					DEFAULT: 'hsl(var(--secondary))',
+					foreground: 'hsl(var(--secondary-foreground))',
+				},
+				destructive: {
+					DEFAULT: 'hsl(var(--destructive))',
+					foreground: 'hsl(var(--destructive-foreground))',
+				},
+				muted: {
+					DEFAULT: 'hsl(var(--muted))',
+					foreground: 'hsl(var(--muted-foreground))',
+				},
+				accent: {
+					DEFAULT: 'hsl(var(--accent))',
+					foreground: 'hsl(var(--accent-foreground))',
+				},
+				popover: {
+					DEFAULT: 'hsl(var(--popover))',
+					foreground: 'hsl(var(--popover-foreground))',
+				},
+				card: {
+					DEFAULT: 'hsl(var(--card))',
+					foreground: 'hsl(var(--card-foreground))',
+				},
+			},
+			borderRadius: {
+				lg: 'var(--radius)',
+				md: 'calc(var(--radius) - 2px)',
+				sm: 'calc(var(--radius) - 4px)',
 			},
 			animationDelay: {
 				'1': '1',
@@ -51,24 +82,20 @@ export default {
 				'5': '5',
 			},
 			keyframes: ({ theme }) => ({
-				in: {
+				'fade-in': {
 					'0%': { transform: 'translateY(18px)', opacity: '0' },
 					'100%': { transform: 'translateY(0)', opacity: '1' },
 				},
-				'in-reverse': {
-					'0%': { transform: 'translateY(-18px)', opacity: '0' },
-					'100%': { transform: 'translateY(0px)', opacity: '1' },
-				},
 				mutation: {
 					'0%': {
-						background: theme('colors.primary.200 / 3%'),
+						background: theme('colors.blue.200 / 3%'),
 					},
 					'10%': {
-						background: theme('colors.primary.200 / 15%'),
-						color: theme('colors.primary.200 / 75%'),
+						background: theme('colors.blue.200 / 15%'),
+						color: theme('colors.blue.200 / 75%'),
 					},
 					'100%': {
-						background: theme('colors.primary.200 / 0%'),
+						background: theme('colors.blue.200 / 0%'),
 					},
 				},
 				loading: {
@@ -78,12 +105,12 @@ export default {
 				},
 			}),
 			animation: {
-				in: 'in .6s both',
-				'in-reverse': 'in-reverse .6s both',
+				'fade-in': 'fade-in .6s both',
 			},
 		},
 	},
 	plugins: [
+		require('tailwindcss-animate'),
 		require('@tailwindcss/typography'),
 		animationDelay,
 	],

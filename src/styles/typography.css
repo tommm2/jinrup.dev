@@ -1,40 +1,40 @@
 .prose {
-	@apply max-w-none text-base-200;
+	@apply max-w-none text-foreground/80;
 
-	h1, h2, h3, h4 {
-		@apply mb-[0.5em] mt-[1em] tracking-tight w-fit;
+	h1, h2, h3, h4, h5 {
+		@apply mb-[0.5em] mt-[1em] w-fit tracking-tight bg-gradient-to-b from-foreground from-30% to-foreground/40 bg-clip-text text-transparent relative;
 
-		&.anchor > a {
-			@apply font-bold text-transparent bg-clip-text bg-gradient-to-b from-base-200 from-30% to-base-200/40;
+		.anchor {
+			@apply inset-0 absolute;
 		}
 	}
 
-	:not(.anchor) > a {
-		@apply font-semibold text-primary-500 no-underline opacity-hover;
+	a:not(.anchor) {
+		@apply font-semibold text-foreground underline decoration-primary underline-offset-4;
 	}
 
 	hr {
-		@apply my-[2em] border-base-700;
+		@apply my-[2em] border-border;
 	}
 
 	ul {
 		@apply pl-[1em];
 
 		> li {
-			@apply p-0.5 m-0 marker:text-base-600;
+			@apply p-0.5 m-0 marker:text-foreground/20;
 
-			> input {
+			> * {
 				@apply my-0;
 			}
 		}
 	}
 
 	strong {
-		@apply font-bold text-base-100;
+		@apply font-bold text-foreground;
 	}
 
 	blockquote {
-		@apply bg-base-900 p-4 text-base-300 border-primary-500 rounded-lg;
+		@apply bg-muted-foreground p-4 text-foreground border-primary rounded-lg;
 
 		> p {
 			@apply m-0;
@@ -42,6 +42,6 @@
 	}
 
 	:not(pre) > code {
-		@apply bg-base-800 my-1 p-1 border rounded-lg text-base-100 border-base-800;
+		@apply bg-neutral-900 my-1 p-1 border rounded-lg text-foreground border-border;
 	}
 }
