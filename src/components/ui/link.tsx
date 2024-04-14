@@ -39,18 +39,6 @@ const Link = (props: LinkProps) => {
 		);
 	}
 
-	if (href.startsWith('#')) {
-		return (
-			<a
-				className={cn(linkVariants({ variant, className }))}
-				href={href}
-				{...props}
-			>
-				{children}
-			</a>
-		);
-	}
-
 	return (
 		<IntlLink
 			className={cn(linkVariants({ variant, className }))}
