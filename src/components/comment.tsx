@@ -6,11 +6,9 @@ import { giscusConfigs } from '@/config/giscus';
 
 type CommentProps = {
 	locale: Locale;
-}
+};
 
-const Comment = ({
-	locale = 'zh-TW',
-}: CommentProps) => {
+const Comment = ({ locale = 'zh-TW' }: CommentProps) => {
 	return (
 		<Giscus
 			theme='dark'

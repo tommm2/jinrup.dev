@@ -1,8 +1,8 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import type { Post } from '@/.velite';
 
+import type { Post } from '@/.velite';
 import Link from '@/components/ui/link';
 import ViewCounter from '@/components/view-counter';
 import { useEnabledFirstInView } from '@/hooks';
@@ -15,14 +15,9 @@ type PostCardProps = {
 
 const PostCard = ({ post }: PostCardProps) => {
 	const locale = useLocale() as Locale;
-	const { enabled, intersectionRef }  = useEnabledFirstInView();
+	const { enabled, intersectionRef } = useEnabledFirstInView();
 
-	const {
-		slug,
-		title,
-		publishedAt,
-		permalink,
-	} = post;
+	const { slug, title, publishedAt, permalink } = post;
 
 	const formatString = locale === defaultLocale ? 'LLLd日' : 'LLLL d';
 	const date = formatDate({
@@ -40,10 +35,7 @@ const PostCard = ({ post }: PostCardProps) => {
 				{title}
 			</Link>
 			<div className='text-sm text-foreground/60'>
-				<time dateTime={publishedAt}>
-					{date}
-				</time>
-				．
+				<time dateTime={publishedAt}>{date}</time>．
 				{enabled && <ViewCounter slug={slug} />}
 			</div>
 		</div>

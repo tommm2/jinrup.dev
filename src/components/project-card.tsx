@@ -1,15 +1,21 @@
 'use client';
 
-import useSWR from 'swr';
-import { useMotionValue, motion, useMotionTemplate, MotionValue, MotionStyle } from 'framer-motion';
+import {
+	MotionStyle,
+	MotionValue,
+	motion,
+	useMotionTemplate,
+	useMotionValue,
+} from 'framer-motion';
 import { MouseEvent } from 'react';
-import { RiStarLine } from 'react-icons/ri';
 import { GoRepoForked } from 'react-icons/go';
-import type { Project } from '@/.velite';
+import { RiStarLine } from 'react-icons/ri';
+import useSWR from 'swr';
 
-import Link from '@/components/ui/link';
+import type { Project } from '@/.velite';
 import Loading from '@/components/loading';
 import Metric from '@/components/metric';
+import Link from '@/components/ui/link';
 import { fetcher } from '@/lib/fetcher';
 
 type WrapperStyle = MotionStyle & {
@@ -25,14 +31,12 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 	const mouseX = useMotionValue(0);
 	const mouseY = useMotionValue(0);
 
-	const {
-		title,
-		description,
-		repoName,
-		permalink,
-	} = project;
+	const { title, description, repoName, permalink } = project;
 
-	const { data: repo, isLoading } = useSWR<RepoInfo>(`/api/github?repoName=${repoName}`, fetcher);
+	const { data: repo, isLoading } = useSWR<RepoInfo>(
+		`/api/github?repoName=${repoName}`,
+		fetcher,
+	);
 
 	function handleMouseMove({
 		currentTarget,
@@ -76,7 +80,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 					</span>
 					<span className='flex items-center gap-1'>
 						<GoRepoForked />
-						{isLoading ?  <Loading /> : <Metric stat={repo?.forksCount} />}
+						{isLoading ? <Loading /> : <Metric stat={repo?.forksCount} />}
 					</span>
 				</div>
 			</Link>

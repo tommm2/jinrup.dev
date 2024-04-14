@@ -5,14 +5,11 @@ import { notFound } from 'next/navigation';
 import BackToTop from '@/components/back-to-top';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
-
-import { locales } from '@/lib/navigation';
-
-import { cn } from '@/utils/cn';
-import { getLocalizedUrl } from '@/utils/url';
-
 import { fontNoto, fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
+import { locales } from '@/lib/navigation';
+import { cn } from '@/utils/cn';
+import { getLocalizedUrl } from '@/utils/url';
 
 export const viewport: Viewport = {
 	themeColor: {

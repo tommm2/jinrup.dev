@@ -1,8 +1,8 @@
 'use client';
 
+import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { RiArrowUpSLine } from 'react-icons/ri';
-import { AnimatePresence, motion } from 'framer-motion';
 
 const BackToTop = () => {
 	const [isVisible, setIsVisible] = useState(false);

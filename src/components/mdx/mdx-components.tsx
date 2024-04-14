@@ -2,6 +2,7 @@ import Image, { ImageProps } from 'next/image';
 import React, { ComponentPropsWithRef } from 'react';
 
 import Link from '@/components/ui/link';
+
 import Callout from './callout';
 
 function createHeading(level: number) {

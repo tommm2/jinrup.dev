@@ -1,11 +1,11 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { RiArrowRightSLine } from 'react-icons/ri';
-import { allPosts } from '@/.velite';
 
+import { allPosts } from '@/.velite';
 import GradientText from '@/components/gradient-text';
-import { formatDate } from '@/utils/date';
 import Link from '@/components/ui/link';
 import { defaultLocale } from '@/lib/navigation';
+import { formatDate } from '@/utils/date';
 
 const Posts = () => {
 	const t = useTranslations('common');

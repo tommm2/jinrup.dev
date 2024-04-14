@@ -1,6 +1,6 @@
 type MetricProps = {
 	stat: number | undefined;
-}
+};
 
 const Metric = ({ stat }: MetricProps) => {
 	return (

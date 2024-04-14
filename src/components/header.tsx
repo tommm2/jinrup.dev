@@ -1,9 +1,9 @@
 import LanguageDropdown from '@/components/language-dropdown';
-import Link from '@/components/ui/link';
-import Separator from '@/components/ui/separator';
 import Logo from '@/components/logo';
 import MobileNav from '@/components/mobile-nav';
 import Nav from '@/components/nav';
+import Link from '@/components/ui/link';
+import Separator from '@/components/ui/separator';
 
 const Header = () => {
 	return (

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import { RiMenu2Fill } from 'react-icons/ri';
 
+import { LanguageMenuItems } from '@/components/language-dropdown';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -11,7 +12,6 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { LanguageMenuItems } from '@/components/language-dropdown';
 import { navLinks } from '@/config/nav-links';
 
 const MobileNav = () => {

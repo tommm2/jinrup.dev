@@ -1,15 +1,15 @@
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import {
 	RiGithubFill,
 	RiLinkedinBoxFill,
 	RiMailSendFill,
 } from 'react-icons/ri';
-import Image from 'next/image';
 
 import GradientText from '@/components/gradient-text';
 import Link from '@/components/ui/link';
-import { cn } from '@/utils/cn';
 import { siteConfig } from '@/config/site';
-import { useTranslations } from 'next-intl';
+import { cn } from '@/utils/cn';
 
 const CONTACTS = [
 	{
@@ -65,9 +65,7 @@ const Hero = () => {
 					</div>
 				</div>
 			</div>
-			<p className='animate-fade-in animation-delay-2'>
-				{t('description')}
-			</p>
+			<p className='animate-fade-in animation-delay-2'>{t('description')}</p>
 			<div className='flex animate-fade-in flex-wrap items-center gap-4 animation-delay-3'>
 				{CONTACTS.map(({ name, href, icon: Icon, colorClass }) => (
 					<Link

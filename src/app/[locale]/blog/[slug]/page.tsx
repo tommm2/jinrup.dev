@@ -1,20 +1,20 @@
-import { allPosts } from '@/.velite';
 import { Metadata } from 'next';
 import { useLocale, useTranslations } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { RiArrowLeftLine } from 'react-icons/ri';
 
-import Link from '@/components/ui/link';
+import { allPosts } from '@/.velite';
 import ClientIntlProvider from '@/components/client-intl-provider';
 import Comment from '@/components/comment';
 import GradientText from '@/components/gradient-text';
 import MDXContent from '@/components/mdx';
 import Callout from '@/components/mdx/callout';
+import Link from '@/components/ui/link';
 import ViewCounter from '@/components/view-counter';
+import { defaultLocale } from '@/lib/navigation';
 import { getContentWithFallback } from '@/utils/content';
 import { formatDate, getDistanceToNow } from '@/utils/date';
 import { getLocalizedUrl } from '@/utils/url';
-import { defaultLocale } from '@/lib/navigation';
 
 export const generateStaticParams = async () => {
 	return allPosts.map((post) => ({ slug: post.slug }));

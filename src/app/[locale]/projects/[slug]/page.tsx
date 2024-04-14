@@ -1,15 +1,15 @@
-import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import { RiArrowLeftLine, RiCodeSSlashLine, RiLinksLine } from 'react-icons/ri';
-import { allProjects } from '@/.velite';
 
-import Link from '@/components/ui/link';
-import MDXContent from '@/components/mdx';
-import { getLocalizedUrl } from '@/utils/url';
-import { getContentWithFallback } from '@/utils/content';
+import { allProjects } from '@/.velite';
 import GradientText from '@/components/gradient-text';
+import MDXContent from '@/components/mdx';
+import Link from '@/components/ui/link';
+import { getContentWithFallback } from '@/utils/content';
+import { getLocalizedUrl } from '@/utils/url';
 
 export const generateStaticParams = async () => {
 	return allProjects.map((project) => ({ slug: project.slug }));
@@ -17,7 +17,9 @@ export const generateStaticParams = async () => {
 
 export const generateMetadata = async ({
 	params,
-}: { params: { locale: Locale; slug: string; }}): Promise<Metadata | undefined> => {
+}: {
+	params: { locale: Locale; slug: string };
+}): Promise<Metadata | undefined> => {
 	const post = getContentWithFallback({
 		contentItems: allProjects,
 		slug: params.slug,
@@ -28,11 +30,7 @@ export const generateMetadata = async ({
 		return;
 	}
 
-	const {
-		title,
-		description,
-		slug,
-	} = post;
+	const { title, description, slug } = post;
 
 	const url = getLocalizedUrl({
 		locale: params.locale,
@@ -73,12 +71,7 @@ const ProjectLayout = ({ params }: ProjectLayoutProps) => {
 		notFound();
 	}
 
-	const {
-		title,
-		imageUrl,
-		demoUrl,
-		repoUrl,
-	} = project;
+	const { title, imageUrl, demoUrl, repoUrl } = project;
 
 	return (
 		<>
@@ -91,7 +84,12 @@ const ProjectLayout = ({ params }: ProjectLayoutProps) => {
 				<span>{t('backToProjects')}</span>
 			</Link>
 			<div className='mt-8 animate-fade-in space-y-3 animation-delay-1'>
-				<GradientText as='h1' className='text-2xl font-bold'>{title}</GradientText>
+				<GradientText
+					as='h1'
+					className='text-2xl font-bold'
+				>
+					{title}
+				</GradientText>
 				<div className='flex items-center gap-1 text-sm font-medium'>
 					<Link
 						className='group flex items-center gap-1'

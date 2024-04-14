@@ -1,7 +1,7 @@
 import { useLocale, useTranslations } from 'next-intl';
-import { allProjects } from '@/.velite';
 import { RiArrowRightSLine } from 'react-icons/ri';
 
+import { allProjects } from '@/.velite';
 import GradientText from '@/components/gradient-text';
 import ProjectCard from '@/components/project-card';
 import Link from '@/components/ui/link';

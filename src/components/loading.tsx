@@ -1,8 +1,8 @@
 import { cn } from '@/utils/cn';
 
 type LoadingProps = {
-	className?: string
-}
+	className?: string;
+};
 
 const Loading = ({ className }: LoadingProps) => {
 	return (
@@ -16,7 +16,7 @@ const Loading = ({ className }: LoadingProps) => {
 			<span className='inline-flex animate-[loading_1.4s_ease-in-out_0.4s_infinite] rounded-full'>
 				&bull;
 			</span>
-	  </span>
+		</span>
 	);
 };
 

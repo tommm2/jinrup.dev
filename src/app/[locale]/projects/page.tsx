@@ -1,15 +1,17 @@
 import { Metadata } from 'next';
 import { useLocale, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { allProjects } from '@/.velite';
 
-import ProjectCard from '@/components/project-card';
+import { allProjects } from '@/.velite';
 import GradientText from '@/components/gradient-text';
+import ProjectCard from '@/components/project-card';
 import { getLocalizedUrl } from '@/utils/url';
 
 export async function generateMetadata({
 	params,
-}: { params: { locale: Locale }}): Promise<Metadata> {
+}: {
+	params: { locale: Locale };
+}): Promise<Metadata> {
 	const t = await getTranslations();
 	const url = getLocalizedUrl({
 		locale: params.locale,
@@ -42,7 +44,7 @@ function ProjectsPage() {
 				{t('projectsPage.description')}
 			</p>
 			<div className='mt-4 grid animate-fade-in grid-cols-1 gap-4 animation-delay-2 sm:grid-cols-2'>
-				{projects.map(project => (
+				{projects.map((project) => (
 					<ProjectCard
 						key={project.slug}
 						project={project}

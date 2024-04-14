@@ -5,7 +5,7 @@ import { pick } from '@/utils/helpers';
 type ClientIntlProviderProps = {
 	messageKey: string;
 	children: React.ReactNode;
-}
+};
 
 const ClientIntlProvider = ({
 	messageKey,

@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
+import { useEffect } from 'react';
 
 import Loading from '@/components/loading';
 import Metric from '@/components/metric';
@@ -10,12 +10,9 @@ import { usePostViews } from '@/hooks';
 type ViewCounterProps = {
 	slug: string;
 	shouldIncrement?: boolean;
-}
+};
 
-const ViewCounter = ({
-	slug,
-	shouldIncrement = false,
-}: ViewCounterProps) => {
+const ViewCounter = ({ slug, shouldIncrement = false }: ViewCounterProps) => {
 	const t = useTranslations('common');
 
 	const {
@@ -34,9 +31,12 @@ const ViewCounter = ({
 	return (
 		<span>
 			{t.rich('postViews', {
-				count: () => (viewsIsError || viewsIsLoading)
-					? <Loading />
-					: <Metric stat={views} />,
+				count: () =>
+					viewsIsError || viewsIsLoading ? (
+						<Loading />
+					) : (
+						<Metric stat={views} />
+					),
 			})}
 		</span>
 	);

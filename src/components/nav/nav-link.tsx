@@ -1,9 +1,7 @@
 'use client';
 
 import Link from '@/components/ui/link';
-
 import { usePathname } from '@/lib/navigation';
-
 import { cn } from '@/utils/cn';
 
 type NavLinkProps = {
