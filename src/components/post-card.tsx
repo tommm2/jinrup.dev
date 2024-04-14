@@ -1,9 +1,9 @@
 'use client';
 
-import type { Post } from '@/.velite';
 import { useLocale } from 'next-intl';
+import type { Post } from '@/.velite';
 
-import Link from '@/components/link';
+import Link from '@/components/ui/link';
 import ViewCounter from '@/components/view-counter';
 import { useEnabledFirstInView } from '@/hooks';
 import { defaultLocale } from '@/lib/navigation';
@@ -13,7 +13,7 @@ type PostCardProps = {
 	post: Post;
 };
 
-function PostCard({ post }: PostCardProps) {
+const PostCard = ({ post }: PostCardProps) => {
 	const locale = useLocale() as Locale;
 	const { enabled, intersectionRef }  = useEnabledFirstInView();
 
@@ -34,12 +34,12 @@ function PostCard({ post }: PostCardProps) {
 	return (
 		<div ref={intersectionRef}>
 			<Link
-				className='opacity-hover font-medium'
+				className='font-medium'
 				href={permalink}
 			>
 				{title}
 			</Link>
-			<div className='text-sm text-base-300/60'>
+			<div className='text-sm text-foreground/60'>
 				<time dateTime={publishedAt}>
 					{date}
 				</time>
@@ -48,6 +48,6 @@ function PostCard({ post }: PostCardProps) {
 			</div>
 		</div>
 	);
-}
+};
 
 export default PostCard;

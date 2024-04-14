@@ -1,19 +1,13 @@
 'use client';
 
-import type { Project } from '@/.velite';
 import useSWR from 'swr';
-import {
-	useMotionValue,
-	motion,
-	useMotionTemplate,
-	MotionValue,
-	MotionStyle,
-} from 'framer-motion';
+import { useMotionValue, motion, useMotionTemplate, MotionValue, MotionStyle } from 'framer-motion';
 import { MouseEvent } from 'react';
 import { RiStarLine } from 'react-icons/ri';
 import { GoRepoForked } from 'react-icons/go';
+import type { Project } from '@/.velite';
 
-import Link from '@/components/link';
+import Link from '@/components/ui/link';
 import Loading from '@/components/loading';
 import Metric from '@/components/metric';
 import { fetcher } from '@/lib/fetcher';
@@ -27,7 +21,7 @@ type ProjectCardProps = {
 	project: Project;
 };
 
-function ProjectCard({ project }: ProjectCardProps) {
+const ProjectCard = ({ project }: ProjectCardProps) => {
 	const mouseX = useMotionValue(0);
 	const mouseY = useMotionValue(0);
 
@@ -63,19 +57,19 @@ function ProjectCard({ project }: ProjectCardProps) {
 			onMouseMove={handleMouseMove}
 		>
 			<Link
-				className='block cursor-pointer space-y-2 overflow-hidden rounded-lg border border-base-800 bg-gradient-to-br from-base-950 to-base-900/80 p-6 shadow-rose-300 transition duration-300 hover:drop-shadow-[0_0_15px_rgba(39,42,216,0.3)]'
+				className='block cursor-pointer space-y-2 overflow-hidden rounded-lg border border-border bg-card p-6 hover:drop-shadow-[0_0_15px_rgba(39,42,216,0.3)]'
 				href={permalink}
 			>
-				<h2 className='flex items-center gap-2 font-medium tracking-tight'>
+				<h2 className='flex items-center gap-2 font-bold tracking-tight'>
 					{title}
 				</h2>
 				<p
-					className='line-clamp-2 text-sm text-base-300/80'
+					className='line-clamp-2 text-sm text-foreground/80'
 					title={description}
 				>
 					{description}
 				</p>
-				<div className='flex gap-3 text-sm text-base-300/80'>
+				<div className='flex gap-3 text-sm text-foreground/80'>
 					<span className='flex items-center gap-1'>
 						<RiStarLine className='text-yellow-500' />
 						{isLoading ? <Loading /> : <Metric stat={repo?.stars} />}
@@ -88,6 +82,6 @@ function ProjectCard({ project }: ProjectCardProps) {
 			</Link>
 		</motion.div>
 	);
-}
+};
 
 export default ProjectCard;

@@ -8,9 +8,9 @@ type CommentProps = {
 	locale: Locale;
 }
 
-function Comment({
+const Comment = ({
 	locale = 'zh-TW',
-}: CommentProps) {
+}: CommentProps) => {
 	return (
 		<Giscus
 			theme='dark'

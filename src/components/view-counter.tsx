@@ -12,10 +12,10 @@ type ViewCounterProps = {
 	shouldIncrement?: boolean;
 }
 
-function ViewCounter({
+const ViewCounter = ({
 	slug,
 	shouldIncrement = false,
-}: ViewCounterProps) {
+}: ViewCounterProps) => {
 	const t = useTranslations('common');
 
 	const {
@@ -40,6 +40,6 @@ function ViewCounter({
 			})}
 		</span>
 	);
-}
+};
 
 export default ViewCounter;

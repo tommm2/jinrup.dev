@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { RiArrowUpSLine } from 'react-icons/ri';
 import { AnimatePresence, motion } from 'framer-motion';
 
-function BackToTop() {
+const BackToTop = () => {
 	const [isVisible, setIsVisible] = useState(false);
 
 	const handleClick = () => {
@@ -33,7 +33,7 @@ function BackToTop() {
 		<AnimatePresence>
 			{isVisible && (
 				<motion.button
-					className='fixed bottom-20 right-8 flex items-center rounded-lg bg-base-800 p-2'
+					className='fixed bottom-20 right-8 flex items-center rounded-lg border border-border bg-popover p-2'
 					type='button'
 					aria-label='back to top'
 					initial={{ opacity: 0, y: 20 }}
@@ -46,6 +46,6 @@ function BackToTop() {
 			)}
 		</AnimatePresence>
 	);
-}
+};
 
 export default BackToTop;

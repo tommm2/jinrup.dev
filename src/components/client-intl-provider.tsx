@@ -7,10 +7,10 @@ type ClientIntlProviderProps = {
 	children: React.ReactNode;
 }
 
-function ClientIntlProvider({
+const ClientIntlProvider = ({
 	messageKey,
 	children,
-}: ClientIntlProviderProps) {
+}: ClientIntlProviderProps) => {
 	const messages = useMessages();
 
 	return (
@@ -23,6 +23,6 @@ function ClientIntlProvider({
 			{children}
 		</NextIntlClientProvider>
 	);
-}
+};
 
 export default ClientIntlProvider;
