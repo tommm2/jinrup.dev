@@ -4,13 +4,6 @@ import { IntlErrorCode } from 'next-intl';
 export default getRequestConfig(async ({ locale }) => ({
 	messages: (await import(`../messages/${locale}.json`)).default,
 	timeZone: 'Asia/Taipei',
-	onError(error) {
-		if (error.code === IntlErrorCode.MISSING_MESSAGE) {
-			console.error(error);
-		} else {
-			console.error(error);
-		}
-	},
 	getMessageFallback({ namespace, key, error }) {
 		const path = [namespace, key].filter((part) => part !== null).join('.');
 
