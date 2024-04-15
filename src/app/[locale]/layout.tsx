@@ -11,6 +11,8 @@ import { locales } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
 import { getLocalizedUrl } from '@/utils/url';
 
+import '@/styles/app.css';
+
 export const viewport: Viewport = {
 	themeColor: {
 		color: '#060609',
@@ -66,12 +68,12 @@ export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }));
 }
 
-type LocaleLayoutProps = {
+type RootLayoutProps = {
 	children: React.ReactNode;
 	params: { locale: string };
 };
 
-function LocaleLayout({ children, params: { locale } }: LocaleLayoutProps) {
+const RootLayout = ({ children, params: { locale } }: RootLayoutProps) => {
 	if (!locales.includes(locale as any)) {
 		notFound();
 	}
@@ -93,6 +95,6 @@ function LocaleLayout({ children, params: { locale } }: LocaleLayoutProps) {
 			</body>
 		</html>
 	);
-}
+};
 
-export default LocaleLayout;
+export default RootLayout;
