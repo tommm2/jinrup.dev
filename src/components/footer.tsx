@@ -8,7 +8,7 @@ const Footer = () => {
 		<footer className='layout'>
 			<div className='flex flex-col items-center justify-between gap-4 py-24 sm:flex-row'>
 				<div className='text-sm text-foreground'>
-					© 2023 Tom Jin. All rights reserved.
+					© 2024 Tom Jin. All rights reserved.
 				</div>
 				<div className='flex items-center gap-2'>
 					<Link
