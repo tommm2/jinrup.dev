@@ -1,18 +1,6 @@
 .prose {
 	@apply max-w-none text-foreground/80;
 
-	h1, h2, h3, h4, h5 {
-		@apply mb-[0.5em] mt-[1em] w-fit tracking-tight bg-gradient-to-b from-foreground from-30% to-foreground/40 bg-clip-text text-transparent relative scroll-mt-20;
-
-		.anchor {
-			@apply inset-0 absolute;
-		}
-	}
-
-	a:not(.anchor) {
-		@apply font-semibold text-foreground underline decoration-primary underline-offset-4;
-	}
-
 	hr {
 		@apply my-[2em] border-border;
 	}
@@ -34,7 +22,7 @@
 	}
 
 	blockquote {
-		@apply bg-muted-foreground p-4 text-foreground border-primary rounded-lg;
+		@apply bg-neutral-900 p-4 text-foreground border-primary rounded;
 
 		> p {
 			@apply m-0;
@@ -42,6 +30,6 @@
 	}
 
 	:not(pre) > code {
-		@apply bg-neutral-900 my-1 p-1 border rounded-lg text-foreground border-border;
+		@apply bg-muted my-1 p-1 border rounded-lg text-foreground border-border;
 	}
 }
