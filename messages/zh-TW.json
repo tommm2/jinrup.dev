@@ -1,7 +1,6 @@
 {
 	"common": {
 		"latestPosts": "最新文章",
-		"allPosts": "所有文章",
 		"placeholder": "查詢文章",
 		"noResults": "查無結果",
 		"viewMore": "查看更多",
@@ -12,7 +11,9 @@
 		"noSupport": "文章不支援目前語系",
 		"backToBlog": "返回部落格",
 		"backToProjects": "返回專案",
-		"postViews": "瀏覽次數: <count></count> 次"
+		"backToHome": "返回首頁",
+		"postViews": "瀏覽次數: <count></count> 次",
+		"notFound": "對不起，您正在尋找的頁面不存在。"
 	},
 	"homePage": {
 		"description": "👋 嗨，我是Tom Jin，我是一位前端工程師。專注於使用 React 和 Next.js，我在這裡分享我的學習筆記和專案實作，歡迎閱讀與探索。",
