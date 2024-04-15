@@ -26,8 +26,6 @@ const Footer = () => {
 					<Link
 						href='/feed.xml'
 						aria-label='RSS feed'
-						target='_blank'
-						rel='noopener noreferrer'
 					>
 						<RiRssFill className='size-6' />
 					</Link>
