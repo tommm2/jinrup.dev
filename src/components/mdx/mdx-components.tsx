@@ -1,36 +1,47 @@
-import Image, { ImageProps } from 'next/image';
-import React, { ComponentPropsWithRef } from 'react';
+import Image, { type ImageProps } from 'next/image';
 
 import Link from '@/components/ui/link';
 
 import Callout from './callout';
-
-function createHeading(level: number) {
-	return function Heading({ children }: { children: string }) {
-		let slug = children.toLowerCase().replace(/ /g, '-');
-
-		return React.createElement(
-			`h${level}`,
-			{ id: slug },
-			[
-				React.createElement('a', {
-					href: `#${slug}`,
-					key: `link-${slug}`,
-					className: 'anchor',
-				}),
-			],
-			children,
-		);
-	};
-}
+import LinkedHeading from './linked-heading';
 
 const MdxComponents = {
-	h1: createHeading(1),
-	h2: createHeading(2),
-	h3: createHeading(3),
-	h4: createHeading(4),
-	h5: createHeading(5),
-	a: Link,
+	h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+		<LinkedHeading
+			as='h1'
+			{...props}
+		/>
+	),
+	h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+		<LinkedHeading
+			as='h2'
+			{...props}
+		/>
+	),
+	h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+		<LinkedHeading
+			as='h3'
+			{...props}
+		/>
+	),
+	h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+		<LinkedHeading
+			as='h4'
+			{...props}
+		/>
+	),
+	h5: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+		<LinkedHeading
+			as='h5'
+			{...props}
+		/>
+	),
+	a: (props: React.HTMLAttributes<HTMLAnchorElement>) => (
+		<Link
+			className='font-semibold text-foreground underline decoration-primary underline-offset-4'
+			{...props}
+		/>
+	),
 	Callout,
 	img: ({ alt, ...otherProps }: ImageProps) => (
 		<Image
@@ -40,7 +51,7 @@ const MdxComponents = {
 			{...otherProps}
 		/>
 	),
-	input: (props: ComponentPropsWithRef<'input'>) => (
+	input: (props: React.HTMLAttributes<HTMLInputElement>) => (
 		<input
 			aria-label='todo'
 			{...props}
