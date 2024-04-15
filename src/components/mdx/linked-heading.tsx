@@ -32,7 +32,7 @@ const LinkedHeading = ({
 			{...otherProps}
 		>
 			<Link
-				className='anchor bg-gradient-to-b from-foreground from-30% to-foreground/40 bg-clip-text font-bold tracking-tight text-transparent no-underline [&_>_svg]:opacity-0 group-hover:[&_>_svg]:opacity-100'
+				className='bg-gradient-to-b from-foreground from-30% to-foreground/40 bg-clip-text font-bold tracking-tight text-transparent no-underline [&_>_svg]:opacity-0 group-hover:[&_>_svg]:opacity-100'
 				href={`#${id}`}
 				showAnchorIcon
 			>
