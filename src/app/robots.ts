@@ -1,15 +1,17 @@
 import { MetadataRoute } from 'next';
 
-function robots(): MetadataRoute.Robots {
+import { siteConfig } from '@/config/site';
+
+const robots = (): MetadataRoute.Robots => {
 	return {
 		rules: {
 			userAgent: '*',
 			allow: '/',
 			disallow: ['/404', '/500', '/api/*'],
 		},
-		sitemap: 'https://jinrup.vercel.app/sitemap.xml',
-		host: 'https://jinrup.vercel.app',
+		sitemap: `${siteConfig.siteUrl}/sitemap.xml`,
+		host: `${siteConfig.siteUrl}`,
 	};
-}
+};
 
 export default robots;
