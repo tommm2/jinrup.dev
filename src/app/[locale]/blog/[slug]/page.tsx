@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation';
 import { RiArrowLeftLine } from 'react-icons/ri';
 
 import { allPosts } from '@/.velite';
-import ClientIntlProvider from '@/components/client-intl-provider';
 import Comment from '@/components/comment';
 import GradientText from '@/components/gradient-text';
 import MDXContent from '@/components/mdx';
@@ -108,12 +107,10 @@ const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
 				</GradientText>
 				<div className='mt-3 flex justify-between text-sm text-foreground/60'>
 					<time dateTime={publishedAt}>{`${date} (${distanceToNow})`}</time>
-					<ClientIntlProvider messageKey='common'>
-						<ViewCounter
-							slug={slug}
-							shouldIncrement
-						/>
-					</ClientIntlProvider>
+					<ViewCounter
+						slug={slug}
+						shouldIncrement
+					/>
 				</div>
 				{language !== params.locale && (
 					<Callout variant='warning'>{t('noSupport')}</Callout>

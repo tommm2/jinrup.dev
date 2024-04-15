@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import BackToTop from '@/components/back-to-top';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
+import LocaleProvider from '@/providers/locale-provider';
 import { fontNoto, fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
 import { locales } from '@/lib/navigation';
@@ -86,12 +87,14 @@ const RootLayout = ({ children, params: { locale } }: RootLayoutProps) => {
 			lang={locale}
 		>
 			<body className='min-h-screen overflow-x-hidden antialiased'>
-				<Header />
-				<main className='layout mt-12 min-h-[calc(100vh_-_56px_-_196px)]'>
-					{children}
-				</main>
-				<Footer />
-				<BackToTop />
+				<LocaleProvider>
+					<Header />
+					<main className='layout mt-12 min-h-[calc(100vh_-_56px_-_196px)]'>
+						{children}
+					</main>
+					<Footer />
+					<BackToTop />
+				</LocaleProvider>
 			</body>
 		</html>
 	);

@@ -4,7 +4,6 @@ import { useLocale, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
 import { allPosts } from '@/.velite';
-import ClientIntlProvider from '@/components/client-intl-provider';
 import GradientText from '@/components/gradient-text';
 import { getLocalizedUrl } from '@/utils/url';
 
@@ -54,13 +53,11 @@ const BlogPage = () => {
 					),
 				})}
 			</p>
-			<ClientIntlProvider messageKey='common'>
-				<FilterPosts
-					posts={posts}
-					placeholder={t('common.placeholder')}
-					remindText={t('common.noResults')}
-				/>
-			</ClientIntlProvider>
+			<FilterPosts
+				posts={posts}
+				placeholder={t('common.placeholder')}
+				remindText={t('common.noResults')}
+			/>
 		</>
 	);
 };
