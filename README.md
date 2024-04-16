@@ -53,12 +53,11 @@ git clone https://github.com/tommm2/jinrup.dev.git
 
 cd jinrup.dev
 pnpm install
-node setup.mjs # Remove my personal information
 pnpm run dev
 ```
 
 - Create `.env` file similar to `.env.example`.
-- Change `config/site.ts`, `config/giscus.ts`, `app/sitemap.ts` to you own.
+- Change `config/site.ts`, `config/giscus.ts`, `app/sitemap.ts` to you own and Remove `content/*`.
 
 ## 📝 TODO
 - [ ] Add Not Found Page
