@@ -15,7 +15,7 @@ const NotFoundPage = () => {
 		<div className='animate-fade-in'>
 			<p>{t('notFound')}</p>
 			<Link
-				className='mt-4 rounded'
+				className='mt-4'
 				variant='block'
 				href='/'
 				showAnchorIcon

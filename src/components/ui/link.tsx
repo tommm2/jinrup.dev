@@ -11,7 +11,7 @@ const linkVariants = cva(
 		variants: {
 			variant: {
 				block:
-					'h-8 rounded-full bg-foreground/10 p-4 text-sm hover:bg-foreground/[0.15]',
+					'h-8 rounded-lg bg-foreground/10 p-4 text-sm hover:bg-foreground/[0.15]',
 			},
 		},
 	},
