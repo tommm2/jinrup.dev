@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { RiTranslate2 } from 'react-icons/ri';
 
 import {
@@ -16,10 +17,12 @@ import {
 } from '@/lib/navigation';
 
 const LanguageDropdown = () => {
+	const t = useTranslations('common');
+
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger className='hidden rounded p-2 shadow-md outline-none transition-colors hover:bg-accent/60 md:block'>
-				<span className='sr-only'>Switch language</span>
+				<span className='sr-only'>{t('chooseLanguage')}</span>
 				<RiTranslate2 />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align='end'>
