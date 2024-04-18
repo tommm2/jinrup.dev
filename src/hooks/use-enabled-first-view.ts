@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useIntersection } from 'react-use';
 
-function useEnabledFirstInView() {
+const useEnabledFirstInView = () => {
 	const [enabled, setEnabled] = useState(false);
 	const intersectionRef = useRef<HTMLDivElement | null>(null);
 	const intersection = useIntersection(intersectionRef, {});
@@ -14,6 +14,6 @@ function useEnabledFirstInView() {
 	}, [intersection?.isIntersecting, enabled]);
 
 	return { enabled, intersectionRef };
-}
+};
 
 export default useEnabledFirstInView;

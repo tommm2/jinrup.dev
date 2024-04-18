@@ -1,7 +1,7 @@
-export function groupBy<T>(
+export const groupBy = <T>(
 	list: T[],
 	getKey: (item: T) => any
-) {
+): Record<string, T[]> => {
 	return list.reduce<Record<string, T[]>>((prev, curr) => {
 		const groupKey = getKey(curr);
 		const group = prev[groupKey] || [];
@@ -10,14 +10,14 @@ export function groupBy<T>(
 
 		return { ...prev, [groupKey]: group };
 	}, {});
-}
+};
 
-export function pick<T, K extends keyof T>(obj: T, ...keys: K[]): Pick<T, K> {
+export const pick = <T, K extends keyof T>(obj: T, ...keys: K[]): Pick<T, K> => {
 	const ret: any = {};
 
 	keys.forEach(key => {
-	  ret[key] = obj[key];
+		ret[key] = obj[key];
 	});
 
 	return ret;
-}
+};

@@ -8,11 +8,11 @@ import GradientText from '@/components/gradient-text';
 import MDXContent from '@/components/mdx';
 import { getLocalizedUrl } from '@/utils/url';
 
-export async function generateMetadata({
+export const generateMetadata = async ({
 	params,
 }: {
 	params: { locale: Locale };
-}): Promise<Metadata> {
+}): Promise<Metadata> => {
 	const t = await getTranslations();
 	const url = getLocalizedUrl({
 		locale: params.locale,
@@ -26,7 +26,7 @@ export async function generateMetadata({
 			canonical: url,
 		},
 	};
-}
+};
 
 const AboutPage = () => {
 	const t = useTranslations('common');

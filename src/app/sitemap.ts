@@ -1,6 +1,6 @@
 import { siteConfig } from '@/config/site';
 
-export default async function sitemap() {
+const sitemap = async () => {
 	const routes = ['', 'about', 'blog', 'projects']
 		.map((route) => ({
 			url: `${siteConfig.siteUrl}/${route}`,
@@ -10,4 +10,6 @@ export default async function sitemap() {
 	return [
 		...routes,
 	];
-}
+};
+
+export default sitemap;

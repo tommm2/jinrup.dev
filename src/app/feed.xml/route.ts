@@ -5,8 +5,8 @@ import RSS from 'rss';
 import { siteConfig } from '@/config/site';
 import { defaultLocale } from '@/lib/navigation';
 
-// Supports default language only
-export function GET() {
+// Supports 'zh-TW' language only
+export const GET = () => {
 	const feedOptions = {
 		title: 'Tom Jin',
 		description: 'A developer website by Tom Jin.',
@@ -34,4 +34,4 @@ export function GET() {
 			'Content-Type': 'application/xml',
 		},
 	});
-}
+};

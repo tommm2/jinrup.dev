@@ -20,11 +20,11 @@ export const viewport: Viewport = {
 	},
 };
 
-export async function generateMetadata({
+export const generateMetadata = async ({
 	params,
 }: {
 	params: { locale: Locale };
-}): Promise<Metadata> {
+}): Promise<Metadata> => {
 	const t = await getTranslations('homePage');
 	const url = getLocalizedUrl({ locale: params.locale });
 
@@ -63,11 +63,11 @@ export async function generateMetadata({
 		},
 		manifest: '/manifest.json',
 	};
-}
+};
 
-export function generateStaticParams() {
+export const generateStaticParams = () => {
 	return locales.map((locale) => ({ locale }));
-}
+};
 
 type RootLayoutProps = {
 	children: React.ReactNode;

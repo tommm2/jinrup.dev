@@ -2,7 +2,7 @@ import useSWR, { SWRConfiguration } from 'swr';
 
 const API_URL = '/api/views';
 
-async function getPostViews(slug: string): Promise<number> {
+const getPostViews = async (slug: string): Promise<number> => {
 	const res = await fetch(API_URL + `?slug=${slug}`);
 
 	if (!res.ok) {
@@ -10,9 +10,9 @@ async function getPostViews(slug: string): Promise<number> {
 	}
 
 	return res.json();
-}
+};
 
-async function updatePostViews(slug: string): Promise<number> {
+const updatePostViews = async (slug: string): Promise<number> => {
 	const res = await fetch(API_URL + `?slug=${slug}`, { method: 'POST' });
 
 	if (!res.ok) {
@@ -20,12 +20,12 @@ async function updatePostViews(slug: string): Promise<number> {
 	}
 
 	return res.json();
-}
+};
 
-function usePostViews(
+const usePostViews = (
 	slug: string,
 	config?: SWRConfiguration
-) {
+) => {
 	const {
 		data: views,
 		error,

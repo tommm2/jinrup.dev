@@ -12,7 +12,7 @@ import { getContentWithFallback } from '@/utils/content';
 import { getLocalizedUrl } from '@/utils/url';
 
 export const generateStaticParams = async () => {
-	return allProjects.map((project) => ({ slug: project.slug }));
+	return allProjects.map(({ slug }) => ({ slug }));
 };
 
 export const generateMetadata = async ({

@@ -7,11 +7,11 @@ import GradientText from '@/components/gradient-text';
 import ProjectCard from '@/components/project-card';
 import { getLocalizedUrl } from '@/utils/url';
 
-export async function generateMetadata({
+export const generateMetadata = async ({
 	params,
 }: {
 	params: { locale: Locale };
-}): Promise<Metadata> {
+}): Promise<Metadata> => {
 	const t = await getTranslations();
 	const url = getLocalizedUrl({
 		locale: params.locale,
@@ -25,9 +25,9 @@ export async function generateMetadata({
 			canonical: url,
 		},
 	};
-}
+};
 
-function ProjectsPage() {
+const ProjectsPage = () => {
 	const t = useTranslations();
 	const locale = useLocale();
 	const projects = allProjects.filter((project) => project.language === locale);
@@ -53,6 +53,6 @@ function ProjectsPage() {
 			</div>
 		</>
 	);
-}
+};
 
 export default ProjectsPage;

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import prisma from '@/lib/prisma';
 
-export async function GET(req: NextRequest) {
+export const GET = async (req: NextRequest) => {
 	const slug = req.nextUrl.searchParams.get('slug');
 
 	if (!slug) {
@@ -31,9 +31,9 @@ export async function GET(req: NextRequest) {
 
 		return NextResponse.json(data);
 	}
-}
+};
 
-export async function POST(req: NextRequest) {
+export const POST = async (req: NextRequest) => {
 	const slug = req.nextUrl.searchParams.get('slug');
 
 	if (!slug) {
@@ -52,4 +52,4 @@ export async function POST(req: NextRequest) {
 	const data = post.views;
 
 	return NextResponse.json(data);
-}
+};

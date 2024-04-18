@@ -3,7 +3,7 @@ import { Octokit } from 'octokit';
 
 import { siteConfig } from '@/config/site';
 
-export async function GET(req: NextRequest) {
+export const GET = async (req: NextRequest) => {
 	const repoName = req.nextUrl.searchParams.get('repoName');
 
 	const octokit = new Octokit({
@@ -39,4 +39,4 @@ export async function GET(req: NextRequest) {
 		followers: followers.length,
 		stars,
 	});
-}
+};

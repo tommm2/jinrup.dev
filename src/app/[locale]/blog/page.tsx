@@ -9,11 +9,11 @@ import { getLocalizedUrl } from '@/utils/url';
 
 import FilterPosts from './filter-posts';
 
-export async function generateMetadata({
+export const generateMetadata = async ({
 	params,
 }: {
 	params: { locale: Locale };
-}): Promise<Metadata> {
+}): Promise<Metadata> => {
 	const t = await getTranslations();
 	const url = getLocalizedUrl({
 		locale: params.locale,
@@ -27,7 +27,7 @@ export async function generateMetadata({
 			canonical: url,
 		},
 	};
-}
+};
 
 const BlogPage = () => {
 	const t = useTranslations();
