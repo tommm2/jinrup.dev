@@ -60,7 +60,7 @@ pnpm run dev
 - Change `config/site.ts`, `config/giscus.ts`, `app/sitemap.ts` to you own and Remove `content/*`.
 
 ## 📝 TODO
-- [ ] Add Not Found Page
+- [x] Add Not Found Page
 - [ ] Make 3D model(use three.js) in Home Page
 - [x] Make brand logo
 - [ ] Make analytics
