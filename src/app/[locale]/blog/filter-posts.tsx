@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { RiSearch2Line } from 'react-icons/ri';
 
-import type { Post } from '@/.velite';
 import PostCard from '@/components/post-card';
+import type { Post } from '@/content';
 import { getGroupPostsWithYear } from '@/lib/blog';
 
 type PostListProps = {
@@ -32,26 +32,27 @@ const FilterPosts = ({
 				/>
 			</div>
 			<div className='mt-16 flex animate-fade-in flex-col gap-8 animation-delay-3'>
-				{groupPosts.length > 0
-					? groupPosts.map(({ year, posts }) => {
-						return (
-							<section key={year}>
-								<h2 className='mb-4 flex items-end gap-3 text-lg font-medium tracking-tight'>
-									{year}
-									<div className='mb-2 h-px w-full bg-border'></div>
-								</h2>
-								<div className='flex flex-col gap-4'>
-									{posts.map((post) => (
-										<PostCard
-											key={post.slug}
-											post={post}
-										/>
-									))}
-								</div>
-							</section>
-						);
-					})
-					: remindText}
+				{
+					groupPosts.length > 0
+						? groupPosts.map(({ year, posts }) => {
+							return (
+								<section key={year}>
+									<h2 className='mb-4 flex items-end gap-3 text-lg font-medium tracking-tight'>
+										{year}
+										<div className='mb-2 h-px w-full bg-border'></div>
+									</h2>
+									<div className='flex flex-col gap-4'>
+										{posts.map((post) => (
+											<PostCard
+												key={post.slug}
+												post={post}
+											/>
+										))}
+									</div>
+								</section>
+							);
+						})
+						: remindText}
 			</div>
 		</>
 	);

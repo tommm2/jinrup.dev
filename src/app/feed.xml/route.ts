@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { allPosts } from '@/.velite';
 import RSS from 'rss';
 
+import { allPosts } from '@/content';
 import { siteConfig } from '@/config/site';
 import { defaultLocale } from '@/lib/navigation';
 

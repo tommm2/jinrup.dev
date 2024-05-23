@@ -1,4 +1,4 @@
-import type { Post, Project } from '@/.velite';
+import type { Post, Project } from '@/content';
 import { defaultLocale } from '@/lib/navigation';
 
 export function getContentWithFallback<T extends Post | Project>({

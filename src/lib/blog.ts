@@ -1,5 +1,4 @@
-import type { Post } from '@/.velite';
-
+import type { Post } from '@/content';
 import { groupBy } from '@/utils/helpers';
 
 export const getGroupPostsWithYear = (posts: Post[], query: string) => {

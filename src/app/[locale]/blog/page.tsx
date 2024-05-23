@@ -3,8 +3,8 @@ import { Metadata } from 'next';
 import { useLocale, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
-import { allPosts } from '@/.velite';
 import GradientText from '@/components/gradient-text';
+import { allPosts } from '@/content';
 import { getLocalizedUrl } from '@/utils/url';
 
 import FilterPosts from './filter-posts';

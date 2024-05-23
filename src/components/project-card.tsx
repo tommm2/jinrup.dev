@@ -12,10 +12,10 @@ import { GoRepoForked } from 'react-icons/go';
 import { RiStarLine } from 'react-icons/ri';
 import useSWR from 'swr';
 
-import type { Project } from '@/.velite';
 import Loading from '@/components/loading';
 import Metric from '@/components/metric';
 import Link from '@/components/ui/link';
+import type { Project } from '@/content';
 import { fetcher } from '@/lib/fetcher';
 
 type WrapperStyle = MotionStyle & {
