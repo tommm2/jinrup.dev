@@ -45,9 +45,6 @@ $PROJECT_ROOT
 - `src/utils/*`: Some utilities functions , but less complex than `lib/`
 
 ## 👋 Getting Start
-
-This application requires Node.js v19.1+.
-
 ```bash
 git clone https://github.com/tommm2/jinrup.dev.git
 
