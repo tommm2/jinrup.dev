@@ -1,16 +1,52 @@
 import { render, screen } from '@testing-library/react';
+import { NextIntlClientProvider } from 'next-intl';
 
 import Link from '@/components/ui/link';
+import { defaultLocale } from '@/lib/navigation';
 
 describe('Link', () => {
-	it('renders correctly when href starts with http', () => {
-		render(<Link href='https://example.com'>Example Link</Link>);
+	it('should render as external link', () => {
+		render(<Link href='https://github.com/tommm2'>link</Link>);
 
-		expect(screen.getByText('Example Link')).toBeInTheDocument();
-		expect(screen.getByRole('link')).toHaveAttribute('target', '_blank');
-		expect(screen.getByRole('link')).toHaveAttribute(
-			'rel',
-			'noopener noreferrer',
+		const link = screen.getByRole('link');
+
+		expect(link.getAttribute('href')).toMatch(/^http/);
+		expect(link).toHaveAttribute('target', '_blank');
+		expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+	});
+
+	it('should render as localized link', () => {
+		const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+		const messages = require(`../../messages/${defaultLocale}.json`);
+
+		useRouter.mockImplementationOnce(() => ({
+			query: { locale: defaultLocale },
+		}));
+
+		render(
+			<NextIntlClientProvider
+				messages={messages}
+				locale={defaultLocale}
+			>
+				<Link href='/about'>About</Link>
+			</NextIntlClientProvider>,
 		);
+
+		const link = screen.getByRole('link');
+
+		expect(link.getAttribute('href')).toMatch(/^\//);
+	});
+
+	it('should render default anchor icon', () => {
+		render(
+			<Link
+				href='https://github.com/tommm2'
+				showAnchorIcon
+			>
+				link
+			</Link>,
+		);
+
+		expect(screen.getByRole('img')).toBeInTheDocument();
 	});
 });
