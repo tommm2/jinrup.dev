@@ -10,7 +10,10 @@ const Header = () => {
 		<header className='sticky top-0 z-10 h-14 bg-background/80 backdrop-blur'>
 			<div className='absolute -bottom-px left-11 right-20 h-px bg-gradient-to-r from-transparent via-primary to-transparent' />
 			<div className='layout flex h-14 items-center justify-between'>
-				<Link aria-label='Home' href='/'>
+				<Link
+					href='/'
+					aria-label='Home'
+				>
 					<Logo className='size-6' />
 				</Link>
 				<div className='flex items-center gap-4'>
