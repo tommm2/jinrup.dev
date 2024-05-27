@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import { RiSearch2Line } from 'react-icons/ri';
 
-import PostCard from '@/components/post-card';
 import type { Post } from '@/content';
-import { getGroupPostsWithYear } from '@/lib/blog';
+import PostCard from '@/components/post-card';
+import { getGroupPostsWithYear } from '@/utils/blog';
 
 type PostListProps = {
 	posts: Post[];
