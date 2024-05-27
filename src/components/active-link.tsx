@@ -4,12 +4,12 @@ import Link from '@/components/ui/link';
 import { usePathname } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
 
-type NavLinkProps = {
+type ActiveLinkProps = {
 	title: string;
 	href: string;
 };
 
-const NavLink = ({ title, href }: NavLinkProps) => {
+const ActiveLink = ({ title, href }: ActiveLinkProps) => {
 	const pathname = usePathname();
 	const isActive = pathname.includes(href);
 
@@ -32,4 +32,4 @@ const NavLink = ({ title, href }: NavLinkProps) => {
 	);
 };
 
-export default NavLink;
+export default ActiveLink;

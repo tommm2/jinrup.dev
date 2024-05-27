@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl';
 
 import { navLinks } from '@/config/nav-links';
 
-import NavLink from './nav-link';
+import ActiveLink from './active-link';
 
 const Nav = () => {
 	const t = useTranslations('common');
@@ -11,7 +11,7 @@ const Nav = () => {
 		<nav>
 			<ul className='hidden gap-1 md:flex'>
 				{navLinks.map((item) => (
-					<NavLink
+					<ActiveLink
 						key={item.title}
 						title={t(item.title)}
 						href={item.href}
