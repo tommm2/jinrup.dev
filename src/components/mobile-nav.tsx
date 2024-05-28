@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import { RiMenu2Fill } from 'react-icons/ri';
 
-import { LanguageMenuItems } from '@/components/language-dropdown';
+import { LanguageMenuItem } from '@/components/language-dropdown';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -13,6 +13,7 @@ import {
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { navLinks } from '@/config/nav-links';
+import { locales } from '@/lib/navigation';
 
 const MobileNav = () => {
 	const t = useTranslations('common');
@@ -42,7 +43,12 @@ const MobileNav = () => {
 				<DropdownMenuLabel className='font-normal text-foreground/60'>
 					Translations
 				</DropdownMenuLabel>
-				<LanguageMenuItems />
+				{locales.map((locale) => (
+					<LanguageMenuItem
+						key={locale}
+						locale={locale}
+					/>
+				))}
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);

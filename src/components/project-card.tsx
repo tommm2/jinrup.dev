@@ -38,16 +38,16 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 		fetcher,
 	);
 
-	function handleMouseMove({
+	const handleMouseMove = ({
 		currentTarget,
 		clientX,
 		clientY,
-	}: MouseEvent<Element>) {
+	}: MouseEvent<Element>) => {
 		const { left, top } = currentTarget.getBoundingClientRect();
 
 		mouseX.set(clientX - left);
 		mouseY.set(clientY - top);
-	}
+	};
 
 	return (
 		<motion.div
