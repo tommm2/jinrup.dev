@@ -9,6 +9,12 @@
 		"lint": "next lint",
 		"test": "jest --watch"
 	},
+	"pnpm": {
+		"supportedArchitectures": {
+			"os": ["darwin", "current"],
+			"cpu": ["x64", "arm64"]
+		}
+	},
 	"dependencies": {
 		"@giscus/react": "^2.3.0",
 		"@mdx-js/react": "^3.0.1",
