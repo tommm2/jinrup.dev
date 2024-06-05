@@ -16,12 +16,7 @@ describe('Link', () => {
 	});
 
 	it('should render as localized link', () => {
-		const useRouter = jest.spyOn(require('next/router'), 'useRouter');
 		const messages = require(`../../../messages/${defaultLocale}.json`);
-
-		useRouter.mockImplementationOnce(() => ({
-			query: { locale: defaultLocale },
-		}));
 
 		render(
 			<NextIntlClientProvider
