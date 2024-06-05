@@ -40,6 +40,8 @@ const Link = (props: LinkProps) => {
 		...otherProps
 	} = props;
 
+	const icon = showAnchorIcon && anchorIcon;
+
 	if (href.startsWith('http')) {
 		otherProps.rel = otherProps.rel ?? 'noopener noreferrer';
 		otherProps.target = otherProps.target ?? '_blank';
@@ -53,7 +55,7 @@ const Link = (props: LinkProps) => {
 				{...otherProps}
 			>
 				{children}
-				{showAnchorIcon && anchorIcon}
+				{icon}
 			</LocalizedLink>
 		);
 	}
@@ -65,7 +67,7 @@ const Link = (props: LinkProps) => {
 			{...otherProps}
 		>
 			{children}
-			{showAnchorIcon && anchorIcon}
+			{icon}
 		</a>
 	);
 };
