@@ -4,10 +4,10 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { RiArrowLeftLine, RiCodeSSlashLine, RiLinksLine } from 'react-icons/ri';
 
-import { allProjects } from '@/.velite';
-import GradientText from '@/components/gradient-text';
+import GradientText from '@/components/ui/gradient-text';
 import MDXContent from '@/components/mdx';
 import Link from '@/components/ui/link';
+import { allProjects } from '@/content';
 import { getContentWithFallback } from '@/utils/content';
 import { getLocalizedUrl } from '@/utils/url';
 

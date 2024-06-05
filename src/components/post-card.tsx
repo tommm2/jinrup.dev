@@ -2,9 +2,9 @@
 
 import { useLocale } from 'next-intl';
 
-import type { Post } from '@/.velite';
 import Link from '@/components/ui/link';
 import ViewCounter from '@/components/view-counter';
+import type { Post } from '@/content';
 import { useEnabledFirstInView } from '@/hooks';
 import { defaultLocale } from '@/lib/navigation';
 import { formatDate } from '@/utils/date';

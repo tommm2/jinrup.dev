@@ -26,29 +26,29 @@ const LanguageDropdown = () => {
 				<RiTranslate2 />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align='end'>
-				<LanguageMenuItems />
+				{locales.map((locale) => (
+					<LanguageMenuItem
+						key={locale}
+						locale={locale}
+					/>
+				))}
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);
 };
 
-const LanguageMenuItems = () => {
+const LanguageMenuItem = ({ locale }: { locale: Locale }) => {
 	const { replace } = useRouter();
 	const pathname = usePathname();
 
 	return (
-		<>
-			{locales.map((locale) => (
-				<DropdownMenuItem
-					key={locale}
-					className='rounded px-2 py-1.5'
-					onClick={() => replace(pathname!, { locale })}
-				>
-					{locale === defaultLocale ? '繁體中文' : 'English'}
-				</DropdownMenuItem>
-			))}
-		</>
+		<DropdownMenuItem
+			className='rounded px-2 py-1.5'
+			onClick={() => replace(pathname!, { locale })}
+		>
+			{locale === defaultLocale ? '繁體中文' : 'English'}
+		</DropdownMenuItem>
 	);
 };
 
-export { LanguageDropdown as default, LanguageMenuItems };
+export { LanguageDropdown as default, LanguageMenuItem };

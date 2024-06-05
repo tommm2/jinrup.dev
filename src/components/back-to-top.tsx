@@ -16,11 +16,11 @@ const BackToTop = () => {
 	};
 
 	useEffect(() => {
-		function handleScroll() {
+		const handleScroll = () => {
 			const { scrollTop } = document.documentElement;
 
 			setIsVisible(scrollTop > 30);
-		}
+		};
 
 		window.addEventListener('scroll', handleScroll);
 

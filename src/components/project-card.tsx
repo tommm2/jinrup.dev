@@ -12,9 +12,9 @@ import { GoRepoForked } from 'react-icons/go';
 import { RiStarLine } from 'react-icons/ri';
 import useSWR from 'swr';
 
-import type { Project } from '@/.velite';
-import Loading from '@/components/loading';
-import Metric from '@/components/metric';
+import type { Project } from '@/content';
+import Loading from '@/components/ui/loading';
+import Metric from '@/components/ui/metric';
 import Link from '@/components/ui/link';
 import { fetcher } from '@/lib/fetcher';
 
@@ -38,16 +38,16 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 		fetcher,
 	);
 
-	function handleMouseMove({
+	const handleMouseMove = ({
 		currentTarget,
 		clientX,
 		clientY,
-	}: MouseEvent<Element>) {
+	}: MouseEvent<Element>) => {
 		const { left, top } = currentTarget.getBoundingClientRect();
 
 		mouseX.set(clientX - left);
 		mouseY.set(clientY - top);
-	}
+	};
 
 	return (
 		<motion.div

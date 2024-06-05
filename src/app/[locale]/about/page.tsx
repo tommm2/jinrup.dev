@@ -3,9 +3,9 @@ import { useLocale, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
-import { allPages } from '@/.velite';
-import GradientText from '@/components/gradient-text';
+import GradientText from '@/components/ui/gradient-text';
 import MDXContent from '@/components/mdx';
+import { allPages } from '@/content';
 import { getLocalizedUrl } from '@/utils/url';
 
 export const generateMetadata = async ({

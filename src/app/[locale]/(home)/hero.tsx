@@ -6,7 +6,7 @@ import {
 	RiMailSendFill,
 } from 'react-icons/ri';
 
-import GradientText from '@/components/gradient-text';
+import GradientText from '@/components/ui/gradient-text';
 import Link from '@/components/ui/link';
 import { siteConfig } from '@/config/site';
 import { cn } from '@/utils/cn';

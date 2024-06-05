@@ -2,7 +2,7 @@ import { type VariantProps, cva } from 'class-variance-authority';
 import type { ComponentProps } from 'react';
 import { RiLinkM } from 'react-icons/ri';
 
-import { Link as IntlLink } from '@/lib/navigation';
+import { Link as LocalizedLink } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
 
 const linkVariants = cva(
@@ -17,7 +17,7 @@ const linkVariants = cva(
 	},
 );
 
-type LinkProps = Omit<ComponentProps<typeof IntlLink>, 'href'> &
+type LinkProps = Omit<ComponentProps<typeof LocalizedLink>, 'href'> &
 	VariantProps<typeof linkVariants> & {
 		href?: string;
 		showAnchorIcon?: boolean;
@@ -30,10 +30,17 @@ const Link = (props: LinkProps) => {
 		children,
 		className,
 		variant,
-		anchorIcon = <RiLinkM className='ml-1 text-muted-foreground' />,
+		anchorIcon = (
+			<RiLinkM
+				role='img'
+				className='ml-1 text-muted-foreground'
+			/>
+		),
 		showAnchorIcon,
 		...otherProps
 	} = props;
+
+	const icon = showAnchorIcon && anchorIcon;
 
 	if (href.startsWith('http')) {
 		otherProps.rel = otherProps.rel ?? 'noopener noreferrer';
@@ -42,14 +49,14 @@ const Link = (props: LinkProps) => {
 
 	if (href.startsWith('/')) {
 		return (
-			<IntlLink
+			<LocalizedLink
 				className={cn(linkVariants({ variant, className }))}
 				href={href}
 				{...otherProps}
 			>
 				{children}
-				{showAnchorIcon && anchorIcon}
-			</IntlLink>
+				{icon}
+			</LocalizedLink>
 		);
 	}
 
@@ -60,7 +67,7 @@ const Link = (props: LinkProps) => {
 			{...otherProps}
 		>
 			{children}
-			{showAnchorIcon && anchorIcon}
+			{icon}
 		</a>
 	);
 };

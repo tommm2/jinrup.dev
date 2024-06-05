@@ -8,6 +8,13 @@ import {
 
 import { cn } from '@/utils/cn';
 
+const IconMap = {
+	default: <RiLightbulbLine />,
+	error: <RiForbid2Line />,
+	info: <RiInformationLine />,
+	warning: <RiErrorWarningLine />,
+};
+
 const calloutVariants = cva(
 	'mt-6 flex overflow-x-auto rounded-md border py-2 pr-4',
 	{
@@ -30,13 +37,6 @@ type CalloutProps = VariantProps<typeof calloutVariants> & {
 };
 
 const Callout = ({ children, variant = 'default' }: CalloutProps) => {
-	const IconMap = {
-		default: <RiLightbulbLine />,
-		error: <RiForbid2Line />,
-		info: <RiInformationLine />,
-		warning: <RiErrorWarningLine />,
-	};
-
 	return (
 		<div className={cn(calloutVariants({ variant }))}>
 			<div className='select-none pl-3 pr-2 pt-1 text-xl'>
