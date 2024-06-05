@@ -1,7 +1,7 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { RiArrowRightSLine } from 'react-icons/ri';
 
-import GradientText from '@/components/gradient-text';
+import GradientText from '@/components/ui/gradient-text';
 import ProjectCard from '@/components/project-card';
 import Link from '@/components/ui/link';
 import { allProjects } from '@/content';

@@ -3,8 +3,8 @@
 import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 
-import Loading from '@/components/loading';
-import Metric from '@/components/metric';
+import Loading from '@/components/ui/loading';
+import Metric from '@/components/ui/metric';
 import { usePostViews } from '@/hooks';
 
 type ViewCounterProps = {

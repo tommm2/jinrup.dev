@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { RiArrowLeftLine } from 'react-icons/ri';
 
 import Comment from '@/components/comment';
-import GradientText from '@/components/gradient-text';
+import GradientText from '@/components/ui/gradient-text';
 import MDXContent from '@/components/mdx';
 import Callout from '@/components/mdx/callout';
 import Link from '@/components/ui/link';

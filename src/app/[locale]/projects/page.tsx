@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { useLocale, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
-import GradientText from '@/components/gradient-text';
+import GradientText from '@/components/ui/gradient-text';
 import ProjectCard from '@/components/project-card';
 import { allProjects } from '@/content';
 import { getLocalizedUrl } from '@/utils/url';
