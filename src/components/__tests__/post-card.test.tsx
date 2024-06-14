@@ -1,18 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { NextIntlClientProvider, useLocale } from 'next-intl';
 
 import { type Post } from '@/content';
 import PostCard from '@/components/post-card';
 import { defaultLocale } from '@/lib/navigation';
-
-jest.mock('next-intl', () => {
-	const originalModule = jest.requireActual('next-intl');
-
-	return {
-		...originalModule,
-		useLocale: jest.fn(),
-	};
-});
 
 describe('PostCard', () => {
 	const mockPost: Post = {
@@ -30,24 +20,13 @@ describe('PostCard', () => {
 		jest.clearAllMocks();
 	});
 
-	it('should render correctly', () => {
-		(useLocale as jest.Mock).mockReturnValue(defaultLocale);
-
-		const messages = require(`../../../messages/${defaultLocale}.json`);
-
-		render(
-			<NextIntlClientProvider
-				messages={messages}
-				locale={defaultLocale}
-			>
-				<PostCard post={mockPost} />
-			</NextIntlClientProvider>
-		);
+	it('should render ', () => {
+		render(<PostCard post={mockPost} />);
 
 		const link = screen.getByRole('link', { name: /測試文章/i });
 
 		expect(link).toBeInTheDocument();
-		expect(link).toHaveAttribute('href', `/${defaultLocale}/blog/test-post`);
+		expect(link).toHaveAttribute('href', '/blog/test-post');
 
 		const date = screen.getByText('6月12日');
 
