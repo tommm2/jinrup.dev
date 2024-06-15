@@ -1,32 +1,26 @@
 import { render, screen } from '@testing-library/react';
 
-import { type Post } from '@/content';
 import PostCard from '@/components/post-card';
-import { defaultLocale } from '@/lib/navigation';
 
 describe('PostCard', () => {
-	const mockPost: Post = {
+	const post = {
 		title: '測試文章',
 		slug: 'test-post',
 		publishedAt: '2024-06-12',
-		description: '這是一篇測試文章',
-		language: defaultLocale,
 		permalink: '/blog/test-post',
-		content: '',
-		year: 2024,
 	};
 
-	beforeEach(() => {
-		jest.clearAllMocks();
-	});
-
-	it('should render ', () => {
-		render(<PostCard post={mockPost} />);
+	it('should render the post title and link ', () => {
+		render(<PostCard {...post} />);
 
 		const link = screen.getByRole('link', { name: /測試文章/i });
 
 		expect(link).toBeInTheDocument();
 		expect(link).toHaveAttribute('href', '/blog/test-post');
+	});
+
+	it('should render formatted date', () => {
+		render(<PostCard {...post} />);
 
 		const date = screen.getByText('6月12日');
 
@@ -34,4 +28,3 @@ describe('PostCard', () => {
 		expect(date).toHaveAttribute('dateTime', '2024-06-12');
 	});
 });
-
