@@ -2,21 +2,26 @@
 
 import { useFormatter } from 'next-intl';
 
-import type { Post } from '@/content';
 import Link from '@/components/ui/link';
 import ViewCounter from '@/components/view-counter';
-import { useEnabledFirstInView } from '@/hooks';
+import useEnabledFirstInView from '@/hooks/use-enabled-first-view';
 
 type PostCardProps = {
-	post: Post;
+	slug: string;
+	title: string;
+	publishedAt: string;
+	permalink: string;
 };
 
-const PostCard = ({ post }: PostCardProps) => {
+const PostCard = ({
+	slug,
+	title,
+	publishedAt,
+	permalink,
+}: PostCardProps) => {
 	const format = useFormatter();
 
 	const { enabled, intersectionRef } = useEnabledFirstInView();
-
-	const { slug, title, publishedAt, permalink } = post;
 
 	const date = format.dateTime(new Date(publishedAt), {
 		month: 'long',
