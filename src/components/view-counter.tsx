@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 import Loading from '@/components/ui/loading';
 import Metric from '@/components/ui/metric';
-import { usePostViews } from '@/hooks';
+import usePostViews from '@/hooks/use-post-views';
 
 type ViewCounterProps = {
 	slug: string;
