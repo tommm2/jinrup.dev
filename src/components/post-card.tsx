@@ -1,29 +1,26 @@
 'use client';
 
-import { useLocale } from 'next-intl';
+import { useFormatter } from 'next-intl';
 
+import type { Post } from '@/content';
 import Link from '@/components/ui/link';
 import ViewCounter from '@/components/view-counter';
-import type { Post } from '@/content';
 import { useEnabledFirstInView } from '@/hooks';
-import { defaultLocale } from '@/lib/navigation';
-import { formatDate } from '@/utils/date';
 
 type PostCardProps = {
 	post: Post;
 };
 
 const PostCard = ({ post }: PostCardProps) => {
-	const locale = useLocale() as Locale;
+	const format = useFormatter();
+
 	const { enabled, intersectionRef } = useEnabledFirstInView();
 
 	const { slug, title, publishedAt, permalink } = post;
 
-	const formatString = locale === defaultLocale ? 'LLLd日' : 'LLLL d';
-	const date = formatDate({
-		date: publishedAt,
-		formatString,
-		locale,
+	const date = format.dateTime(new Date(publishedAt), {
+		month: 'long',
+		day: 'numeric',
 	});
 
 	return (

@@ -3,10 +3,9 @@ import { Metadata } from 'next';
 import { useLocale, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
-import GradientText from '@/components/ui/gradient-text';
 import { allPosts } from '@/content';
+import GradientText from '@/components/ui/gradient-text';
 import { getLocalizedUrl } from '@/utils/url';
-
 import FilterPosts from './filter-posts';
 
 export const generateMetadata = async ({
