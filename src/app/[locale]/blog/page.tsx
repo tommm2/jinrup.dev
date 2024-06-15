@@ -1,4 +1,3 @@
-import { compareDesc } from 'date-fns';
 import { Metadata } from 'next';
 import { useLocale, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
@@ -33,9 +32,7 @@ const BlogPage = () => {
 	const locale = useLocale();
 	const posts = allPosts
 		.filter((post) => post.language === locale)
-		.sort((a, b) =>
-			compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)),
-		);
+		.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 
 	return (
 		<>
