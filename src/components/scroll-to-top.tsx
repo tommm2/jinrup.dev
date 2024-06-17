@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { RiArrowUpSLine } from 'react-icons/ri';
 
-const BackToTop = () => {
+const ScrollToTop = () => {
 	const [isVisible, setIsVisible] = useState(false);
 
 	const handleClick = () => {
@@ -48,4 +48,4 @@ const BackToTop = () => {
 	);
 };
 
-export default BackToTop;
+export default ScrollToTop;

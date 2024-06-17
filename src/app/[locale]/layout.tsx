@@ -2,7 +2,7 @@ import { Metadata, Viewport } from 'next';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
-import BackToTop from '@/components/back-to-top';
+import ScrollToTop from '@/components/scroll-to-top';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import LocaleProvider from '@/providers/locale-provider';
@@ -93,7 +93,7 @@ const RootLayout = ({ children, params: { locale } }: RootLayoutProps) => {
 						{children}
 					</main>
 					<Footer />
-					<BackToTop />
+					<ScrollToTop />
 				</LocaleProvider>
 			</body>
 		</html>
