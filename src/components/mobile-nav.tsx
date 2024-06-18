@@ -12,7 +12,7 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { navLinks } from '@/config/nav-links';
+import navLinks from '@/config/nav-links';
 import { locales } from '@/lib/navigation';
 
 const MobileNav = () => {

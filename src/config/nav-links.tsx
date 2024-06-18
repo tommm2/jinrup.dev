@@ -1,6 +1,6 @@
 import { RiGitRepositoryFill, RiQuillPenFill, RiUser3Fill } from 'react-icons/ri';
 
-export const navLinks = [
+const navLinks = [
 	{
 		title: 'blog',
 		href: '/blog',
@@ -17,3 +17,5 @@ export const navLinks = [
 		icon: <RiUser3Fill />,
 	},
 ];
+
+export default navLinks;
