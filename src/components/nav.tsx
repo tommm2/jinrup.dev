@@ -2,11 +2,10 @@
 
 import { useTranslations } from 'next-intl';
 
+import Link from '@/components/ui/link';
 import navLinks from '@/config/nav-links';
 import { usePathname } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
-
-import Link from './ui/link';
 
 const Nav = () => {
 	const t = useTranslations('common');
@@ -16,7 +15,7 @@ const Nav = () => {
 		<nav>
 			<ul className='hidden gap-1 md:flex'>
 				{navLinks.map((item) => {
-					const isActive = pathname.includes(item.href);
+					const isActive = item.href.toString() === pathname;
 
 					return (
 						<li key={item.title}>
@@ -27,8 +26,7 @@ const Nav = () => {
 								<span
 									className={cn(
 										'absolute duration-200 left-2 transition-all flex-none rounded-full bg-primary group-hover:size-1.5',
-										{ 'size-1.5': isActive },
-										{ 'size-0': !isActive },
+										isActive ? 'size-1.5' : 'size-0',
 									)}
 								/>
 								<span>{t(item.title)}</span>
