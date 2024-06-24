@@ -45,7 +45,10 @@ const FilterPosts = ({
 										{posts.map((post) => (
 											<PostCard
 												key={post.slug}
-												post={post}
+												slug={post.slug}
+												title={post.title}
+												publishedAt={post.publishedAt}
+												permalink={post.permalink}
 											/>
 										))}
 									</div>

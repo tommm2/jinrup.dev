@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { useLocale, useTranslations } from 'next-intl';
+import { useFormatter, useTranslations } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { RiArrowLeftLine } from 'react-icons/ri';
 
@@ -10,9 +10,7 @@ import Callout from '@/components/mdx/callout';
 import Link from '@/components/ui/link';
 import ViewCounter from '@/components/view-counter';
 import { allPosts } from '@/content';
-import { defaultLocale } from '@/lib/navigation';
 import { getContentWithFallback } from '@/utils/content';
-import { formatDate, getDistanceToNow } from '@/utils/date';
 import { getLocalizedUrl } from '@/utils/url';
 
 export const generateStaticParams = async () => {
@@ -67,7 +65,8 @@ type BlogPostLayoutProps = {
 
 const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
 	const t = useTranslations('common');
-	const locale = useLocale() as Locale;
+	const format = useFormatter();
+
 	const post = getContentWithFallback({
 		contentItems: allPosts,
 		slug: params.slug,
@@ -80,13 +79,11 @@ const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
 
 	const { title, language, publishedAt, slug } = post;
 
-	const formatString = locale === defaultLocale ? 'PPP' : 'LLLL dd, yyyy';
-	const date = formatDate({
-		date: publishedAt,
-		formatString,
-		locale,
+	const date = format.dateTime(new Date(publishedAt), {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
 	});
-	const distanceToNow = getDistanceToNow(publishedAt, locale);
 
 	return (
 		<>
@@ -106,7 +103,7 @@ const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
 					{title}
 				</GradientText>
 				<div className='mt-3 flex justify-between text-sm text-foreground/60'>
-					<time dateTime={publishedAt}>{`${date} (${distanceToNow})`}</time>
+					<time dateTime={publishedAt}>{date}</time>
 					<ViewCounter
 						slug={slug}
 						shouldIncrement

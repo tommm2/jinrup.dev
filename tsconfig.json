@@ -22,7 +22,13 @@
 		"types": ["@testing-library/jest-dom"],
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"],
+			"@/components/*": ["src/components/*"],
+			"@/hooks/*": ["src/hooks/*"],
+			"@/utils/*": ["src/utils/*"],
+			"@/lib/*": ["src/lib/*"],
+			"@/config/*": ["src/config/*"],
+			"@/providers/*": ["src/providers/*"],
+			"@/styles/*": ["src/styles/*"],
 			"@/content": ["./.velite"]
 		}
 	},

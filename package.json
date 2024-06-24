@@ -12,8 +12,14 @@
 	},
 	"pnpm": {
 		"supportedArchitectures": {
-			"os": ["darwin", "current"],
-			"cpu": ["x64", "arm64"]
+			"os": [
+				"darwin",
+				"current"
+			],
+			"cpu": [
+				"x64",
+				"arm64"
+			]
 		}
 	},
 	"dependencies": {
@@ -24,7 +30,6 @@
 		"@radix-ui/react-separator": "^1.0.3",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^1.2.1",
-		"date-fns": "^2.30.0",
 		"framer-motion": "^10.12.12",
 		"next": "^14.0.1",
 		"next-intl": "^3.2.4",
