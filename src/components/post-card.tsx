@@ -1,10 +1,11 @@
 'use client';
 
 import { useFormatter } from 'next-intl';
+import { useRef } from 'react';
 
 import Link from '@/components/ui/link';
 import ViewCounter from '@/components/view-counter';
-import useEnabledFirstInView from '@/hooks/use-enabled-first-view';
+import useIntersection from '@/hooks/use-intersection';
 
 type PostCardProps = {
 	slug: string;
@@ -13,15 +14,10 @@ type PostCardProps = {
 	permalink: string;
 };
 
-const PostCard = ({
-	slug,
-	title,
-	publishedAt,
-	permalink,
-}: PostCardProps) => {
+const PostCard = ({ slug, title, publishedAt, permalink }: PostCardProps) => {
+	const intersectionRef = useRef(null);
+	const intersection = useIntersection(intersectionRef, {});
 	const format = useFormatter();
-
-	const { enabled, intersectionRef } = useEnabledFirstInView();
 
 	const date = format.dateTime(new Date(publishedAt), {
 		month: 'long',
@@ -38,7 +34,7 @@ const PostCard = ({
 			</Link>
 			<div className='text-sm text-foreground/60'>
 				<time dateTime={publishedAt}>{date}</time>．
-				{enabled && <ViewCounter slug={slug} />}
+				{intersection?.isIntersecting && <ViewCounter slug={slug} />}
 			</div>
 		</div>
 	);
