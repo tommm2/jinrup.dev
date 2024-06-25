@@ -7,7 +7,7 @@ import type { Post } from '@/content';
 import PostCard from '@/components/post-card';
 import { getGroupPostsWithYear } from '@/utils/blog';
 
-type PostListProps = {
+type FilterPostsProps = {
 	posts: Post[];
 	placeholder?: string;
 	remindText?: string;
@@ -17,7 +17,7 @@ const FilterPosts = ({
 	posts,
 	placeholder = '',
 	remindText = '',
-}: PostListProps) => {
+}: FilterPostsProps) => {
 	const [query, setQuery] = useState('');
 	const groupPosts = getGroupPostsWithYear(posts, query);
 
