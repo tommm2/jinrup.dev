@@ -89,7 +89,7 @@ const RootLayout = ({ children, params: { locale } }: RootLayoutProps) => {
 			<body className='min-h-screen overflow-x-hidden antialiased'>
 				<LocaleProvider>
 					<Header />
-					<main className='layout mt-12 min-h-[calc(100vh_-_56px_-_196px)]'>
+					<main className='layout mt-16 min-h-[calc(100vh_-_56px_-_196px)]'>
 						{children}
 					</main>
 					<Footer />
