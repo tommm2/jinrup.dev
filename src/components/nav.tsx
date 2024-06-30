@@ -13,22 +13,19 @@ const Nav = () => {
 
 	return (
 		<nav>
-			<ul className='hidden gap-1 md:flex'>
+			<ul className='hidden gap-2 sm:flex'>
 				{navLinks.map((item) => {
 					const isActive = item.href.toString() === pathname;
 
 					return (
 						<li key={item.title}>
 							<Link
-								className='group relative flex items-center rounded py-1.5 pl-5 pr-2 text-sm transition-colors hover:bg-accent/60'
+								className={cn(
+									'relative flex items-center rounded px-2 py-1.5 text-sm text-foreground/80 transition-colors hover:bg-accent/60 hover:text-foreground',
+									{ 'text-foreground': isActive },
+								)}
 								href={item.href}
 							>
-								<span
-									className={cn(
-										'absolute duration-200 left-2 transition-all flex-none rounded-full bg-primary group-hover:size-1.5',
-										isActive ? 'size-1.5' : 'size-0',
-									)}
-								/>
 								<span>{t(item.title)}</span>
 							</Link>
 						</li>
