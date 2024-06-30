@@ -1,7 +1,6 @@
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import React from 'react';
-import { RiMenu2Fill } from 'react-icons/ri';
+import { RiMenuFill } from 'react-icons/ri';
 
 import { LanguageMenuItem } from '@/components/language-dropdown';
 import {
@@ -20,11 +19,14 @@ const MobileNav = () => {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger className='block rounded p-2 outline-none transition-colors hover:bg-accent/60 md:hidden'>
+			<DropdownMenuTrigger className='group block rounded-full bg-neutral-800 p-2 outline-none sm:hidden'>
 				<span className='sr-only'>Toggle menu</span>
-				<RiMenu2Fill />
+				<RiMenuFill className='size-5 text-foreground/80 transition-colors group-hover:text-foreground' />
 			</DropdownMenuTrigger>
-			<DropdownMenuContent align='end'>
+			<DropdownMenuContent
+				className='min-w-32'
+				align='end'
+			>
 				{navLinks.map((link) => (
 					<DropdownMenuItem
 						key={link.title}
