@@ -17,6 +17,7 @@ const REPO_NAME = 'jinrup.dev';
 
 const Header = () => {
 	const [isVisible, setIsVisible] = useState(true);
+	const [lastScrollY, setLastScrollY] = useState(0);
 
 	const { data: repo } = useSWR<RepoInfo>(
 		`/api/github?repoName=${REPO_NAME}`,
@@ -27,9 +28,13 @@ const Header = () => {
 		const handleScroll = () => {
 			if (window.scrollY > 180) {
 				setIsVisible(false);
-			} else {
+			}
+
+			if (window.scrollY < lastScrollY) {
 				setIsVisible(true);
 			}
+
+			setLastScrollY(window.scrollY);
 		};
 
 		window.addEventListener('scroll', handleScroll);
@@ -37,7 +42,7 @@ const Header = () => {
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
 		};
-	}, []);
+	}, [lastScrollY]);
 
 	return (
 		<header
