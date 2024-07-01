@@ -21,7 +21,7 @@ const LanguageDropdown = () => {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger className='hidden rounded p-2 text-foreground/80 shadow-md outline-none transition-colors hover:bg-accent/60 hover:text-foreground sm:block'>
+			<DropdownMenuTrigger className='hidden rounded p-2 text-foreground/70 shadow-md outline-none transition-colors hover:bg-accent/60 hover:text-foreground sm:block'>
 				<span className='sr-only'>{t('chooseLanguage')}</span>
 				<RiTranslate2 className='size-4' />
 			</DropdownMenuTrigger>

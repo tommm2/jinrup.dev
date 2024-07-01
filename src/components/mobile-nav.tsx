@@ -21,7 +21,7 @@ const MobileNav = () => {
 		<DropdownMenu>
 			<DropdownMenuTrigger className='group block rounded-full bg-neutral-800 p-2 outline-none sm:hidden'>
 				<span className='sr-only'>Toggle menu</span>
-				<RiMenuFill className='size-5 text-foreground/80 transition-colors group-hover:text-foreground' />
+				<RiMenuFill className='size-5 text-foreground/70 transition-colors group-hover:text-foreground' />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent
 				className='min-w-32'

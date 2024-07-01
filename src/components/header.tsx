@@ -67,15 +67,15 @@ const Header = () => {
 				>
 					<div className='absolute -bottom-px left-1/2 h-px w-14 -translate-x-1/2 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 transition-opacity group-hover:opacity-100' />
 					<div className='flex items-center gap-1'>
-						<RiGithubFill className='size-6 text-foreground/80 group-hover:text-foreground' />
-						<span className='text-sm text-foreground/80 group-hover:text-foreground'>
+						<RiGithubFill className='size-6 text-foreground/70 group-hover:text-foreground' />
+						<span className='text-sm text-foreground/70 group-hover:text-foreground'>
 							GitHub
 						</span>
 					</div>
 					<div className='flex items-center gap-1'>
 						<RiStarFill className='transition-colors group-hover:text-yellow-400' />
 						<NumberTicker
-							className='text-sm text-foreground/80 group-hover:text-foreground'
+							className='text-sm text-foreground/70 group-hover:text-foreground'
 							value={repo ? repo.stars : 0}
 						/>
 					</div>
