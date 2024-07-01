@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { RiMenuFill } from 'react-icons/ri';
+import { RiCloseFill, RiMenuFill } from 'react-icons/ri';
+import { useState } from 'react';
 
 import { LanguageMenuItem } from '@/components/language-dropdown';
 import {
@@ -16,12 +17,13 @@ import { locales } from '@/lib/navigation';
 
 const MobileNav = () => {
 	const t = useTranslations('common');
+	const [isOpen, setIsOpen] = useState(false);
+	const Icon = isOpen ? RiCloseFill : RiMenuFill;
 
 	return (
-		<DropdownMenu>
+		<DropdownMenu onOpenChange={(value) => setIsOpen(value)}>
 			<DropdownMenuTrigger className='group block rounded-full bg-neutral-800 p-2 outline-none sm:hidden'>
-				<span className='sr-only'>Toggle menu</span>
-				<RiMenuFill className='size-5 text-foreground/70 transition-colors group-hover:text-foreground' />
+				<Icon className='size-5 text-foreground/70 transition-colors group-hover:text-foreground' />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent
 				className='min-w-32'
