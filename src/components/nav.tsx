@@ -21,7 +21,7 @@ const Nav = () => {
 						<li key={item.title}>
 							<Link
 								className={cn(
-									'relative flex items-center rounded px-2 py-1.5 text-sm text-foreground/70 transition-colors hover:bg-accent/60 hover:text-foreground font-semibold',
+									'relative flex items-center rounded px-2 py-1.5 text-sm text-foreground/70 transition-colors hover:bg-accent/60 hover:text-foreground',
 									{ 'text-foreground': isActive },
 								)}
 								href={item.href}
