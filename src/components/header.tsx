@@ -53,7 +53,7 @@ const Header = () => {
 		>
 			<div className='flex h-14 w-3/4 items-center justify-between gap-2 rounded-full border border-border bg-neutral-800/50 px-2 backdrop-blur sm:w-fit'>
 				<Link
-					className='pl-3'
+					className='pl-3 pr-1'
 					href='/'
 					aria-label='Home'
 				>
@@ -69,7 +69,7 @@ const Header = () => {
 					<div className='flex items-center gap-1'>
 						<RiGithubFill className='size-6 text-foreground/70 group-hover:text-foreground' />
 						<span className='text-sm text-foreground/70 group-hover:text-foreground'>
-							GitHub
+							Star on Github
 						</span>
 					</div>
 					<div className='flex items-center gap-1'>
