@@ -1,10 +1,9 @@
 import { render, screen } from '@testing-library/react';
 
 import PostCard from '@/components/post-card';
-import useEnabledFirstInView from '@/hooks/use-enabled-first-view';
+import useIntersection from '@/hooks/use-intersection';
 
-jest.mock('@/hooks/use-enabled-first-view', () => jest.fn());
-
+jest.mock('@/hooks/use-intersection', () => jest.fn());
 jest.mock('@/components/view-counter', () => {
 	const ViewCounter = () => <div data-testid='view-counter' />;
 
@@ -20,9 +19,8 @@ describe('PostCard', () => {
 	};
 
 	beforeEach(() => {
-		(useEnabledFirstInView as jest.Mock).mockReturnValue({
-			enabled: false,
-			intersectionRef: { current: null },
+		(useIntersection as jest.Mock).mockReturnValue({
+			isIntersecting: false,
 		});
 	});
 
@@ -53,9 +51,8 @@ describe('PostCard', () => {
 	});
 
 	it('should render ViewCounter when enabled is true', () => {
-		(useEnabledFirstInView as jest.Mock).mockReturnValue({
-			enabled: true,
-			intersectionRef: { current: null },
+		(useIntersection as jest.Mock).mockReturnValue({
+			isIntersecting: true,
 		});
 		render(<PostCard {...post} />);
 
