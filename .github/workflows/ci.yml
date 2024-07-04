@@ -31,10 +31,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-  test:
-    runs-on: ubuntu-latest
-    needs: setup
+      - name: Test Coverage
+        run: pnpm test:coverage
 
-    steps:
-      - name: Run tests
-        run: pnpm test
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
