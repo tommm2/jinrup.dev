@@ -6,7 +6,7 @@ on:
         - main
 
 jobs:
-  init:
+  setup:
     runs-on: ubuntu-latest
 
     strategy:
@@ -31,5 +31,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run Jest tests
+  test:
+    runs-on: ubuntu-latest
+    needs: setup
+
+    steps:
+      - name: Run tests
         run: pnpm test
