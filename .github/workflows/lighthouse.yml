@@ -1,0 +1,85 @@
+name: Lighthouse
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  pull-requests: write
+  actions: read
+  contents: read
+
+defaults:
+  run:
+    # This ensures that the working directory is the root of the repository
+    working-directory: ./
+
+jobs:
+  lighthouse-ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@f086349bfa2bd1361f7909c78558e816508cdc10 # v2.8.0
+        with:
+          egress-policy: audit
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Add Comment to PR
+        # Signal that a lighthouse run is about to start
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            Running Lighthouse audit...
+          # Used later to edit the existing comment
+          comment_tag: 'lighthouse_audit'
+
+      - name: Capture Vercel Preview
+        uses: patrickedqvist/wait-for-vercel-preview@dca4940010f36d2d44caa487087a09b57939b24a
+        id: vercel_preview_url
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 300
+          check_interval: 10
+
+      - name: Audit Preview URL with Lighthouse
+        uses: treosh/lighthouse-ci-action@v11
+        id: lighthouse_audit
+        with:
+          configPath: './.lighthouserc.json'
+          urls: |
+            ${{ steps.vercel_preview_url.outputs.url }}
+            ${{ steps.vercel_preview_url.outputs.url }}/blog
+            ${{ steps.vercel_preview_url.outputs.url }}/projects
+            ${{ steps.vercel_preview_url.outputs.url }}/about
+          uploadArtifacts: true # save results as a action artifacts
+          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+
+      - name: Format Lighthouse Score
+          # Transform the audit results into a single, friendlier output
+        id: format_lighthouse_score
+        uses: actions/github-script@v7
+        env:
+        # using env as input to our script
+        # see https://github.com/actions/github-script#use-env-as-input
+          LIGHTHOUSE_RESULT: ${{ steps.lighthouse_audit.outputs.manifest }}
+          LIGHTHOUSE_LINKS: ${{ steps.lighthouse_audit.outputs.links }}
+          VERCEL_PREVIEW_URL: ${{ steps.vercel_preview_url.outputs.url }}
+        with:
+            # Run as a separate file so we do not have to inline all of our formatting logic.
+            # See https://github.com/actions/github-script#run-a-separate-file for more info.
+          script: |
+            const { formatLighthouseResults } = await import('${{github.workspace}}/src/scripts/lighthouse/index.mjs')
+            await formatLighthouseResults({core})
+
+      - name: Add Comment to PR
+        # Replace the previous message with our formatted lighthouse results
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          # Reference the previously created comment
+          comment_tag: 'lighthouse_audit'
+          message: |
+            ${{ steps.format_lighthouse_score.outputs.comment }}
