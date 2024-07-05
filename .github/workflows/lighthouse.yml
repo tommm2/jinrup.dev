@@ -23,6 +23,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
       - name: Capture Vercel Preview
         uses: patrickedqvist/wait-for-vercel-preview@v1.3.0
         id: vercel_preview_url
