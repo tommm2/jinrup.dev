@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+permissions:
+  pull-requests: write
+  actions: read
+  contents: read
+
 defaults:
   run:
     # This ensures that the working directory is the root of the repository
