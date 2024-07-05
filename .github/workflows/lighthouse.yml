@@ -51,7 +51,7 @@ jobs:
         with:
           configPath: './.lighthouserc.json'
           urls: |
-            ${{ steps.vercel_preview_url.outputs.url }}/
+            ${{ steps.vercel_preview_url.outputs.url }}
             ${{ steps.vercel_preview_url.outputs.url }}/blog
             ${{ steps.vercel_preview_url.outputs.url }}/projects
             ${{ steps.vercel_preview_url.outputs.url }}/about
