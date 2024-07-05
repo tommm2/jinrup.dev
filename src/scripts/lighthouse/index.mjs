@@ -1,34 +1,17 @@
-type Core = {
-  setOutput: (name: string, value: string) => void;
-};
-
-type Result = {
-	url: string;
-	isRepresentativeRun: string;
-	htmlPath: string;
-	jsonPath: string;
-	summary: {
-		performance: number;
-		accessibility: number;
-		'best-practices': number;
-		seo: number;
-	}
-}
-
-const stoplight = (res: number) => (res >= 90 ? '🟢' : res >= 75 ? '🟠' : '🔴');
-const normalizeScore = (res: number) => Math.round(res * 100);
-const formatScore = (res: number) => {
+const stoplight = (res) => (res >= 90 ? '🟢' : res >= 75 ? '🟠' : '🔴');
+const normalizeScore = (res) => Math.round(res * 100);
+const formatScore = (res) => {
 	const normalizedScore = normalizeScore(res);
 
 	return `${stoplight(normalizedScore)} ${normalizedScore}`;
 };
 
-export const formatLighthouseResults = ({ core }: { core: Core }) => {
+export const formatLighthouseResults = ({ core }) => {
 	// this will be the shape of https://github.com/treosh/lighthouse-ci-action#manifest
-	const results = JSON.parse(process.env.LIGHTHOUSE_RESULT as string);
+	const results = JSON.parse(process.env.LIGHTHOUSE_RESULT);
 
 	// this will be the shape of https://github.com/treosh/lighthouse-ci-action#links
-	const links = JSON.parse(process.env.LIGHTHOUSE_LINKS as string);
+	const links = JSON.parse(process.env.LIGHTHOUSE_LINKS);
 
 	// start creating our markdown table
 	const header = [
@@ -38,10 +21,10 @@ export const formatLighthouseResults = ({ core }: { core: Core }) => {
 	];
 
 	// map over each url result, formatting and linking to the output
-	const urlResults = results.map(({  url, summary }: Result) => {
+	const urlResults = results.map(({  url, summary }) => {
 		// make the tested link as a markdown link, without the long-generated host
 		const shortPreviewLink = `[${url.replace(
-			process.env.VERCEL_PREVIEW_URL as string,
+			process.env.VERCEL_PREVIEW_URL,
 			'',
 		)}](${url})`;
 
