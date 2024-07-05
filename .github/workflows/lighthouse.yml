@@ -83,4 +83,3 @@ jobs:
           comment_tag: 'lighthouse_audit'
           message: |
             ${{ steps.format_lighthouse_score.outputs.comment }}
-
