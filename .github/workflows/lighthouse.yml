@@ -5,11 +5,21 @@ on:
     branches:
       - main
 
+defaults:
+  run:
+    # This ensures that the working directory is the root of the repository
+    working-directory: ./
+
 jobs:
   lighthouse-ci:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@f086349bfa2bd1361f7909c78558e816508cdc10 # v2.8.0
+        with:
+          egress-policy: audit
+
       - name: Checkout
         uses: actions/checkout@v4
 
