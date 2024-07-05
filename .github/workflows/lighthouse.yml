@@ -50,7 +50,7 @@ jobs:
         id: lighthouse_audit
         with:
           configPath: './.lighthouserc.json'
-          urls:
+          urls: |
             ${{ steps.vercel_preview_url.outputs.url }}/
             ${{ steps.vercel_preview_url.outputs.url }}/blog
             ${{ steps.vercel_preview_url.outputs.url }}/projects
