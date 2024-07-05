@@ -38,7 +38,7 @@ jobs:
           comment_tag: 'lighthouse_audit'
 
       - name: Capture Vercel Preview
-        uses: patrickedqvist/wait-for-vercel-preview@v1.3.0
+        uses: patrickedqvist/wait-for-vercel-preview@dca4940010f36d2d44caa487087a09b57939b24a
         id: vercel_preview_url
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -82,4 +82,3 @@ jobs:
           comment_tag: 'lighthouse_audit'
           message: |
             ${{ steps.format_lighthouse_score.outputs.comment }}
-
