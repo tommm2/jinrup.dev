@@ -1,3 +1,5 @@
+// reference: https://github.com/nodejs/nodejs.org/blob/main/apps/site/scripts/lighthouse/index.mjs
+
 const stoplight = (res) => (res >= 90 ? '🟢' : res >= 75 ? '🟠' : '🔴');
 const normalizeScore = (res) => Math.round(res * 100);
 const formatScore = (res) => {
@@ -13,7 +15,7 @@ export const formatLighthouseResults = ({ core }) => {
 	// this will be the shape of https://github.com/treosh/lighthouse-ci-action#links
 	const links = JSON.parse(process.env.LIGHTHOUSE_LINKS);
 
-	// start creating our markdown table
+	// start creating markdown
 	const header = [
 		'Lighthouse Results',
 		'URL | Performance | Accessibility | Best Practices | SEO | Report',
