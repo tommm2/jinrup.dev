@@ -47,11 +47,11 @@ const Header = () => {
 	return (
 		<header
 			className={cn(
-				'sticky top-6 z-10 flex justify-center duration-500 ease-in-out transition-transform',
+				'sticky top-6 z-10 flex px-6 justify-center duration-500 ease-in-out transition-transform',
 				{ '-translate-y-20': !isVisible },
 			)}
 		>
-			<div className='flex h-14 w-3/4 items-center justify-between gap-2 rounded-full border border-border bg-neutral-800/50 px-2 backdrop-blur sm:w-fit'>
+			<div className='flex h-14 w-full items-center justify-between gap-2 rounded-full border border-border bg-neutral-800/50 px-2 backdrop-blur sm:w-fit'>
 				<Link
 					className='pl-3 pr-1'
 					href='/'

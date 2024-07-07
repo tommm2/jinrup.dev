@@ -26,7 +26,7 @@ const MobileNav = () => {
 				<Icon className='size-5 text-foreground/70 transition-colors group-hover:text-foreground' />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent
-				className='min-w-32'
+				className='min-w-36'
 				align='end'
 			>
 				{navLinks.map((link) => (
