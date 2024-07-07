@@ -1,4 +1,4 @@
-import { RiGitRepositoryFill, RiQuillPenFill, RiUser3Fill } from 'react-icons/ri';
+import { RiGitRepositoryFill, RiQuillPenFill, RiUser3Fill, RiUser6Line } from 'react-icons/ri';
 
 const navLinks = [
 	{
@@ -15,6 +15,11 @@ const navLinks = [
 		title: 'about',
 		href: '/about',
 		icon: <RiUser3Fill />,
+	},
+	{
+		title: 'guestbook',
+		href: '/guestbook',
+		icon: <RiUser6Line />,
 	},
 ];
 
