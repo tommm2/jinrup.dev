@@ -14,7 +14,8 @@
 		"backToHome": "返回首頁",
 		"postViews": "瀏覽次數: <count></count> 次",
 		"notFound": "對不起，您正在尋找的頁面不存在。",
-		"chooseLanguage": "選擇語言"
+		"chooseLanguage": "選擇語言",
+		"guestbook": "留言板"
 	},
 	"homePage": {
 		"description": "👋 嗨，我是Tom Jin，我是一位前端工程師。專注於使用 React 和 Next.js，我在這裡分享我的學習筆記和專案實作，歡迎閱讀與探索。",
