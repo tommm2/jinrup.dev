@@ -1,3 +1,5 @@
+import { NextResponse } from 'next/server';
+
 export const GET = async () => {
-	return {};
+	return NextResponse.json({});
 };
