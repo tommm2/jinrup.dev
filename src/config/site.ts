@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 const baseUrl = process.env.NODE_ENV === 'production'
-	? 'https://jinrup.vercel.app'
+	? 'https://jinrup.dev'
 	: 'http://localhost:3000';
 
 export const siteConfig = {

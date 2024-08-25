@@ -1,4 +1,4 @@
-# [My website](https://jinrup.vercel.app/)
+# [My website](https://jinrup.dev/)
 
 ## 🔧 Stack
 - **Framework**: [Next](https://nextjs.org/)
