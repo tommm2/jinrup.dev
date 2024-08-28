@@ -49,6 +49,7 @@ $PROJECT_ROOT
 git clone https://github.com/tommm2/jinrup.dev.git
 
 cd jinrup.dev
+nvm use
 pnpm install
 pnpm run dev
 ```
@@ -56,9 +57,3 @@ pnpm run dev
 - Create `.env` file similar to `.env.example`.
 - Change `config/site.ts`, `config/giscus.ts`, `app/sitemap.ts` to you own and Remove `content/*`.
 
-## 📝 TODO
-- [x] Add Not Found Page
-- [ ] Make 3D model(use three.js) in Home Page
-- [x] Make brand logo
-- [ ] Make analytics
-- [ ] Import playwright to test
