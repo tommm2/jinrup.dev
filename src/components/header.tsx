@@ -75,7 +75,7 @@ const Header = () => {
 					<div className='flex items-center gap-1'>
 						<RiStarFill className='transition-colors group-hover:text-yellow-400' />
 						<NumberTicker
-							className='text-sm text-foreground/70 group-hover:text-foreground'
+							className='text-sm tracking-tight text-foreground/70 group-hover:text-foreground'
 							value={repo ? repo.stars : 0}
 						/>
 					</div>
