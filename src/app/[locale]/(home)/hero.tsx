@@ -26,7 +26,7 @@ const CONTACTS = [
 	},
 	{
 		name: 'Email',
-		href: `mailto:mail@${siteConfig.email}`,
+		href: `mailto:${siteConfig.email}`,
 		icon: RiMailSendFill,
 		colorClass: 'text-rose-500',
 	},
