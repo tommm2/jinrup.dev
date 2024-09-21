@@ -25,7 +25,7 @@ const Posts = () => {
 				</GradientText>
 				<Link
 					variant='block'
-					href='/projects'
+					href='/blog'
 				>
 					{t('viewMore')}
 					<RiArrowRightSLine />
