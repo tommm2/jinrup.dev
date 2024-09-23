@@ -14,7 +14,8 @@
 		"backToHome": "Back to Home",
 		"postViews": "<count></count> views",
 		"notFound": "Sorry, the page you are looking for does not exist.",
-		"chooseLanguage": "chooseLanguage"
+		"chooseLanguage": "chooseLanguage",
+		"guestbook": "Guestbook"
 	},
 	"homePage": {
 		"description": "👋 Hi, I'm Tom Jin, a frontend developer based in Taiwan who specializes in React and Next.js. I'm here to share learning and projects. Please feel free to read and discover.",

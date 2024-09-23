@@ -11,3 +11,10 @@ model Post {
   slug  String @unique
   views Int    @default(0)
 }
+
+model Guestbook {
+  id        Int       @id @default(autoincrement())
+  email     String    @db.VarChar(255)
+  body      String
+  createdAt DateTime  @db.Timestamp(0)
+}
