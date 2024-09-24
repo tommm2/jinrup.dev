@@ -58,7 +58,7 @@ pnpm run dev
 - Change `config/site.ts`, `config/giscus.ts`, `app/sitemap.ts` to you own and Remove `content/*`.
 
 ## 📜 License
-This work is licensed under a Creative  by JHENG RONG JIN.
+This work is licensed by JHENG RONG JIN.
 
 - You are free to use this code as inspiration.
 - Please do not copy it directly.
