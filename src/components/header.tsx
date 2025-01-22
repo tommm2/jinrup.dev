@@ -51,7 +51,7 @@ const Header = () => {
 				{ '-translate-y-20': !isVisible },
 			)}
 		>
-			<div className='flex h-14 w-3/4 items-center justify-between gap-2 rounded-full border border-border bg-neutral-800/50 px-2 backdrop-blur sm:w-fit'>
+			<div className='mx-6 flex h-14 w-full items-center justify-between gap-2 rounded-full border border-border bg-neutral-800/50 px-2 backdrop-blur sm:w-fit'>
 				<Link
 					className='pl-3 pr-1'
 					href='/'
