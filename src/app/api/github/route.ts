@@ -7,7 +7,7 @@ export const GET = async (req: NextRequest) => {
 	const repoName = req.nextUrl.searchParams.get('repoName');
 
 	const octokit = new Octokit({
-		auth: process.env.GITHUB_AUTH_TOKEN,
+		// auth: process.env.GITHUB_AUTH_TOKEN,
 	});
 
 	if (repoName) {
@@ -25,12 +25,15 @@ export const GET = async (req: NextRequest) => {
 	const { data: repos } = await octokit.request('GET /users/{username}/repos', {
 		username: siteConfig.githubUsername,
 	});
-	const { data: followers } = await octokit.request('GET /users/{username}/followers', {
-		username: siteConfig.githubUsername,
-	});
+	const { data: followers } = await octokit.request(
+		'GET /users/{username}/followers',
+		{
+			username: siteConfig.githubUsername,
+		},
+	);
 
 	const stars = repos
-		.filter(repo => !repo.fork)
+		.filter((repo) => !repo.fork)
 		.reduce((acc, repo) => {
 			return acc + (repo.stargazers_count ?? 0);
 		}, 0);
