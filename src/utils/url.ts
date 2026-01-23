@@ -5,15 +5,15 @@ export function getLocalizedUrl({
 	locale,
 	pathname = '',
 	slug = '',
-}:{
+}: {
 	locale: Locale;
-	pathname?: '' | 'blog' | 'about' | 'projects';
+	pathname?: '' | 'blog' | 'timeline' | 'projects';
 	slug?: string;
 }) {
 	let localPrefix = locale === defaultLocale ? '' : 'en';
 
 	let url = [siteConfig.siteUrl, localPrefix, pathname, slug]
-		.filter(item => item)
+		.filter((item) => item)
 		.join('/');
 
 	return url;

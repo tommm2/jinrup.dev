@@ -4,6 +4,7 @@ import Link from '@/components/ui/link';
 
 import Callout from './callout';
 import LinkedHeading from './linked-heading';
+import TimelineItem from './timeline-item';
 
 const MdxComponents = {
 	h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -43,6 +44,7 @@ const MdxComponents = {
 		/>
 	),
 	Callout,
+	TimelineItem,
 	img: ({ alt, ...otherProps }: ImageProps) => (
 		<Image
 			className='size-auto rounded-lg'

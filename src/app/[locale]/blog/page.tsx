@@ -3,7 +3,6 @@ import { useLocale, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
 import { allPosts } from '@/content';
-import GradientText from '@/components/ui/gradient-text';
 import { getLocalizedUrl } from '@/utils/url';
 import FilterPosts from './filter-posts';
 
@@ -36,16 +35,13 @@ const BlogPage = () => {
 
 	return (
 		<>
-			<GradientText
-				as='h1'
-				className='animate-fade-in text-2xl font-bold tracking-tight'
-			>
+			<h1 className='text-2xl font-bold tracking-tight animate-fade-in'>
 				{t('common.blog')}
-			</GradientText>
-			<p className='mt-1 animate-fade-in text-foreground/80 animation-delay-1'>
+			</h1>
+			<p className='mt-1 text-muted-foreground animate-fade-in animation-delay-1'>
 				{t.rich('blogPage.subTitle', {
 					highlight: () => (
-						<span className='font-medium text-primary'>{posts.length}</span>
+						<span className='font-medium text-foreground'>{posts.length}</span>
 					),
 				})}
 			</p>

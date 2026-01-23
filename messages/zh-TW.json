@@ -7,6 +7,7 @@
 		"home": "首頁",
 		"blog": "部落格",
 		"projects": "專案",
+		"timeline": "經歷",
 		"about": "關於",
 		"noSupport": "文章不支援目前語系",
 		"backToBlog": "返回部落格",
@@ -30,5 +31,9 @@
 	"aboutPage": {
 		"title": "哈囉，我是 Tom Jin",
 		"description": "關於我的工作經歷、學習記錄等等..."
+	},
+	"timelinePage": {
+		"title": "工作經歷",
+		"description": "關於我的工作經歷與里程碑。"
 	}
 }

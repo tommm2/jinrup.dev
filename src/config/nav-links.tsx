@@ -1,20 +1,20 @@
-import { RiGitRepositoryFill, RiQuillPenFill, RiUser3Fill } from 'react-icons/ri';
+import { FolderGit2, History, PenLine } from 'lucide-react';
 
 const navLinks = [
 	{
 		title: 'blog',
 		href: '/blog',
-		icon: <RiQuillPenFill />,
+		icon: <PenLine className='size-4' />,
 	},
 	{
 		title: 'projects',
 		href: '/projects',
-		icon: <RiGitRepositoryFill />,
+		icon: <FolderGit2 className='size-4' />,
 	},
 	{
-		title: 'about',
-		href: '/about',
-		icon: <RiUser3Fill />,
+		title: 'timeline',
+		href: '/timeline',
+		icon: <History className='size-4' />,
 	},
 ];
 

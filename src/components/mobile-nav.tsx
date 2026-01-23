@@ -1,6 +1,6 @@
+import { Menu, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { RiCloseFill, RiMenuFill } from 'react-icons/ri';
 import { useState } from 'react';
 
 import { LanguageMenuItem } from '@/components/language-dropdown';
@@ -18,12 +18,12 @@ import { locales } from '@/lib/navigation';
 const MobileNav = () => {
 	const t = useTranslations('common');
 	const [isOpen, setIsOpen] = useState(false);
-	const Icon = isOpen ? RiCloseFill : RiMenuFill;
+	const Icon = isOpen ? X : Menu;
 
 	return (
 		<DropdownMenu onOpenChange={(value) => setIsOpen(value)}>
-			<DropdownMenuTrigger className='group block rounded-full bg-neutral-800 p-2 outline-none sm:hidden'>
-				<Icon className='size-5 text-foreground/70 transition-colors group-hover:text-foreground' />
+			<DropdownMenuTrigger className='group block rounded-full bg-card p-2 outline-none sm:hidden'>
+				<Icon className='size-5 text-muted-foreground transition-colors group-hover:text-foreground' />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent
 				className='min-w-32'
@@ -44,8 +44,8 @@ const MobileNav = () => {
 					</DropdownMenuItem>
 				))}
 				<DropdownMenuSeparator />
-				<DropdownMenuLabel className='font-normal text-foreground/60'>
-					Translations
+				<DropdownMenuLabel className='font-normal text-muted-foreground'>
+					{t('chooseLanguage')}
 				</DropdownMenuLabel>
 				{locales.map((locale) => (
 					<LanguageMenuItem

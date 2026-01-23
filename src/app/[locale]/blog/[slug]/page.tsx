@@ -1,14 +1,12 @@
 import { Metadata } from 'next';
 import { useFormatter, useTranslations } from 'next-intl';
 import { notFound } from 'next/navigation';
-import { RiArrowLeftLine } from 'react-icons/ri';
+import { ArrowLeft } from 'lucide-react';
 
 import Comment from '@/components/comment';
-import GradientText from '@/components/ui/gradient-text';
 import MDXContent from '@/components/mdx';
 import Callout from '@/components/mdx/callout';
 import Link from '@/components/ui/link';
-import ViewCounter from '@/components/view-counter';
 import { allPosts } from '@/content';
 import { getContentWithFallback } from '@/utils/content';
 import { getLocalizedUrl } from '@/utils/url';
@@ -89,25 +87,18 @@ const BlogPostLayout = ({ params }: BlogPostLayoutProps) => {
 		<>
 			<Link
 				variant='block'
-				className='animate-fade-in gap-1'
+				className='gap-1 animate-fade-in'
 				href='/blog'
 			>
-				<RiArrowLeftLine />
+				<ArrowLeft className='size-4' />
 				<span>{t('backToBlog')}</span>
 			</Link>
 			<div className='mt-8 animate-fade-in animation-delay-1'>
-				<GradientText
-					as='h1'
-					className='text-2xl font-bold'
-				>
+				<h1 className='text-2xl font-bold'>
 					{title}
-				</GradientText>
-				<div className='mt-3 flex justify-between text-sm text-foreground/60'>
+				</h1>
+				<div className='mt-3 text-sm text-muted-foreground'>
 					<time dateTime={publishedAt}>{date}</time>
-					<ViewCounter
-						slug={slug}
-						shouldIncrement
-					/>
 				</div>
 				{language !== params.locale && (
 					<Callout variant='warning'>{t('noSupport')}</Callout>

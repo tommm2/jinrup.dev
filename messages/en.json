@@ -7,6 +7,7 @@
 		"home": "Home",
 		"blog": "Blog",
 		"projects": "Projects",
+		"timeline": "Timeline",
 		"about": "About",
 		"noSupport": "The article does not support the current language.",
 		"backToBlog": "Back to Blog",
@@ -14,7 +15,7 @@
 		"backToHome": "Back to Home",
 		"postViews": "<count></count> views",
 		"notFound": "Sorry, the page you are looking for does not exist.",
-		"chooseLanguage": "chooseLanguage"
+		"chooseLanguage": "Language"
 	},
 	"homePage": {
 		"description": "👋 Hi, I'm Tom Jin, a frontend developer based in Taiwan who specializes in React and Next.js. I'm here to share learning and projects. Please feel free to read and discover.",
@@ -29,5 +30,9 @@
 	},
 	"aboutPage": {
 		"description": "About my work experience, learning record, etc..."
+	},
+	"timelinePage": {
+		"title": "Experience",
+		"description": "My professional journey and milestones."
 	}
 }

@@ -6,7 +6,7 @@ import ScrollToTop from '@/components/scroll-to-top';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import LocaleProvider from '@/providers/locale-provider';
-import { fontNoto, fontSans } from '@/config/fonts';
+import { fontMono, fontNoto } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
 import { locales } from '@/lib/navigation';
 import { cn } from '@/utils/cn';
@@ -83,7 +83,7 @@ const RootLayout = ({ children, params: { locale } }: RootLayoutProps) => {
 
 	return (
 		<html
-			className={cn(fontSans.variable, fontNoto.variable)}
+			className={cn(fontMono.variable, fontNoto.variable)}
 			lang={locale}
 		>
 			<body className='min-h-screen overflow-x-hidden antialiased'>

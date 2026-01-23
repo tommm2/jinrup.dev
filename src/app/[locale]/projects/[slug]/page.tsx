@@ -2,9 +2,8 @@ import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { RiArrowLeftLine, RiCodeSSlashLine, RiLinksLine } from 'react-icons/ri';
+import { ArrowLeft, Code, ExternalLink } from 'lucide-react';
 
-import GradientText from '@/components/ui/gradient-text';
 import MDXContent from '@/components/mdx';
 import Link from '@/components/ui/link';
 import { allProjects } from '@/content';
@@ -77,33 +76,30 @@ const ProjectLayout = ({ params }: ProjectLayoutProps) => {
 		<>
 			<Link
 				variant='block'
-				className='animate-fade-in gap-1'
+				className='gap-1 animate-fade-in'
 				href='/projects'
 			>
-				<RiArrowLeftLine />
+				<ArrowLeft className='size-4' />
 				<span>{t('backToProjects')}</span>
 			</Link>
-			<div className='mt-8 animate-fade-in space-y-3 animation-delay-1'>
-				<GradientText
-					as='h1'
-					className='text-2xl font-bold'
-				>
+			<div className='mt-8 space-y-3 animate-fade-in animation-delay-1'>
+				<h1 className='text-2xl font-bold'>
 					{title}
-				</GradientText>
+				</h1>
 				<div className='flex items-center gap-1 text-sm font-medium'>
 					<Link
-						className='group flex items-center gap-1'
+						className='flex items-center gap-1 text-muted-foreground hover:text-foreground'
 						href={demoUrl}
 					>
-						<RiLinksLine className='text-foreground/60 transition-colors duration-300 group-hover:text-foreground' />
+						<ExternalLink className='size-4' />
 						Live Demo
 					</Link>
 					．
 					<Link
-						className='group flex items-center gap-1'
+						className='flex items-center gap-1 text-muted-foreground hover:text-foreground'
 						href={repoUrl}
 					>
-						<RiCodeSSlashLine className='text-foreground/60 transition-colors duration-300 group-hover:text-foreground' />
+						<Code className='size-4' />
 						Source Code
 					</Link>
 				</div>

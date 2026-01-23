@@ -18,11 +18,14 @@ const Nav = () => {
 					const isActive = item.href.toString() === pathname;
 
 					return (
-						<li key={item.title}>
+						<li
+							key={item.title}
+							className='w-[84px]'
+						>
 							<Link
 								className={cn(
 									'relative flex items-center rounded px-2 py-1.5 text-sm text-foreground/70 transition-colors hover:bg-accent/60 hover:text-foreground',
-									{ 'text-foreground': isActive },
+									{ 'text-foreground font-semibold': isActive },
 								)}
 								href={item.href}
 							>

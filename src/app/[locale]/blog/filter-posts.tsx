@@ -1,10 +1,10 @@
 'use client';
 
+import { Search } from 'lucide-react';
 import { useState } from 'react';
-import { RiSearch2Line } from 'react-icons/ri';
 
-import type { Post } from '@/content';
 import PostCard from '@/components/post-card';
+import type { Post } from '@/content';
 import { getGroupPostsWithYear } from '@/utils/blog';
 
 type FilterPostsProps = {
@@ -21,41 +21,43 @@ const FilterPosts = ({
 	const [query, setQuery] = useState('');
 	const groupPosts = getGroupPostsWithYear(posts, query);
 
+	const renderCards = () => {
+		if (groupPosts.length === 0) return remindText;
+
+		return groupPosts.map(({ year, posts }) => {
+			return (
+				<section key={year}>
+					<h2 className='mb-4 flex items-end gap-3 text-lg font-medium tracking-tight'>
+						{year}
+						<div className='mb-2 h-px w-full bg-border'></div>
+					</h2>
+					<div className='flex flex-col gap-4'>
+						{posts.map((post) => (
+							<PostCard
+								key={post.slug}
+								title={post.title}
+								publishedAt={post.publishedAt}
+								permalink={post.permalink}
+							/>
+						))}
+					</div>
+				</section>
+			);
+		});
+	};
+
 	return (
 		<>
 			<div className='relative mt-4 animate-fade-in animation-delay-2'>
-				<RiSearch2Line className='absolute left-2 top-2.5 size-5 text-foreground/60' />
+				<Search className='absolute left-2 top-2.5 size-5 text-muted-foreground' />
 				<input
-					className='w-full rounded-md border border-border bg-input/40 p-2 pl-8 text-sm outline-none ring-blue-500/20 duration-300 placeholder:text-foreground/80 focus:border-primary focus:ring-4 sm:w-[18.75rem]'
+					className='w-full rounded-md border border-border bg-input/40 p-2 pl-8 text-sm outline-none ring-ring/20 duration-300 placeholder:text-muted-foreground focus:border-foreground focus:ring-4 sm:w-[18.75rem]'
 					placeholder={placeholder}
 					onChange={(e) => setQuery(e.target.value)}
 				/>
 			</div>
-			<div className='mt-16 flex animate-fade-in flex-col gap-8 animation-delay-3'>
-				{
-					groupPosts.length > 0
-						? groupPosts.map(({ year, posts }) => {
-							return (
-								<section key={year}>
-									<h2 className='mb-4 flex items-end gap-3 text-lg font-medium tracking-tight'>
-										{year}
-										<div className='mb-2 h-px w-full bg-border'></div>
-									</h2>
-									<div className='flex flex-col gap-4'>
-										{posts.map((post) => (
-											<PostCard
-												key={post.slug}
-												slug={post.slug}
-												title={post.title}
-												publishedAt={post.publishedAt}
-												permalink={post.permalink}
-											/>
-										))}
-									</div>
-								</section>
-							);
-						})
-						: remindText}
+			<div className='mt-16 flex flex-col gap-8 animate-fade-in animation-delay-3'>
+				{renderCards()}
 			</div>
 		</>
 	);

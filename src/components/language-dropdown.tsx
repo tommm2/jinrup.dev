@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { RiTranslate2 } from 'react-icons/ri';
+import { Languages } from 'lucide-react';
 
 import {
 	DropdownMenu,
@@ -21,9 +21,9 @@ const LanguageDropdown = () => {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger className='hidden rounded p-2 text-foreground/70 shadow-md outline-none transition-colors hover:bg-accent/60 hover:text-foreground sm:block'>
+			<DropdownMenuTrigger className='hidden rounded p-2 text-muted-foreground shadow-md outline-none transition-colors hover:bg-accent/60 hover:text-foreground sm:block'>
 				<span className='sr-only'>{t('chooseLanguage')}</span>
-				<RiTranslate2 className='size-4' />
+				<Languages className='size-4' />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align='end'>
 				{locales.map((locale) => (

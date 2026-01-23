@@ -1,17 +1,6 @@
 import type { Config } from 'tailwindcss';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
-function animationDelay({ matchUtilities, theme }: { matchUtilities: any, theme: any }) {
-	matchUtilities(
-		{
-			'animation-delay': (value: string) => ({
-				'animation-delay': `calc(${value} * 130ms)`,
-			}),
-		},
-		{ values: theme('animationDelay') }
-	);
-}
-
 export default {
 	content: [
 		'./src/**/*.{js,ts,jsx,tsx,mdx}',
@@ -27,11 +16,8 @@ export default {
 			lg: '1024px',
 		},
 		fontFamily: {
-			sans: [
-				'var(--font-sans)',
-				'var(--font-noto)',
-				...defaultTheme.fontFamily.sans,
-			],
+			sans: ['var(--font-mono)', 'var(--font-noto)', ...defaultTheme.fontFamily.mono],
+			mono: ['var(--font-mono)', ...defaultTheme.fontFamily.mono],
 		},
 		extend: {
 			colors: {
@@ -74,44 +60,10 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)',
 			},
-			animationDelay: {
-				'1': '1',
-				'2': '2',
-				'3': '3',
-				'4': '4',
-				'5': '5',
-			},
-			keyframes: ({ theme }) => ({
-				'fade-in': {
-					'0%': { transform: 'translateY(18px)', opacity: '0' },
-					'100%': { transform: 'translateY(0)', opacity: '1' },
-				},
-				mutation: {
-					'0%': {
-						background: theme('colors.blue.200 / 3%'),
-					},
-					'10%': {
-						background: theme('colors.blue.200 / 15%'),
-						color: theme('colors.blue.200 / 75%'),
-					},
-					'100%': {
-						background: theme('colors.blue.200 / 0%'),
-					},
-				},
-				loading: {
-					'0%': { opacity: '.2' },
-					'20%': { opacity: '1', transform: 'translateX(1px)' },
-					to: { opacity: '.2' },
-				},
-			}),
-			animation: {
-				'fade-in': 'fade-in .6s both',
-			},
 		},
 	},
 	plugins: [
 		require('tailwindcss-animate'),
 		require('@tailwindcss/typography'),
-		animationDelay,
 	],
 } satisfies Config;

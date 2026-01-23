@@ -1,7 +1,6 @@
 import { useFormatter, useLocale, useTranslations } from 'next-intl';
-import { RiArrowRightSLine } from 'react-icons/ri';
+import { ChevronRight } from 'lucide-react';
 
-import GradientText from '@/components/ui/gradient-text';
 import Link from '@/components/ui/link';
 import { allPosts } from '@/content';
 
@@ -15,20 +14,17 @@ const Posts = () => {
 		.splice(0, 2);
 
 	return (
-		<section className='animate-fade-in animation-delay-5'>
+		<section className='animate-fade-in animation-delay-4'>
 			<div className='flex justify-between'>
-				<GradientText
-					as='h2'
-					className='text-xl font-bold tracking-tight'
-				>
+				<h2 className='text-xl font-bold tracking-tight'>
 					{t('latestPosts')}
-				</GradientText>
+				</h2>
 				<Link
 					variant='block'
 					href='/blog'
 				>
 					{t('viewMore')}
-					<RiArrowRightSLine />
+					<ChevronRight className='size-4' />
 				</Link>
 			</div>
 			<div className='mt-4 space-y-6'>
@@ -45,7 +41,7 @@ const Posts = () => {
 							className='flex flex-col-reverse sm:flex-row sm:gap-8'
 						>
 							<time
-								className='text-foreground/60'
+								className='text-muted-foreground'
 								dateTime={publishedAt}
 							>
 								{date}

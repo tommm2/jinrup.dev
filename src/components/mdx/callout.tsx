@@ -1,18 +1,13 @@
 import { type VariantProps, cva } from 'class-variance-authority';
-import {
-	RiErrorWarningLine,
-	RiForbid2Line,
-	RiInformationLine,
-	RiLightbulbLine,
-} from 'react-icons/ri';
+import { AlertTriangle, Ban, Info, Lightbulb } from 'lucide-react';
 
 import { cn } from '@/utils/cn';
 
 const IconMap = {
-	default: <RiLightbulbLine />,
-	error: <RiForbid2Line />,
-	info: <RiInformationLine />,
-	warning: <RiErrorWarningLine />,
+	default: <Lightbulb className='size-5' />,
+	error: <Ban className='size-5' />,
+	info: <Info className='size-5' />,
+	warning: <AlertTriangle className='size-5' />,
 };
 
 const calloutVariants = cva(
@@ -39,7 +34,7 @@ type CalloutProps = VariantProps<typeof calloutVariants> & {
 const Callout = ({ children, variant = 'default' }: CalloutProps) => {
 	return (
 		<div className={cn(calloutVariants({ variant }))}>
-			<div className='select-none pl-3 pr-2 pt-1 text-xl'>
+			<div className='select-none pl-3 pr-2 pt-1'>
 				{IconMap[variant!]}
 			</div>
 			<div className='w-full min-w-0 leading-7 [&>p]:m-0 [&_strong]:!text-inherit'>

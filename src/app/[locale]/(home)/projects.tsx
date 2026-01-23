@@ -1,7 +1,6 @@
 import { useLocale, useTranslations } from 'next-intl';
-import { RiArrowRightSLine } from 'react-icons/ri';
+import { ChevronRight } from 'lucide-react';
 
-import GradientText from '@/components/ui/gradient-text';
 import ProjectCard from '@/components/project-card';
 import Link from '@/components/ui/link';
 import { allProjects } from '@/content';
@@ -14,20 +13,17 @@ const Projects = () => {
 		.splice(0, 2);
 
 	return (
-		<section className='animate-fade-in animation-delay-4'>
+		<section className='animate-fade-in animation-delay-3'>
 			<div className='flex items-center justify-between'>
-				<GradientText
-					as='h2'
-					className='text-xl font-bold tracking-tight'
-				>
+				<h2 className='text-xl font-bold tracking-tight'>
 					{t('projects')}
-				</GradientText>
+				</h2>
 				<Link
 					variant='block'
 					href='/projects'
 				>
 					{t('viewMore')}
-					<RiArrowRightSLine />
+					<ChevronRight className='size-4' />
 				</Link>
 			</div>
 			<div className='mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2'>
