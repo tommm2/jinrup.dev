@@ -6,6 +6,7 @@ import LanguageDropdown from '@/components/language-dropdown';
 import Logo from '@/components/logo';
 import MobileNav from '@/components/mobile-nav';
 import Nav from '@/components/nav';
+import ThemeDropdown from '@/components/theme-dropdown';
 import Link from '@/components/ui/link';
 import Separator from '@/components/ui/separator';
 import { cn } from '@/utils/cn';
@@ -55,6 +56,7 @@ const Header = () => {
 						orientation='vertical'
 						className='hidden h-6 sm:block'
 					/>
+					<ThemeDropdown />
 					<LanguageDropdown />
 					<MobileNav />
 				</div>

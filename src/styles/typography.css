@@ -22,7 +22,7 @@
 	}
 
 	blockquote {
-		@apply bg-neutral-900 p-4 text-foreground border-primary rounded;
+		@apply bg-muted p-4 text-foreground border-primary rounded;
 
 		> p {
 			@apply m-0;

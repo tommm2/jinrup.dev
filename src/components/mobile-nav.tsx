@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import { LanguageMenuItem } from '@/components/language-dropdown';
+import { ThemeMenuItem, themeOptions } from '@/components/theme-dropdown';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -51,6 +52,16 @@ const MobileNav = () => {
 					<LanguageMenuItem
 						key={locale}
 						locale={locale}
+					/>
+				))}
+				<DropdownMenuSeparator />
+				<DropdownMenuLabel className='font-normal text-muted-foreground'>
+					{t('chooseTheme')}
+				</DropdownMenuLabel>
+				{themeOptions.map((option) => (
+					<ThemeMenuItem
+						key={option.value}
+						{...option}
 					/>
 				))}
 			</DropdownMenuContent>

@@ -6,6 +6,7 @@ import ScrollToTop from '@/components/scroll-to-top';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import LocaleProvider from '@/providers/locale-provider';
+import ThemeProvider from '@/providers/theme-provider';
 import { fontMono, fontNoto } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
 import { locales } from '@/lib/navigation';
@@ -15,9 +16,10 @@ import { getLocalizedUrl } from '@/utils/url';
 import '@/styles/app.css';
 
 export const viewport: Viewport = {
-	themeColor: {
-		color: '#060609',
-	},
+	themeColor: [
+		{ media: '(prefers-color-scheme: light)', color: '#f8f6f1' },
+		{ media: '(prefers-color-scheme: dark)', color: '#060609' },
+	],
 };
 
 export const generateMetadata = async ({
@@ -85,16 +87,24 @@ const RootLayout = ({ children, params: { locale } }: RootLayoutProps) => {
 		<html
 			className={cn(fontMono.variable, fontNoto.variable)}
 			lang={locale}
+			suppressHydrationWarning
 		>
 			<body className='min-h-screen overflow-x-hidden antialiased'>
-				<LocaleProvider>
-					<Header />
-					<main className='layout mt-16 min-h-[calc(100vh_-_56px_-_196px)]'>
-						{children}
-					</main>
-					<Footer />
-					<ScrollToTop />
-				</LocaleProvider>
+				<ThemeProvider
+					attribute='class'
+					defaultTheme='system'
+					enableSystem
+					disableTransitionOnChange
+				>
+					<LocaleProvider>
+						<Header />
+						<main className='layout mt-16 min-h-[calc(100vh_-_56px_-_196px)]'>
+							{children}
+						</main>
+						<Footer />
+						<ScrollToTop />
+					</LocaleProvider>
+				</ThemeProvider>
 			</body>
 		</html>
 	);
