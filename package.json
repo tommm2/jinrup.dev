@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "pnpm velite --watch & next dev",
+		"new:post": "node scripts/new-post.mjs",
 		"build": "pnpm velite build && next build",
 		"start": "next start",
 		"lint": "next lint",
